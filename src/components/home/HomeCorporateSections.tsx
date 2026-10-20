@@ -6,19 +6,14 @@ import { motion, AnimatePresence } from "motion/react";
 import {
   ArrowRight,
   ArrowUpRight,
-  Building2,
-  Calendar,
-  ChevronRight,
   Download,
-  FileSpreadsheet,
   FileText,
-  Handshake,
-  Landmark,
-  ShieldCheck,
-  TrendingUp,
   Users,
 } from "lucide-react";
 import { HOME_SECONDARY_DATA } from "@/data/homeSecondaryData";
+
+// Premium Enterprise Easing Curve (Smooth deceleration)
+const transitionEase = [0.22, 1, 0.36, 1] as const;
 
 export default function HomeCorporateSections() {
   const { foundationWhoWeAre, announcementsSection, investorsSection } =
@@ -36,9 +31,10 @@ export default function HomeCorporateSections() {
     );
   }, [foundationWhoWeAre.slides.length]);
 
+  // FIX: Slowed to 6 seconds for readable, corporate pacing
   useEffect(() => {
     if (pauseFoundation) return;
-    const timer = setInterval(nextFoundationSlide, 4200);
+    const timer = setInterval(nextFoundationSlide, 6000);
     return () => clearInterval(timer);
   }, [pauseFoundation, nextFoundationSlide]);
 
@@ -66,206 +62,215 @@ export default function HomeCorporateSections() {
     <div className="w-full overflow-hidden">
       {/* =====================================================================
           SECTION 1: CORPORATE FOUNDATION -> "WHO WE ARE" GATEWAY
-          Auto-transitioning visual showcase + 4 direct Who We Are sub-page cards
       ===================================================================== */}
       <section
         aria-labelledby="foundation-whoweare-heading"
         onMouseEnter={() => setPauseFoundation(true)}
         onMouseLeave={() => setPauseFoundation(false)}
-        className="bg-sand-100 py-20 sm:py-28 border-t border-sand-300 text-pingaksh-navy"
+        className="bg-sand-100 py-24 sm:py-32 border-t border-sand-300 text-pingaksh-navy"
       >
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10">
-          <div className="rounded-3xl bg-white border border-sand-300 shadow-xl overflow-hidden grid grid-cols-1 lg:grid-cols-12">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.9, ease: transitionEase }}
+            className="rounded-xl bg-white border border-sand-300 shadow-xl overflow-hidden grid grid-cols-1 lg:grid-cols-12"
+          >
             {/* Left (Cols 1-6): Auto-Transitioning Visual Heritage Gallery */}
-            <div className="lg:col-span-6 relative min-h-[420px] sm:min-h-[560px] bg-pingaksh-navy overflow-hidden order-2 lg:order-1">
-              <AnimatePresence mode="sync">
-                <motion.figure
+            <div className="lg:col-span-6 relative min-h-[500px] sm:min-h-[640px] bg-navy-950 overflow-hidden order-2 lg:order-1">
+              <AnimatePresence mode="wait">
+                <motion.div
                   key={activeFoundationSlide.id}
-                  initial={{ opacity: 0, scale: 1.08 }}
-                  animate={{ opacity: 1, scale: 1 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  transition={{
-                    opacity: { duration: 0.9, ease: "easeInOut" },
-                    scale: { duration: 4.5, ease: "easeOut" },
-                  }}
-                  className="absolute inset-0 w-full h-full m-0"
+                  transition={{ duration: 0.6, ease: "easeInOut" }}
+                  className="absolute inset-0"
                 >
-                  <img
+                  <motion.img
+                    initial={{ scale: 1.1 }}
+                    animate={{ scale: 1 }}
+                    transition={{ duration: 6, ease: "easeOut" }}
                     src={activeFoundationSlide.imageUrl}
                     alt={activeFoundationSlide.imageAlt}
-                    width={1400}
-                    height={950}
-                    loading="lazy"
-                    className="w-full h-full object-cover object-center"
+                    className="w-full h-full object-cover origin-center"
                   />
-                  <div
-                    aria-hidden="true"
-                    className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/45 to-transparent"
-                  />
-                </motion.figure>
+                  <div className="absolute inset-0 bg-gradient-to-t from-navy-950/90 via-navy-950/30 to-transparent" />
+
+                  {/* Bottom Slide Caption - Staggered Reveal */}
+                  <div className="absolute bottom-0 left-0 right-0 p-8 sm:p-12 z-10">
+                    <motion.div
+                      initial={{ opacity: 0, y: 15 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{
+                        duration: 0.5,
+                        delay: 0.2,
+                        ease: transitionEase,
+                      }}
+                      className="space-y-3"
+                    >
+                      <h3 className="font-logo text-3xl sm:text-4xl text-white tracking-wide">
+                        {activeFoundationSlide.title}
+                      </h3>
+                      <p className="font-body text-sm sm:text-base text-sand-100/90 leading-relaxed max-w-lg">
+                        {activeFoundationSlide.caption}
+                      </p>
+                    </motion.div>
+                  </div>
+                </motion.div>
               </AnimatePresence>
 
               {/* Top Era Pill + Slide Indicators */}
               <div className="absolute top-6 left-6 right-6 z-10 flex items-center justify-between gap-4">
-                <div
-                  role="tablist"
-                  aria-label="Foundation Heritage Slides"
-                  className="flex items-center gap-1.5 bg-navy-950/60 backdrop-blur-md px-3 py-1.5 rounded-full"
-                >
-                  {foundationWhoWeAre.slides.map((s, idx) => (
-                    <button
-                      key={s.id}
-                      role="tab"
-                      aria-selected={idx === foundationSlideIdx}
-                      aria-label={`Show ${s.title}`}
-                      onClick={() => setFoundationSlideIdx(idx)}
-                      className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                        idx === foundationSlideIdx
-                          ? "w-8 bg-pingaksh-sand"
-                          : "w-2 bg-white/40 hover:bg-white/70"
-                      }`}
-                    />
-                  ))}
+                <div className="flex items-center gap-2 bg-navy-950/70 backdrop-blur-md px-4 py-2 rounded-md border border-white/10">
+                  {foundationWhoWeAre.slides.map((s, idx) => {
+                    const isActive = idx === foundationSlideIdx;
+                    return (
+                      <button
+                        key={s.id}
+                        onClick={() => setFoundationSlideIdx(idx)}
+                        className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer overflow-hidden ${
+                          isActive
+                            ? "w-10 bg-white/20"
+                            : "w-2.5 bg-white/30 hover:bg-white/60"
+                        }`}
+                      >
+                        {isActive && (
+                          <motion.div
+                            initial={{ width: "0%" }}
+                            animate={{ width: pauseFoundation ? "0%" : "100%" }}
+                            transition={{
+                              duration: pauseFoundation ? 0 : 6,
+                              ease: "linear",
+                            }}
+                            className="h-full bg-pingaksh-sand"
+                          />
+                        )}
+                      </button>
+                    );
+                  })}
                 </div>
-              </div>
-
-              {/* Bottom Slide Caption */}
-              <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-10 z-10">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={activeFoundationSlide.id}
-                    initial={{ opacity: 0, y: 12 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -8 }}
-                    transition={{ duration: 0.3 }}
-                    className="space-y-2"
-                  >
-                    <h3 className="font-logo text-2xl sm:text-3xl text-white tracking-wide">
-                      {activeFoundationSlide.title}
-                    </h3>
-                    <p className="text-xs sm:text-sm text-sand-100/90 leading-relaxed">
-                      {activeFoundationSlide.caption}
-                    </p>
-                  </motion.div>
-                </AnimatePresence>
               </div>
             </div>
 
             {/* Right (Cols 7-12): Who We Are Narrative + Direct Sub-Page Cards */}
-            <div className="lg:col-span-6 p-7 sm:p-11 lg:p-14 flex flex-col justify-between order-1 lg:order-2">
-              <div className="space-y-5">
+            <div className="lg:col-span-6 p-10 sm:p-14 flex flex-col justify-between order-1 lg:order-2">
+              <div className="space-y-6">
                 <div className="inline-flex items-center gap-2 text-xs font-tagline uppercase tracking-[0.2em] text-pingaksh-terracotta font-bold">
-                  <Users className="w-4 h-4" aria-hidden="true" />
+                  <Users className="w-4 h-4" />
                   <span>{foundationWhoWeAre.eyebrow}</span>
                 </div>
 
                 <h2
                   id="foundation-whoweare-heading"
-                  className="font-logo text-2xl sm:text-4xl text-pingaksh-navy leading-tight"
+                  className="font-logo text-3xl sm:text-5xl text-pingaksh-navy leading-[1.15]"
                 >
                   {foundationWhoWeAre.title}
                 </h2>
 
-                <p className="text-xs sm:text-sm text-navy-700 leading-relaxed">
+                <p className="font-body text-sm sm:text-base text-navy-700 leading-relaxed">
                   {foundationWhoWeAre.description}
                 </p>
 
-                {/* 2x2 Direct Gateway Grid to "Who We Are" Sub-Pages */}
-                <nav
-                  aria-label="Who We Are Sub-Pages"
-                  className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-3"
-                >
-                  {foundationWhoWeAre.gatewayLinks.map((item) => (
-                    <Link
+                {/* 2x2 Direct Gateway Grid */}
+                <nav className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+                  {foundationWhoWeAre.gatewayLinks.map((item, idx) => (
+                    <motion.div
                       key={item.id}
-                      href={item.href}
-                      title={`${item.title} — ${item.subtitle}`}
-                      className="group p-4 rounded-xl bg-sand-50 hover:bg-pingaksh-navy border border-sand-300 hover:border-pingaksh-navy transition-all duration-250 flex flex-col justify-between"
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{
+                        duration: 0.5,
+                        delay: idx * 0.1,
+                        ease: transitionEase,
+                      }}
                     >
-                      <div className="flex items-center justify-between gap-2">
-                        <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-sand-200 group-hover:bg-white/15 text-pingaksh-terracotta group-hover:text-pingaksh-sand transition-colors">
-                          {item.badge}
-                        </span>
-                        <ArrowUpRight
-                          className="w-4 h-4 text-navy-400 group-hover:text-pingaksh-sand group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
-                          aria-hidden="true"
-                        />
-                      </div>
+                      <Link
+                        href={item.href}
+                        className="group p-5 rounded-md bg-sand-50 hover:bg-pingaksh-navy border border-sand-300 hover:border-pingaksh-navy transition-all duration-300 flex flex-col justify-between h-full"
+                      >
+                        <div className="flex items-center justify-between gap-2">
+                          <span className="font-tagline text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded bg-sand-200 group-hover:bg-white/15 text-pingaksh-terracotta group-hover:text-pingaksh-sand transition-colors">
+                            {item.badge}
+                          </span>
+                          <ArrowUpRight className="w-4 h-4 text-navy-400 group-hover:text-pingaksh-sand group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                        </div>
 
-                      <div className="mt-3">
-                        <h4 className="text-sm font-bold text-pingaksh-navy group-hover:text-white transition-colors">
-                          {item.title}
-                        </h4>
-                        <p className="text-[11.5px] text-navy-600 group-hover:text-sand-200/85 mt-1 line-clamp-2 transition-colors">
-                          {item.subtitle}
-                        </p>
-                      </div>
-                    </Link>
+                        <div className="mt-4">
+                          <h4 className="text-base font-bold text-pingaksh-navy group-hover:text-white transition-colors">
+                            {item.title}
+                          </h4>
+                          <p className="font-body text-xs text-navy-600 group-hover:text-sand-200/85 mt-1.5 line-clamp-2 transition-colors">
+                            {item.subtitle}
+                          </p>
+                        </div>
+                      </Link>
+                    </motion.div>
                   ))}
                 </nav>
               </div>
 
               {/* Bottom CTA Buttons */}
-              <div className="pt-7 mt-7 border-t border-sand-200 flex flex-wrap items-center gap-3.5">
+              <div className="pt-8 mt-8 border-t border-sand-200 flex flex-wrap items-center gap-4">
                 <Link
                   href={foundationWhoWeAre.primaryCta.href}
-                  title={foundationWhoWeAre.primaryCta.title}
-                  className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-pingaksh-terracotta hover:bg-terracotta-600 text-white text-xs sm:text-sm font-semibold transition-all shadow-md group"
+                  className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-md bg-pingaksh-terracotta hover:bg-terracotta-600 text-white text-sm font-semibold transition-all shadow-md group"
                 >
                   <span>{foundationWhoWeAre.primaryCta.label}</span>
-                  <ArrowRight
-                    className="w-4 h-4 group-hover:translate-x-1 transition-transform"
-                    aria-hidden="true"
-                  />
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
 
                 <Link
                   href={foundationWhoWeAre.secondaryCta.href}
-                  title={foundationWhoWeAre.secondaryCta.title}
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-pingaksh-navy/30 hover:bg-pingaksh-navy text-pingaksh-navy hover:text-white text-xs sm:text-sm font-semibold transition-all"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-md border-2 border-pingaksh-navy hover:bg-pingaksh-navy text-pingaksh-navy hover:text-white text-sm font-bold transition-all"
                 >
                   <span>{foundationWhoWeAre.secondaryCta.label}</span>
                 </Link>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
+
       {/* =====================================================================
-          SECTION 3: INVESTORS & STATUTORY GOVERNANCE SECTION
-          Deep Corporate Navy + Notices + Filterable FY Reports + Market Cards
+          SECTION 2: INVESTORS & STATUTORY GOVERNANCE SECTION
       ===================================================================== */}
       <section
         aria-labelledby="investors-section-heading"
-        className="bg-pingaksh-navy text-white py-20 sm:py-28 border-t border-white/10 relative"
+        className="bg-pingaksh-navy text-white py-24 sm:py-32 border-t border-white/10 relative"
       >
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10">
-          {/* Top Title & Fiscal Year Filter Pills */}
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-12 border-b border-white/15">
-            <div>
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 pb-14 border-b border-white/15">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, ease: transitionEase }}
+            >
               <h2
                 id="investors-section-heading"
-                className="font-logo text-4xl sm:text-6xl text-white mt-2 tracking-wide"
+                className="font-logo text-4xl sm:text-6xl text-white tracking-wide"
               >
                 {investorsSection.sectionTitle}
               </h2>
-            </div>
+            </motion.div>
 
             {/* Interactive Fiscal Year Filter Tabs */}
-            <div
-              role="tablist"
-              aria-label="Filter Investor Documents by Fiscal Year"
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, ease: transitionEase }}
               className="flex flex-wrap items-center gap-2"
             >
               <button
-                type="button"
-                role="tab"
-                aria-selected={selectedFy === "ALL"}
                 onClick={() => setSelectedFy("ALL")}
-                className={`px-4 py-2 rounded-full text-xs font-semibold transition-all cursor-pointer ${
+                className={`px-5 py-2.5 rounded-md text-xs font-semibold tracking-wide transition-all cursor-pointer ${
                   selectedFy === "ALL"
                     ? "bg-pingaksh-sand text-pingaksh-navy shadow-md"
-                    : "bg-white/10 hover:bg-white/15 text-sand-100"
+                    : "bg-white/5 hover:bg-white/10 border border-white/10 text-sand-100"
                 }`}
               >
                 Latest Releases
@@ -273,28 +278,31 @@ export default function HomeCorporateSections() {
               {investorsSection.fiscalYears.map((fy) => (
                 <button
                   key={fy}
-                  type="button"
-                  role="tab"
-                  aria-selected={selectedFy === fy}
                   onClick={() => setSelectedFy(fy)}
-                  className={`px-4 py-2 rounded-full text-xs font-semibold transition-all cursor-pointer ${
+                  className={`px-5 py-2.5 rounded-md text-xs font-semibold tracking-wide transition-all cursor-pointer ${
                     selectedFy === fy
                       ? "bg-pingaksh-sand text-pingaksh-navy shadow-md"
-                      : "bg-white/10 hover:bg-white/15 text-sand-100"
+                      : "bg-white/5 hover:bg-white/10 border border-white/10 text-sand-100"
                   }`}
                 >
                   {fy}
                 </button>
               ))}
-            </div>
+            </motion.div>
           </div>
 
-          {/* 3-Column Corporate Investor Layout (Notices | Documents | Market Benchmark) */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 pt-12">
-            {/* Column 1 (Cols 1-4): Statutory Notices */}
-            <div className="lg:col-span-4 lg:border-r lg:border-white/15 lg:pr-8 flex flex-col justify-between space-y-8">
-              <div className="space-y-6">
-                <h3 className="text-xl sm:text-2xl font-bold text-white">
+          {/* 3-Column Corporate Investor Layout with Staggered Entrance */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 pt-14">
+            {/* Column 1: Statutory Notices */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.7, delay: 0.1, ease: transitionEase }}
+              className="lg:col-span-4 lg:border-r lg:border-white/15 lg:pr-8 flex flex-col justify-between space-y-8"
+            >
+              <div className="space-y-8">
+                <h3 className="font-logo text-2xl sm:text-3xl font-bold text-white tracking-wide">
                   {investorsSection.noticesHeading}
                 </h3>
 
@@ -302,18 +310,17 @@ export default function HomeCorporateSections() {
                   {investorsSection.notices.map((notice) => (
                     <li
                       key={notice.id}
-                      className="group border-b border-white/10 pb-5 last:border-b-0 last:pb-0"
+                      className="group border-b border-white/10 pb-6 last:border-b-0 last:pb-0"
                     >
-                      <div className="flex items-center justify-between text-xs font-bold tracking-wider text-pingaksh-sand mb-1.5">
+                      <div className="flex items-center justify-between font-tagline text-[10px] font-bold tracking-widest uppercase text-pingaksh-sand mb-2.5">
                         <time dateTime={notice.isoDate}>{notice.date}</time>
-                        <span className="text-[10px] px-2 py-0.5 rounded bg-white/10 text-sand-200">
+                        <span className="px-2 py-1 rounded bg-white/5 border border-white/10 text-sand-200">
                           {notice.referenceCode}
                         </span>
                       </div>
                       <Link
                         href={notice.href}
-                        title={notice.title}
-                        className="text-xs sm:text-sm text-sand-100/90 group-hover:text-pingaksh-sand transition-colors leading-relaxed block"
+                        className="font-body text-sm sm:text-base text-sand-100/90 group-hover:text-pingaksh-sand transition-colors leading-relaxed block"
                       >
                         {notice.title}
                       </Link>
@@ -322,22 +329,25 @@ export default function HomeCorporateSections() {
                 </ul>
               </div>
 
-              <div>
-                <Link
-                  href={investorsSection.noticesCta.href}
-                  title="View All Statutory Notices and Regulatory Filings"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-pingaksh-sand/50 hover:bg-pingaksh-sand text-white hover:text-pingaksh-navy text-xs font-semibold transition-all"
-                >
-                  <span>{investorsSection.noticesCta.label}</span>
-                  <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
-                </Link>
-              </div>
-            </div>
+              <Link
+                href={investorsSection.noticesCta.href}
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-md border border-pingaksh-sand/30 hover:border-pingaksh-sand hover:bg-pingaksh-sand text-white hover:text-pingaksh-navy text-sm font-semibold transition-all self-start"
+              >
+                <span>{investorsSection.noticesCta.label}</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </motion.div>
 
-            {/* Column 2 (Cols 5-8): Investor Documents & Annual Reports */}
-            <div className="lg:col-span-4 lg:px-4 flex flex-col justify-between space-y-8">
-              <div className="space-y-6">
-                <h3 className="text-xl sm:text-2xl font-bold text-white">
+            {/* Column 2: Investor Documents */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.7, delay: 0.2, ease: transitionEase }}
+              className="lg:col-span-4 lg:px-4 flex flex-col justify-between space-y-8"
+            >
+              <div className="space-y-8">
+                <h3 className="font-logo text-2xl sm:text-3xl font-bold text-white tracking-wide">
                   {investorsSection.documentsHeading}
                 </h3>
 
@@ -346,84 +356,80 @@ export default function HomeCorporateSections() {
                     <Link
                       key={doc.id}
                       href={doc.href}
-                      title={`Download ${doc.title}`}
-                      className="group flex items-start gap-4 p-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-pingaksh-sand/40 transition-all"
+                      className="group flex items-start gap-4 p-5 rounded-md bg-white/5 hover:bg-white/10 border border-white/5 hover:border-pingaksh-sand/40 transition-all"
                     >
-                      {/* Document Thumbnail Icon */}
-                      <div className="w-12 h-14 rounded-lg bg-pingaksh-terracotta/90 text-white flex flex-col items-center justify-center shrink-0 shadow-md">
-                        <FileText className="w-5 h-5" aria-hidden="true" />
+                      <div className="w-12 h-14 rounded bg-pingaksh-terracotta/90 text-white flex flex-col items-center justify-center shrink-0 shadow-md">
+                        <FileText className="w-5 h-5" />
                         <span className="text-[9px] font-bold uppercase mt-1">
                           PDF
                         </span>
                       </div>
 
                       <div className="flex-1 min-w-0">
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-pingaksh-sand">
-                          {doc.fiscalYear} · {doc.fileSize}
+                        <span className="font-tagline text-[10px] font-bold uppercase tracking-widest text-pingaksh-sand block mb-1">
+                          {doc.fiscalYear}{" "}
+                          <span className="opacity-50 px-1">|</span>{" "}
+                          {doc.fileSize}
                         </span>
-                        <h4 className="text-xs sm:text-sm font-semibold text-white group-hover:text-pingaksh-sand transition-colors mt-0.5 leading-snug">
+                        <h4 className="font-body text-sm font-semibold text-white group-hover:text-pingaksh-sand transition-colors leading-snug">
                           {doc.title}
                         </h4>
-                        <span className="block text-[11px] text-sand-200/70 mt-1">
+                        <span className="block font-body text-xs text-sand-200/60 mt-1.5">
                           Released: {doc.releaseDate}
                         </span>
                       </div>
-
-                      <Download
-                        className="w-4 h-4 text-sand-300 group-hover:text-white shrink-0 mt-1"
-                        aria-hidden="true"
-                      />
+                      <Download className="w-4 h-4 text-sand-300/50 group-hover:text-white shrink-0 mt-1 transition-colors" />
                     </Link>
                   ))}
                 </div>
               </div>
 
-              <div>
-                <Link
-                  href={investorsSection.documentsCta.href}
-                  title="Open Complete Investor Financial Document Repository"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-pingaksh-sand/50 hover:bg-pingaksh-sand text-white hover:text-pingaksh-navy text-xs font-semibold transition-all"
-                >
-                  <span>{investorsSection.documentsCta.label}</span>
-                  <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
-                </Link>
-              </div>
-            </div>
+              <Link
+                href={investorsSection.documentsCta.href}
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-md border border-pingaksh-sand/30 hover:border-pingaksh-sand hover:bg-pingaksh-sand text-white hover:text-pingaksh-navy text-sm font-semibold transition-all self-start"
+              >
+                <span>{investorsSection.documentsCta.label}</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </motion.div>
 
-            {/* Column 3 (Cols 9-12): Dual Market Benchmark Cards (NSE & BSE) */}
-            <div className="lg:col-span-4 space-y-5">
+            {/* Column 3: Market Benchmark Cards */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.7, delay: 0.3, ease: transitionEase }}
+              className="lg:col-span-4 space-y-6"
+            >
               {investorsSection.marketTrackers.map((tracker) => (
                 <div
                   key={tracker.id}
-                  className="rounded-2xl bg-navy-950/80 border border-white/20 p-6 space-y-4 shadow-xl"
+                  className="rounded-xl bg-navy-950/60 backdrop-blur-sm border border-white/15 p-7 space-y-5 shadow-lg hover:border-white/30 transition-colors"
                 >
                   <div className="flex items-start justify-between gap-2">
                     <div>
-                      <h4 className="text-lg sm:text-xl font-bold text-white">
+                      <h4 className="font-logo text-xl sm:text-2xl font-bold text-white tracking-wide">
                         {tracker.exchange}
                       </h4>
-                      <p className="text-[11px] text-sand-200/75 mt-0.5">
+                      <p className="font-body text-[11px] text-sand-200/60 mt-1">
                         {tracker.asOfDate}
                       </p>
                     </div>
-                    <span className="px-2.5 py-1 rounded-full bg-emerald-500/15 text-emerald-400 text-[10px] font-bold uppercase">
+                    <span className="px-2.5 py-1 rounded bg-emerald-500/15 border border-emerald-500/20 text-emerald-400 font-tagline text-[10px] font-bold uppercase tracking-wider">
                       Active
                     </span>
                   </div>
 
-                  {/* SVG Sparkline Trend Graphic */}
-                  <div className="py-2">
+                  <div className="py-3">
                     <svg
                       viewBox="0 0 240 56"
                       fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      aria-hidden="true"
                       className="w-full h-12"
                     >
                       <path
                         d="M4 44L45 36L85 40L128 24L170 28L215 10L236 14"
                         stroke="#34d399"
-                        strokeWidth="3"
+                        strokeWidth="2.5"
                         strokeLinecap="round"
                         strokeLinejoin="round"
                       />
@@ -437,108 +443,96 @@ export default function HomeCorporateSections() {
                     </svg>
                   </div>
 
-                  <div className="pt-2 border-t border-white/10 flex items-baseline justify-between flex-wrap gap-2">
+                  <div className="pt-4 border-t border-white/10 flex items-baseline justify-between flex-wrap gap-2">
                     <div>
-                      <span className="text-xl sm:text-2xl font-bold text-white">
+                      <span className="font-logo text-2xl sm:text-3xl font-bold text-white tracking-wide">
                         {tracker.price}
                       </span>
-                      <span className="ml-2 text-xs font-semibold text-emerald-400">
+                      <span className="ml-2 font-body text-sm font-semibold text-emerald-400">
                         ↑ {tracker.change}
                       </span>
                     </div>
-                    <div className="text-right text-[11px] text-sand-200/80">
-                      <span className="uppercase">{tracker.volumeLabel}: </span>
-                      <strong className="text-white">
+                    <div className="text-right font-body text-xs text-sand-200/70">
+                      <span className="uppercase tracking-wide">
+                        {tracker.volumeLabel}:{" "}
+                      </span>
+                      <strong className="text-white ml-1">
                         {tracker.volumeValue}
                       </strong>
                     </div>
                   </div>
                 </div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </div>
-
-        {/* Bottom Warm Sand Accent Strip (Matches Corporate Divider) */}
-        <div
-          aria-hidden="true"
-          className="h-3 w-full bg-gradient-to-r from-pingaksh-sand via-pingaksh-terracotta to-pingaksh-sand mt-20 -mb-20 sm:-mb-28"
-        />
       </section>
+
       {/* =====================================================================
-          SECTION 2: CORPORATE ANNOUNCEMENTS SECTION
-          Editorial Headline + Partner Emblem Card + Interactive News Selector
+          SECTION 3: CORPORATE ANNOUNCEMENTS SECTION
       ===================================================================== */}
       <section
         aria-labelledby="announcements-section-heading"
-        className="bg-white py-20 sm:py-28 text-pingaksh-navy border-t border-sand-200"
+        className="bg-white py-24 sm:py-32 text-pingaksh-navy border-t-[12px] border-pingaksh-sand"
       >
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10">
-          {/* Header Row */}
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-10 border-b border-sand-200">
-            <div>
-              <h2
-                id="announcements-section-heading"
-                className="font-logo text-4xl sm:text-5xl text-pingaksh-navy mt-1.5 tracking-wide"
-              >
-                {announcementsSection.sectionTitle}
-              </h2>
-            </div>
-
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: transitionEase }}
+            className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 pb-12 border-b border-sand-200"
+          >
+            <h2
+              id="announcements-section-heading"
+              className="font-logo text-4xl sm:text-5xl lg:text-6xl text-pingaksh-navy tracking-wide"
+            >
+              {announcementsSection.sectionTitle}
+            </h2>
             <Link
               href={announcementsSection.allPressHref}
-              title="Browse All Pingaksh Group Press Releases and Corporate Announcements"
-              className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-pingaksh-terracotta hover:text-pingaksh-navy transition-colors group"
+              className="inline-flex items-center gap-2 text-sm font-bold text-pingaksh-terracotta hover:text-pingaksh-navy transition-colors group pb-1"
             >
               <span>{announcementsSection.allPressLabel}</span>
-              <ArrowRight
-                className="w-4 h-4 group-hover:translate-x-1 transition-transform"
-                aria-hidden="true"
-              />
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
-          </div>
+          </motion.div>
 
-          {/* Main Featured Announcement Split (Cols 1-5 Copy | Cols 6-12 Partner Card) */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center pt-10">
-            {/* Left (Cols 1-5): Featured Press Release Headline & Metadata */}
-            <div className="lg:col-span-5 space-y-6">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center pt-14">
+            {/* Left: Featured Announcement Data */}
+            <div className="lg:col-span-5 flex flex-col justify-between h-full space-y-10">
               <AnimatePresence mode="wait">
                 <motion.article
                   key={activeAnnouncement.id}
-                  initial={{ opacity: 0, y: 12 }}
+                  initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.3 }}
-                  className="space-y-5"
+                  exit={{ opacity: 0, y: -15 }}
+                  transition={{ duration: 0.4, ease: transitionEase }}
+                  className="space-y-6"
                 >
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-sand-100 border border-sand-300 text-[11px] font-bold uppercase tracking-wider text-pingaksh-terracotta">
-                    <span>{activeAnnouncement.visualBadge}</span>
+                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded bg-sand-100 border border-sand-200 font-tagline text-[10px] font-bold uppercase tracking-widest text-pingaksh-terracotta">
+                    {activeAnnouncement.visualBadge}
                   </div>
 
-                  <h3 className="text-xl sm:text-2xl lg:text-[26px] font-semibold text-pingaksh-navy leading-snug">
+                  <h3 className="font-logo text-2xl sm:text-3xl lg:text-4xl font-bold text-pingaksh-navy leading-snug">
                     <Link
                       href={activeAnnouncement.href}
-                      title={activeAnnouncement.headline}
-                      className="hover:text-pingaksh-terracotta transition-colors inline"
+                      className="hover:text-pingaksh-terracotta transition-colors group"
                     >
                       {activeAnnouncement.headline}
-                      <ArrowUpRight
-                        className="inline-block w-5 h-5 ml-1.5 text-pingaksh-terracotta -mt-1"
-                        aria-hidden="true"
-                      />
+                      <ArrowUpRight className="inline-block w-6 h-6 ml-2 text-pingaksh-terracotta opacity-0 -translate-y-2 -translate-x-2 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all" />
                     </Link>
                   </h3>
 
-                  <p className="text-xs sm:text-sm text-navy-600 leading-relaxed">
+                  <p className="font-body text-base text-navy-600 leading-relaxed">
                     {activeAnnouncement.summary}
                   </p>
 
-                  {/* Category & Semantic <time> Stamp */}
-                  <div className="pt-4 border-t border-sand-300 flex items-center gap-3 text-xs font-bold tracking-wider uppercase text-navy-700">
+                  <div className="pt-5 border-t border-sand-200 flex items-center gap-4 font-tagline text-[11px] font-bold tracking-widest uppercase text-navy-500">
                     <span className="text-pingaksh-terracotta">
                       {activeAnnouncement.category}
                     </span>
-                    <span className="text-sand-400">|</span>
+                    <span className="text-sand-300">|</span>
                     <time dateTime={activeAnnouncement.isoDate}>
                       {activeAnnouncement.date}
                     </time>
@@ -546,28 +540,26 @@ export default function HomeCorporateSections() {
                 </motion.article>
               </AnimatePresence>
 
-              {/* Bottom Switcher Tabs for Recent Announcements */}
-              <div className="pt-4 space-y-2">
-                <span className="block text-[11px] font-bold uppercase tracking-wider text-navy-400">
+              {/* Bottom Switcher Tabs */}
+              <div className="space-y-3">
+                <span className="block font-tagline text-[10px] font-bold uppercase tracking-widest text-navy-400">
                   Recent Releases ({announcementsSection.items.length})
                 </span>
-                <div className="grid grid-cols-3 gap-2.5">
+                <div className="grid grid-cols-3 gap-3">
                   {announcementsSection.items.map((item, idx) => {
                     const isSelected = idx === activeAnnouncementIdx;
                     return (
                       <button
                         key={item.id}
-                        type="button"
                         onClick={() => setActiveAnnouncementIdx(idx)}
-                        className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${
+                        className={`p-4 rounded-md border text-left transition-all duration-300 cursor-pointer ${
                           isSelected
-                            ? "bg-pingaksh-navy text-white border-pingaksh-navy shadow-md"
-                            : "bg-sand-50 hover:bg-sand-100 text-pingaksh-navy border-sand-200"
+                            ? "bg-pingaksh-navy text-white border-pingaksh-navy shadow-md scale-[1.02]"
+                            : "bg-sand-50 hover:bg-sand-100 text-pingaksh-navy border-sand-200 hover:border-sand-300"
                         }`}
                       >
                         <time
-                          dateTime={item.isoDate}
-                          className={`block text-[10px] font-bold uppercase ${
+                          className={`block font-tagline text-[9px] font-bold uppercase tracking-wider mb-2 ${
                             isSelected
                               ? "text-pingaksh-sand"
                               : "text-pingaksh-terracotta"
@@ -575,7 +567,7 @@ export default function HomeCorporateSections() {
                         >
                           {item.date}
                         </time>
-                        <span className="block text-xs font-semibold mt-1 line-clamp-1">
+                        <span className="block font-body text-xs font-semibold line-clamp-2 leading-tight">
                           {item.visualBadge}
                         </span>
                       </button>
@@ -585,39 +577,29 @@ export default function HomeCorporateSections() {
               </div>
             </div>
 
-            {/* Right (Cols 6-12): Elevated Partner Co-Branding & Visual Showcase Card */}
             {/* Right: Featured Announcement Image */}
-            <div className="lg:col-span-7">
+            <div className="lg:col-span-7 h-full">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeAnnouncement.id}
-                  initial={{ opacity: 0, scale: 0.98 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.98 }}
-                  transition={{ duration: 0.35 }}
-                  className="relative overflow-hidden rounded-2xl aspect-[16/9] bg-pingaksh-navy"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5, ease: transitionEase }}
+                  className="relative overflow-hidden rounded-xl h-full min-h-[400px] lg:min-h-[550px] bg-navy-950 shadow-xl border border-sand-200"
                 >
-                  <img
+                  <motion.img
+                    initial={{ scale: 1.05 }}
+                    animate={{ scale: 1 }}
+                    transition={{ duration: 1.5, ease: "easeOut" }}
                     src={activeAnnouncement.imageUrl}
                     alt={activeAnnouncement.imageAlt}
-                    width={1200}
-                    height={675}
-                    loading="lazy"
                     className="absolute inset-0 w-full h-full object-cover"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-transparent to-transparent" />
 
-                  {/* Subtle bottom gradient for date readability */}
-                  <div
-                    aria-hidden="true"
-                    className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent"
-                  />
-
-                  {/* Date Overlay */}
-                  <div className="absolute bottom-5 left-5 sm:bottom-7 sm:left-7">
-                    <time
-                      dateTime={activeAnnouncement.isoDate}
-                      className="inline-flex items-center px-4 py-2 rounded-md bg-white/95 backdrop-blur-sm text-pingaksh-navy text-xs sm:text-sm font-bold uppercase tracking-[0.12em]"
-                    >
+                  <div className="absolute bottom-6 left-6 sm:bottom-8 sm:left-8">
+                    <time className="inline-flex items-center px-4 py-2 rounded bg-white/95 text-pingaksh-navy font-tagline text-[10px] font-bold uppercase tracking-widest shadow-sm">
                       {activeAnnouncement.date}
                     </time>
                   </div>

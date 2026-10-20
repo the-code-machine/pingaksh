@@ -118,7 +118,7 @@ export const HOME_SECTIONS_DATA = {
         secondaryDescription:
           "This environmentally considerate run-of-the-river architecture generates clean peaking and baseload grid electricity without large reservoir submergence, preserving the river’s natural ecological balance.",
         backgroundImage:
-          "https://images.unsplash.com/photo-1574482620811-1aa16ffe3c82?auto=format&fit=crop&w=1800&q=85",
+          "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/20150914_125919_a99d7065.jpg",
         imageAlt:
           "UBHP Sarju I, II, III Run-of-the-River Hydroelectric Power Plant in Bageshwar, Uttarakhand",
         ctaText: "Explore Hydro Engineering & Spec Sheets",

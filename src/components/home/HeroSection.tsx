@@ -30,23 +30,23 @@ interface HeroSlide {
 const HERO_SLIDES: HeroSlide[] = [
   {
     id: "hydro-power",
-    badge: "Run-of-the-River Hydroelectric Infrastructure",
-    headline: "Harnessing Himalayan Currents for Clean Grid Power",
+    badge: "Clean Hydroelectric Generation",
+    headline: "Harnessing Himalayan Runoff for Baselaod Green Power",
     subheadline:
-      "Operating Sarju I, II & III hydro power projects with high-efficiency Francis Turbines, delivering zero-emission baseload electricity across Northern India.",
+      "Operating utility-scale run-of-the-river hydro assets across the Sarju basin, feeding reliable, zero-emission electricity directly into the Northern Regional Grid.",
     imageUrl:
-      "https://images.unsplash.com/photo-1574482620811-1aa16ffe3c82?auto=format&fit=crop&w=2000&q=85",
+      "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/_MG_3694_9f3b157b.webp",
     imageAlt:
       "Pingaksh Renewables Sarju Run-of-the-River Hydroelectric Power Dam and Turbine Infrastructure",
-    statLabel: "Operational Hydro Assets",
+    statLabel: "Operational Hydro",
     statValue: "Sarju I, II & III",
     primaryCta: {
-      label: "Explore Hydro Projects",
+      label: "Explore Hydro Assets",
       href: "/our-businesses/hydro-power",
       title: "View Sarju I, II, and III Hydroelectric Power Specifications",
     },
     secondaryCta: {
-      label: "Our Heritage Timeline",
+      label: "Company Heritage",
       href: "/who-we-are/heritage-timeline",
       title: "Explore UBHP to Pingaksh Renewables Milestone Timeline",
     },
@@ -54,23 +54,23 @@ const HERO_SLIDES: HeroSlide[] = [
   },
   {
     id: "ethanol-bioenergy",
-    badge: "Green Fuels & E20 Bio-Energy",
-    headline: "250 KLPD Grain-Based Bio-Ethanol Distillery",
+    badge: "Sustainable Bio-Energy & Green Mobility",
+    headline: "Pioneering India's Biofuel Independence",
     subheadline:
-      "Accelerating India's E20 fuel blending mandate through state-of-the-art grain distillation, reducing crude oil imports and vehicular tailpipe emissions.",
+      "Empowering national fuel self-reliance through our modern 250 KLPD grain-based distillery, accelerating the national E20 mandate while displacing crude oil imports.",
     imageUrl:
-      "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=2000&q=85",
+      "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/_MG_3176_f4afd809.webp",
     imageAlt:
       "Pingaksh Group 250 KLPD Grain-Based Bio-Ethanol Distillery Plant and Processing Columns",
     statLabel: "Bio-Ethanol Capacity",
     statValue: "250 KLPD (E20)",
     primaryCta: {
-      label: "Green Fuels & Bio-Energy",
+      label: "Explore Green Fuels",
       href: "/our-businesses/green-fuels-ethanol",
       title: "Learn about our 250 KLPD Grain-Based Ethanol Distillery",
     },
     secondaryCta: {
-      label: "E20 Emission Impact",
+      label: "Lifecycle Carbon Impact",
       href: "/sustainability/e20-ethanol-impact",
       title: "Compare E20 Ethanol vs Pure Petrol Carbon Emissions",
     },
@@ -78,23 +78,23 @@ const HERO_SLIDES: HeroSlide[] = [
   },
   {
     id: "circular-economy",
-    badge: "100% Zero-Liquid Discharge & Circular Economy",
-    headline: "Turning Every By-Product into Sustainable Value",
+    badge: "Resource Efficiency & Zero-Waste",
+    headline: "Engineering a Closed-Loop Bio-Industrial Ecosystem",
     subheadline:
-      "Integrating high-protein DDGS animal nutrition, industrial CO₂ capture & dry ice bottling, and 100% water recycling across all plant operations.",
+      "Extracting full commercial value across the lifecycle with high-protein DDGS animal feed, industrial CO₂ liquefaction, and complete Zero-Liquid Discharge compliance.",
     imageUrl:
-      "https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=2000&q=85",
+      "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/_MG_3649_1fe1a60c.webp",
     imageAlt:
       "Pingaksh Renewables Sustainable Clean Energy Landscape and Circular Economy Operations",
-    statLabel: "Effluent Compliance",
-    statValue: "100% ZLD Plant",
+    statLabel: "Environmental Standard",
+    statValue: "100% ZLD Mandate",
     primaryCta: {
-      label: "Circular Economy Model",
+      label: "Circular Economy",
       href: "/our-businesses/circular-economy",
       title: "Discover DDGS and CO2 Bottling Circular Economy Operations",
     },
     secondaryCta: {
-      label: "Live Carbon Dashboard",
+      label: "Sustainability Dashboard",
       href: "/sustainability/carbon-dashboard",
       title: "Open Real-Time CO2 Offset and Sustainability Ticker",
     },
@@ -182,13 +182,14 @@ export default function HeroSection() {
           </motion.div>
 
           {/* Multi-Layer Corporate Readability Overlays (Ensures Navbar & Text Contrast) */}
+          {/* Crisp Enterprise Vignette (Clear visuals on right, high contrast text on left) */}
           <div
             aria-hidden="true"
-            className="absolute inset-0 bg-gradient-to-r from-navy-950/90 via-pingaksh-navy/75 to-navy-950/35 pointer-events-none"
+            className="absolute inset-0 bg-gradient-to-r from-navy-950/90 via-navy-950/60 to-transparent pointer-events-none"
           />
           <div
             aria-hidden="true"
-            className="absolute inset-0 bg-gradient-to-t from-navy-950 via-transparent to-navy-950/60 pointer-events-none"
+            className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/20 to-navy-950/60 pointer-events-none"
           />
         </motion.figure>
       </AnimatePresence>
@@ -209,23 +210,23 @@ export default function HeroSection() {
               className="space-y-5 sm:space-y-6"
             >
               {/* Pill Tagline Badge */}
-
-              {/* Visual Display Headline (Uses h2 so H1 stays unique for SEO) */}
-              <h2 className="font-logo text-3xl sm:text-5xl lg:text-6xl xl:text-[64px] text-white leading-[1.1] tracking-wide">
+   
+              {/* Visual Display Headline (Retains your requested font) */}
+              <h2 className="font-logo text-3xl sm:text-5xl lg:text-6xl xl:text-[62px] text-white leading-[1.12] tracking-wide">
                 {activeSlide.headline}
               </h2>
 
-              {/* Body Description */}
-              <p className="font-body text-sm sm:text-base lg:text-lg text-sand-100/90 max-w-2xl leading-relaxed">
+              {/* Body Description (Retains your requested font) */}
+              <p className="font-body text-sm sm:text-base lg:text-lg text-sand-100/85 max-w-2xl leading-relaxed">
                 {activeSlide.subheadline}
               </p>
 
-              {/* RIL-Inspired Pill Action Buttons */}
-              <div className="flex flex-wrap items-center gap-3.5 sm:gap-4 pt-2">
+              {/* Enterprise Structured Action Buttons */}
+              <div className="flex flex-wrap items-center gap-4 pt-3">
                 <Link
                   href={activeSlide.primaryCta.href}
                   title={activeSlide.primaryCta.title}
-                  className="inline-flex items-center gap-3 px-6 sm:px-7 py-3.5 rounded-full bg-pingaksh-terracotta hover:bg-terracotta-600 text-white font-semibold text-xs sm:text-sm transition-all duration-200 shadow-lg group"
+                  className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-md bg-pingaksh-terracotta hover:bg-terracotta-600 text-white font-medium text-xs sm:text-sm transition-all duration-200 shadow-md group"
                 >
                   <span>{activeSlide.primaryCta.label}</span>
                   <ArrowRight
@@ -237,7 +238,7 @@ export default function HeroSection() {
                 <Link
                   href={activeSlide.secondaryCta.href}
                   title={activeSlide.secondaryCta.title}
-                  className="inline-flex items-center gap-3 px-6 sm:px-7 py-3.5 rounded-full bg-white/10 hover:bg-pingaksh-sand text-white hover:text-pingaksh-navy backdrop-blur-sm border border-pingaksh-sand/50 font-semibold text-xs sm:text-sm transition-all duration-200 group"
+                  className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-md bg-white/10 hover:bg-white/20 text-white backdrop-blur-md border border-white/25 font-medium text-xs sm:text-sm transition-all duration-200 group"
                 >
                   <span>{activeSlide.secondaryCta.label}</span>
                   <ArrowRight
@@ -253,12 +254,12 @@ export default function HeroSection() {
         {/* =========================================================
             4. BOTTOM SLIDE PROGRESS INDICATORS & CONTROLS
         ========================================================= */}
-        <div className="pt-6 border-t border-white/15 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-          {/* Interactive Slide Tabs with Progress Bar */}
+        <div className="pt-6 border-t border-white/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+          {/* Interactive Slide Tabs with Progress Track */}
           <div
             role="tablist"
             aria-label="Select Hero Highlight Slide"
-            className="grid grid-cols-3 gap-3 sm:gap-6 w-full sm:w-auto flex-1 max-w-2xl"
+            className="grid grid-cols-3 gap-6 w-full sm:w-auto flex-1 max-w-2xl"
           >
             {HERO_SLIDES.map((slide, index) => {
               const isCurrent = index === currentIndex;
@@ -271,8 +272,8 @@ export default function HeroSection() {
                   onClick={() => setCurrentIndex(index)}
                   className="text-left group cursor-pointer focus:outline-none"
                 >
-                  {/* Animated Progress Track */}
-                  <div className="h-1 w-full bg-white/20 rounded-full overflow-hidden mb-2.5">
+                  {/* Clean Track Line */}
+                  <div className="h-[2px] w-full bg-white/20 overflow-hidden mb-3">
                     {isCurrent && (
                       <motion.div
                         key={`progress-${slide.id}-${isPaused}`}
@@ -287,14 +288,14 @@ export default function HeroSection() {
                     )}
                   </div>
 
-                  <span className="block text-[10px] sm:text-[11px] uppercase tracking-wider text-sand-200/70 group-hover:text-sand-200 transition-colors truncate">
+                  <span className="block text-[10px] uppercase font-bold tracking-[0.14em] text-white/50 group-hover:text-white/80 transition-colors truncate">
                     0{index + 1}. {slide.statLabel}
                   </span>
                   <span
-                    className={`block text-xs sm:text-sm font-bold mt-0.5 truncate transition-colors ${
+                    className={`block text-xs sm:text-sm font-semibold mt-1 truncate transition-colors ${
                       isCurrent
-                        ? "text-pingaksh-sand"
-                        : "text-white/75 group-hover:text-white"
+                        ? "text-white"
+                        : "text-white/70 group-hover:text-white"
                     }`}
                   >
                     {slide.statValue}
@@ -304,39 +305,39 @@ export default function HeroSection() {
             })}
           </div>
 
-          {/* Right: Live Sustainability Badge + Prev/Next Arrows */}
-          <div className="flex items-center justify-between sm:justify-end gap-4 w-full sm:w-auto">
+          {/* Right: Telemetry Status & Controls */}
+          <div className="flex items-center justify-between sm:justify-end gap-3 w-full sm:w-auto">
             <Link
               href="/sustainability/carbon-dashboard"
               title="Open Live Carbon Offset Ticker"
-              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-navy-950/70 backdrop-blur-md border border-white/15 hover:border-emerald-400/50 transition-colors"
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded bg-black/40 border border-white/10 hover:border-emerald-400/40 transition-colors"
             >
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
               <Leaf
                 className="w-3.5 h-3.5 text-emerald-400"
                 aria-hidden="true"
               />
-              <span className="text-xs font-medium text-sand-100">
-                Live CO₂ Offset Active
+              <span className="text-[11px] font-medium tracking-wide text-sand-100">
+                Live Grid Offsets Active
               </span>
             </Link>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center border border-white/20 rounded overflow-hidden">
               <button
                 type="button"
                 onClick={prevSlide}
                 aria-label="Previous Hero Slide"
-                className="w-10 h-10 rounded-full bg-white/10 hover:bg-pingaksh-sand text-white hover:text-pingaksh-navy border border-white/20 flex items-center justify-center transition-colors cursor-pointer"
+                className="w-9 h-9 bg-black/30 hover:bg-white/20 text-white flex items-center justify-center transition-colors cursor-pointer border-r border-white/20"
               >
-                <ChevronLeft className="w-5 h-5" aria-hidden="true" />
+                <ChevronLeft className="w-4 h-4" aria-hidden="true" />
               </button>
               <button
                 type="button"
                 onClick={nextSlide}
                 aria-label="Next Hero Slide"
-                className="w-10 h-10 rounded-full bg-white/10 hover:bg-pingaksh-sand text-white hover:text-pingaksh-navy border border-white/20 flex items-center justify-center transition-colors cursor-pointer"
+                className="w-9 h-9 bg-black/30 hover:bg-white/20 text-white flex items-center justify-center transition-colors cursor-pointer"
               >
-                <ChevronRight className="w-5 h-5" aria-hidden="true" />
+                <ChevronRight className="w-4 h-4" aria-hidden="true" />
               </button>
             </div>
           </div>

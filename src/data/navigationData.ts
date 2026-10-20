@@ -16,13 +16,12 @@ export interface NavItem {
   label: string;
   href: string;
   columns: MegaMenuColumn[];
-  featuredHighlight: {
-    tag: string;
+  featuredInsight: {
+    category: string;
+    date: string;
     title: string;
-    description: string;
-    metrics?: { label: string; value: string }[];
-    ctaText: string;
-    ctaHref: string;
+    imageUrl: string;
+    href: string;
   };
 }
 
@@ -35,21 +34,17 @@ export const NAVIGATION_DATA: NavItem[] = [
       {
         heading: "About Pingaksh",
         items: [
-          // {
-          //   label: "Corporate Overview",
-          //   href: "/who-we-are/corporate-overview",
-          //   description: "Evolution from UBHP to Pingaksh Renewables",
-          // },
           {
-            label: "Our Heritage & Growth Timeline",
+            label: "Our Heritage",
             href: "/who-we-are/heritage-timeline",
             description:
-              "Interactive milestone scrubber from groundbreaking to commissioning",
+              "Tracing our journey and milestones in the renewable energy sector.",
           },
           {
-            label: "Vision, Mission & Core Values",
+            label: "Vision, Mission & Values",
             href: "/who-we-are/vision-mission",
-            description: "Guiding principles driving clean energy excellence",
+            description:
+              "The core principles driving our commitment to clean energy.",
           },
         ],
       },
@@ -57,29 +52,27 @@ export const NAVIGATION_DATA: NavItem[] = [
         heading: "Governance & Leadership",
         items: [
           {
-            label: "Leadership & Board of Directors",
+            label: "Board of Directors",
             href: "/who-we-are/board-of-directors",
-            description: "6 Parent Directors including Independent Directors",
+            description: "The leadership team guiding our strategic growth.",
           },
           {
-            label: "Subsidiary Leadership & Group Structure",
-            href: "/who-we-are/subsidiary-leadership",
-            description: "2 Subsidiary Additional Directors & SPV hierarchy",
+            label: "Group Structure",
+            href: "/who-we-are/group-structure",
+            description:
+              "Overview of our operational framework and subsidiary entities.",
           },
         ],
       },
     ],
-    featuredHighlight: {
-      tag: "Interactive Milestone Scrubber",
-      title: "From UBHP to Pingaksh Renewables",
-      description:
-        "Explore our horizontal timeline showcasing groundbreaking to commissioning milestones and our tiered leadership grid.",
-      metrics: [
-        { label: "Parent Board", value: "6 Directors" },
-        { label: "Subsidiary Board", value: "2 Addl. Directors" },
-      ],
-      ctaText: "Explore Our Heritage",
-      ctaHref: "/who-we-are/heritage-timeline",
+    featuredInsight: {
+      category: "Corporate Update",
+      date: "Oct 12, 2026",
+      title:
+        "Pingaksh Group Announces Expansion of Board of Directors Ahead of Q4",
+      imageUrl:
+        "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80",
+      href: "/media/press-releases/board-expansion",
     },
   },
   {
@@ -93,44 +86,42 @@ export const NAVIGATION_DATA: NavItem[] = [
           {
             label: "Hydro Power Generation",
             href: "/our-businesses/hydro-power",
-            description: "Sarju I, II, III Run-of-the-River Projects",
+            description: "Run-of-the-river projects across the Sarju basin.",
             badge: "Sarju I, II, III",
           },
           {
             label: "Green Fuels & Bio-Energy",
             href: "/our-businesses/green-fuels-ethanol",
-            description: "250 KLPD Grain-Based Ethanol Distillery (E20)",
+            description: "State-of-the-art grain-based ethanol distillation.",
             badge: "250 KLPD",
           },
         ],
       },
       {
-        heading: "Circular Economy & Group Entities",
+        heading: "Circular Economy",
         items: [
           {
-            label: "By-Products & Circular Economy",
+            label: "By-Products Integration",
             href: "/our-businesses/circular-byproducts",
-            description: "High-protein DDGS, CO₂ Bottling & Dry Ice Production",
+            description:
+              "High-protein DDGS, CO₂ bottling, and dry ice production.",
           },
           {
-            label: "Subsidiaries & SPVs",
+            label: "Asset SPVs",
             href: "/our-businesses/subsidiaries-spvs",
-            description: "Special Purpose Vehicles & asset-specific entities",
+            description:
+              "Special Purpose Vehicles dedicated to specific project assets.",
           },
         ],
       },
     ],
-    featuredHighlight: {
-      tag: "Interactive Process Workflows",
-      title: "Grain-to-Ethanol (E20) & Francis Turbine Hydro Matrices",
-      description:
-        "Inspect technical plant spec matrices (Net Head, Discharge, Francis Turbines, MW & KLPD capacity) and animated SVG workflows.",
-      metrics: [
-        { label: "Ethanol Capacity", value: "250 KLPD" },
-        { label: "Hydro Assets", value: "Sarju I, II & III" },
-      ],
-      ctaText: "View Plant Spec Matrices",
-      ctaHref: "/our-businesses/hydro-power",
+    featuredInsight: {
+      category: "Operations",
+      date: "Sep 28, 2026",
+      title: "Sarju III Hydro Project Reaches Peak Operational Capacity",
+      imageUrl:
+        "https://images.unsplash.com/photo-1542336391-aeeb901e913a?auto=format&fit=crop&w=600&q=80",
+      href: "/media/press-releases/sarju-iii-capacity",
     },
   },
   {
@@ -139,118 +130,64 @@ export const NAVIGATION_DATA: NavItem[] = [
     href: "/sustainability",
     columns: [
       {
-        heading: "Carbon & Emission Analytics",
+        heading: "Carbon Analytics",
         items: [
           {
-            label: "Live Carbon Offset Dashboard",
+            label: "Emissions Dashboard",
             href: "/sustainability/carbon-dashboard",
-            description: "Real-time daily & monthly cumulative CO₂ reduction",
-            badge: "Live Ticker",
+            description: "Tracking our cumulative CO₂ reduction metrics.",
+            badge: "Live Data",
           },
           {
-            label: "Hydro vs. Coal Emission Comparison",
+            label: "Lifecycle Impact",
             href: "/sustainability/hydro-vs-coal",
-            description: "Lifecycle emission avoidance metrics per MWh",
+            description:
+              "Emission avoidance compared to conventional power sources.",
           },
         ],
       },
       {
-        heading: "Green Mobility & Ecology",
+        heading: "Ecology & Conservation",
         items: [
           {
-            label: "E20 Ethanol vs. Pure Petrol Impact",
+            label: "Fuel Blending Impact",
             href: "/sustainability/e20-ethanol-impact",
             description:
-              "Tailpipe emission savings & crude import substitution",
+              "Contributions to the E20 mandate and tailpipe emission reductions.",
           },
           {
-            label: "Zero-Liquid Discharge & Ecological Balance",
+            label: "Zero-Liquid Discharge (ZLD)",
             href: "/sustainability/zero-liquid-discharge",
-            description: "100% water recycling & catchment afforestation",
+            description:
+              "100% water recycling and catchment conservation initiatives.",
           },
         ],
       },
     ],
-    featuredHighlight: {
-      tag: "Dynamic CO₂ Savings Engine",
-      title: "Live Mathematical Carbon Reduction Ticker",
-      description:
-        "Real-time algorithmic tracking of cumulative carbon offset across our run-of-the-river hydro stations and 250 KLPD ethanol operations.",
-      metrics: [
-        { label: "Effluent Standard", value: "100% ZLD" },
-        { label: "Fuel Standard", value: "E20 Ready" },
-      ],
-      ctaText: "Launch Live Dashboard",
-      ctaHref: "/sustainability/carbon-dashboard",
+    featuredInsight: {
+      category: "Sustainability",
+      date: "Sep 15, 2026",
+      title:
+        "Pingaksh Beverages Achieves 100% ZLD Compliance at Rajasthan Plant",
+      imageUrl:
+        "https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=600&q=80",
+      href: "/sustainability/zero-liquid-discharge",
     },
   },
-  //   {
-  //     id: "investor-relations",
-  //     label: "Investor Relations",
-  //     href: "/investors",
-  //     columns: [
-  //       {
-  //         heading: "Market & Financial Performance",
-  //         items: [
-  //           {
-  //             label: "Stock Price & Share Tracker",
-  //             href: "/investors/stock-tracker",
-  //             description: "NSE/BSE benchmark tracking & equity snapshot",
-  //           },
-  //           {
-  //             label: "Financial Reports & Annual Returns",
-  //             href: "/investors/financial-reports",
-  //             description: "Filterable fiscal year repository (Audited & Annual)",
-  //           },
-  //         ],
-  //       },
-  //       {
-  //         heading: "Corporate Compliance",
-  //         items: [
-  //           {
-  //             label: "Corporate Governance & Committees",
-  //             href: "/investors/corporate-governance",
-  //             description: "Audit, CSR, Nomination & Remuneration committees",
-  //           },
-  //           {
-  //             label: "Disclaimers & Statutory Filings",
-  //             href: "/investors/statutory-filings",
-  //             description: "Regulatory disclosures & IPO-ready compliance",
-  //           },
-  //         ],
-  //       },
-  //     ],
-  //     featuredHighlight: {
-  //       tag: "Statutory Repository",
-  //       title: "IPO-Ready Governance & Fiscal Disclosures",
-  //       description:
-  //         "Access audited financial statements, annual returns, and board committee charters organized by fiscal year.",
-  //       metrics: [
-  //         { label: "Compliance", value: "SEBI / MCA" },
-  //         { label: "Fiscal Archive", value: "Filterable FY Tabs" },
-  //       ],
-  //       ctaText: "Browse Financial Reports",
-  //       ctaHref: "/investors/financial-reports",
-  //     },
-  //   },
   {
     id: "contact-partners",
     label: "Contact & Partners",
     href: "/contact",
     columns: [
       {
-        heading: "Offices & Careers",
+        heading: "Locations",
         items: [
           {
-            label: "Corporate & Registered Offices",
+            label: "Corporate & Site Offices",
             href: "/contact/offices",
-            description: "Headquarters, project site offices & plant locations",
+            description:
+              "Headquarters, plant locations, and regional contact details.",
           },
-          // {
-          //   label: "Career Inquiries",
-          //   href: "/contact/careers",
-          //   description: "Join our engineering, hydro & bio-energy teams",
-          // },
         ],
       },
       {
@@ -259,20 +196,21 @@ export const NAVIGATION_DATA: NavItem[] = [
           {
             label: "Vendor Registration Portal",
             href: "/contact/vendor-portal",
-            description: "Password-protected onboarding with GST/PAN uploads",
+            description:
+              "Secure onboarding for suppliers, contractors, and partners.",
             badge: "Protected",
             isGated: true,
           },
         ],
       },
     ],
-    featuredHighlight: {
-      tag: "Gated Vendor Onboarding",
-      title: "Encrypted Partner & Supplier Registration",
-      description:
-        "Authorized vendors can unlock our multi-step onboarding portal to submit GST, PAN, and technical capability profiles.",
-      ctaText: "Access Vendor Portal",
-      ctaHref: "/contact/vendor-portal",
+    featuredInsight: {
+      category: "Vendor Network",
+      date: "Aug 30, 2026",
+      title: "Streamlined Vendor Onboarding Portal Launched for FY27 Projects",
+      imageUrl:
+        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80",
+      href: "/contact/vendor-portal",
     },
   },
   {
@@ -281,18 +219,19 @@ export const NAVIGATION_DATA: NavItem[] = [
     href: "/media",
     columns: [
       {
-        heading: "Newsroom & Recognition",
+        heading: "News & Announcements",
         items: [
           {
-            label: "Press Releases & Announcements",
+            label: "Press Releases",
             href: "/media/press-releases",
-            description: "Official corporate updates & commissioning news",
+            description:
+              "Official corporate updates, developments, and commissioning news.",
           },
           {
-            label: "Certifications & Awards",
+            label: "Accreditations",
             href: "/media/certifications-awards",
             description:
-              "ISO accreditations, safety citations & industry honors",
+              "ISO certifications, safety citations, and industry recognition.",
           },
         ],
       },
@@ -303,18 +242,19 @@ export const NAVIGATION_DATA: NavItem[] = [
             label: "Project Gallery",
             href: "/media/project-gallery",
             description:
-              "High-impact masonry grid of site progress & operations",
+              "Visual documentation of our facilities and ongoing operations.",
           },
         ],
       },
     ],
-    featuredHighlight: {
-      tag: "Operations Masonry Grid",
-      title: "Site Progress & Plant Photography",
-      description:
-        "High-resolution visual documentation of Sarju hydro turbines, distillery columns, and safety awards.",
-      ctaText: "Open Project Gallery",
-      ctaHref: "/media/project-gallery",
+    featuredInsight: {
+      category: "Press Release",
+      date: "Aug 12, 2026",
+      title:
+        "Pingaksh Green Energy Awarded ISO 14001 for Environmental Management",
+      imageUrl:
+        "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=600&q=80",
+      href: "/media/certifications-awards",
     },
   },
 ];

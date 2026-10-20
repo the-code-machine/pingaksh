@@ -119,7 +119,7 @@ export const HOME_SECONDARY_DATA = {
         caption:
           "Starting with Uttar Bharat Hydro Power Pvt. Ltd., our civil and electro-mechanical teams established a proven track record of executing capital-intensive infrastructure in high-altitude geographies.",
         imageUrl:
-          "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1400&q=85",
+          "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/P9090483_4dece626.jpg",
         imageAlt:
           "Pingaksh Group Civil Engineering and Infrastructure Heritage from UBHP Foundation Era",
       },
