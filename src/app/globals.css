@@ -1,26 +1,131 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Core Brand Swatches (Extracted from Pingaksh Color Palette PDF) */
+  --pingaksh-navy: #121c4d; /* PANTONE 2766 C */
+  --pingaksh-terracotta: #972811; /* PANTONE P 39-8 C */
+  --pingaksh-sand: #eeded4; /* PANTONE P 31-1 C */
+  --pingaksh-cream: #efdbd8; /* Global Secondary Tint */
+
+  /* Full Shade Scale: Pingaksh Navy (PANTONE 2766 C) */
+  --navy-50: #eef1f9;
+  --navy-100: #d9e0f2;
+  --navy-200: #b7c5e7;
+  --navy-300: #89a0d8;
+  --navy-400: #5b77c5;
+  --navy-500: #3a55ae;
+  --navy-600: #293f8f;
+  --navy-700: #203172;
+  --navy-800: #19265b;
+  --navy-900: #121c4d; /* Exact Brand Primary */
+  --navy-950: #0a102e;
+
+  /* Full Shade Scale: Pingaksh Terracotta (PANTONE P 39-8 C) */
+  --terracotta-50: #fdf3f1;
+  --terracotta-100: #fbe4df;
+  --terracotta-200: #f8cdc4;
+  --terracotta-300: #f2aa9b;
+  --terracotta-400: #e87962;
+  --terracotta-500: #db5034;
+  --terracotta-600: #bf381c;
+  --terracotta-700: #972811; /* Exact Brand Accent */
+  --terracotta-800: #822512;
+  --terracotta-900: #6d2314;
+  --terracotta-950: #3b0e06;
+
+  /* Full Shade Scale: Pingaksh Warm Sand (PANTONE P 31-1 C) */
+  --sand-50: #fcf9f7;
+  --sand-100: #f7f0ec;
+  --sand-200: #eeded4; /* Exact Brand Sand */
+  --sand-300: #e2c6b5;
+  --sand-400: #d1a68e;
+  --sand-500: #bf886b;
+  --sand-600: #ab6f53;
+  --sand-700: #8e5943;
+  --sand-800: #754b3a;
+  --sand-900: #603f32;
+  --sand-950: #332019;
+
+  /* Semantic Corporate Portal Tokens */
+  --background: #eeded4;
+  --background-warm: #fcf9f7;
+  --background-sand: #eeded4;
+  --foreground: #121c4d;
+  --muted: #f7f0ec;
+  --muted-foreground: #4a5478;
+  --border: #e2c6b5;
 }
 
 @theme inline {
+  /* Custom Local Brand Fonts */
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  --font-logo: var(--font-logo), Georgia, serif;
+  --font-tagline: var(--font-tagline), ui-sans-serif, system-ui, sans-serif;
+
+  /* Direct Brand Aliases */
+  --color-pingaksh-navy: var(--pingaksh-navy);
+  --color-pingaksh-terracotta: var(--pingaksh-terracotta);
+  --color-pingaksh-sand: var(--pingaksh-sand);
+  --color-pingaksh-cream: var(--pingaksh-cream);
+
+  /* Semantic UI Aliases */
   --color-background: var(--background);
+  --color-background-warm: var(--background-warm);
+  --color-background-sand: var(--background-sand);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+
+  /* Brand Shade Scales */
+  --color-navy-50: var(--navy-50);
+  --color-navy-100: var(--navy-100);
+  --color-navy-200: var(--navy-200);
+  --color-navy-300: var(--navy-300);
+  --color-navy-400: var(--navy-400);
+  --color-navy-500: var(--navy-500);
+  --color-navy-600: var(--navy-600);
+  --color-navy-700: var(--navy-700);
+  --color-navy-800: var(--navy-800);
+  --color-navy-900: var(--navy-900);
+  --color-navy-950: var(--navy-950);
+
+  --color-terracotta-50: var(--terracotta-50);
+  --color-terracotta-100: var(--terracotta-100);
+  --color-terracotta-200: var(--terracotta-200);
+  --color-terracotta-300: var(--terracotta-300);
+  --color-terracotta-400: var(--terracotta-400);
+  --color-terracotta-500: var(--terracotta-500);
+  --color-terracotta-600: var(--terracotta-600);
+  --color-terracotta-700: var(--terracotta-700);
+  --color-terracotta-800: var(--terracotta-800);
+  --color-terracotta-900: var(--terracotta-900);
+  --color-terracotta-950: var(--terracotta-950);
+
+  --color-sand-50: var(--sand-50);
+  --color-sand-100: var(--sand-100);
+  --color-sand-200: var(--sand-200);
+  --color-sand-300: var(--sand-300);
+  --color-sand-400: var(--sand-400);
+  --color-sand-500: var(--sand-500);
+  --color-sand-600: var(--sand-600);
+  --color-sand-700: var(--sand-700);
+  --color-sand-800: var(--sand-800);
+  --color-sand-900: var(--sand-900);
+  --color-sand-950: var(--sand-950);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer utilities {
+  .bg-corporate-gradient {
+    background: linear-gradient(135deg, #121c4d 0%, #0a102e 100%);
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  .bg-solar-gradient {
+    background: linear-gradient(135deg, #972811 0%, #db5034 100%);
+  }
+
+  .bg-sand-gradient {
+    background: linear-gradient(180deg, #fcf9f7 0%, #eeded4 100%);
+  }
 }
