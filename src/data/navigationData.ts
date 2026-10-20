@@ -58,7 +58,7 @@ export const NAVIGATION_DATA: NavItem[] = [
           },
           {
             label: "Group Structure",
-            href: "/who-we-are/group-structure",
+            href: "/who-we-are/subsidiary-leadership",
             description:
               "Overview of our operational framework and subsidiary entities.",
           },

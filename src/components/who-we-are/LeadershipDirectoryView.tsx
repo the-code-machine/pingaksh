@@ -4,7 +4,10 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { motion } from "motion/react";
 import { ArrowUpRight, ChevronRight } from "lucide-react";
-import { LEADERSHIP_DATA, type DirectorProfile } from "@/data/leadershipData";
+import {
+  type DirectorProfile,
+  type LeadershipPageData,
+} from "@/data/leadershipData";
 
 type FilterType =
   | "All"
@@ -25,7 +28,16 @@ const revealVariants = {
   }),
 };
 
-export default function LeadershipDirectoryView() {
+export default function LeadershipDirectoryView({
+  LEADERSHIP_DATA,
+}: {
+  LEADERSHIP_DATA: {
+    directors: DirectorProfile[];
+    seo: LeadershipPageData["seo"];
+    breadcrumbs: LeadershipPageData["breadcrumbs"];
+    hero: LeadershipPageData["hero"];
+  };
+}) {
   const [activeFilter, setActiveFilter] = useState<FilterType>("All");
 
   const founder = LEADERSHIP_DATA.directors.find((d) => d.isFounder);

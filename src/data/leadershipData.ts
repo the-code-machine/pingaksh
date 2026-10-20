@@ -46,9 +46,9 @@ export interface LeadershipPageData {
 
 export const LEADERSHIP_DATA: LeadershipPageData = {
   seo: {
-    title: "Board of Directors & Leadership | Pingaksh Renewables",
+    title: "Board of Directors | Pingaksh Group",
     description:
-      "Meet the Board of Directors steering Pingaksh Renewables (Pingaksh Group)—combining decades of hydroelectric engineering, bio-refinery execution, international business strategy, and corporate governance.",
+      "The Board of Directors at Pingaksh Group brings together decades of expertise across renewable energy, finance, agriculture, and corporate governance.",
     canonicalUrl: "https://pingaksh.com/who-we-are/board-of-directors",
   },
 
@@ -61,9 +61,8 @@ export const LEADERSHIP_DATA: LeadershipPageData = {
   hero: {
     title: "Board of Directors",
     subtitle:
-      "Steered by an experienced 6+2 Board architecture uniting industrial execution, international capital discipline, and independent regulatory oversight.",
-    boardSummaryStat:
-      "6 Executive & Promoter Directors • 2 Independent Non-Executive Advisors",
+      "Our leadership team combines deep industrial experience with strong corporate governance to drive sustainable, long-term growth.",
+    boardSummaryStat: "Executive Promoters • Independent Advisory Oversight",
   },
 
   directors: [
@@ -76,8 +75,8 @@ export const LEADERSHIP_DATA: LeadershipPageData = {
       dinNumber: "DIN: 00218490",
       appointedSince: "2008",
       qualifications: [
-        "B.Com (Hons.), Corporate Finance & Industrial Administration",
-        "30+ Years in Core Infrastructure & Renewable Power",
+        "Corporate Leadership & Industrial Administration",
+        "Decades of experience in Infrastructure & Renewables",
       ],
       almaMater: "University of Delhi",
       portraitImage:
@@ -85,19 +84,18 @@ export const LEADERSHIP_DATA: LeadershipPageData = {
       portraitAlt:
         "Mr. Naresh Goel - Founder, Chairman & Managing Director of Pingaksh Group",
       shortSummary:
-        "Architect of the Pingaksh Group, leading its evolution from Himalayan run-of-the-river hydro cascades (UBHP) into an integrated clean energy and grain-based bio-ethanol conglomerate.",
+        "Visionary entrepreneur and dynamic leader steering the Pingaksh Group's diversified growth across renewable energy, finance, and agriculture.",
       executiveQuote:
-        "We did not begin in boardrooms; we began in the steep gorges of the Sarju River—proving that utility-scale clean energy could be engineered in complete harmony with nature.",
+        "Our leadership philosophy emphasizes operational excellence, inclusive growth, and innovation-driven transformation to create long-term value that benefits both people and the planet.",
       biographyParagraphs: [
-        "Mr. Naresh Goel is the Founder, Promoter, and Chairman of the Pingaksh Group (formerly Uttar Bharat Hydro Power Private Limited). With over three decades of hands-on industrial leadership, he spearheaded the Group's entry into high-head, run-of-the-river hydroelectric power generation in the challenging geological terrain of Bageshwar, Uttarakhand.",
-        "Under his direct supervision, the Group commissioned the Sarju River Cascade—comprising Sarju-I (7.5 MW), Sarju-II (15 MW), and Sarju-III (10.5 MW)—establishing an industry benchmark for low-submergence civil tunneling, electro-mechanical reliability, and synchronous grid evacuation to UPCL.",
-        "Recognizing India's sovereign mandate for biofuel self-reliance and rural agricultural upliftment, Mr. Goel architected the Group's diversification into 250–350 KLPD Zero-Liquid-Discharge (ZLD) grain-based bio-ethanol distillation, high-protein DDGS animal nutrition, and regenerative Napier grass cultivation.",
+        "Mr. Naresh Goel is a visionary entrepreneur and dynamic leader steering the Pingaksh Group's diversified growth across multiple sectors. With an exceptional ability to integrate innovation, sustainability, and strategic foresight, he has built a business ecosystem that spans renewable energy, finance, and agriculture.",
+        "Under his guidance, the Group has consistently expanded its footprint through forward-thinking initiatives that promote clean energy, empower small enterprises, and advance sustainable agricultural practices. His leadership is united by a commitment to long-term value creation and environmental responsibility.",
+        "Mr. Goel's unwavering dedication to progress continues to propel the Pingaksh Group toward a brighter, greener, and more resilient future, ensuring that capital deployment aligns strictly with the Group's core operational integrity.",
       ],
       keyResponsibilities: [
-        "Long-term capital allocation and multi-decade infrastructure strategy",
-        "Oversight of the 30.6 MW+ Sarju Hydroelectric Cascade in Uttarakhand",
-        "Greenfield execution of the 250–350 KLPD grain-based ethanol bio-refinery",
-        "Rural farmer integration and MSME enterprise empowerment initiatives",
+        "Strategic direction and long-term capital allocation for the Group",
+        "Oversight of multi-sector expansion in renewables, finance, and agriculture",
+        "Ensuring operational excellence and inclusive growth across entities",
       ],
       committees: [
         { name: "Executive Capital & Project Committee", role: "Chairperson" },
@@ -107,81 +105,70 @@ export const LEADERSHIP_DATA: LeadershipPageData = {
         },
       ],
       directorshipsAndAffiliations: [
+        "Pingaksh Group Entities (Founder & Promoter)",
         "Uttar Bharat Hydro Power Private Limited (UBHP)",
-        "Pingaksh Bio-Energy & Green Fuels Limited",
-        "Pingaksh Agro & Napier Biomass Farms",
       ],
     },
     {
       slug: "amul-goel",
       name: "Mr. Amul Goel",
-      designation: "Executive Director — Strategy & Bio-Energy",
+      designation: "Director",
       boardCategory: "Promoter & Executive",
       dinNumber: "DIN: 07841205",
       appointedSince: "2018",
-      qualifications: [
-        "MSc in International Business",
-        "B.Sc. in Business & Management",
-      ],
+      qualifications: ["MSc in International Business"],
       almaMater: "University of Manchester, United Kingdom",
       portraitImage:
         "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=900&q=85",
-      portraitAlt: "Mr. Amul Goel - Executive Director of Pingaksh Renewables",
+      portraitAlt: "Mr. Amul Goel - Director at Pingaksh Group",
       shortSummary:
-        "Spearheads international technology partnerships, 250 KLPD ethanol commercial operations, OMC supply-chain integration, and institutional capital markets.",
+        "Drives strategic initiatives and expansion efforts across the group's diverse industries by applying international business dynamics to local markets.",
       executiveQuote:
-        "By combining international operational discipline with India's E20 clean-fuel transition, we are building circular bio-refineries where every byproduct creates measurable economic value.",
+        "We are committed to a forward-thinking approach that ensures the Pingaksh Group continues to thrive and lead in our core sectors.",
       biographyParagraphs: [
-        "Mr. Amul Goel serves as Executive Director on the Board of Pingaksh Renewables, where he leads corporate strategy, bio-refinery commercialization, and global technology partnerships. Holding an MSc in International Business from the University of Manchester, UK, he brings modern institutional analytics and supply-chain rigor to the Group.",
-        "He has played a central role in scaling Pingaksh's grain-based ethanol division—structuring long-term offtake agreements with national Oil Marketing Companies (OMCs), optimizing regional non-food grain procurement networks across northern India, and establishing high-protein DDGS distribution channels for the dairy and poultry sectors.",
-        "In addition to commercial operations, Mr. Amul Goel drives the Group's digital transformation, integrating automated SCADA telemetry across hydro powerhouses and real-time carbon accounting dashboards.",
+        "Mr. Amul Goel is a distinguished Director at the Pingaksh Group, bringing a wealth of expertise and a global perspective to the organization's leadership team. He holds a Master's degree in International Business (MSc) from the prestigious University of Manchester.",
+        "He combines academic excellence with practical experience to drive strategic initiatives across the group's diverse industries. His deep understanding of global markets and international business dynamics positions him as a key player in the group's expansion and innovation efforts.",
+        "Mr. Goel's commitment to excellence ensures that the Pingaksh Group continues to lead in sectors ranging from renewable energy to finance and agriculture, fostering sustainable growth and advancing the group's corporate vision.",
       ],
       keyResponsibilities: [
-        "Commercial operations of the 250 KLPD E20 Ethanol & DDGS division",
-        "Long-term supply agreements with PSU Oil Marketing Companies (OMCs)",
-        "International equipment procurement and SCADA digital modernization",
-        "Institutional investor relations and green debt structuring",
+        "Implementation of strategic initiatives across diverse business verticals",
+        "Applying global market analytics to domestic operational expansion",
+        "Managing international technology partnerships and commercial operations",
       ],
       committees: [
         { name: "Executive Capital & Project Committee", role: "Member" },
         { name: "Risk Management & ESG Committee", role: "Chairperson" },
       ],
       directorshipsAndAffiliations: [
-        "Pingaksh Bio-Energy & Green Fuels Limited",
+        "Pingaksh Group Entities",
         "Uttar Bharat Hydro Power Private Limited",
-        "All India Distillers' Association (Executive Member)",
       ],
     },
     {
       slug: "aadish-goel",
       name: "Mr. Aadish Goel",
-      designation: "Executive Director — Corporate Governance & Legal",
+      designation: "Director",
       boardCategory: "Promoter & Executive",
       dinNumber: "DIN: 08394112",
       appointedSince: "2020",
-      qualifications: [
-        "LLM in International Business & Corporate Law",
-        "LL.B. (Hons.)",
-      ],
+      qualifications: ["LLM in Business Law"],
       almaMater: "King's College London, United Kingdom",
       portraitImage:
         "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=85",
-      portraitAlt:
-        "Mr. Aadish Goel - Executive Director of Pingaksh Renewables",
+      portraitAlt: "Mr. Aadish Goel - Director at Pingaksh Group",
       shortSummary:
-        "Leads regulatory compliance, Power Purchase Agreements (PPAs), environmental clearances, and corporate governance across all Group entities.",
+        "Strengthens the organization’s leadership through profound expertise in business law, legal frameworks, and corporate governance.",
       executiveQuote:
-        "Enduring infrastructure requires an ironclad regulatory and ethical foundation. Every megawatt and kiloliter we produce is backed by transparent fiduciary governance.",
+        "Navigating the complexities of diverse industries requires strict adherence to compliance and a commitment to ethical business practices.",
       biographyParagraphs: [
-        "Mr. Aadish Goel is an Executive Director of the Pingaksh Group, overseeing corporate law, regulatory affairs, contract structuring, and institutional governance. He holds a Master of Laws (LLM) in Business Law from King's College London, bringing international legal scholarship to India's regulated infrastructure sector.",
-        "He leads the structuring and negotiation of long-term Power Purchase Agreements (PPAs) with state electricity distribution companies, tariff petitions before Electricity Regulatory Commissions (UERC), and environmental compliance under MoEFCC and CPCB frameworks.",
-        "Mr. Aadish Goel also architected the Group's 6+2 Board Governance Charter, ensuring strict audit transparency, vendor ethics, and statutory compliance across all operating sites in Uttarakhand and Uttar Pradesh.",
+        "Mr. Aadish Goel is a distinguished Director at the Pingaksh Group, whose expertise in business law significantly strengthens the organization's corporate structure. He holds an LLM degree in Business Law from the prestigious King's College London.",
+        "He brings a profound understanding of legal frameworks and corporate governance to the group. His legal acumen and strategic insights are vital in navigating the complexities of the group's diverse industries, ensuring regulatory compliance and fostering ethical business practices.",
+        "Mr. Goel's role is pivotal in guiding the group toward achieving its vision of sustainable growth while maintaining the highest standards of legal, environmental, and corporate integrity.",
       ],
       keyResponsibilities: [
-        "Power Purchase Agreements (PPAs) and UERC regulatory tariff frameworks",
-        "Statutory environmental clearances (MoEFCC, CPCB & ZLD compliance)",
-        "Corporate governance charter, internal audit, and legal risk mitigation",
-        "Land acquisition compliance and community rehabilitation frameworks",
+        "Oversight of corporate governance and legal frameworks",
+        "Management of statutory compliance and regulatory affairs",
+        "Structuring of contracts, agreements, and ethical business policies",
       ],
       committees: [
         {
@@ -191,121 +178,8 @@ export const LEADERSHIP_DATA: LeadershipPageData = {
         { name: "Audit & Statutory Compliance Committee", role: "Member" },
       ],
       directorshipsAndAffiliations: [
+        "Pingaksh Group Entities",
         "Uttar Bharat Hydro Power Private Limited",
-        "Pingaksh Renewables Corporate Services",
-        "International Bar Association — Energy & Natural Resources Section",
-      ],
-    },
-    {
-      slug: "rajeshwar-prasad-sharma",
-      name: "Er. Rajeshwar Prasad Sharma",
-      designation: "Whole-Time Director — Hydro Engineering & Projects",
-      boardCategory: "Executive Director",
-      dinNumber: "DIN: 05129834",
-      appointedSince: "2014",
-      qualifications: [
-        "M.Tech in Water Resources & Hydroelectric Engineering",
-        "B.E. in Civil Engineering",
-      ],
-      almaMater: "IIT Roorkee",
-      portraitImage:
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=900&q=85",
-      portraitAlt:
-        "Er. Rajeshwar Prasad Sharma - Whole-Time Director of Hydro Engineering",
-      shortSummary:
-        "Veteran Himalayan hydro civil engineer overseeing headrace tunneling, penstock integrity, and horizontal Francis turbine operations across Sarju I, II, and III.",
-      executiveQuote:
-        "Himalayan geology demands humility and precision. Our high-head cascades are designed for a 50-year civil lifecycle with zero ecological submergence.",
-      biographyParagraphs: [
-        "Er. Rajeshwar Prasad Sharma brings over 34 years of specialized civil and hydro-mechanical engineering experience in the Indian Himalayas. An alumnus of IIT Roorkee, he has supervised the design, rock tunneling, and commissioning of multiple run-of-the-river hydroelectric stations across Uttarakhand and Himachal Pradesh.",
-        "At Pingaksh Group, he serves as Whole-Time Director (Technical), managing the civil and electro-mechanical integrity of the Sarju cascade in Bageshwar district—including desilting chambers, high-pressure steel penstocks (up to 155m net head), and 33kV/132kV switchyard evacuation infrastructure.",
-      ],
-      keyResponsibilities: [
-        "O&M reliability across Sarju-I, Sarju-II, and Sarju-III powerhouses",
-        "Geological slope stabilization and headrace tunnel engineering",
-        "Hydro-mechanical safety audits and monsoon flood-routing protocols",
-      ],
-      committees: [
-        { name: "Executive Capital & Project Committee", role: "Member" },
-        { name: "Operational Safety & EHS Committee", role: "Chairperson" },
-      ],
-      directorshipsAndAffiliations: [
-        "Uttar Bharat Hydro Power Private Limited",
-        "Fellow, Institution of Engineers (India)",
-      ],
-    },
-    {
-      slug: "dr-arvind-deshmukh",
-      name: "Dr. Arvind Deshmukh",
-      designation: "Non-Executive Independent Director",
-      boardCategory: "Independent Director",
-      dinNumber: "DIN: 03190452",
-      appointedSince: "2022",
-      qualifications: [
-        "Ph.D. in Chemical & Bioprocess Engineering",
-        "B.Tech in Chemical Engineering",
-      ],
-      almaMater: "Institute of Chemical Technology (ICT), Mumbai",
-      portraitImage:
-        "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=900&q=85",
-      portraitAlt: "Dr. Arvind Deshmukh - Non-Executive Independent Director",
-      shortSummary:
-        "Specialist in multi-pressure grain distillation, enzymatic fermentation, and Zero-Liquid-Discharge (ZLD) bio-refinery process engineering.",
-      executiveQuote:
-        "Modern bio-refineries are precision chemical ecosystems capable of achieving 100% water circularity while supplying high-octane green fuels.",
-      biographyParagraphs: [
-        "Dr. Arvind Deshmukh serves as an Independent Director on the Board of Pingaksh Renewables. With a doctorate in Bioprocess Engineering from ICT Mumbai and three decades of industrial advisory experience, he guides the technical audit of the Group's grain-based ethanol and bio-energy plants.",
-        "He provides independent oversight on molecular sieve dehydration efficiency, Multi-Effect Evaporator (MEE) Zero-Liquid-Discharge systems, and high-protein DDGS dryer optimization.",
-      ],
-      keyResponsibilities: [
-        "Independent technical review of 250–350 KLPD ethanol process yields",
-        "Environmental audit of Zero-Liquid-Discharge (ZLD) water loops",
-        "R&D evaluation for 2G cellulosic biomass and Napier grass feedstocks",
-      ],
-      committees: [
-        { name: "Risk Management & ESG Committee", role: "Member" },
-        { name: "Audit & Statutory Compliance Committee", role: "Member" },
-      ],
-      directorshipsAndAffiliations: [
-        "Independent Technical Advisor — National Bio-Energy Mission",
-        "Member, Indian Institute of Chemical Engineers (IIChE)",
-      ],
-    },
-    {
-      slug: "meera-sundaram",
-      name: "Ms. Meera Sundaram, FCA",
-      designation: "Non-Executive Independent Director",
-      boardCategory: "Independent Director",
-      dinNumber: "DIN: 06482910",
-      appointedSince: "2023",
-      qualifications: [
-        "Fellow Chartered Accountant (FCA) — ICAI",
-        "Certified Infrastructure & ESG Auditor",
-      ],
-      almaMater: "Institute of Chartered Accountants of India (ICAI)",
-      portraitImage:
-        "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=900&q=85",
-      portraitAlt: "Ms. Meera Sundaram - Non-Executive Independent Director",
-      shortSummary:
-        "Chairs the Audit Committee, bringing 26 years of expertise in infrastructure project finance, statutory audit, and SEBI/BRSR sustainability reporting.",
-      executiveQuote:
-        "Disciplined balance-sheet stewardship and transparent ESG reporting are the cornerstones of institutional investor confidence.",
-      biographyParagraphs: [
-        "Ms. Meera Sundaram is a Fellow Member of the Institute of Chartered Accountants of India (FCA) with over 26 years of experience in infrastructure project finance, power-sector taxation, and corporate governance.",
-        "As Chairperson of the Audit & Statutory Compliance Committee at Pingaksh Renewables, she oversees internal financial controls, green financing covenants, and BRSR-aligned sustainability disclosures.",
-      ],
-      keyResponsibilities: [
-        "Chairperson of the Board Audit & Statutory Compliance Committee",
-        "Oversight of internal financial controls and project debt covenants",
-        "Review of related-party transactions and statutory ESG disclosures",
-      ],
-      committees: [
-        { name: "Audit & Statutory Compliance Committee", role: "Chairperson" },
-        { name: "Nomination & Remuneration Committee", role: "Chairperson" },
-      ],
-      directorshipsAndAffiliations: [
-        "Fellow, Institute of Chartered Accountants of India (ICAI)",
-        "Certified Independent Director — IICA Ministry of Corporate Affairs",
       ],
     },
   ],

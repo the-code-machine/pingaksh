@@ -47,9 +47,9 @@ export interface HeritageTimelinePageData {
 
 export const HERITAGE_TIMELINE_DATA: HeritageTimelinePageData = {
   seo: {
-    title: "Our Heritage & Growth Timeline | Pingaksh Renewables (UBHP)",
+    title: "Our Heritage & Growth Timeline | Pingaksh Group",
     description:
-      "Trace the institutional history of Pingaksh Group from the founding of Uttar Bharat Hydro Power (UBHP) and commissioning of Sarju II & III to our modern bio-energy expansion.",
+      "Trace the institutional history of Pingaksh Group from the founding of Uttar Bharat Hydro Power (UBHP) and the commissioning of Sarju cascade projects to our modern 350 KLPD bio-energy expansion.",
   },
   breadcrumbs: [
     { label: "Home", href: "/" },
@@ -63,7 +63,7 @@ export const HERITAGE_TIMELINE_DATA: HeritageTimelinePageData = {
     title: "Our Heritage",
     subtitle: "From Himalayan River Valleys to National Clean-Energy Scale",
     leadText:
-      "Every enduring industrial institution is built milestone by milestone. Explore how Uttar Bharat Hydro Power evolved into Pingaksh Group through disciplined civil engineering and generational stewardship.",
+      "Every enduring industrial institution is built milestone by milestone. Explore how Uttar Bharat Hydro Power evolved into the Pingaksh Group through disciplined civil engineering and generational stewardship.",
     backgroundImage:
       "https://images.unsplash.com/photo-1574482620811-1aa16ffe3c82?auto=format&fit=crop&w=2000&q=85",
     backgroundAlt:
@@ -73,7 +73,7 @@ export const HERITAGE_TIMELINE_DATA: HeritageTimelinePageData = {
     statement:
       "We did not begin in boardrooms; we began in the steep gorges of the Sarju River—tunneling through Himalayan rock to prove that clean, run-of-the-river power could be engineered in harmony with nature.",
     author: "Mr. Naresh Goel",
-    role: "Founder & Promoter, Pingaksh Group",
+    role: "Visionary Founder, Pingaksh Group",
   },
   milestones: [
     {
@@ -116,7 +116,7 @@ export const HERITAGE_TIMELINE_DATA: HeritageTimelinePageData = {
       headline: "Commissioning of the 10.50 MW Sarju III Hydroelectric Plant",
       narrative: [
         "On July 11, 2014, UBHP achieved its landmark Commercial Operation Date (COD) for the Sarju III Small Hydro Project—synchronizing three 3,600 kW Horizontal Axis Francis Turbine units with the state transmission grid.",
-        "Engineered for a rated net head of 51.85 meters and a design discharge of 6.73 cumecs per unit, Sarju III established the group’s reputation for reliable electro-mechanical execution and high seasonal plant load factors.",
+        "Engineered for a rated net head of 51.85 meters and a rated discharge of 6.73 cumecs, Sarju III established the group’s reputation for reliable electro-mechanical execution and high seasonal plant load factors.",
       ],
       location: "Sarju III Powerhouse · Bageshwar, UK",
       keyFigure: {
@@ -130,7 +130,7 @@ export const HERITAGE_TIMELINE_DATA: HeritageTimelinePageData = {
           "Sarju III powerhouse and penstock assembly commissioned on 11.07.2014.",
       },
       archivalNote:
-        "Rated Net Head: 51.85 m | Design Discharge: 6.73 m³/s | Grid Evacuation: UPCL Sub-station.",
+        "Rated Net Head: 51.85 m | Rated Discharge: 6.73 m³/s | Grid Evacuation: UPCL Sub-station.",
     },
     {
       id: "era-sarju-ii",
@@ -161,18 +161,18 @@ export const HERITAGE_TIMELINE_DATA: HeritageTimelinePageData = {
           "Automated SCADA control systems managing turbine load and headrace levels.",
       },
       archivalNote:
-        "Rated Net Head: 155.0 m | Design Discharge: 2.59 m³/s | COD: 25.05.2016.",
+        "Rated Net Head: 155.0 m | Rated Discharge: 2.59 m³/s | COD: 25.05.2016.",
     },
     {
       id: "era-sarju-i-agro",
       year: "2021",
       dateStamp: "Cascade Completion & Agro-Ventures",
       isoDate: "2021-09-15",
-      eraTitle: "Upstream Hydro & Pingaksh Farms",
-      headline: "Advancing Sarju I (7.50 MW) & Sustainable Biomass Cultivation",
+      eraTitle: "Upstream Hydro & Sustainable Agriculture",
+      headline: "Advancing Sarju I (7.50 MW) & Biomass Integration",
       narrative: [
         "With second-generation directors Mr. Amul Goel and Mr. Aadish Goel expanding strategic execution, the group advanced civil works on the upstream 7.50 MW Sarju I project (160m design head, 2 × 3,750 kW units).",
-        "Simultaneously, the group launched Pingaksh Farms to pioneer large-scale Napier grass cultivation and agrarian supply-chain integration—laying the feedstock foundation for our entry into green biofuels.",
+        "Simultaneously, the group pioneered large-scale agrarian supply-chain integration—laying the feedstock foundation and community networks for our upcoming entry into green biofuels.",
       ],
       location: "Uttarakhand & Northern Agrarian Belt",
       keyFigure: {
@@ -181,9 +181,9 @@ export const HERITAGE_TIMELINE_DATA: HeritageTimelinePageData = {
       },
       primaryImage: {
         url: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=1400&q=85",
-        alt: "Pingaksh Farms Napier grass cultivation and rural agricultural integration",
+        alt: "Agricultural cultivation and rural integration",
         caption:
-          "High-yield Napier grass bio-crops and farmer procurement networks.",
+          "Establishing robust agrarian procurement networks for bio-energy transition.",
       },
     },
     {
@@ -194,13 +194,13 @@ export const HERITAGE_TIMELINE_DATA: HeritageTimelinePageData = {
       eraTitle: "The Pingaksh Group Identity",
       headline: "Commissioning PBPL Green Fuels & Industrial Circularity",
       narrative: [
-        "Unifying our hydro, biofuel, and agro-industrial entities under the Pingaksh Group banner, we established Pingaksh Beverages Pvt. Ltd. (PBPL) to build a state-of-the-art grain-based ethanol biorefinery.",
-        "Engineered with closed-loop Distillers Dried Grains with Solubles (DDGS) recovery and food-grade CO₂ liquefaction, the facility diversified the group into national E20 fuel blending with Public Sector Oil Marketing Companies.",
+        "Unifying our hydro, biofuel, and agro-industrial entities under the Pingaksh Group banner, we established Pingaksh Beverages Pvt. Ltd. (PBPL) to operate a state-of-the-art grain-based ethanol biorefinery.",
+        "Scaling to a robust 350 KLPD capacity with closed-loop Distillers Dried Grains with Solubles (DDGS) recovery, the facility firmly positioned the group as a key contributor to India's E20 fuel blending mandate.",
       ],
       location: "Corporate Headquarters & Biorefinery Complex",
       keyFigure: {
-        number: "217,800+ t",
-        label: "Cumulative Tonnes of Carbon Offset Achieved",
+        number: "350 KLPD",
+        label: "Operational Bio-Ethanol Distillation Capacity",
       },
       primaryImage: {
         url: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1400&q=85",
@@ -217,19 +217,19 @@ export const HERITAGE_TIMELINE_DATA: HeritageTimelinePageData = {
       eraTitle: "Institutional Scale & Listed-Grade Governance",
       headline: "Scaling Multi-State Clean Infrastructure",
       narrative: [
-        "Today, Pingaksh Renewables operates under a reconstituted 6-member Parent Board (including Independent Directors) and dedicated subsidiary governance across all Special Purpose Vehicles.",
-        "With full hydro cascade integration and expanded biofuel off-take allocations, Pingaksh stands poised for its next decade of disciplined capital deployment.",
+        "Today, the Pingaksh Group operates with stringent institutional governance, featuring dedicated subsidiary boards and independent oversight across all Special Purpose Vehicles.",
+        "With a fully integrated hydro cascade and expanding biofuel offtake allocations with Public Sector Oil Marketing Companies, Pingaksh stands poised for its next decade of disciplined capital deployment.",
       ],
       location: "Pan-India Operations",
       keyFigure: {
-        number: "6 + 2",
-        label: "Parent & Subsidiary Board Directors",
+        number: "222,000+",
+        label: "Tonnes of Cumulative Carbon Offset Achieved",
       },
       primaryImage: {
         url: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1400&q=85",
-        alt: "Pingaksh Renewables modern corporate headquarters and future growth horizon",
+        alt: "Pingaksh modern corporate headquarters and future growth horizon",
         caption:
-          "Institutional governance preparing Pingaksh Renewables for capital-market scale.",
+          "Institutional governance preparing Pingaksh for capital-market scale.",
       },
     },
   ],

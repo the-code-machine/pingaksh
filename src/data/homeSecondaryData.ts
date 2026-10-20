@@ -135,7 +135,7 @@ export const HOME_SECONDARY_DATA = {
           "Pingaksh Group Corporate Headquarters and Institutional Board Governance",
       },
       {
-        id: "slide-group-structure",
+        id: "slide-subsidiary-leadership",
         eraTag: "Conglomerate Architecture",
         title: "Ring-Fenced SPVs & Disciplined Project Execution",
         caption:
