@@ -2,7 +2,7 @@ import Announment from "@/components/home/Announment";
 import HeroSection from "@/components/home/HeroSection";
 import HomeCoreSections from "@/components/home/HomeCoreSections";
 import HomeCorporateSections from "@/components/home/HomeCorporateSections";
-
+// Next.js 13 server component
 const API_URL =
   "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/api/announcements.php";
 
