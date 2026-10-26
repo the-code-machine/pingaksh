@@ -84,12 +84,12 @@ export const HOME_SECTIONS_DATA = {
         id: "hydro-capacity",
         value: "30.60",
         unit: "MW",
-        label: "Sarju I, II & III Hydro",
+        label: "Sarju II & III Hydro",
         subtext: "Run-of-the-River cascade in Bageshwar, Uttarakhand",
       },
       {
         id: "ethanol-capacity",
-        value: "250–350",
+        value: "250",
         unit: "KLPD",
         label: "Grain Bio-Ethanol Plant",
         subtext: "Zero-Liquid Discharge E20 biofuel distillation",
@@ -102,26 +102,26 @@ export const HOME_SECTIONS_DATA = {
   // Extracted from pingaksh.com/UBHP & pingaksh.com/pingakshgreenfuels
   // =================================================================
   businessesSection: {
-    eyebrow: "Our Core Verticals",
-    sectionTitle: "Utility-Scale Clean Energy & Circular Bio-Refining",
+    eyebrow: "OUR BUSINESSES",
+    sectionTitle: "Core Verticals",
     sectionSubtitle:
-      "Inspect our operational Run-of-the-River hydroelectric stations and grain-based E20 bio-ethanol infrastructure.",
+      "Powering India’s energy transition through utility-scale hydroelectric generation and bio-ethanol refining.",
     verticals: [
       {
         id: "hydro-ubhp",
-        shortTitle: "01. Hydro Power (UBHP)",
-        badge: "Uttar Bharat Hydro Power · Sarju Cascade",
-        title: "Run-of-the-River Hydroelectric Generation",
-        entityName: "Pingaksh Green Energy (UBHP)",
+        shortTitle: "HYDRO POWER",
+        badge: "Uttar Bharat Hydro Power",
+        title: "Hydro Power",
+        entityName: "Uttar Bharat Hydro Power (UBHP)",
         description:
-          "Situated along the Sarju River stream in District Bageshwar, Uttarakhand, our Sarju I, II, and III cascade projects harness natural Himalayan elevation drop using high-efficiency Horizontal Francis Turbines.",
+          "Our quest to deliver reliable, clean baseload electricity led us to develop the Sarju cascade hydroelectric stations in District Bageshwar, Uttarakhand. Operating across Sarju II and III with a combined capacity of 23.10 MW, our plants harness natural Himalayan elevation drops using high-efficiency Horizontal Francis Turbines.",
         secondaryDescription:
-          "This environmentally considerate run-of-the-river architecture generates clean peaking and baseload grid electricity without large reservoir submergence, preserving the river’s natural ecological balance.",
+          "Built on a 100% run-of-the-river architecture, our stations generate sustainable grid power without large reservoir submergence—preserving the mountain river’s natural ecological balance while powering regional growth.",
         backgroundImage:
           "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/20150914_125919_a99d7065.jpg",
         imageAlt:
-          "UBHP Sarju I, II, III Run-of-the-River Hydroelectric Power Plant in Bageshwar, Uttarakhand",
-        ctaText: "Explore Hydro Engineering & Spec Sheets",
+          "UBHP Run-of-the-River Hydroelectric Power Plant in Bageshwar, Uttarakhand",
+        ctaText: "read more",
         ctaHref: "/our-businesses/hydro-power",
         keySpecs: [
           {
@@ -129,8 +129,8 @@ export const HOME_SECTIONS_DATA = {
             value: "Sarju River, Bageshwar (UK)",
           },
           {
-            parameter: "Combined Cascade Capacity",
-            value: "30.60 MW (Sarju I, II & III)",
+            parameter: "Commissioned Capacity",
+            value: "23.10 MW (Sarju II & III)",
           },
           {
             parameter: "Turbine Configuration",
@@ -141,60 +141,31 @@ export const HOME_SECTIONS_DATA = {
             value: "100% Run-of-the-River",
           },
         ],
-        subProjects: [
-          {
-            name: "Sarju III (Commissioned)",
-            location: "Bageshwar, UK",
-            capacity: "10.50 MW (3 × 3,600 kW)",
-            turbine: "Horizontal Francis",
-            head: "51.85 m Rated",
-            discharge: "6.73 cumecs",
-            status: "COD: 11.07.2014",
-          },
-          {
-            name: "Sarju II (Commissioned)",
-            location: "Bageshwar, UK",
-            capacity: "12.60 MW (3 × 4,200 kW)",
-            turbine: "Horizontal Francis",
-            head: "155.0 m Rated",
-            discharge: "2.59 cumecs",
-            status: "COD: 25.05.2016",
-          },
-          {
-            name: "Sarju I (Implementation)",
-            location: "Bageshwar, UK",
-            capacity: "7.50 MW (2 × 3,750 kW)",
-            turbine: "Horizontal Francis",
-            head: "160.0 m Design",
-            discharge: "7.20 cumecs",
-            status: "Implementation Phase",
-          },
-        ],
       },
       {
         id: "ethanol-pbpl",
-        shortTitle: "02. Green Fuels & Bio-Energy",
-        badge: "Pingaksh Green Fuels (PBPL) · E20 National Mandate",
-        title: "Grain-Based Bio-Ethanol Distillery",
+        shortTitle: "GREEN FUELS & BIO-ENERGY",
+        badge: "Pingaksh Beverages Pvt. Ltd.",
+        title: "Green Fuels",
         entityName: "Pingaksh Beverages Pvt. Ltd. (PBPL)",
         description:
-          "Transforming locally sourced non-food feed grains into high-purity fuel-grade ethanol, PBPL operates a cutting-edge 250–350 KLPD bio-refinery dedicated to India’s E20 petrol blending roadmap.",
+          "Supporting India’s national E20 petrol blending mandate, we operate a state-of-the-art 250 KLPD grain-based bio-ethanol refinery. We transform locally sourced, non-food surplus grains into high-purity anhydrous ethanol for major oil marketing companies.",
         secondaryDescription:
-          "By substituting imported fossil crude with indigenous grain ethanol, our distillery strengthens rural farm procurement while cutting 600+ tonnes of vehicular carbon emissions every single day.",
+          "By substituting imported fossil crude with indigenous biofuels and operating on a strict Zero-Liquid Discharge (ZLD) standard, we strengthen the rural agricultural economy while cutting over 600 tonnes of vehicular carbon emissions daily.",
         backgroundImage:
           "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1800&q=85",
         imageAlt:
-          "Pingaksh Green Fuels PBPL Grain-Based Bio-Ethanol Distillery Columns and E20 Blending Facility",
-        ctaText: "View Grain-to-Ethanol Process Workflow",
+          "Pingaksh Green Fuels PBPL Grain-Based Bio-Ethanol Distillery Facility",
+        ctaText: "read more",
         ctaHref: "/our-businesses/green-fuels-ethanol",
         keySpecs: [
           {
             parameter: "Distillery Capacity",
-            value: "250 KLPD (Expandable 350 KLPD)",
+            value: "250 KLPD",
           },
           {
             parameter: "Feedstock Type",
-            value: "100% Damaged / Surplus Food Grains",
+            value: "100% Surplus Food Grains",
           },
           {
             parameter: "Fuel Grade Standard",
@@ -206,76 +177,6 @@ export const HOME_SECTIONS_DATA = {
           },
         ],
       },
-      {
-        id: "circular-economy",
-        shortTitle: "03. Circular Economy & DDGS",
-        badge: "Zero-Waste Valorization · DDGS & CO₂ Capture",
-        title: "By-Products & Closed-Loop Resource Recovery",
-        entityName: "Pingaksh Circular Bio-Systems",
-        description:
-          "Every gram of grain and fermentation gas inside our bio-refinery is captured and converted into high-value industrial and agricultural co-products—eliminating waste across the entire value chain.",
-        secondaryDescription:
-          "Spent grain mash is dried into protein-rich DDGS (Distillers Dried Grains with Solubles) for livestock & poultry nutrition, while fermentation CO₂ is scrubbed, liquefied, and bottled for food-grade and dry-ice applications.",
-        backgroundImage:
-          "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=85",
-        imageAlt:
-          "Pingaksh Renewables High-Protein DDGS Animal Feed and Industrial CO2 Recovery Circular Economy",
-        ctaText: "Explore DDGS & CO₂ Specifications",
-        ctaHref: "/our-businesses/circular-economy",
-        keySpecs: [
-          {
-            parameter: "Primary Co-Product",
-            value: "High-Protein DDGS Animal Feed",
-          },
-          {
-            parameter: "Carbon Capture",
-            value: "Food-Grade Liquid CO₂ & Dry Ice",
-          },
-          {
-            parameter: "Water Recovery",
-            value: "Multi-Effect Evaporator Condensate",
-          },
-          {
-            parameter: "Boiler Ash Usage",
-            value: "100% Fly-Ash Brick & Soil Amendment",
-          },
-        ],
-      },
-      {
-        id: "subsidiaries-spvs",
-        shortTitle: "04. Subsidiaries, Farms & SPVs",
-        badge: "Group Ecosystem · Agro-Energy & SPVs",
-        title: "Special Purpose Vehicles & Sustainable Agro-Farms",
-        entityName: "Pingaksh Group Entities",
-        description:
-          "Supported by dedicated project SPVs and Pingaksh Farms, our group integrates Napier grass bio-mass cultivation, rural micro-enterprise support, and ring-fenced renewable infrastructure assets.",
-        secondaryDescription:
-          "Guided by our 6 Parent Board Directors and 2 Subsidiary Additional Directors, each Special Purpose Vehicle ensures institutional governance, transparent statutory compliance, and dedicated project execution.",
-        backgroundImage:
-          "https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=1800&q=85",
-        imageAlt:
-          "Pingaksh Group Subsidiaries, SPVs, and Sustainable Napier Grass Bio-Energy Farms",
-        ctaText: "Inspect Group Structure & SPVs",
-        ctaHref: "/our-businesses/subsidiaries-spvs",
-        keySpecs: [
-          {
-            parameter: "Hydro SPV Platform",
-            value: "Uttar Bharat Hydro Power Pvt. Ltd.",
-          },
-          {
-            parameter: "Bio-Fuels Platform",
-            value: "Pingaksh Beverages Pvt. Ltd. (PBPL)",
-          },
-          {
-            parameter: "Agro-Biomass Division",
-            value: "Pingaksh Farms (Napier Grass)",
-          },
-          {
-            parameter: "Board Governance",
-            value: "6 Parent + 2 Subsidiary Directors",
-          },
-        ],
-      },
     ] as BusinessVertical[],
   },
 
@@ -284,64 +185,58 @@ export const HOME_SECTIONS_DATA = {
   // Features Automatic Multi-Image Slideshow Transition
   // =================================================================
   stewardshipSection: {
-    eyebrow: "Ecological & Rural Stewardship",
-    title: "Pingaksh Sustainability & Community Impact",
-    subtitle: "Empowering Rural Agrarian Economies & Himalayan Catchments",
+    title: "CSR Initiatives",
+    subtitle:
+      "Empowering Himalayan Catchment Villages & Rural Agrarian Communities",
     description:
-      "Guided by our founders Mr. Naresh Goel, Mr. Amul Goel, and Mr. Aadish Goel, Pingaksh Group’s responsibility extends far beyond megawatts and kiloliters. From local grain procurement and Napier grass cultivation at Pingaksh Farms to Himalayan catchment afforestation around Sarju I–III, we engineer growth that uplifts both communities and the planet.",
+      "Guided by our Board-level Corporate Social Responsibility Committee under Section 135 of the Companies Act, 2013, Pingaksh Group invests in long-term healthcare, STEM education, rural infrastructure, and Van Panchayat ecological restoration across our operating regions.",
     highlights: [
-      "100% Zero-Liquid Discharge (ZLD) closed-loop water recycling across distillery operations",
-      "Direct rural livelihood creation through local farmer grain procurement & Napier grass biomass",
-      "Aquatic ecology preservation & green-belt afforestation in Bageshwar’s Sarju river valley",
+      "Primary healthcare camps, mobile medical vans & maternal care in Tehsil Kapkot, Bageshwar",
+      "Digital classrooms, STEM scholarships & vocational ITI skilling for local youth across Uttarakhand",
+      "Direct farm-gate grain & Napier biomass buyback programs uplifting 5,000+ rural farming households",
+      "Joint Van Panchayat Himalayan slope afforestation & drinking water pipeline rejuvenation",
     ],
     primaryCta: {
-      label: "Explore Sustainability Impact",
+      label: "Explore CSR Impact",
       href: "/sustainability",
-      title:
-        "Read about Pingaksh Renewables Ecological and Community Initiatives",
     },
     secondaryCta: {
-      label: "Live Carbon Ticker",
-      href: "/sustainability/carbon-dashboard",
-      title: "Launch Real-Time CO2 Savings Dashboard",
+      label: "CSR Policy & Charter",
+      href: "/investors/statutory-filings",
     },
     slides: [
       {
-        id: "himalayan-ecology",
-        category: "Himalayan River Stewardship",
-        title: "Coexisting Harmoniously with the Sarju River Ecosystem",
+        id: "csr-slide-1",
+        category: "CSR Pillar 01 · Rural Healthcare & Sanitation",
+        title: "Himalayan Community Medical & Wellness Outreach",
         caption:
-          "Our Run-of-the-River hydro architecture in Bageshwar, Uttarakhand returns 100% of water back to the natural river stream while funding local village infrastructure and slope afforestation.",
-        metricBadge: "Zero Reservoir Submergence",
+          "Conducting regular multi-specialty health camps, diagnostic screenings, and clean drinking water infrastructure projects for villages surrounding the Sarju I–III hydro cascade in District Bageshwar.",
         imageUrl:
-          "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1400&q=85",
-        imageAlt:
-          "Himalayan River Catchment Conservation around UBHP Sarju Hydroelectric Project in Uttarakhand",
+          "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1600&q=85",
+        imageAlt: "Pingaksh Group CSR Healthcare Outreach in Rural Uttarakhand",
       },
       {
-        id: "rural-grain-economy",
-        category: "Agrarian Livelihoods & Pingaksh Farms",
-        title: "Empowering Indian Farmers Through Local Grain & Napier Grass",
+        id: "csr-slide-2",
+        category: "CSR Pillar 02 · Education & Technical Skilling",
+        title: "Digital Classrooms & Youth Electro-Mechanical Training",
         caption:
-          "By procuring surplus grains for E20 ethanol and cultivating high-yield Napier grass at Pingaksh Farms, we create stable rural income streams and high-protein DDGS livestock nutrition.",
-        metricBadge: "Rural Farm Empowerment",
+          "Upgrading rural government schools with smart-board infrastructure and sponsoring technical apprenticeships for local diploma holders at our power stations and biorefineries.",
         imageUrl:
-          "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=1400&q=85",
+          "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1600&q=85",
         imageAlt:
-          "Pingaksh Farms Sustainable Napier Grass Cultivation and Local Farmer Grain Procurement",
+          "Rural School Education and Technical Skilling CSR Initiative",
       },
       {
-        id: "zero-liquid-discharge",
-        category: "Circular Industrial Ecology",
-        title: "100% Zero-Liquid Discharge & 600 Tonnes Daily Carbon Saved",
+        id: "csr-slide-3",
+        category: "CSR Pillar 03 · Agrarian Livelihoods & Ecology",
+        title: "Sustainable Farming & Van Panchayat Afforestation",
         caption:
-          "Advanced multi-effect evaporation, process condensate recycling, and fermentation CO₂ liquefaction ensure zero environmental footprint and 217,800+ tonnes of cumulative carbon saved.",
-        metricBadge: "600+ Tonnes CO₂ Saved / Day",
+          "Partnering with local village councils for native oak and deodar plantation drives while providing zero-middleman assured buyback for energy crops and non-food grains.",
         imageUrl:
-          "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1400&q=85",
+          "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=1600&q=85",
         imageAlt:
-          "Pingaksh Renewables Zero-Liquid Discharge Water Recycling and Carbon Capture Operations",
+          "Rural Farmer Livelihood and Himalayan Watershed Afforestation",
       },
-    ] as StewardshipSlide[],
+    ],
   },
 };

@@ -204,7 +204,7 @@ export const CONTACT_OFFICES_DATA: ContactOfficesPageData = {
       imageAlt:
         "Pingaksh Beverages 250 KLPD Grain-Based Bio-Ethanol Distillery",
       keyFunctions: [
-        "250–350 KLPD Fuel-Grade Ethanol Distillation (E20)",
+        "250 KLPD Fuel-Grade Ethanol Distillation (E20)",
         "High-Protein DDGS Drying & Bulk Dispatch Terminal",
         "Food-Grade Liquid CO₂ Bottling & 100% ZLD Plant",
       ],

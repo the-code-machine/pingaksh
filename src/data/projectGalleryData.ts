@@ -162,7 +162,7 @@ export const PROJECT_GALLERY_DATA: ProjectGalleryPageData = {
       mediaUrl:
         "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=2000&q=90",
       altText: "Pingaksh Beverages 250 KLPD Grain Ethanol Distillation Columns",
-      technicalSpecs: "Capacity: 250–350 KLPD | Grade: BIS IS 15464 Anhydrous",
+      technicalSpecs: "Capacity: 250 KLPD | Grade: BIS IS 15464 Anhydrous",
       featuredSpan: "standard",
     },
     {

@@ -184,23 +184,35 @@ export default function Navbar() {
           {/* Brand Logo + Wordmark + Tagline */}
           <Link
             href="/"
-            className="flex items-center gap-3.5 group shrink-0 focus:outline-none"
+            className="inline-flex items-start gap-3 sm:gap-3.5 group shrink-0 focus:outline-none"
           >
-            {/* Custom Pingaksh Interlocking Celtic/Trinity Knot Emblem */}
-            <div className="w-11 h-14 sm:w-16 sm:h-16 flex items-center justify-center shrink-0">
+            {/* Emblem aligned with the main title block (Top + Subtitle) */}
+            <div className="w-11 h-11 sm:w-[54px] sm:h-[54px] flex items-center justify-center shrink-0 mt-0.5">
               <img
                 src="/logo/logo-icon.svg"
-                alt="logo"
-                className="w-full h-full"
+                alt="Pingaksh Renewables Limited"
+                className="w-full h-full object-contain"
               />
             </div>
 
-            <div className="flex flex-col">
-              <span className="font-logo text-xl sm:text-[22px] leading-none tracking-wider text-pingaksh-sand">
-                PINGAKSH
+            {/* Reliance-Style 3-Tier Typography Lockup */}
+            <div className="flex flex-col w-fit font-serif">
+              {/* Tier 1: Primary Brand Name */}
+              <span className="text-[22px] sm:text-[29px] font-medium leading-[0.95] tracking-[0.02em] text-pingaksh-sand">
+                Pingaksh
               </span>
-              <span className="font-body text-[14px] sm:text-[12px] tracking-[0.22em] text-sand-200/90 mt-1.5">
-                Renewables
+
+              {/* Tier 2: Entity Name (Sized & tracked to match the width of "Pingaksh") */}
+              <span className="text-[11px] sm:text-[13.5px] font-normal leading-tight tracking-[0.015em] text-pingaksh-sand/95 mt-1.5 whitespace-nowrap">
+                Renewables Limited
+              </span>
+
+              {/* Divider Rule */}
+              <div className="w-full h-[1px] bg-pingaksh-sand/40 my-1" />
+
+              {/* Tier 3: Centered Tagline */}
+              <span className="text-[9.5px] sm:text-[11px] font-normal leading-none tracking-[0.04em] text-pingaksh-sand/85 text-center">
+                Energy for Life
               </span>
             </div>
           </Link>
@@ -247,96 +259,6 @@ export default function Navbar() {
           </nav>
 
           {/* Right Actions: Group Sites Pill + Mobile/Tablet Hamburger */}
-          <div className="flex items-center gap-3">
-            {/* Group Sites Button (Matches Figma Warm Sand Pill) */}
-            <div className="relative">
-              <button
-                type="button"
-                onClick={() => setGroupSitesOpen((prev) => !prev)}
-                className="hidden sm:inline-flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-pingaksh-sand hover:bg-sand-300 text-pingaksh-navy font-semibold text-xs sm:text-sm transition-all duration-200 shadow-sm cursor-pointer"
-              >
-                <LayoutGrid className="w-4 h-4 text-pingaksh-navy" />
-                <span>Group Sites</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </button>
-
-              {/* Group Sites Quick Popover */}
-              <AnimatePresence>
-                {groupSitesOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 8, scale: 0.97 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 8, scale: 0.97 }}
-                    transition={{ duration: 0.18 }}
-                    className="absolute right-0 mt-3 w-72 rounded-xl bg-white shadow-2xl border border-sand-300 p-4 text-pingaksh-navy z-50"
-                  >
-                    <div className="flex items-center justify-between pb-2.5 mb-2.5 border-b border-sand-200">
-                      <span className="text-xs font-bold uppercase tracking-wider text-pingaksh-terracotta">
-                        Pingaksh Group Entities
-                      </span>
-                      <button
-                        onClick={() => setGroupSitesOpen(false)}
-                        className="text-navy-400 hover:text-pingaksh-navy"
-                      >
-                        <X className="w-3.5 h-3.5" />
-                      </button>
-                    </div>
-                    <ul className="space-y-2 text-xs">
-                      <li>
-                        <Link
-                          href="/our-businesses/hydro-power"
-                          onClick={() => setGroupSitesOpen(false)}
-                          className="flex items-center justify-between p-2 rounded-lg hover:bg-sand-100 transition-colors font-medium"
-                        >
-                          <span className="flex items-center gap-2">
-                            <Building2 className="w-4 h-4 text-pingaksh-terracotta" />
-                            UBHP Hydro Power (Sarju I-III)
-                          </span>
-                          <ExternalLink className="w-3.5 h-3.5 opacity-60" />
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          href="/our-businesses/green-fuels-ethanol"
-                          onClick={() => setGroupSitesOpen(false)}
-                          className="flex items-center justify-between p-2 rounded-lg hover:bg-sand-100 transition-colors font-medium"
-                        >
-                          <span className="flex items-center gap-2">
-                            <Building2 className="w-4 h-4 text-pingaksh-terracotta" />
-                            Pingaksh Bio-Energy (250 KLPD)
-                          </span>
-                          <ExternalLink className="w-3.5 h-3.5 opacity-60" />
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          href="/contact/vendor-portal"
-                          onClick={() => setGroupSitesOpen(false)}
-                          className="flex items-center justify-between p-2 rounded-lg hover:bg-sand-100 transition-colors font-medium"
-                        >
-                          <span className="flex items-center gap-2">
-                            <Lock className="w-4 h-4 text-pingaksh-terracotta" />
-                            Partner & Vendor e-Portal
-                          </span>
-                          <ExternalLink className="w-3.5 h-3.5 opacity-60" />
-                        </Link>
-                      </li>
-                    </ul>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-
-            {/* Mobile & Tablet Hamburger Trigger (Visible on < 1280px) */}
-            <button
-              type="button"
-              onClick={() => setMobileDrawerOpen(true)}
-              aria-label="Open Menu"
-              className="xl:hidden inline-flex items-center justify-center w-11 h-11 rounded-lg bg-white/10 hover:bg-white/20 text-pingaksh-sand border border-white/15 transition-colors cursor-pointer"
-            >
-              <Menu className="w-6 h-6" />
-            </button>
-          </div>
         </div>
       </div>
 
@@ -642,16 +564,6 @@ export default function Navbar() {
                     CO₂ Ticker
                   </Link>
                 </div>
-
-                <Link
-                  href="/our-businesses"
-                  onClick={() => setMobileDrawerOpen(false)}
-                  className="w-full py-3 px-4 rounded-full bg-pingaksh-sand text-pingaksh-navy font-semibold text-sm flex items-center justify-center gap-2 shadow-md"
-                >
-                  <LayoutGrid className="w-4 h-4" />
-                  <span>Explore Group Sites</span>
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
               </div>
             </motion.aside>
           </>

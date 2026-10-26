@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { motion } from "motion/react";
-import { ArrowUpRight, ChevronRight } from "lucide-react";
+import { ArrowUpRight, ChevronRight, Building2 } from "lucide-react";
 import {
   type DirectorProfile,
   type LeadershipPageData,
@@ -53,6 +53,38 @@ export default function LeadershipDirectoryView({
     "Promoter & Executive",
     "Executive Director",
     "Independent Director",
+  ];
+
+  // ============================================================================
+  // LOCAL DATA OBJECT: SUBSIDIARY & SPV DIRECTORS
+  // ============================================================================
+  const SUBSIDIARY_DIRECTORS = [
+    {
+      id: "spv-dir-1",
+      name: "Mr. Rajendra Singh",
+      designation: "Additional Director (Hydro Operations)",
+      boardCategory: "Subsidiary Board",
+      entityName: "Uttar Bharat Hydro Power Pvt. Ltd. (UBHP)",
+      portraitImage:
+        "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80",
+      portraitAlt: "Director of Hydro Operations",
+      shortSummary:
+        "Oversees the technical uptime and grid synchronization for the 30.60 MW Sarju cascade. Brings over two decades of specialized expertise in Himalayan hydro-mechanical engineering.",
+      almaMater: "IIT Roorkee",
+    },
+    {
+      id: "spv-dir-2",
+      name: "Dr. Anjali Desai",
+      designation: "Additional Director (Bio-Refinery)",
+      boardCategory: "Subsidiary Board",
+      entityName: "Pingaksh Beverages Pvt. Ltd. (PBPL)",
+      portraitImage:
+        "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80",
+      portraitAlt: "Director of Bio-Refinery Operations",
+      shortSummary:
+        "Leads the chemical and distillation operations at the 250 KLPD grain bio-refinery, ensuring rigorous adherence to CPCB ZLD norms and national E20 fuel standards.",
+      almaMater: "ICT Mumbai",
+    },
   ];
 
   return (
@@ -125,7 +157,7 @@ export default function LeadershipDirectoryView({
       </header>
 
       {/* =====================================================================
-          2. CHAIRMAN & FOUNDER MONOGRAPH SPOTLIGHT (Reliance-Style Editorial)
+          2. CHAIRMAN & FOUNDER MONOGRAPH SPOTLIGHT
       ===================================================================== */}
       {founder && (
         <section className="py-16 lg:py-24 border-b border-sand-300 bg-sand-100/60">
@@ -291,6 +323,78 @@ export default function LeadershipDirectoryView({
                     </span>
                   </div>
                 </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* =====================================================================
+          4. SUBSIDIARY & SPV LEADERSHIP (Data passed locally)
+      ===================================================================== */}
+      <section className="py-16 lg:py-24 bg-sand-200 border-t border-sand-300">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10">
+          <div className="flex flex-col md:flex-row md:items-end justify-between pb-10 border-b border-sand-300 gap-6">
+            <div>
+              <h2 className="font-logo text-3xl sm:text-4xl text-pingaksh-navy">
+                Subsidiary &amp; SPV Leadership
+              </h2>
+              <p className="text-sm text-navy-600 mt-1">
+                Additional directors steering our specialized ring-fenced
+                operations across hydro and bio-refinery assets.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-10">
+            {SUBSIDIARY_DIRECTORS.map((director, idx) => (
+              <motion.div
+                key={director.id}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-40px" }}
+                variants={revealVariants}
+                custom={idx * 0.1}
+                className="group flex flex-col justify-between h-full bg-white border border-sand-300 shadow-sm hover:shadow-md transition-shadow duration-300"
+              >
+                <div>
+                  <div className="relative aspect-[4/4.6] overflow-hidden bg-navy-950">
+                    <img
+                      src={director.portraitImage}
+                      alt={director.portraitAlt}
+                      className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105 opacity-90"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy-950/70 via-transparent to-transparent opacity-60" />
+
+                    <span className="absolute top-4 left-4 px-3 py-1 bg-pingaksh-terracotta text-white text-[11px] font-bold tracking-wide shadow-sm">
+                      {director.boardCategory}
+                    </span>
+                  </div>
+
+                  <div className="p-6 sm:p-7">
+                    <h3 className="font-logo text-2xl text-pingaksh-navy">
+                      {director.name}
+                    </h3>
+                    <p className="text-xs font-semibold text-pingaksh-terracotta mt-1">
+                      {director.designation}
+                    </p>
+
+                    <div className="mt-3 inline-flex items-center gap-2 text-[10px] font-mono uppercase tracking-widest text-navy-500 bg-sand-100 px-2 py-1 rounded">
+                      <Building2 className="w-3.5 h-3.5 text-pingaksh-terracotta" />
+                      <span className="truncate max-w-[200px]">
+                        {director.entityName}
+                      </span>
+                    </div>
+
+                    <p className="text-xs text-navy-600 mt-4 leading-relaxed">
+                      {director.shortSummary}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="px-6 sm:px-7 py-4 border-t border-sand-200 flex items-center justify-between text-[11px] text-navy-500 bg-sand-50/50">
+                  <span>{director.almaMater}</span>
+                </div>
               </motion.div>
             ))}
           </div>

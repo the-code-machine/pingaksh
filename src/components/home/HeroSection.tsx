@@ -210,16 +210,11 @@ export default function HeroSection() {
               className="space-y-5 sm:space-y-6"
             >
               {/* Pill Tagline Badge */}
-   
+
               {/* Visual Display Headline (Retains your requested font) */}
               <h2 className="font-logo text-3xl sm:text-5xl lg:text-6xl xl:text-[62px] text-white leading-[1.12] tracking-wide">
                 {activeSlide.headline}
               </h2>
-
-              {/* Body Description (Retains your requested font) */}
-              <p className="font-body text-sm sm:text-base lg:text-lg text-sand-100/85 max-w-2xl leading-relaxed">
-                {activeSlide.subheadline}
-              </p>
 
               {/* Enterprise Structured Action Buttons */}
               <div className="flex flex-wrap items-center gap-4 pt-3">
@@ -254,94 +249,6 @@ export default function HeroSection() {
         {/* =========================================================
             4. BOTTOM SLIDE PROGRESS INDICATORS & CONTROLS
         ========================================================= */}
-        <div className="pt-6 border-t border-white/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-          {/* Interactive Slide Tabs with Progress Track */}
-          <div
-            role="tablist"
-            aria-label="Select Hero Highlight Slide"
-            className="grid grid-cols-3 gap-6 w-full sm:w-auto flex-1 max-w-2xl"
-          >
-            {HERO_SLIDES.map((slide, index) => {
-              const isCurrent = index === currentIndex;
-              return (
-                <button
-                  key={slide.id}
-                  role="tab"
-                  aria-selected={isCurrent}
-                  aria-label={`Show slide ${index + 1}: ${slide.statValue}`}
-                  onClick={() => setCurrentIndex(index)}
-                  className="text-left group cursor-pointer focus:outline-none"
-                >
-                  {/* Clean Track Line */}
-                  <div className="h-[2px] w-full bg-white/20 overflow-hidden mb-3">
-                    {isCurrent && (
-                      <motion.div
-                        key={`progress-${slide.id}-${isPaused}`}
-                        initial={{ width: "0%" }}
-                        animate={{ width: isPaused ? "0%" : "100%" }}
-                        transition={{
-                          duration: isPaused ? 0 : SLIDE_DURATION_MS / 1000,
-                          ease: "linear",
-                        }}
-                        className="h-full bg-pingaksh-sand"
-                      />
-                    )}
-                  </div>
-
-                  <span className="block text-[10px] uppercase font-bold tracking-[0.14em] text-white/50 group-hover:text-white/80 transition-colors truncate">
-                    0{index + 1}. {slide.statLabel}
-                  </span>
-                  <span
-                    className={`block text-xs sm:text-sm font-semibold mt-1 truncate transition-colors ${
-                      isCurrent
-                        ? "text-white"
-                        : "text-white/70 group-hover:text-white"
-                    }`}
-                  >
-                    {slide.statValue}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Right: Telemetry Status & Controls */}
-          <div className="flex items-center justify-between sm:justify-end gap-3 w-full sm:w-auto">
-            <Link
-              href="/sustainability/carbon-dashboard"
-              title="Open Live Carbon Offset Ticker"
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded bg-black/40 border border-white/10 hover:border-emerald-400/40 transition-colors"
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              <Leaf
-                className="w-3.5 h-3.5 text-emerald-400"
-                aria-hidden="true"
-              />
-              <span className="text-[11px] font-medium tracking-wide text-sand-100">
-                Live Grid Offsets Active
-              </span>
-            </Link>
-
-            <div className="flex items-center border border-white/20 rounded overflow-hidden">
-              <button
-                type="button"
-                onClick={prevSlide}
-                aria-label="Previous Hero Slide"
-                className="w-9 h-9 bg-black/30 hover:bg-white/20 text-white flex items-center justify-center transition-colors cursor-pointer border-r border-white/20"
-              >
-                <ChevronLeft className="w-4 h-4" aria-hidden="true" />
-              </button>
-              <button
-                type="button"
-                onClick={nextSlide}
-                aria-label="Next Hero Slide"
-                className="w-9 h-9 bg-black/30 hover:bg-white/20 text-white flex items-center justify-center transition-colors cursor-pointer"
-              >
-                <ChevronRight className="w-4 h-4" aria-hidden="true" />
-              </button>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );

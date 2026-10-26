@@ -99,7 +99,7 @@ export const ZERO_LIQUID_DISCHARGE_DATA: ZeroLiquidDischargePageData = {
   hero: {
     title: "100% Zero Liquid Discharge & Closed-Loop Water Stewardship",
     subtitle:
-      "Every drop of process water inside our 250–350 KLPD grain bio-refinery is separated, evaporated, purified through multi-stage Reverse Osmosis membranes, and recycled back into liquefaction and cooling towers—resulting in zero effluent discharge outside plant boundaries.",
+      "Every drop of process water inside our 250 KLPD grain bio-refinery is separated, evaporated, purified through multi-stage Reverse Osmosis membranes, and recycled back into liquefaction and cooling towers—resulting in zero effluent discharge outside plant boundaries.",
     complianceStandard:
       "CPCB & MoEFCC Chartered ZLD Standard • Real-Time Online Effluent Monitoring (OCEMS)",
     kpis: [

@@ -100,8 +100,8 @@ export const SUBSIDIARY_LEADERSHIP_DATA: SubsidiaryLeadershipPageData = {
       shortName: "Pingaksh Bio-Energy",
       headquarters: "Integrated Bio-Refinery Complex, Northern India",
       coreMandate:
-        "Commercial operation of the 250–350 KLPD grain-based E20 ethanol refinery, 6.5 MW captive cogeneration plant, and 100% Zero-Liquid-Discharge recovery loop.",
-      flagshipAssetMetric: "250–350 KLPD E20 Ethanol • 100% ZLD",
+        "Commercial operation of the 250 KLPD grain-based E20 ethanol refinery, 6.5 MW captive cogeneration plant, and 100% Zero-Liquid-Discharge recovery loop.",
+      flagshipAssetMetric: "250 KLPD E20 Ethanol • 100% ZLD",
     },
     {
       id: "pingaksh-agro-circular",
@@ -241,7 +241,7 @@ export const SUBSIDIARY_LEADERSHIP_DATA: SubsidiaryLeadershipPageData = {
       portraitAlt:
         "Mr. Harpreet Singh Gill - President & Plant Head of Pingaksh Bio-Energy",
       shortSummary:
-        "Directs end-to-end operations of the 250–350 KLPD fuel ethanol complex, enzymatic fermentation yields, PESO tank-farm safety, and OMC dispatch logistics.",
+        "Directs end-to-end operations of the 250 KLPD fuel ethanol complex, enzymatic fermentation yields, PESO tank-farm safety, and OMC dispatch logistics.",
       executiveQuote:
         "Running a 330-day continuous grain bio-refinery requires absolute synchronization between enzymatic fermentation, multi-pressure thermal integration, and zero-defect OMC dispatch.",
       biographyParagraphs: [
@@ -249,7 +249,7 @@ export const SUBSIDIARY_LEADERSHIP_DATA: SubsidiaryLeadershipPageData = {
         "He oversees raw grain milling, high-gravity enzymatic liquefaction, continuous yeast fermentation, vacuum distillation, and vapor-phase Molecular Sieve Dehydration (MSDH)—consistently achieving 99.8% v/v anhydrous ethanol purity for Indian Oil, BPCL, and HPCL.",
       ],
       operationalMandates: [
-        "330+ days annual plant uptime across the 250–350 KLPD distillation block",
+        "330+ days annual plant uptime across the 250 KLPD distillation block",
         "Fermentation recovery optimization (>94.8% efficiency) across maize and rice feedstocks",
         "PESO-licensed ethanol storage tank farm safety and OMC tanker gantry dispatch",
         "6.5 MW captive biomass cogeneration turbine and 45 TPH boiler synchronization",

@@ -82,7 +82,7 @@ export const E20_ETHANOL_IMPACT_DATA: E20EthanolImpactPageData = {
     title:
       "E20 Ethanol vs. Pure Petrol Impact: Tailpipe Emissions & Crude Substitution | Pingaksh Renewables",
     description:
-      "Technical audit of E20 grain bio-ethanol vs. pure fossil petrol—quantifying tailpipe CO, hydrocarbon, and CO₂ emission savings alongside crude oil import substitution from Pingaksh's 250–350 KLPD distillery.",
+      "Technical audit of E20 grain bio-ethanol vs. pure fossil petrol—quantifying tailpipe CO, hydrocarbon, and CO₂ emission savings alongside crude oil import substitution from Pingaksh's 250 KLPD distillery.",
     canonicalUrl: "https://pingaksh.com/sustainability/e20-ethanol-impact",
     keywords: [
       "E20 Ethanol vs Pure Petrol Impact",
@@ -105,7 +105,7 @@ export const E20_ETHANOL_IMPACT_DATA: E20EthanolImpactPageData = {
   hero: {
     title: "E20 Ethanol vs. Pure Petrol Impact",
     subtitle:
-      "Quantifying tailpipe emission reductions, octane combustion efficiency, and sovereign crude oil import substitution pegged to Pingaksh Renewables' 250–350 KLPD grain bio-refinery.",
+      "Quantifying tailpipe emission reductions, octane combustion efficiency, and sovereign crude oil import substitution pegged to Pingaksh Renewables' 250 KLPD grain bio-refinery.",
     policyAlignment:
       "National Biofuel Policy & NITI Aayog / ARAI E20 Roadmap Benchmark",
     kpis: [
@@ -119,7 +119,7 @@ export const E20_ETHANOL_IMPACT_DATA: E20EthanolImpactPageData = {
         label: "Daily Distillery Offset (250 KLPD)",
         value: "412.50 MT",
         comparisonNote: "250,000 Liters / Day Output",
-        subtext: "577.50 MT/day at 350 KLPD expansion",
+        subtext: "412.50 MT/day at 250 KLPD capacity",
       },
       {
         label: "Tailpipe Carbon Monoxide (CO) Cut",

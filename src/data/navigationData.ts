@@ -56,12 +56,6 @@ export const NAVIGATION_DATA: NavItem[] = [
             href: "/who-we-are/board-of-directors",
             description: "The leadership team guiding our strategic growth.",
           },
-          {
-            label: "Group Structure",
-            href: "/who-we-are/subsidiary-leadership",
-            description:
-              "Overview of our operational framework and subsidiary entities.",
-          },
         ],
       },
     ],
@@ -87,30 +81,13 @@ export const NAVIGATION_DATA: NavItem[] = [
             label: "Hydro Power Generation",
             href: "/our-businesses/hydro-power",
             description: "Run-of-the-river projects across the Sarju basin.",
-            badge: "Sarju I, II, III",
+            badge: "Sarju II, III",
           },
           {
             label: "Green Fuels & Bio-Energy",
             href: "/our-businesses/green-fuels-ethanol",
             description: "State-of-the-art grain-based ethanol distillation.",
             badge: "250 KLPD",
-          },
-        ],
-      },
-      {
-        heading: "Circular Economy",
-        items: [
-          {
-            label: "By-Products Integration",
-            href: "/our-businesses/circular-byproducts",
-            description:
-              "High-protein DDGS, CO₂ bottling, and dry ice production.",
-          },
-          {
-            label: "Asset SPVs",
-            href: "/our-businesses/subsidiaries-spvs",
-            description:
-              "Special Purpose Vehicles dedicated to specific project assets.",
           },
         ],
       },
@@ -133,36 +110,30 @@ export const NAVIGATION_DATA: NavItem[] = [
         heading: "Carbon Analytics",
         items: [
           {
-            label: "Emissions Dashboard",
+            label: "CO₂ Omission Dashboard",
             href: "/sustainability/carbon-dashboard",
             description: "Tracking our cumulative CO₂ reduction metrics.",
             badge: "Live Data",
           },
-          {
-            label: "Lifecycle Impact",
-            href: "/sustainability/hydro-vs-coal",
-            description:
-              "Emission avoidance compared to conventional power sources.",
-          },
         ],
       },
-      {
-        heading: "Ecology & Conservation",
-        items: [
-          {
-            label: "Fuel Blending Impact",
-            href: "/sustainability/e20-ethanol-impact",
-            description:
-              "Contributions to the E20 mandate and tailpipe emission reductions.",
-          },
-          {
-            label: "Zero-Liquid Discharge (ZLD)",
-            href: "/sustainability/zero-liquid-discharge",
-            description:
-              "100% water recycling and catchment conservation initiatives.",
-          },
-        ],
-      },
+      // {
+      //   heading: "Ecology & Conservation",
+      //   items: [
+      //     {
+      //       label: "Fuel Blending Impact",
+      //       href: "/sustainability/e20-ethanol-impact",
+      //       description:
+      //         "Contributions to the E20 mandate and tailpipe emission reductions.",
+      //     },
+      //     {
+      //       label: "Zero-Liquid Discharge (ZLD)",
+      //       href: "/sustainability/zero-liquid-discharge",
+      //       description:
+      //         "100% water recycling and catchment conservation initiatives.",
+      //     },
+      //   ],
+      // },
     ],
     featuredInsight: {
       category: "Sustainability",

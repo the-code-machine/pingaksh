@@ -177,7 +177,7 @@ export const VISION_MISSION_DATA: VisionMissionPageData = {
     title: "Engineered in Harmony with Nature.",
     highlightedTitle: "Built for Generational Scale.",
     subtitle:
-      "From high-head Himalayan river valleys in Bageshwar to zero-liquid-discharge bio-refineries, our purpose is to power India's industrial momentum without compromising ecological balance.",
+      "From high-head Himalayan river valleys in Bageshwar to zero-liquid-discharge bio-refineries, our purpose is to secure India’s energy future without compromising ecological balance.",
     sanskritBadge: "पिंगाक्ष • TRADITION MEETS PROGRESS",
     backgroundImage:
       "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=2000&q=85",
@@ -191,12 +191,12 @@ export const VISION_MISSION_DATA: VisionMissionPageData = {
       },
       {
         label: "Hydro Cascade Footprint",
-        value: "Sarju I–III",
+        value: "Sarju II–III",
         subtext: "Run-of-the-river, Bageshwar (UK)",
       },
       {
         label: "Bio-Energy Distillation",
-        value: "250–350 KLPD",
+        value: "250 KLPD",
         subtext: "Grain-based E20 ethanol & DDGS",
       },
       {
@@ -429,7 +429,7 @@ export const VISION_MISSION_DATA: VisionMissionPageData = {
         targetYear: "2025–2030",
         pingakshContribution:
           "Supplying high-purity anhydrous ethanol from grain-based distilleries to Oil Marketing Companies (OMCs), reducing crude oil import bills and tailpipe emissions.",
-        headlineMetric: "250–350",
+        headlineMetric: "250",
         unit: "KLPD Distillation Capacity",
         details:
           "Supports national foreign exchange savings and rural grain price stability.",

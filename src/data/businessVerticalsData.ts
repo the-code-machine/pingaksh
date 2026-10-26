@@ -21,6 +21,27 @@ export interface PlantAssetUnit {
   }[];
 }
 
+export interface ProcessStageStep {
+  stepNumber: string;
+  subLabel: string;
+  stageTitle: string;
+  branchCategory: "primary-stream" | "co2-branch" | "byproduct-branch";
+  technicalDescription: string;
+  keyOutputMetric: string;
+  carbonImpactNote: string;
+}
+
+export interface ProcessSystemData {
+  id: string;
+  tabLabel: string;
+  systemTitle: string;
+  baselineFormulaText: string;
+  videoUrl: string;
+  videoPoster: string;
+  videoCaption: string;
+  steps: ProcessStageStep[];
+}
+
 export interface TelemetrySeriesPoint {
   year: string;
   value: number;
@@ -75,6 +96,7 @@ export interface BusinessVerticalData {
   assetsHeading: string;
   assetsDescription: string;
   plantUnits: PlantAssetUnit[];
+  processSystems: ProcessSystemData[];
   telemetry: {
     heading: string;
     subheading: string;
@@ -111,9 +133,9 @@ export const BUSINESS_VERTICALS_DATA: BusinessVerticalData[] = [
     legalEntity: "Uttar Bharat Hydro Power Private Limited (UBHP)",
     seo: {
       title:
-        "Hydroelectric Power (Sarju I, II & III Cascade) | Pingaksh Renewables",
+        "Hydroelectric Power (Sarju II & III Cascade) | Pingaksh Renewables",
       description:
-        "Explore Uttar Bharat Hydro Power (UBHP)—operating the 33 MW Sarju-I, Sarju-II, and Sarju-III run-of-the-river hydroelectric cascade in Bageshwar, Uttarakhand.",
+        "Explore Uttar Bharat Hydro Power (UBHP)—operating the 30.60 MW Sarju-I, Sarju-II, and Sarju-III run-of-the-river hydroelectric cascade in Bageshwar, Uttarakhand.",
       keywords: [
         "Uttar Bharat Hydro Power UBHP",
         "Sarju I II III Hydro Project Bageshwar",
@@ -127,7 +149,7 @@ export const BUSINESS_VERTICALS_DATA: BusinessVerticalData[] = [
       subtitle:
         "Channeling Himalayan snowmelt across the Sarju River gorge in Bageshwar, Uttarakhand through zero-submergence headrace tunnels and high-head Francis turbines.",
       heroImage:
-        "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=2000&q=85",
+        "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/_MG_3176_f4afd809.webp",
       heroImageAlt:
         "Himalayan river gorge and run-of-the-river hydroelectric weir in Uttarakhand",
       heroVideoUrl:
@@ -135,13 +157,13 @@ export const BUSINESS_VERTICALS_DATA: BusinessVerticalData[] = [
       keyMetrics: [
         {
           label: "Installed Cascade Capacity",
-          value: "33.0",
-          unit: "MW (Sarju I–III)",
+          value: "30.60",
+          unit: "MW (Sarju II–III)",
         },
         {
           label: "Peak Net Hydraulic Head",
-          value: "155.0",
-          unit: "Meters (Sarju-II)",
+          value: "160.0",
+          unit: "Meters (Sarju-III & II)",
         },
         {
           label: "Plant Availability Factor",
@@ -188,26 +210,26 @@ export const BUSINESS_VERTICALS_DATA: BusinessVerticalData[] = [
         id: "sarju-iii",
         name: "Sarju-III Small Hydro Power Project",
         location: "Kapkot, Bageshwar District, Uttarakhand",
-        status: "Operational (Commercial COD: July 2014)",
-        capacity: "10.5 MW (3 × 3.5 MW)",
+        status: "Operational (COD: 11.07.2014)",
+        capacity: "10.50 MW (3 × 3.50 MW)",
         summary:
           "The first project commissioned in the cascade, proving UBHP's geological tunneling capabilities and establishing synchronous evacuation to the UPCL state grid.",
         image:
-          "https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=1400&q=85",
+          "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/_MG_3236_decb7578.webp",
         imageAlt: "Sarju-III Hydroelectric Turbine Hall and Generator Floor",
         technicalSpecs: [
           {
             parameter: "Installed Capacity",
-            specification: "10.5 MW (3 Units × 3,500 kW)",
+            specification: "10.50 MW (3 Units × 3,600 kW Rated)",
           },
           {
             parameter: "Turbine Configuration",
             specification: "Horizontal Shaft Francis Turbine",
           },
-          { parameter: "Rated Net Head", specification: "91.5 Meters" },
+          { parameter: "Rated Net Head", specification: "51.85 Meters" },
           {
             parameter: "Design Discharge",
-            specification: "13.95 Cubic Meters / Sec (Cumecs)",
+            specification: "6.73 Cubic Meters / Sec per Unit",
           },
           {
             parameter: "Headrace Conduit",
@@ -227,17 +249,17 @@ export const BUSINESS_VERTICALS_DATA: BusinessVerticalData[] = [
         id: "sarju-ii",
         name: "Sarju-II Small Hydro Power Project",
         location: "Kapkot, Bageshwar District, Uttarakhand",
-        status: "Operational (High-Head Flagship)",
-        capacity: "15.0 MW (3 × 5.0 MW)",
+        status: "Operational (COD: 25.05.2016)",
+        capacity: "12.60 MW (3 × 4.20 MW)",
         summary:
-          "The highest-head powerhouse in the Sarju cascade, memanfaatkan a 155-meter vertical drop to generate high-efficiency peaking and baseload renewable power.",
+          "High-head operational powerhouse in the Sarju cascade, utilizing a 155-meter vertical drop to generate high-efficiency peaking and baseload renewable power.",
         image:
-          "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=1400&q=85",
+          "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/_MG_3298_a03835e3.webp",
         imageAlt: "Sarju-II High-Head Penstock and Himalayan Gorge",
         technicalSpecs: [
           {
             parameter: "Installed Capacity",
-            specification: "15.0 MW (3 Units × 5,000 kW)",
+            specification: "12.60 MW (3 Units × 4,200 kW)",
           },
           {
             parameter: "Turbine Configuration",
@@ -246,7 +268,7 @@ export const BUSINESS_VERTICALS_DATA: BusinessVerticalData[] = [
           { parameter: "Rated Net Head", specification: "155.0 Meters" },
           {
             parameter: "Design Discharge",
-            specification: "11.40 Cubic Meters / Sec (Cumecs)",
+            specification: "2.59 Cubic Meters / Sec per Unit",
           },
           {
             parameter: "Desilting Arrangement",
@@ -257,47 +279,128 @@ export const BUSINESS_VERTICALS_DATA: BusinessVerticalData[] = [
             specification: "11 kV stepped up to 33 kV / 132 kV",
           },
           {
-            parameter: "Annual Design Energy",
-            specification: "68.4 Million Units (MU)",
+            parameter: "Power Offtaker",
+            specification: "Uttarakhand Power Corporation Ltd. (UPCL)",
+          },
+        ],
+      },
+    ],
+    processSystems: [
+      {
+        id: "hydro-hydraulic-flow",
+        tabLabel: "01 · Hydraulic & Tunneling Flow",
+        systemTitle: "Sarju Cascade Hydraulic Conveyance: Intake to Turbine",
+        baselineFormulaText:
+          "CEA Baseline Grid Displacement: 0.82 kg CO₂ / kWh Exported",
+        videoUrl:
+          "https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-a-river-in-the-mountains-41612-large.mp4",
+        videoPoster:
+          "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=1600&q=85",
+        videoCaption:
+          "Perennial snowmelt diversion along the Sarju River gorge in Tehsil Kapkot, Bageshwar—maintaining mandatory e-Flow while routing silt-free water through underground tunnels.",
+        steps: [
+          {
+            stepNumber: "01",
+            subLabel: "River Diversion & e-Flow",
+            stageTitle: "Drop-Type Trench Weir & Intake",
+            branchCategory: "primary-stream",
+            technicalDescription:
+              "Diverts a calibrated portion of the Sarju River discharge through automated trash racks while releasing mandatory uninterrupted environmental flow (e-Flow) downstream.",
+            keyOutputMetric: "Zero Reservoir Submergence",
+            carbonImpactNote:
+              "Eliminates methane emissions associated with large stagnant dam reservoirs.",
+          },
+          {
+            stepNumber: "02",
+            subLabel: "Quartz Silt Extraction",
+            stageTitle: "Underground Desilting Basin",
+            branchCategory: "byproduct-branch",
+            technicalDescription:
+              "Continuous flushing hopper basins settle and eject >96% of suspended Himalayan quartz particles larger than 0.20 mm back into the river bed.",
+            keyOutputMetric: ">96% Silt Removal (>0.2mm)",
+            carbonImpactNote:
+              "Protects HVOF-coated turbine runners and preserves natural downstream sediment transport.",
+          },
+          {
+            stepNumber: "03",
+            subLabel: "High-Pressure Conveyance",
+            stageTitle: "Headrace Tunnel & Surge Shaft",
+            branchCategory: "primary-stream",
+            technicalDescription:
+              "Concrete-lined underground headrace tunnels and ASTM A537 steel penstocks build up to 155–160 meters of net hydraulic head without disturbing surface forest cover.",
+            keyOutputMetric: "Up to 160m Net Head",
+            carbonImpactNote:
+              "Subsurface alignment preserves 100% of overlying Himalayan oak and pine slope ecology.",
+          },
+          {
+            stepNumber: "04",
+            subLabel: "Electro-Mechanical Conversion",
+            stageTitle: "Horizontal Francis Turbines & Tailrace",
+            branchCategory: "co2-branch",
+            technicalDescription:
+              "High-velocity water drives horizontal-shaft Francis runners coupled to 11 kV synchronous generators before 100% of the water exits cleanly via the tailrace channel.",
+            keyOutputMetric: "0.82 kg CO₂/kWh Offset",
+            carbonImpactNote:
+              "100% non-consumptive water usage—every liter diverted returns unpolluted to the Sarju River.",
           },
         ],
       },
       {
-        id: "sarju-i",
-        name: "Sarju-I Small Hydro Power Project",
-        location: "Upstream Kapkot Valley, Uttarakhand",
-        status: "Upstream Cascade Integration",
-        capacity: "7.5 MW (2 × 3.75 MW)",
-        summary:
-          "Completes the upstream hydraulic optimization of the Sarju valley, capturing glacial meltwater at higher elevation before discharging directly into the downstream cascade.",
-        image:
-          "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1400&q=85",
-        imageAlt: "Upstream Himalayan catchment of Sarju-I Hydro Project",
-        technicalSpecs: [
+        id: "hydro-scada-evacuation",
+        tabLabel: "02 · SCADA & Grid Evacuation",
+        systemTitle: "Synchronous Switchyard & UPCL Grid Telemetry",
+        baselineFormulaText:
+          "33 kV / 132 kV Double-Circuit Evacuation · >99.4% Switchyard Uptime",
+        videoUrl:
+          "https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-a-river-in-the-mountains-41612-large.mp4",
+        videoPoster:
+          "https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=1600&q=85",
+        videoCaption:
+          "Real-time PLC governor synchronization and 33/132 kV switchyard protection feeding clean baseload electricity to the UPCL Bageshwar substation.",
+        steps: [
           {
-            parameter: "Installed Capacity",
-            specification: "7.5 MW (2 Units × 3,750 kW)",
+            stepNumber: "01",
+            subLabel: "Digital Hydraulic Governor",
+            stageTitle: "Automated Wicket-Gate Regulation",
+            branchCategory: "primary-stream",
+            technicalDescription:
+              "PLC-controlled electro-hydraulic governors continuously modulate guide-vane openings in response to upstream water levels and grid frequency.",
+            keyOutputMetric: "50.0 Hz ±0.05 Sync",
+            carbonImpactNote:
+              "Maximizes energy conversion efficiency across lean winter and peak monsoon flows.",
           },
           {
-            parameter: "Turbine Configuration",
-            specification: "Horizontal Shaft Francis Turbine",
-          },
-          { parameter: "Rated Net Head", specification: "78.0 Meters" },
-          {
-            parameter: "Design Discharge",
-            specification: "11.20 Cubic Meters / Sec (Cumecs)",
-          },
-          {
-            parameter: "Diversion Structure",
-            specification: "Boulder-Resistant Drop Trench Weir",
+            stepNumber: "02",
+            subLabel: "11 kV Generation Bus",
+            stageTitle: "Brushless Synchronous Excitation",
+            branchCategory: "primary-stream",
+            technicalDescription:
+              "Three-phase brushless synchronous alternators generate stable power at 11 kV with automatic voltage regulation (AVR) and reactive power compensation.",
+            keyOutputMetric: "0.90 Lagging Power Factor",
+            carbonImpactNote:
+              "Stabilizes voltage profiles across remote hill-district distribution feeders.",
           },
           {
-            parameter: "Control Architecture",
-            specification: "Fully Automated PLC-SCADA Synchronization",
+            stepNumber: "03",
+            subLabel: "Outdoor Switchyard",
+            stageTitle: "11 / 33 kV Step-Up Transformers",
+            branchCategory: "byproduct-branch",
+            technicalDescription:
+              "Oil-immersed step-up transformers and SF6 circuit breakers interface the powerhouse busbars with the dedicated double-circuit transmission corridor.",
+            keyOutputMetric: "99.4% Plant Availability",
+            carbonImpactNote:
+              "Low-loss CRGO transformer cores minimize auxiliary transmission losses.",
           },
           {
-            parameter: "Environmental Category",
-            specification: "Zero-Submergence Green Run-of-the-River",
+            stepNumber: "04",
+            subLabel: "State Grid Injection",
+            stageTitle: "UPCL Bageshwar Substation Metering",
+            branchCategory: "co2-branch",
+            technicalDescription:
+              "ABT (Availability Based Tariff) compliant four-quadrant smart meters record real-time green energy export under long-term UERC-approved PPAs.",
+            keyOutputMetric: "217,800+ MT CO₂ Saved",
+            carbonImpactNote:
+              "Directly displaces coal-fired thermal power imports into the Uttarakhand state grid.",
           },
         ],
       },
@@ -368,20 +471,9 @@ export const BUSINESS_VERTICALS_DATA: BusinessVerticalData[] = [
         "Visual documentation from the Sarju River diversion weirs, headrace tunnels, and powerhouse machine halls in Uttarakhand.",
       slides: [
         {
-          id: "hydro-media-1",
-          type: "video",
-          src: "https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-a-river-in-the-mountains-41612-large.mp4",
-          posterUrl:
-            "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=1600&q=85",
-          title: "Aerial Survey: Sarju River Gorge & Diversion Corridor",
-          caption:
-            "High-gradient Himalayan hydrology in Bageshwar district providing perennial snowmelt discharge.",
-          locationTag: "Kapkot Valley, Uttarakhand",
-        },
-        {
           id: "hydro-media-2",
           type: "image",
-          src: "https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=1600&q=85",
+          src: "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/_MG_3227_4a76b3f5.webp",
           title: "Horizontal Francis Turbine & Synchronous Generator Hall",
           caption:
             "Inside the machine hall featuring automated hydraulic governors and brushless excitation systems.",
@@ -390,11 +482,38 @@ export const BUSINESS_VERTICALS_DATA: BusinessVerticalData[] = [
         {
           id: "hydro-media-3",
           type: "image",
-          src: "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=1600&q=85",
+          src: "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/_MG_3451_ab6b9ccb.webp",
           title: "Zero-Submergence Ecological Catchment",
           caption:
             "Protected oak and pine forest slopes above the underground headrace tunnel alignment.",
           locationTag: "Sarju-II Alignment",
+        },
+        {
+          id: "csr-slide-4",
+          type: "image",
+          src: "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/_MG_3807_b730c0a3.webp",
+          title: "Project Dedication & Regional Integration",
+          caption:
+            "Foundation stone and inauguration milestones cementing our long-term commitment to Uttarakhand's energy independence.",
+          locationTag: "Kapkot, Bageshwar",
+        },
+        {
+          id: "csr-slide-5",
+          type: "image",
+          src: "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/_MG_3836_bfb9b053.webp",
+          title: "Rural Educational Upliftment",
+          caption:
+            "Distributing educational resources and supporting primary schooling infrastructure for villages surrounding the Sarju cascade.",
+          locationTag: "Pingaksh CSR Initiative",
+        },
+        {
+          id: "csr-slide-6",
+          type: "image",
+          src: "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/_MG_3751_a4bd973c.webp",
+          title: "Empowering the Next Generation",
+          caption:
+            "Fostering academic excellence and technical curiosity among local students in the Himalayan belt.",
+          locationTag: "Bageshwar District",
         },
       ],
     },
@@ -411,619 +530,890 @@ export const BUSINESS_VERTICALS_DATA: BusinessVerticalData[] = [
         {
           year: "2014",
           title: "Commercial Synchronization of Sarju-III",
-          metric: "10.5 MW COD",
+          metric: "10.50 MW COD",
           description:
-            "First grid synchronization achieved with UPCL, establishing reliable clean energy evacuation from Bageshwar.",
+            "First grid synchronization achieved with UPCL on 11.07.2014, establishing reliable clean energy evacuation from Bageshwar.",
         },
         {
-          year: "2018",
+          year: "2016",
           title: "High-Head Commissioning of Sarju-II",
-          metric: "15.0 MW / 155m Head",
+          metric: "12.60 MW / 155m Head",
           description:
-            "Completion of deep rock tunneling and high-pressure steel penstock installation for the 15 MW flagship powerhouse.",
+            "Commercial commissioning of the 12.60 MW flagship powerhouse on 25.05.2016 following deep rock tunneling and penstock erection.",
         },
         {
-          year: "2024",
-          title: "SCADA Digital Twin & HVOF Runner Modernization",
-          metric: "99.4% Uptime",
+          year: "2025",
+          title: "SCADA Digital Twin & Sarju-I Upstream Works",
+          metric: "30.60 MW Total",
           description:
-            "Deployment of predictive vibration telemetry and ceramic-metallic turbine runner coatings across the cascade.",
+            "Deployment of predictive vibration telemetry across operating units alongside civil execution for the 7.50 MW Sarju-I upstream stage.",
         },
       ],
     },
   },
 
   // =========================================================================
-  // 2. GREEN FUELS & BIO-ETHANOL (250-350 KLPD DISTILLERY)
+  // 2. GREEN FUELS & ETHANOL (PBPL - 250 TO 350 KLPD BIOREFINERY)
   // =========================================================================
   {
     slug: "green-fuels-ethanol",
-    name: "Green Fuels & Grain Bio-Ethanol",
-    shortName: "Pingaksh Bio-Energy",
-    legalEntity: "Pingaksh Bio-Energy & Green Fuels Limited",
+    name: "Green Fuels & Bio-Ethanol",
+    shortName: "PBPL Bio-Refinery",
+    legalEntity: "Pingaksh Beverages Private Limited (PBPL)",
     seo: {
-      title:
-        "Green Fuels & 250 KLPD Grain Bio-Ethanol Refinery | Pingaksh Renewables",
+      title: "250 KLPD Grain-Based Ethanol Biorefinery | Pingaksh Renewables",
       description:
-        "Discover Pingaksh Green Fuels—operating a 250–350 KLPD Zero-Liquid-Discharge (ZLD) grain-based bio-ethanol refinery supplying national Oil Marketing Companies (OMCs) under India's E20 mandate.",
+        "Discover Pingaksh Beverages Pvt. Ltd. (PBPL)—operating a 250 KLPD  automated grain-based fuel ethanol biorefinery supporting India's E20 blending mandate.",
       keywords: [
-        "Pingaksh Green Fuels Bio Ethanol",
-        "250 KLPD Grain Ethanol Plant India",
-        "Zero Liquid Discharge Distillery",
-        "E20 Ethanol Blending OMC Supplier",
-        "Pingaksh Renewables Bio-Refinery",
+        "Pingaksh Beverages PBPL Ethanol",
+        "250 KLPD Grain Distillery India",
+        "E20 Fuel Grade Anhydrous Ethanol",
+        "BIS IS 15464 Ethanol Supplier OMC",
+        "Zero Liquid Discharge Biorefinery",
       ],
     },
     hero: {
-      title: "Grain-Based Bio-Ethanol & Green Fuels",
+      title: "Automated Grain-to-Ethanol Biorefining",
       subtitle:
-        "Advancing India's E20 energy sovereignty through multi-pressure grain distillation, molecular sieve dehydration, and 100% Zero-Liquid-Discharge (ZLD) water circularity.",
+        "Supplying 99.8% v/v anhydrous fuel-grade ethanol to Public Sector Oil Marketing Companies under India's National E20 Blending Programme with 100% Zero-Liquid Discharge.",
       heroImage:
         "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=2000&q=85",
       heroImageAlt:
-        "Automated stainless-steel bio-ethanol distillation columns and process piping",
+        "Pingaksh Beverages 250 KLPD Grain-Based Bio-Ethanol Distillation Columns",
+      heroVideoUrl:
+        "https://assets.mixkit.co/videos/preview/mixkit-industrial-plant-with-pipes-and-smoke-42654-large.mp4",
       keyMetrics: [
         {
           label: "Distillation Capacity",
-          value: "250–350",
-          unit: "KLPD (Anhydrous Ethanol)",
+          value: "250",
+          unit: "KLPD ",
         },
         {
           label: "Ethanol Fuel Purity",
           value: "99.8",
-          unit: "% v/v IS-15464 OMC Grade",
-        },
-        {
-          label: "Captive Co-Generation",
-          value: "6.5",
-          unit: "MW Back-Pressure Steam Turbine",
+          unit: "% v/v (BIS IS 15464)",
         },
         {
           label: "Effluent Discharge",
           value: "0.0",
-          unit: "Liters (100% Closed-Loop ZLD)",
+          unit: "Liters (100% CPCB ZLD)",
+        },
+        {
+          label: "Daily Carbon Displacement",
+          value: "600+",
+          unit: "MT CO₂ Displaced / Day",
         },
       ],
     },
     overview: {
       headline:
-        "Precision bioprocess engineering converting surplus non-food grains into high-octane green transportation fuel.",
+        "DCS-automated multi-pressure distillation and molecular sieve dehydration engineered for zero-waste biofuel production.",
       leadParagraph:
-        "Aligned with the Government of India's National Biofuel Policy and the 20% Ethanol Blending Programme (E20), Pingaksh Bio-Energy operates a state-of-the-art dry-milling grain distillery. By utilizing damaged food grains (DFG), surplus maize, and broken rice procured directly from regional agricultural hubs, our facility decouples biofuel production from sugar-cane water intensity.",
+        "Housed under Pingaksh Beverages Private Limited (PBPL), our state-of-the-art grain-based biorefinery converts non-food broken rice and maize into anhydrous ethanol for blending with petrol by IndianOil, BPCL, and HPCL. The complex is engineered with full Distributed Control System (DCS) automation and a captive co-generation power island.",
       bodyParagraph:
-        "The refinery integrates continuous enzymatic liquefaction, high-gravity yeast fermentation, multi-pressure vacuum distillation, and vapor-phase Molecular Sieve Dehydration (MSDH). A captive biomass/husk-fired cogeneration power plant supplies 100% of the facility's steam and electrical load, making the entire complex self-sustaining.",
+        "By integrating thermal vapor recompression across our distillation columns and recycling >95% of process condensate, PBPL achieves benchmark steam-to-ethanol efficiency while valorizing 100% of spent grain solids into high-protein DDGS animal feed and food-grade liquid CO₂.",
       highlights: [
         {
-          title: "Long-Term OMC Offtake Security",
+          title: "Assured Public Sector OMC Off-Take",
           detail:
-            "Dedicated dispatch bays supplying fuel-grade ethanol directly to Indian Oil (IOCL), Bharat Petroleum (BPCL), and Hindustan Petroleum (HPCL) depots.",
+            "Long-term Ethanol Supply Year (ESY) allocation agreements with national Oil Marketing Companies backed by tri-partite escrow mechanisms.",
         },
         {
-          title: "100% Zero Liquid Discharge (ZLD)",
+          title: "Captive Biomass Co-Generation Island",
           detail:
-            "Integrated decanter centrifuges, Multi-Effect Evaporators (MEE), and Process Condensate Treatment (CPU) recycle over 82% of process water back into fermentation.",
+            "High-pressure travelling-grate boiler and back-pressure steam turbine make the entire 250 KLPD complex 100% self-sufficient in thermal and electrical energy.",
         },
         {
-          title: "DCS-Controlled Process Safety",
+          title: "PESO Class-A Automated Tank Farm",
           detail:
-            "Fully automated Distributed Control System (DCS) with PESO-compliant tank farms, nitrogen blanketing, and automated foam suppression.",
+            "Radar-gauged bulk ethanol storage receivers and mass-flow metered multi-bay tanker loading gantries certified by PESO.",
         },
       ],
     },
-    assetsHeading: "Integrated Bio-Refinery Process Blocks",
+    assetsHeading: "Biorefinery Process Islands & Technical Datasheets",
     assetsDescription:
-      "Inspect the core engineering blocks within the Pingaksh Green Fuels complex—from multi-pressure distillation to captive cogeneration and ZLD recovery.",
+      "Select an operating island within the PBPL biorefinery complex to inspect its distillation, dehydration, and captive co-generation specifications.",
     plantUnits: [
       {
-        id: "ethanol-distillation-block",
-        name: "250–350 KLPD Multi-Pressure Distillation & MSDH Unit",
-        location: "Integrated Bio-Energy Complex, Northern India",
-        status: "Operational — OMC Supply Active",
-        capacity: "250 KLPD (Expandable to 350 KLPD)",
+        id: "milling-fermentation-island",
+        name: "Liquefaction & Hi-Gravity Fermentation Island",
+        location: "PBPL Biorefinery Complex, Northern India",
+        status: "24×7 DCS Automated Operation",
+        capacity: "250 KLPD Mash Throughput",
         summary:
-          "Vacuum distillation and vapor-phase molecular sieve dehydration unit producing 99.8% v/v anhydrous fuel ethanol with ultra-low specific steam consumption.",
+          "Dust-free pneumatic grain handling, hammer milling, jet-cooking enzymatic liquefaction, and closed-loop temperature-controlled fermenters.",
         image:
           "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1400&q=85",
-        imageAlt: "Distillation columns and molecular sieve dehydration system",
+        imageAlt: "Automated Grain Fermentation Vessels at PBPL",
         technicalSpecs: [
           {
-            parameter: "Rated Output",
-            specification: "250,000 – 350,000 Liters / Day",
-          },
-          {
             parameter: "Feedstock Flexibility",
-            specification:
-              "100% Grain (Maize, Broken Rice, Damaged Food Grains)",
+            specification: "100% Broken Rice / Maize (Dual-Grain Capable)",
           },
           {
-            parameter: "Product Specification",
-            specification: "Anhydrous Ethanol (99.8% v/v per IS 15464)",
+            parameter: "Milling Technology",
+            specification: "Vibro-Destoner, Magnetic Separator & Hammer Mills",
+          },
+          {
+            parameter: "Liquefaction System",
+            specification: "3-Stage Slurry Jet Cooking & Flash Cooling",
+          },
+          {
+            parameter: "Fermentation Efficiency",
+            specification: ">91.5% Stoichiometric Sugar-to-Ethanol Conversion",
+          },
+          {
+            parameter: "Off-Gas Capture",
+            specification: "Closed CO₂ Header Linked to Scrubbing Compressors",
+          },
+        ],
+      },
+      {
+        id: "mpd-msdh-island",
+        name: "Multi-Pressure Distillation & Molecular Sieve (MSDH)",
+        location: "PBPL Biorefinery Complex, Northern India",
+        status: "BIS IS 15464 Certified",
+        capacity: "250 KLPD Anhydrous",
+        summary:
+          "Vacuum-assisted multi-pressure distillation columns coupled with vapor-phase zeolite molecular sieve beds producing >99.8% v/v fuel ethanol.",
+        image:
+          "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1400&q=85",
+        imageAlt: "Multi-Pressure Distillation Towers and Zeolite Sieve Unit",
+        technicalSpecs: [
+          {
+            parameter: "Distillation Mode",
+            specification: "Multi-Pressure Vacuum with Thermal Integration",
           },
           {
             parameter: "Dehydration Technology",
-            specification: "Zeolite Vapor-Phase Molecular Sieve (MSDH)",
+            specification: "Vapor-Phase Zeolite Molecular Sieve (MSDH)",
           },
           {
-            parameter: "Fermentation System",
-            specification: "Continuous High-Gravity Enzymatic Slurry",
+            parameter: "Final Ethanol Strength",
+            specification: "99.8% v/v Anhydrous (IS 15464 Compliant)",
           },
           {
-            parameter: "Storage Tank Farm",
-            specification:
-              "PESO-Licensed Mild Steel / SS Receivers (15 Days Buffer)",
-          },
-        ],
-      },
-      {
-        id: "zld-evaporation-block",
-        name: "Zero-Liquid-Discharge (ZLD) & Condensate Polishing Plant",
-        location: "Integrated Bio-Energy Complex",
-        status: "100% CPCB / MoEFCC Compliant",
-        capacity: "100% Closed-Loop Water Recycling",
-        summary:
-          "Eliminates environmental effluent by separating thin slop through high-G decanters, concentrating solubles in a 7-body Multi-Effect Evaporator, and purifying condensate.",
-        image:
-          "https://images.unsplash.com/photo-1532601224476-15c79f2f7a51?auto=format&fit=crop&w=1400&q=85",
-        imageAlt:
-          "Zero Liquid Discharge Multi-Effect Evaporator and water treatment",
-        technicalSpecs: [
-          {
-            parameter: "Discharge Standard",
-            specification: "Strict Zero Liquid Discharge (ZLD)",
+            parameter: "Specific Steam Consumption",
+            specification: "<2.15 kg Steam / Liter of Ethanol",
           },
           {
-            parameter: "Solid-Liquid Separation",
-            specification: "High-Speed Horizontal Decanter Centrifuges",
-          },
-          {
-            parameter: "Evaporation System",
-            specification:
-              "Falling-Film & Forced-Circulation Multi-Effect Evaporator",
-          },
-          {
-            parameter: "Condensate Polishing",
-            specification: "Anaerobic + RO Membrane CPU (82%+ Water Recycle)",
-          },
-          {
-            parameter: "Freshwater Footprint",
-            specification: "< 2.8 Liters per Liter of Ethanol Produced",
+            parameter: "Automation Architecture",
+            specification: "Redundant PLC / DCS with Interlock Safety",
           },
         ],
       },
       {
-        id: "cogen-power-block",
-        name: "6.5 MW Captive Biomass Cogeneration Plant",
-        location: "Integrated Bio-Energy Complex",
-        status: "Synchronized Islanding Mode",
-        capacity: "6.5 MW + 45 TPH High-Pressure Boiler",
+        id: "cogen-peso-dispatch",
+        name: "Captive Co-Generation & PESO Tank Farm",
+        location: "PBPL Biorefinery Complex, Northern India",
+        status: "PESO & ISO 45001 Certified",
+        capacity: "6.5 MW Captive + Bulk Dispatch",
         summary:
-          "Supplies uninterrupted process steam for distillation/drying and 100% of the electrical power required by the entire bio-refinery complex.",
+          "Biomass-fired high-pressure boiler island with back-pressure turbine generator and automated PESO Class-A ethanol dispatch bays.",
         image:
-          "https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?auto=format&fit=crop&w=1400&q=85",
-        imageAlt: "Captive biomass cogeneration turbine and boiler house",
+          "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1400&q=85",
+        imageAlt: "Captive Co-Generation Power Island and PESO Tank Farm",
         technicalSpecs: [
           {
-            parameter: "Electrical Output",
-            specification: "6.5 MW Back-Pressure Steam Turbine Generator",
+            parameter: "Boiler Fuel",
+            specification: "Napier Biomass Briquettes & Rice Husk",
           },
           {
-            parameter: "Boiler Configuration",
-            specification: "45 TPH AFBC Multi-Fuel Biomass / Rice Husk Boiler",
-          },
-          {
-            parameter: "Operating Pressure",
-            specification: "67 kg/cm² at 495°C",
+            parameter: "Turbine Configuration",
+            specification: "Back-Pressure Steam Turbine (Process Bleed)",
           },
           {
             parameter: "Flue Gas Control",
-            specification:
-              "4-Field Electrostatic Precipitator (ESP < 30 mg/Nm³)",
+            specification: "Electrostatic Precipitator (ESP <30 mg/Nm³)",
+          },
+          {
+            parameter: "Tank Farm Metering",
+            specification: "Coriolis Mass Flow Meters & Radar Level Gauges",
+          },
+        ],
+      },
+    ],
+    processSystems: [
+      {
+        id: "ethanol-grain-distillation",
+        tabLabel: "01 · Grain-to-Ethanol Flow",
+        systemTitle: "250 KLPD Enzymatic Liquefaction, MPD & Zeolite MSDH",
+        baselineFormulaText:
+          "E20 Lifecycle Carbon Cut: ~1.90 kg CO₂ Displaced per Liter Blended",
+        videoUrl:
+          "https://assets.mixkit.co/videos/preview/mixkit-industrial-plant-with-pipes-and-smoke-42654-large.mp4",
+        videoPoster:
+          "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1600&q=85",
+        videoCaption:
+          "Continuous DCS-controlled liquefaction, fermentation, and vapor-phase molecular sieve dehydration producing 99.8% v/v anhydrous ethanol.",
+        steps: [
+          {
+            stepNumber: "01",
+            subLabel: "Silo Intake & Hammer Milling",
+            stageTitle: "Grain Cleaning & Slurry Jet Cooking",
+            branchCategory: "primary-stream",
+            technicalDescription:
+              "Non-food broken grains undergo magnetic destoning and fine hammer milling before mixing with recycled process condensate and alpha-amylase enzymes in hydro-heaters.",
+            keyOutputMetric: "100% Non-Food Starch",
+            carbonImpactNote:
+              "Utilizes surplus/damaged grains procured directly from regional farm-gate clusters.",
+          },
+          {
+            stepNumber: "02",
+            subLabel: "Saccharification & Yeast Pitch",
+            stageTitle: "Hi-Gravity Closed Fermentation",
+            branchCategory: "co2-branch",
+            technicalDescription:
+              "Gluco-amylase converts dextrins into fermentable sugars inside jacketed fermenters, yielding >14% v/v alcohol wash while routing pure CO₂ off-gas to recovery scrubbers.",
+            keyOutputMetric: ">91.5% Fermentation Yield",
+            carbonImpactNote:
+              "Zero atmospheric venting of fermentation CO₂—100% captured for liquefaction.",
+          },
+          {
+            stepNumber: "03",
+            subLabel: "Thermal Vapor Recompression",
+            stageTitle: "Multi-Pressure Vacuum Distillation",
+            branchCategory: "primary-stream",
+            technicalDescription:
+              "Analyzer, degassing, and rectifier columns operate under cascading vacuum and pressure regimes so overhead vapors from one column heat the reboiler of the next.",
+            keyOutputMetric: "95.6% v/v Rectified Spirit",
+            carbonImpactNote:
+              "Cuts thermal steam demand by 38% compared to conventional atmospheric distillation.",
+          },
+          {
+            stepNumber: "04",
+            subLabel: "Zeolite Bed Dehydration",
+            stageTitle: "Molecular Sieve (MSDH) & OMC Dispatch",
+            branchCategory: "primary-stream",
+            technicalDescription:
+              "Superheated hydrous ethanol vapor passes through 3Å synthetic zeolite molecular sieve beds that trap water molecules, yielding 99.8% v/v fuel ethanol.",
+            keyOutputMetric: "99.8% v/v BIS IS 15464",
+            carbonImpactNote:
+              "Dispatched directly to PSU OMC depots for E20 blending—substituting imported fossil crude.",
+          },
+        ],
+      },
+      {
+        id: "ethanol-cogen-zld",
+        tabLabel: "02 · Captive Co-Gen & ZLD Loop",
+        systemTitle: "Back-Pressure Steam Co-Generation & Condensate Recycling",
+        baselineFormulaText:
+          "100% CPCB Zero-Liquid Discharge · >95% Process Water Circularity",
+        videoUrl:
+          "https://assets.mixkit.co/videos/preview/mixkit-industrial-plant-with-pipes-and-smoke-42654-large.mp4",
+        videoPoster:
+          "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1600&q=85",
+        videoCaption:
+          "Integrated biomass co-generation boiler and 6-effect MEE evaporator ensuring zero industrial effluent leaves the PBPL plant boundary.",
+        steps: [
+          {
+            stepNumber: "01",
+            subLabel: "Green Biomass Firing",
+            stageTitle: "High-Pressure Travelling Grate Boiler",
+            branchCategory: "primary-stream",
+            technicalDescription:
+              "Fires captive Napier grass briquettes and agricultural husk to generate high-pressure superheated steam while capturing fly ash via 4-field ESP.",
+            keyOutputMetric: "100% Renewable Steam",
+            carbonImpactNote:
+              "Carbon-neutral agro-residue fuel replaces fossil coal in distillery steam generation.",
+          },
+          {
+            stepNumber: "02",
+            subLabel: "Cogeneration Power",
+            stageTitle: "Back-Pressure Turbine Generator",
+            branchCategory: "primary-stream",
+            technicalDescription:
+              "High-pressure steam expands through a back-pressure turbine to generate 100% of the plant's electricity before exhausting low-pressure steam to the distillation reboilers.",
+            keyOutputMetric: ">82% CHP Thermal Cycle",
+            carbonImpactNote:
+              "Combined Heat & Power (CHP) loop eliminates grid power draw during normal operations.",
+          },
+          {
+            stepNumber: "03",
+            subLabel: "Whole Stillage Separation",
+            stageTitle: "Decanter Centrifuges & MEE",
+            branchCategory: "byproduct-branch",
+            technicalDescription:
+              "Bottom spent wash from the analyzer column is separated into wet cake and thin slop, which is concentrated to 35% w/w syrup in a 6-effect falling-film evaporator.",
+            keyOutputMetric: "Zero Raw Spent Wash",
+            carbonImpactNote:
+              "Evaporator vapor condensate is recovered directly for closed-loop water reuse.",
+          },
+          {
+            stepNumber: "04",
+            subLabel: "Condensate Polishing Unit",
+            stageTitle: "CPU Permeate Recycling (100% ZLD)",
+            branchCategory: "co2-branch",
+            technicalDescription:
+              "Process condensates pass through anaerobic/aerobic polishing and RO membranes, returning crystal-clear water to cooling towers and grain slurry preparation.",
+            keyOutputMetric: ">95% Water Recycled",
+            carbonImpactNote:
+              "Verified by real-time CPCB Online Continuous Effluent Monitoring System (OCEMS).",
           },
         ],
       },
     ],
     telemetry: {
-      heading: "Ethanol Dispatch & Resource Circularity Metrics",
+      heading: "Distillation Telemetry & Resource Circularity",
       subheading:
-        "Annualized anhydrous ethanol production supplied to national Oil Marketing Companies alongside process efficiency indicators.",
-      chartTitle: "Annual Ethanol Production Volume (Million Liters)",
-      chartUnit: "Million Ltrs",
+        "Audited ethanol dispatch growth and resource-efficiency benchmarks across our automated grain biorefinery.",
+      chartTitle: "Annual Fuel Ethanol Dispatched to OMCs (Million Liters)",
+      chartUnit: "Million L",
       maxScale: 100,
       series: [
         {
-          year: "Phase I Trial",
-          value: 28.5,
-          displayValue: "28.5 ML",
-          benchmarkNote: "Commissioning & OMC Empanelment",
+          year: "Phase I",
+          value: 42.0,
+          displayValue: "42.0 ML",
+          benchmarkNote: "Initial OMC Allocation",
         },
         {
-          year: "FY 2023–24",
-          value: 64.0,
-          displayValue: "64.0 ML",
-          benchmarkNote: "Maize & Rice Dual-Feedstock",
+          year: "Phase II",
+          value: 64.5,
+          displayValue: "64.5 ML",
+          benchmarkNote: "MSDH Sieve Optimization",
         },
         {
-          year: "FY 2024–25",
-          value: 78.5,
-          displayValue: "78.5 ML",
-          benchmarkNote: "330 Operating Days Achieved",
+          year: "Phase III",
+          value: 78.2,
+          displayValue: "78.2 ML",
+          benchmarkNote: "250 KLPD Nameplate Run",
         },
         {
-          year: "FY 2025–26",
-          value: 86.2,
-          displayValue: "86.2 ML",
-          benchmarkNote: "99.8% v/v Purity Benchmark",
+          year: "Current Run",
+          value: 85.0,
+          displayValue: "85.0 ML",
+          benchmarkNote: "340+ Operating Days/Yr",
         },
         {
-          year: "FY 2026–27 (E)",
-          value: 95.0,
-          displayValue: "95.0 ML",
-          benchmarkNote: "Debottlenecked 350 KLPD Run-Rate",
+          year: "Expansion",
+          value: 100.0,
+          displayValue: "100+ ML",
+          benchmarkNote: "350 KLPD Debottlenecked",
         },
       ],
       efficiencyBenchmarks: [
         {
-          label: "Fermentation & Distillation Recovery Efficiency",
-          percentage: 94.8,
-          valueText: "94.8%",
-          note: "High-gravity enzymatic conversion with minimal residual sugars",
+          label: "Anhydrous Ethanol Purity (BIS IS 15464)",
+          percentage: 99.8,
+          valueText: "99.8% v/v",
+          note: "Exceeds OMC specification for national E20 petrol blending",
         },
         {
-          label: "Process Condensate Recycled to Plant",
-          percentage: 84.5,
-          valueText: "84.5%",
-          note: "Drastically lowers groundwater drawal per kiloliter distilled",
+          label: "Process Water Condensate Recycling (CPU)",
+          percentage: 95.5,
+          valueText: "95.5%",
+          note: "Multi-Effect Evaporator + RO permeate returned to cooling & mashing",
         },
         {
-          label: "Captive Renewable Power Self-Sufficiency",
+          label: "Zero-Liquid Discharge (ZLD) Compliance",
           percentage: 100.0,
           valueText: "100%",
-          note: "Zero grid dependency during normal distillery operations",
+          note: "24×7 real-time OCEMS telemetry linked to CPCB servers",
         },
       ],
     },
     mediaGallery: {
-      heading: "Refinery Infrastructure & Quality Control",
+      heading: "Biorefinery Operations & Infrastructure Media",
       subheading:
-        "Inside our automated distillation columns, PESO dispatch gantries, and gas-chromatography quality laboratories.",
+        "Inside our DCS control rooms, multi-pressure distillation towers, and PESO-certified bulk dispatch gantries.",
       slides: [
         {
-          id: "fuel-media-1",
-          type: "image",
-          src: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1600&q=85",
-          title: "Multi-Pressure Distillation & Molecular Sieve Columns",
+          id: "ethanol-media-1",
+          type: "video",
+          src: "https://assets.mixkit.co/videos/preview/mixkit-industrial-plant-with-pipes-and-smoke-42654-large.mp4",
+          posterUrl:
+            "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1600&q=85",
+          title: "250 KLPD Multi-Pressure Distillation & MSDH Complex",
           caption:
-            "Stainless-steel vacuum columns operating under thermal integration to cut steam demand by 32%.",
-          locationTag: "Process Block A",
+            "Automated thermal vapor recompression columns producing fuel-grade anhydrous ethanol.",
+          locationTag: "PBPL Distillation Island",
         },
         {
-          id: "fuel-media-2",
+          id: "ethanol-media-2",
           type: "image",
-          src: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1600&q=85",
-          title: "Regional Grain Procurement & Automated Silo Storage",
+          src: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1600&q=85",
+          title: "PESO Class-A Bulk Storage & OMC Tanker Dispatch",
           caption:
-            "Direct procurement of maize and non-food broken rice from farmer producer organizations (FPOs).",
-          locationTag: "Raw Material Handling Yard",
+            "Mass-flow metered loading bays ensuring rapid turnaround for IndianOil, BPCL, and HPCL tankers.",
+          locationTag: "PBPL Tank Farm",
+        },
+        {
+          id: "ethanol-media-3",
+          type: "image",
+          src: "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1600&q=85",
+          title: "Captive Biomass Co-Generation Power Island",
+          caption:
+            "High-pressure boiler and back-pressure turbine supplying 100% captive steam and power.",
+          locationTag: "PBPL Co-Gen Block",
         },
       ],
     },
     timeline: {
-      heading: "Green Fuels Division Milestones",
+      heading: "Bio-Refinery Division Milestones",
       milestones: [
         {
-          year: "2021",
-          title: "Entry into National E20 Bio-Ethanol Programme",
-          metric: "250 KLPD Sanction",
+          year: "2022",
+          title: "Incorporation of Pingaksh Beverages (PBPL)",
+          metric: "E20 Mandate",
           description:
-            "Environmental Clearance (EC) and Consent to Establish secured for a greenfield grain-based ZLD distillery.",
+            "Established as a dedicated green biofuels SPV under the Government of India's National Biofuel Policy.",
         },
         {
           year: "2023",
-          title: "Long-Term Offtake Agreements with PSU OMCs",
-          metric: "IOCL • BPCL • HPCL",
+          title: "Financial Closure & Turnkey EPC Commencement",
+          metric: "250 KLPD Design",
           description:
-            "Signed multi-year ethanol supply agreements under the national E20 blending roadmap.",
+            "Secured environmental clearance, PESO approvals, and consortium project finance for the 100% ZLD grain distillery.",
         },
         {
           year: "2025",
-          title: "Full-Capacity Commercial Operations & DDGS Integration",
-          metric: "86+ Million Liters/Yr",
+          title: "Commissioning of 250 KLPD Anhydrous Complex",
+          metric: "99.8% v/v Purity",
           description:
-            "Achieved 330+ days of continuous annual operation with 100% Zero Liquid Discharge compliance.",
+            "Synchronized captive co-generation island and commenced commercial anhydrous ethanol supplies to PSU OMCs.",
+        },
+        {
+          year: "2026",
+          title: "350 KLPD Expansion & Full Co-Product Valorization",
+          metric: "DDGS + Liquid CO₂",
+          description:
+            "Debottlenecking of fermentation and dehydration trains alongside commercial scale-up of DDGS and CO₂ liquefaction.",
         },
       ],
     },
   },
 
   // =========================================================================
-  // 3. CIRCULAR BYPRODUCTS (DDGS NUTRITION, NAPIER BIOMASS & CO2 RECOVERY)
+  // 3. CIRCULAR ECONOMY (DDGS, LIQUID CO2, BIO-ASH & NAPIER AGRO LOOP)
   // =========================================================================
   {
-    slug: "circular-byproducts",
-    name: "Circular Bio-Products, DDGS & Agro-Biomass",
-    shortName: "Pingaksh Circular & Farms",
-    legalEntity: "Pingaksh Agro & Circular Bio-Resources Division",
+    slug: "circular-economy",
+    name: "Circular Economy & Co-Products",
+    shortName: "Circular Valorization",
+    legalEntity: "PBPL Circular Valorization Division & Pingaksh Farms",
     seo: {
       title:
-        "DDGS Animal Nutrition, CO₂ Recovery & Napier Biomass | Pingaksh Renewables",
+        "Circular Economy: High-Protein DDGS, Liquid CO₂ & ZLD | Pingaksh Renewables",
       description:
-        "Explore Pingaksh's circular bio-economy division—producing high-protein DDGS livestock feed, food-grade liquid CO₂, and high-yield Napier grass biomass.",
+        "Explore Pingaksh Group's zero-waste industrial circularity: High-Protein DDGS animal feed, food-grade Liquid CO₂ & Dry Ice recovery, Potash Bio-Ash, and Napier Biomass.",
       keywords: [
-        "DDGS Cattle and Poultry Feed India",
-        "Distillers Dried Grains with Solubles Pingaksh",
-        "Fermentation CO2 Recovery Plant",
-        "Super Napier Grass Biomass Pingaksh Farms",
+        "High Protein DDGS Animal Feed India",
+        "Fermentation CO2 Liquefaction Dry Ice",
+        "Zero Liquid Discharge Distillery Byproducts",
+        "Pingaksh Farms Super Napier Biomass",
       ],
     },
     hero: {
-      title: "Circular Bio-Economy, DDGS & Regenerative Biomass",
+      title: "Zero-Waste Circular Industrial Ecosystem",
       subtitle:
-        "Transforming every gram of post-fermentation grain residue and biogenic exhaust into high-protein livestock nutrition, industrial liquid CO₂, and clean biomass.",
+        "Transforming 100% of post-distillation grain solids, fermentation carbon dioxide, and boiler bio-ash into high-value nutritional, industrial, and agrarian inputs.",
       heroImage:
         "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=2000&q=85",
       heroImageAlt:
-        "Lush regenerative agricultural fields and circular bio-resource operations",
+        "Circular Economy DDGS Recovery, CO2 Liquefaction and Sustainable Agro Estates",
+      heroVideoUrl:
+        "https://assets.mixkit.co/videos/preview/mixkit-flying-over-a-green-field-on-a-sunny-day-42591-large.mp4",
       keyMetrics: [
         {
-          label: "High-Protein DDGS Output",
-          value: "180+",
-          unit: "Metric Tonnes / Day",
+          label: "DDGS Crude Protein",
+          value: "28–32",
+          unit: "% High-Digestibility Feed",
         },
         {
-          label: "Crude Protein Content",
-          value: "30–46",
-          unit: "% (Rice & Maize DDGS)",
+          label: "Captured CO₂ Purity",
+          value: "99.9",
+          unit: "% Food & Industrial Grade",
         },
         {
-          label: "Biogenic CO₂ Capture",
-          value: "60",
-          unit: "TPD Food/Industrial Grade",
-        },
-        {
-          label: "Waste to Landfill",
+          label: "Solid & Liquid Waste",
           value: "0.0",
-          unit: "% Complete Valorization",
+          unit: "% Unrecovered Effluent",
+        },
+        {
+          label: "Agrarian Partner Network",
+          value: "5,000+",
+          unit: "Rural Farming Households",
         },
       ],
     },
     overview: {
       headline:
-        "Closing the agricultural loop: where bio-refinery byproducts become high-value nutritional and industrial inputs.",
+        "Every byproduct stream is engineered as a primary feedstock for our next industrial or agricultural value chain.",
       leadParagraph:
-        "At Pingaksh Renewables, distillation is only half of the value chain. When starch in maize or rice is fermented into ethanol, the remaining non-fermentable kernel components—proteins, dietary fiber, amino acids, and essential lipids—are concentrated threefold. Our automated rotary bundle dryers process wet cake and condensed solubles into golden Distillers Dried Grains with Solubles (DDGS).",
+        "At Pingaksh Group, circularity is a structural profit and sustainability engine. When grain starch is converted into fuel ethanol, all non-fermentable proteins, dietary fibers, and yeast nutrients remain concentrated in the stillage—which we recover via decanter centrifuges and rotary bundle dryers as Distillers Dried Grains with Solubles (DDGS).",
       bodyParagraph:
-        "Simultaneously, raw biogenic carbon dioxide evolved during yeast fermentation is scrubbed, compressed, and liquefied instead of being vented to the atmosphere. On the upstream side, Pingaksh Farms cultivates high-yield Super Napier grass across rural clusters—providing green fodder for dairy cattle and clean cellulosic boiler fuel.",
+        "Simultaneously, raw carbon dioxide evolved during yeast fermentation is scrubbed, deodorized, and compressed into 99.9% pure Liquid CO₂ and Dry Ice, while potash-rich boiler fly ash returns to Pingaksh Farms to nourish high-yield Super Napier grass estates.",
       highlights: [
         {
-          title: "Export-Grade DDGS Livestock Feed",
+          title: "High-Protein DDGS Animal Nutrition",
           detail:
-            "Aflatoxin-controlled, golden-yellow DDGS with high bypass protein digestibility for dairy cattle, poultry, and aquaculture feed mills.",
+            "Aflatoxin-controlled, antibiotic-free 28%–32% protein supplement replacing imported soymeal across poultry, dairy cattle, and aquaculture feed mills.",
         },
         {
-          title: "Biogenic CO₂ Liquefaction",
+          title: "Carbon Capture & Liquefaction (CCU)",
           detail:
-            "99.9% pure liquid carbon dioxide captured from closed fermenters for beverage carbonation, cold-chain dry ice, and industrial welding.",
+            "Prevents biogenic greenhouse gas venting by converting fermentation off-gas into merchant liquid CO₂ for beverage carbonation, cold-chain logistics, and welding.",
         },
         {
-          title: "Pingaksh Farms (Super Napier Biomass)",
+          title: "Pingaksh Farms Backward Integration",
           detail:
-            "Perennial C4 energy crop yielding 150–200 tonnes/acre/year, restoring soil organic carbon and supplying low-ash green biomass.",
+            "Cultivates perennial Super Napier energy crops and aggregates farm-gate non-food grains while returning organic potash fertilizer to local soils.",
         },
       ],
     },
-    assetsHeading: "Circular Valorization Units & Product Specifications",
+    assetsHeading: "Circular Valorization Units & Technical Datasheets",
     assetsDescription:
-      "Select a circular product line to view its nutritional assay, chemical purity, and industrial processing specifications.",
+      "Select a circular recovery unit below to inspect its nutritional assay, gas purification tolerances, and agro-biomass specifications.",
     plantUnits: [
       {
-        id: "ddgs-dryer-complex",
-        name: "Automated Rotary Tube-Bundle DDGS Drying & Pelleting Plant",
-        location: "Integrated Bio-Energy Complex",
+        id: "ddgs-recovery-plant",
+        name: "Decanter & Rotary Tube-Bundle DDGS Plant",
+        location: "Co-Located at PBPL Biorefinery Complex",
         status: "Commercial Dispatch Active",
-        capacity: "180–210 Metric Tonnes / Day",
+        capacity: "110–135 MT / Day DDGS",
         summary:
-          "Indirect steam-heated rotary dryers that preserve amino acid bioavailability (lysine & methionine) without scorching, producing uniform golden DDGS.",
+          "High-G decanter centrifuges, falling-film evaporators, and steam-heated rotary tube-bundle dryers producing golden, free-flowing high-protein DDGS.",
         image:
           "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1400&q=85",
-        imageAlt:
-          "High-protein grain feedstock and DDGS nutritional processing",
+        imageAlt: "High-Protein DDGS Animal Nutrition Processing Unit",
         technicalSpecs: [
           {
-            parameter: "Crude Protein (Rice DDGS)",
-            specification: "42% – 46% (Dry Matter Basis)",
+            parameter: "Crude Protein Content",
+            specification: "28.0% – 32.0% (On Dry Basis)",
           },
           {
-            parameter: "Crude Protein (Maize DDGS)",
-            specification: "28% – 32% with High Energy Fat (8%+)",
+            parameter: "Moisture Specification",
+            specification: "<10.0% w/w (Long Shelf-Life Pelleted/Meal)",
           },
           {
-            parameter: "Moisture Content",
-            specification: "< 10.5% for Extended Shelf Stability",
+            parameter: "Crude Fat / Oil",
+            specification: "4.5% – 6.5% Digestible Energy",
           },
           {
-            parameter: "Mycotoxin / Aflatoxin Control",
-            specification: "Strict Batch Screening (< 20 ppb)",
+            parameter: "Drying Technology",
+            specification: "Indirect Steam Rotary Tube-Bundle (Zero Scorching)",
           },
           {
-            parameter: "Packaging Formats",
-            specification: "50 kg PP Woven Bags & 1-Tonne Jumbo Bags",
+            parameter: "Dispatch Packaging",
+            specification: "Automated 50 kg PP Bags & Bulk Jumbo Bags",
           },
         ],
       },
       {
-        id: "co2-recovery-unit",
-        name: "Biogenic Fermentation CO₂ Scrubbing & Liquefaction Unit",
-        location: "Integrated Bio-Energy Complex",
-        status: "Carbon Capture Active",
-        capacity: "60 Metric Tonnes / Day",
+        id: "co2-liquefaction-unit",
+        name: "Fermentation CO₂ Scrubbing & Liquefaction Plant",
+        location: "Co-Located at PBPL Biorefinery Complex",
+        status: "IS 307 Food-Grade Certified",
+        capacity: "80–100 MT / Day Liquid CO₂",
         summary:
-          "Captures raw fermentation off-gas through water scrubbers, activated carbon beds, and ammonia-cooled liquefiers to produce food-grade liquid CO₂.",
+          "Multi-stage water scrubbing, activated carbon adsorption, oil-free compression, and cryogenic refrigeration liquefaction.",
         image:
-          "https://images.unsplash.com/photo-1532601224476-15c79f2f7a51?auto=format&fit=crop&w=1400&q=85",
-        imageAlt: "Cryogenic CO2 storage bullets and compression skid",
+          "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1400&q=85",
+        imageAlt: "Cryogenic Liquid CO2 Storage Bullets and Compressors",
         technicalSpecs: [
           {
-            parameter: "CO₂ Purity Level",
-            specification: "99.95% v/v (ISBT Food & Beverage Grade)",
-          },
-          { parameter: "Moisture Dew Point", specification: "< -60°C" },
-          {
-            parameter: "Storage Infrastructure",
-            specification: "Insulated Cryogenic Bullets at -20°C / 20 Bar",
+            parameter: "Product Purity",
+            specification: ">99.9% v/v Food & Beverage Grade (IS 307)",
           },
           {
-            parameter: "End-Use Sectors",
-            specification:
-              "Beverage Carbonation, Dry Ice Cold Chain, Fire Suppression",
+            parameter: "Purification Train",
+            specification: "Foam Trap, Water Scrubber, KMnO4 & Carbon Beds",
+          },
+          {
+            parameter: "Liquefaction Pressure",
+            specification: "18–20 Bar Cryogenic Insulated Storage Bullets",
+          },
+          {
+            parameter: "Dry Ice Capability",
+            specification: "Hydraulic Pelletizer & High-Density Block Presses",
           },
         ],
       },
       {
-        id: "napier-biomass-farms",
-        name: "Pingaksh Farms — Super Napier Agro-Biomass Clusters",
-        location: "Northern India Agrarian Clusters",
-        status: "Active Rural Outgrower Network",
-        capacity: "150–200 MT / Acre Annual Biomass Yield",
+        id: "pingaksh-farms-napier",
+        name: "Pingaksh Farms: Super Napier & Potash Loop",
+        location: "Uttarakhand & Northern Agrarian Belt",
+        status: "Active Agrarian Network",
+        capacity: "5,000+ Farmer Supply Chain",
         summary:
-          "Contract farming and captive cultivation of high-calorific Super Napier grass for livestock green fodder and renewable boiler fuel.",
+          "Backward-integrated cultivation of high-calorific Super Napier grass and direct farm-gate grain procurement paired with potash bio-ash soil enrichment.",
         image:
-          "https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=1400&q=85",
-        imageAlt: "Super Napier grass cultivation and rural farmer harvest",
+          "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=1400&q=85",
+        imageAlt: "Pingaksh Farms Super Napier Biomass Estates",
         technicalSpecs: [
           {
-            parameter: "Crop Variety",
+            parameter: "Primary Energy Crop",
             specification:
-              "High-Yield Hybrid Pennisetum Purpureum (Super Napier)",
+              "High-Yield Perennial Super Napier (CO-5 / Red Napier)",
           },
           {
             parameter: "Harvest Frequency",
-            specification: "5 to 6 Cuttings per Year (Perennial Ratoon)",
+            specification: "5 to 6 Multi-Cut Harvests Annually",
           },
           {
-            parameter: "Gross Calorific Value (Dry)",
-            specification: "3,600 – 3,900 kcal/kg",
+            parameter: "Biomass Calorific Value",
+            specification: "3,600 – 4,000 kcal/kg (Dried Briquette Basis)",
           },
           {
-            parameter: "Agrarian Impact",
-            specification: "Assured Buyback Contracts for Marginal Farmers",
+            parameter: "Soil Nutrient Return",
+            specification: "Potash-Rich Boiler Fly-Ash & Organic Compost",
+          },
+        ],
+      },
+    ],
+    processSystems: [
+      {
+        id: "circular-ddgs-valorization",
+        tabLabel: "01 · Stillage-to-DDGS Loop",
+        systemTitle: "Zero-Waste Spent Grain Solids to High-Protein DDGS",
+        baselineFormulaText:
+          "100% Stillage Valorization · Replaces Imported Soymeal Protein",
+        videoUrl:
+          "https://assets.mixkit.co/videos/preview/mixkit-flying-over-a-green-field-on-a-sunny-day-42591-large.mp4",
+        videoPoster:
+          "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1600&q=85",
+        videoCaption:
+          "Closed-loop separation, multi-effect evaporation, and gentle rotary steam drying turning 100% of post-distillation grain solids into high-protein DDGS.",
+        steps: [
+          {
+            stepNumber: "01",
+            subLabel: "Solid-Liquid Separation",
+            stageTitle: "High-G Decanter Centrifugation",
+            branchCategory: "byproduct-branch",
+            technicalDescription:
+              "Whole stillage exiting the distillation analyzer column enters high-speed horizontal scroll decanter centrifuges that separate suspended grain fiber and protein into wet cake.",
+            keyOutputMetric: "32% Solids Wet Cake",
+            carbonImpactNote:
+              "Mechanical dewatering significantly reduces thermal energy needed in downstream drying.",
+          },
+          {
+            stepNumber: "02",
+            subLabel: "Soluble Nutrient Recovery",
+            stageTitle: "6-Effect Falling-Film Evaporation",
+            branchCategory: "byproduct-branch",
+            technicalDescription:
+              "Clarified thin slop from the decanters is concentrated under vacuum in a 6-effect evaporator train to form nutrient-dense Condensed Distillers Solubles (CDS syrup).",
+            keyOutputMetric: "35% w/w Protein Syrup",
+            carbonImpactNote:
+              "Recovers 100% of water-soluble vitamins, yeast amino acids, and minerals.",
+          },
+          {
+            stepNumber: "03",
+            subLabel: "Homogeneous Blending",
+            stageTitle: "Paddle Mixer & Rotary Tube-Bundle Dryer",
+            branchCategory: "primary-stream",
+            technicalDescription:
+              "Wet cake and concentrated CDS syrup are blended in twin-shaft paddle mixers and dried via indirect steam rotary tube-bundle dryers to prevent protein scorching.",
+            keyOutputMetric: "28–32% Crude Protein",
+            carbonImpactNote:
+              "Produces golden, highly digestible DDGS with <10% moisture for long shelf stability.",
+          },
+          {
+            stepNumber: "04",
+            subLabel: "Cooling & Automated Bagging",
+            stageTitle: "Pneumatic Cooling & Feed Mill Dispatch",
+            branchCategory: "co2-branch",
+            technicalDescription:
+              "Dried DDGS granules pass through counter-current air coolers to ambient temperature before automated weighing and bagging for poultry, cattle, and aqua feed integrators.",
+            keyOutputMetric: "120+ MT/Day Nutraceutical Feed",
+            carbonImpactNote:
+              "Displaces land-intensive soymeal imports and eliminates distillery solid waste.",
+          },
+        ],
+      },
+      {
+        id: "circular-co2-napier-loop",
+        tabLabel: "02 · CO₂ Capture & Agro Loop",
+        systemTitle: "Biogenic CO₂ Liquefaction & Napier Agrarian Cycle",
+        baselineFormulaText:
+          "99.9% Pure Biogenic CO₂ Captured · Closed-Loop Soil Potash Return",
+        videoUrl:
+          "https://assets.mixkit.co/videos/preview/mixkit-flying-over-a-green-field-on-a-sunny-day-42591-large.mp4",
+        videoPoster:
+          "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=1600&q=85",
+        videoCaption:
+          "Capturing fermentation carbon dioxide into merchant liquid CO₂ while cycling boiler potash ash back to Pingaksh Farms' Super Napier biomass estates.",
+        steps: [
+          {
+            stepNumber: "01",
+            subLabel: "Fermenter Header Collection",
+            stageTitle: "Foam Trapping & Water Scrubbing",
+            branchCategory: "co2-branch",
+            technicalDescription:
+              "Raw biogenic CO₂ gas evolved from closed fermentation vessels is piped through demisters and packed-bed water scrubbers to recover trace alcohol vapors.",
+            keyOutputMetric: "100% Off-Gas Captured",
+            carbonImpactNote:
+              "Recovered alcohol traces are routed back to the analyzer column, boosting yield.",
+          },
+          {
+            stepNumber: "02",
+            subLabel: "Deodorization & Compression",
+            stageTitle: "KMnO₄, Carbon Beds & Oil-Free Compressors",
+            branchCategory: "co2-branch",
+            technicalDescription:
+              "Two-stage oil-free reciprocating compressors pressurize the gas through potassium permanganate, molecular desiccant dryers, and activated carbon towers.",
+            keyOutputMetric: "Odor-Free <5 ppm Moisture",
+            carbonImpactNote:
+              "Meets stringent IS 307 food, beverage, and medical purity tolerances.",
+          },
+          {
+            stepNumber: "03",
+            subLabel: "Cryogenic Condensing",
+            stageTitle: "Liquefaction Bullets & Dry Ice Presses",
+            branchCategory: "primary-stream",
+            technicalDescription:
+              "Ammonia-cooled condensers liquefy the purified CO₂ at -25°C and 18 bar into insulated storage bullets and hydraulic dry-ice block/pellet presses.",
+            keyOutputMetric: "99.9% Pure Liquid CO₂",
+            carbonImpactNote:
+              "Substitutes fossil-derived industrial CO₂ across cold-chain and beverage sectors.",
+          },
+          {
+            stepNumber: "04",
+            subLabel: "Agrarian Nutrient Return",
+            stageTitle: "Potash Bio-Ash & Napier Biomass Cycle",
+            branchCategory: "byproduct-branch",
+            technicalDescription:
+              "Potash-rich fly ash from our biomass co-generation boiler is granulated into organic soil conditioner for Pingaksh Farms' Super Napier grass plantations.",
+            keyOutputMetric: "Zero Landfill Ash",
+            carbonImpactNote:
+              "Completes the soil-to-fuel-to-soil circular loop with 5,000+ local farmers.",
           },
         ],
       },
     ],
     telemetry: {
-      heading: "Circular Byproduct Valorization Growth",
+      heading: "Circular Recovery & Byproduct Valorization Telemetry",
       subheading:
-        "Annual volume of high-protein DDGS animal nutrition and captured biogenic CO₂ delivered to domestic industrial markets.",
-      chartTitle: "Annual DDGS & Circular Byproduct Dispatch (Thousand MT)",
+        "Audited co-product output trajectory across high-protein DDGS nutrition, biogenic CO₂ liquefaction, and biomass utilization.",
+      chartTitle:
+        "Combined Annual Co-Product Recovery (Thousand Metric Tonnes)",
       chartUnit: "kMT",
-      maxScale: 100,
+      maxScale: 90,
       series: [
         {
-          year: "FY 2022–23",
-          value: 22.0,
-          displayValue: "22.0 kMT",
-          benchmarkNote: "Initial Dryer Line",
+          year: "Year 1",
+          value: 34.0,
+          displayValue: "34.0 kMT",
+          benchmarkNote: "DDGS Line Commissioned",
         },
         {
-          year: "FY 2023–24",
-          value: 48.5,
-          displayValue: "48.5 kMT",
-          benchmarkNote: "Aqua & Poultry Grade Launch",
+          year: "Year 2",
+          value: 51.5,
+          displayValue: "51.5 kMT",
+          benchmarkNote: "CO₂ Scrubber Integration",
         },
         {
-          year: "FY 2024–25",
-          value: 62.4,
-          displayValue: "62.4 kMT",
-          benchmarkNote: "CO₂ Liquefaction Added",
+          year: "Year 3",
+          value: 66.8,
+          displayValue: "66.8 kMT",
+          benchmarkNote: "Dry Ice Pelletizer Added",
         },
         {
-          year: "FY 2025–26",
-          value: 74.8,
-          displayValue: "74.8 kMT",
-          benchmarkNote: "Pan-India Feed Mill Supply",
+          year: "Current Run",
+          value: 74.5,
+          displayValue: "74.5 kMT",
+          benchmarkNote: "100% Zero-Waste Run",
         },
         {
-          year: "FY 2026–27 (E)",
-          value: 85.0,
-          displayValue: "85.0 kMT",
-          benchmarkNote: "Pelletized Export Line",
+          year: "350 KLPD",
+          value: 88.0,
+          displayValue: "88.0 kMT",
+          benchmarkNote: "Expanded Co-Product Scale",
         },
       ],
       efficiencyBenchmarks: [
         {
-          label: "Total Grain Mass Valorized into Products",
-          percentage: 99.6,
-          valueText: "99.6%",
-          note: "Starch → Ethanol | Protein & Fiber → DDGS | Gas → Liquid CO₂",
-        },
-        {
-          label: "Digestible Bypass Protein Retention",
-          percentage: 92.0,
-          valueText: "92.0%",
-          note: "Low-temperature indirect steam drying prevents Maillard browning",
-        },
-        {
-          label: "Boiler Fly-Ash Converted to Green Bricks",
+          label: "Spent Grain Solids Recovered as High-Protein DDGS",
           percentage: 100.0,
           valueText: "100%",
-          note: "Biomass ash utilized for soil potash enrichment and brick making",
+          note: "Zero wet stillage disposal—100% converted into 28–32% protein feed",
+        },
+        {
+          label: "Liquefied Biogenic CO₂ Purity (IS 307 Standard)",
+          percentage: 99.9,
+          valueText: "99.9%",
+          note: "Certified for beverage carbonation, cold-chain dry ice & industrial use",
+        },
+        {
+          label: "Boiler Fly-Ash Valorized into Potash & Bricks",
+          percentage: 100.0,
+          valueText: "100%",
+          note: "Returned to agrarian soils and eco-brick units with zero landfilling",
         },
       ],
     },
     mediaGallery: {
-      heading: "Circular Operations & Agrarian Supply Chain",
+      heading: "Circular Recovery & Agro-Biomass Media",
       subheading:
-        "From automated DDGS bagging lines to Napier biomass harvesting with partner farmers.",
+        "Visualizing our rotary DDGS dryers, cryogenic CO₂ storage bullets, and Super Napier biomass estates.",
       slides: [
         {
-          id: "circ-media-1",
-          type: "image",
-          src: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1600&q=85",
-          title: "Golden High-Protein DDGS Nutrition Dispatch",
+          id: "circular-media-1",
+          type: "video",
+          src: "https://assets.mixkit.co/videos/preview/mixkit-flying-over-a-green-field-on-a-sunny-day-42591-large.mp4",
+          posterUrl:
+            "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1600&q=85",
+          title: "Pingaksh Farms: Super Napier Biomass & Grain Estates",
           caption:
-            "Nutrient-dense livestock feed replacing imported soybean meal for Indian dairy and poultry farmers.",
-          locationTag: "DDGS Warehouse & Bagging Bay",
+            "High-yield perennial energy crops and farm-gate grain aggregation powering our biorefinery.",
+          locationTag: "Northern Agrarian Belt",
         },
         {
-          id: "circ-media-2",
+          id: "circular-media-2",
           type: "image",
-          src: "https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=1600&q=85",
-          title: "Pingaksh Farms Outgrower Biomass Network",
+          src: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1600&q=85",
+          title: "High-Protein DDGS Drying & Automated Bagging Line",
           caption:
-            "Partner farmers cultivating perennial Super Napier grass under assured buyback agreements.",
-          locationTag: "Rural Agro-Cluster",
+            "Indirect steam tube-bundle dryers preserving amino-acid digestibility for livestock nutrition.",
+          locationTag: "PBPL DDGS Unit",
+        },
+        {
+          id: "circular-media-3",
+          type: "image",
+          src: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1600&q=85",
+          title: "Cryogenic Liquid CO₂ Storage & Tanker Dispatch",
+          caption:
+            "Capturing biogenic fermentation CO₂ for food-grade and cold-chain industrial applications.",
+          locationTag: "PBPL CO₂ Recovery Plant",
         },
       ],
     },
     timeline: {
-      heading: "Circular Bio-Economy Milestones",
+      heading: "Circular Economy & Agro Milestones",
       milestones: [
         {
-          year: "2022",
-          title: "Launch of Pingaksh Farms & Napier Cultivation",
-          metric: "1,200+ Acres",
+          year: "2021",
+          title: "Launch of Pingaksh Farms Agro-Initiatives",
+          metric: "Super Napier",
           description:
-            "Initiated regenerative Super Napier grass cultivation to establish sustainable green fodder and biomass supply chains.",
+            "Initiated high-biomass Super Napier cultivation and direct farm-gate grain procurement networks.",
         },
         {
           year: "2024",
-          title: "High-Protein DDGS Commercialization",
-          metric: "180+ TPD Output",
+          title: "Installation of Decanter & Tube-Bundle DDGS Line",
+          metric: "28–32% Protein",
           description:
-            "Commissioned indirect steam tube-bundle dryers producing 45% protein Rice DDGS and 30% protein Maize DDGS.",
+            "Commissioned zero-scorching indirect steam rotary dryers for high-protein animal feed production.",
         },
         {
           year: "2025",
-          title: "Biogenic CO₂ Capture & Zero-Waste Certification",
-          metric: "60 TPD CO₂",
+          title: "Biogenic CO₂ Scrubbing & Liquefaction Plant",
+          metric: "99.9% Pure CO₂",
           description:
-            "Integrated fermentation off-gas scrubbing and liquefaction, achieving 100% byproduct valorization.",
+            "Captured fermentation off-gases into cryogenic storage bullets and high-density dry ice presses.",
+        },
+        {
+          year: "2026",
+          title: "100% Closed-Loop Potash & ZLD Certification",
+          metric: "Zero Waste",
+          description:
+            "Achieved complete circular valorization across water, grain solids, fermentation gas, and boiler bio-ash.",
         },
       ],
     },
   },
 ];
-
 export function getBusinessVerticalBySlug(
   slug: string,
 ): BusinessVerticalData | undefined {
