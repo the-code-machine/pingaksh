@@ -385,7 +385,7 @@ export default function E20EthanolImpactView() {
                 [
                   { id: "1-kl", label: "Per 1 KL (1,000 Liters)" },
                   { id: "250-klpd", label: "Daily Capacity (250 KLPD)" },
-                  { id: "350-klpd", label: "Expanded Capacity (350 KLPD)" },
+
                   {
                     id: "annual-86ml",
                     label: "Annual Output (86.25 Million L)",

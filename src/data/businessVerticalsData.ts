@@ -885,12 +885,6 @@ export const BUSINESS_VERTICALS_DATA: BusinessVerticalData[] = [
           displayValue: "85.0 ML",
           benchmarkNote: "340+ Operating Days/Yr",
         },
-        {
-          year: "Expansion",
-          value: 100.0,
-          displayValue: "100+ ML",
-          benchmarkNote: "350 KLPD Debottlenecked",
-        },
       ],
       efficiencyBenchmarks: [
         {
@@ -972,13 +966,6 @@ export const BUSINESS_VERTICALS_DATA: BusinessVerticalData[] = [
           metric: "99.8% v/v Purity",
           description:
             "Synchronized captive co-generation island and commenced commercial anhydrous ethanol supplies to PSU OMCs.",
-        },
-        {
-          year: "2026",
-          title: "350 KLPD Expansion & Full Co-Product Valorization",
-          metric: "DDGS + Liquid CO₂",
-          description:
-            "Debottlenecking of fermentation and dehydration trains alongside commercial scale-up of DDGS and CO₂ liquefaction.",
         },
       ],
     },
@@ -1314,12 +1301,6 @@ export const BUSINESS_VERTICALS_DATA: BusinessVerticalData[] = [
           value: 74.5,
           displayValue: "74.5 kMT",
           benchmarkNote: "100% Zero-Waste Run",
-        },
-        {
-          year: "350 KLPD",
-          value: 88.0,
-          displayValue: "88.0 kMT",
-          benchmarkNote: "Expanded Co-Product Scale",
         },
       ],
       efficiencyBenchmarks: [

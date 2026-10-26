@@ -49,7 +49,7 @@ export const HERITAGE_TIMELINE_DATA: HeritageTimelinePageData = {
   seo: {
     title: "Our Heritage & Growth Timeline | Pingaksh Group",
     description:
-      "Trace the institutional history of Pingaksh Group from the founding of Uttar Bharat Hydro Power (UBHP) and the commissioning of Sarju cascade projects to our modern 350 KLPD bio-energy expansion.",
+      "Trace the institutional history of Pingaksh Group from the founding of Uttar Bharat Hydro Power (UBHP) and the commissioning of Sarju cascade projects to our modern 250 KLPD bio-energy expansion.",
   },
   breadcrumbs: [
     { label: "Home", href: "/" },
@@ -195,11 +195,11 @@ export const HERITAGE_TIMELINE_DATA: HeritageTimelinePageData = {
       headline: "Commissioning PBPL Green Fuels & Industrial Circularity",
       narrative: [
         "Unifying our hydro, biofuel, and agro-industrial entities under the Pingaksh Group banner, we established Pingaksh Beverages Pvt. Ltd. (PBPL) to operate a state-of-the-art grain-based ethanol biorefinery.",
-        "Scaling to a robust 350 KLPD capacity with closed-loop Distillers Dried Grains with Solubles (DDGS) recovery, the facility firmly positioned the group as a key contributor to India's E20 fuel blending mandate.",
+        "Scaling to a robust 250 KLPD capacity with closed-loop Distillers Dried Grains with Solubles (DDGS) recovery, the facility firmly positioned the group as a key contributor to India's E20 fuel blending mandate.",
       ],
       location: "Corporate Headquarters & Biorefinery Complex",
       keyFigure: {
-        number: "350 KLPD",
+        number: "250 KLPD",
         label: "Operational Bio-Ethanol Distillation Capacity",
       },
       primaryImage: {

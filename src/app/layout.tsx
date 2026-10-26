@@ -12,18 +12,17 @@ const bodyFont = localFont({
   display: "swap",
 });
 
-// 2. Logo Font: cartesius.ttf
-// const logoFont = localFont({
-//   src: "../../public/fonts/cartesius.ttf",
-//   variable: "--font-logo",
-//   display: "swap",
-// });
-const logoFont = Prata({
-  weight: "400",
-  subsets: ["latin"],
+const logoFont = localFont({
+  src: "../../public/fonts/cartesius.ttf",
   variable: "--font-logo",
   display: "swap",
 });
+// const logoFont = Prata({
+//   weight: "400",
+//   subsets: ["latin"],
+//   variable: "--font-logo",
+//   display: "swap",
+// });
 // 3. Tagline Font: ArialGrotesk-Regular.otf
 
 const taglineFont = Prata({

@@ -136,12 +136,23 @@ export default function Footer() {
                 />
               </div>
 
-              <div className="flex flex-col">
-                <span className="font-logo text-xl sm:text-[22px] leading-none tracking-wider text-pingaksh-sand">
+              <div className="flex flex-col w-fit font-logo">
+                {/* Tier 1: Primary Brand Name */}
+                <span className="text-[22px] sm:text-[30px] capitalize font-medium leading-[0.95] tracking-[0.02em] text-pingaksh-sand">
                   PINGAKSH
                 </span>
-                <span className="font-body text-[14px] sm:text-[12px] tracking-[0.22em] text-sand-200/90  mt-1.5">
-                  Renewables
+
+                {/* Tier 2: Entity Name (Sized & tracked to match the width of "Pingaksh") */}
+                <span className="text-[11px] sm:text-[16.5px] font-normal leading-tight tracking-[0.015em] text-pingaksh-sand/95  whitespace-nowrap">
+                  Renewables Limited
+                </span>
+
+                {/* Divider Rule */}
+                <div className="w-full h-[1px] bg-pingaksh-sand/40 my-1" />
+
+                {/* Tier 3: Centered Tagline */}
+                <span className="text-[9.5px] sm:text-[11px] font-normal leading-none tracking-[0.04em] text-pingaksh-sand/85 text-center">
+                  Building Tomorrow, Today
                 </span>
               </div>
             </Link>
@@ -149,7 +160,7 @@ export default function Footer() {
             <p className="text-xs sm:text-sm text-sand-100/80 leading-relaxed">
               Evolving from Uttar Bharat Hydro Power (UBHP) into a diversified
               clean-energy conglomerate operating the{" "}
-              <strong>Sarju I, II &amp; III</strong> run-of-the-river hydro
+              <strong>Sarju II &amp; III</strong> run-of-the-river hydro
               projects and a{" "}
               <strong>250 KLPD grain-based ethanol distillery</strong> with
               circular DDGS and CO₂ recovery.

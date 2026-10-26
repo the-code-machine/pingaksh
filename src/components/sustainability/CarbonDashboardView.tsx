@@ -127,7 +127,7 @@ export default function CarbonDashboardView() {
     simHydroMwh * data.hero.coalGridEmissionFactorTonnesPerMwh;
   const simEthanolSavedTonnes =
     simEthanolKl * data.hero.ethanolNetSavingKgPerLiter;
-  const simAnnualTonnes = (simHydroSavedTonnes + simEthanolSavedTonnes) * 350;
+  const simAnnualTonnes = (simHydroSavedTonnes + simEthanolSavedTonnes) * 250;
   const simEquivalentTrees = Math.round(simAnnualTonnes * 45);
   const simCarsDisplaced = Math.round(simAnnualTonnes / 4.6);
 
@@ -664,7 +664,6 @@ export default function CarbonDashboardView() {
         </div>
       </section>
 
-    
       {/* =====================================================================
           4. INTERACTIVE 12-MONTH TELEMETRY GRAPH & COLLAPSIBLE AUDIT LEDGER
       ===================================================================== */}

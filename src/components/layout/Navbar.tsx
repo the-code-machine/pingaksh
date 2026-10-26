@@ -196,14 +196,14 @@ export default function Navbar() {
             </div>
 
             {/* Reliance-Style 3-Tier Typography Lockup */}
-            <div className="flex flex-col w-fit font-serif">
+            <div className="flex flex-col w-fit font-logo">
               {/* Tier 1: Primary Brand Name */}
-              <span className="text-[22px] sm:text-[29px] font-medium leading-[0.95] tracking-[0.02em] text-pingaksh-sand">
-                Pingaksh
+              <span className="text-[22px] sm:text-[30px] capitalize font-medium leading-[0.95] tracking-[0.02em] text-pingaksh-sand">
+                PINGAKSH
               </span>
 
               {/* Tier 2: Entity Name (Sized & tracked to match the width of "Pingaksh") */}
-              <span className="text-[11px] sm:text-[13.5px] font-normal leading-tight tracking-[0.015em] text-pingaksh-sand/95 mt-1.5 whitespace-nowrap">
+              <span className="text-[11px] sm:text-[16.5px] font-normal leading-tight tracking-[0.015em] text-pingaksh-sand/95  whitespace-nowrap">
                 Renewables Limited
               </span>
 
@@ -212,7 +212,7 @@ export default function Navbar() {
 
               {/* Tier 3: Centered Tagline */}
               <span className="text-[9.5px] sm:text-[11px] font-normal leading-none tracking-[0.04em] text-pingaksh-sand/85 text-center">
-                Energy for Life
+                Building Tomorrow, Today
               </span>
             </div>
           </Link>
