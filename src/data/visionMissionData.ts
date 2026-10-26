@@ -270,7 +270,7 @@ export const VISION_MISSION_DATA: VisionMissionPageData = {
     code: "02 / EXECUTION ROADMAP",
     label: "OUR MISSION",
     headline:
-      "Our roadmap starts with a steadfast mission: to engineer high-performance renewable assets founded on integrity, ecological balance, and inclusive rural prosperity.",
+      "“Our roadmap starts with a steadfast mission: to establish and operate high-performance renewable assets founded on integrity, ecological balance, and inclusive rural prosperity.”",
     statement:
       "Our mission declares our purpose as an institution and serves as the uncompromising standard against which we evaluate every capital allocation, engineering blueprint, and community partnership.",
     subtext:
