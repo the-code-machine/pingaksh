@@ -412,7 +412,7 @@ export default function VisionMissionView() {
               </motion.div>
 
               {/* Right Image Column with Hover Zoom */}
-              <div className="lg:col-span-5 relative min-h-[320px] lg:min-h-full overflow-hidden group">
+              <div className="lg:col-span-5 relative min-h-[320px] max-h-[500px] lg:min-h-full overflow-hidden group">
                 <img
                   src={data.visionSection.image}
                   alt={data.visionSection.imageAlt}
@@ -485,7 +485,7 @@ export default function VisionMissionView() {
           <div className="rounded-3xl bg-white border border-sand-300 overflow-hidden shadow-xl">
             <div className="grid grid-cols-1 lg:grid-cols-12">
               {/* Left Image Column (Reversed from Vision for visual rhythm) */}
-              <div className="lg:col-span-5 relative min-h-[320px] lg:min-h-full overflow-hidden group order-2 lg:order-1">
+              <div className="lg:col-span-5 relative min-h-[320px] max-h-[500px] lg:min-h-full overflow-hidden group order-2 lg:order-1">
                 <img
                   src={data.missionSection.image}
                   alt={data.missionSection.imageAlt}

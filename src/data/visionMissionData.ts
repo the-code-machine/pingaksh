@@ -180,7 +180,7 @@ export const VISION_MISSION_DATA: VisionMissionPageData = {
       "From high-head Himalayan river valleys in Bageshwar to zero-liquid-discharge bio-refineries, our purpose is to secure India’s energy future without compromising ecological balance.",
     sanskritBadge: "पिंगाक्ष • TRADITION MEETS PROGRESS",
     backgroundImage:
-      "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=2000&q=85",
+      "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/_MG_3836_bfb9b053.webp",
     backgroundImageAlt:
       "Himalayan river valley and sustainable clean energy infrastructure representing Pingaksh Renewables Vision",
     quickStats: [
@@ -232,7 +232,7 @@ export const VISION_MISSION_DATA: VisionMissionPageData = {
     subtext:
       "Anchored by disciplined civil engineering, global governance standards, and continuous technological advancement across hydro power, green fuels, and sustainable agriculture.",
     image:
-      "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=1400&q=80",
+      "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/_MG_3451_ab6b9ccb.webp",
     imageAlt:
       "Pristine river gorge representing run-of-the-river hydroelectric harmony",
     horizons: [
@@ -276,7 +276,7 @@ export const VISION_MISSION_DATA: VisionMissionPageData = {
     subtext:
       "We are committed to building enduring relationships with grid authorities, Oil Marketing Companies (OMCs), local farmers, and institutional stakeholders through flawless execution.",
     image:
-      "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1400&q=80",
+      "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/New_Doc_2021-05-27_12_45_46_4267637a.jpg",
     imageAlt:
       "Precision industrial engineering and renewable energy infrastructure",
     commitments: [
@@ -329,7 +329,7 @@ export const VISION_MISSION_DATA: VisionMissionPageData = {
           "100% Run-of-the-River hydro architecture with native catchment afforestation in Bageshwar.",
         badge: "ISO 14001 Aligned",
         image:
-          "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1000&q=80",
+          "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/_MG_3670_c89cae52.webp",
         imageAlt: "Protected forest catchment around Himalayan hydro project",
       },
       {
@@ -345,7 +345,7 @@ export const VISION_MISSION_DATA: VisionMissionPageData = {
           "High-head horizontal Francis turbines operating continuously at Sarju II (155m head) & Sarju III.",
         badge: "92% Execution Index",
         image:
-          "https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=1000&q=80",
+          "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/_MG_3567_1054effd.webp",
         imageAlt:
           "High-precision hydro turbine and industrial plant engineering",
       },
@@ -362,7 +362,7 @@ export const VISION_MISSION_DATA: VisionMissionPageData = {
           "Dual-output valorization: Fuel-grade E20 Ethanol + High-Protein DDGS & CO₂ recovery.",
         badge: "Circular Bio-Economy",
         image:
-          "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1000&q=80",
+          "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/_MG_3176_f4afd809.webp",
         imageAlt:
           "Sustainable grain fields and agricultural bio-energy feedstock",
       },
@@ -379,7 +379,7 @@ export const VISION_MISSION_DATA: VisionMissionPageData = {
           "Direct rural supply-chain integration & ₹30+ Cr MSME financial inclusion ecosystem.",
         badge: "Rural Impact First",
         image:
-          "https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=1000&q=80",
+          "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/_MG_3836_bfb9b053.webp",
         imageAlt: "Rural agricultural empowerment and community growth",
       },
       {
@@ -411,7 +411,7 @@ export const VISION_MISSION_DATA: VisionMissionPageData = {
           "Integrated R&D across high-yield Napier biomass, E20+ biofuels, and smart hydro telemetry.",
         badge: "Next-Gen R&D",
         image:
-          "https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?auto=format&fit=crop&w=1000&q=80",
+          "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/_MG_3751_a4bd973c.webp",
         imageAlt: "Clean technology innovation and renewable grid integration",
       },
     ],
