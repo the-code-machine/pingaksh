@@ -65,7 +65,7 @@ export const HERITAGE_TIMELINE_DATA: HeritageTimelinePageData = {
     leadText:
       "Every enduring industrial institution is built milestone by milestone. Explore how Uttar Bharat Hydro Power evolved into the Pingaksh Group through disciplined civil engineering and generational stewardship.",
     backgroundImage:
-      "https://images.unsplash.com/photo-1574482620811-1aa16ffe3c82?auto=format&fit=crop&w=2000&q=85",
+      "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/P9090483_4dece626.jpg",
     backgroundAlt:
       "Archival view of Sarju River hydroelectric civil engineering in Bageshwar, Uttarakhand",
   },
@@ -93,13 +93,13 @@ export const HERITAGE_TIMELINE_DATA: HeritageTimelinePageData = {
         label: "Sanctioned Cascade Capacity (Sarju I, II & III)",
       },
       primaryImage: {
-        url: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1400&q=85",
+        url: "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/DSC00992_f807ae3a.jpg",
         alt: "Hydrological survey and river catchment of the Sarju River in Bageshwar, Uttarakhand",
         caption:
           "Initial hydrological assessment along the upper Sarju River stream in Bageshwar.",
       },
       secondaryImage: {
-        url: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=900&q=80",
+        url: "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/20150914_130417_b13c6c87.jpg",
         alt: "Civil excavation and headrace tunnel engineering work for UBHP",
         caption:
           "Early civil excavation and slope stabilization in high-altitude terrain.",
@@ -124,7 +124,7 @@ export const HERITAGE_TIMELINE_DATA: HeritageTimelinePageData = {
         label: "3 × 3,600 kW Horizontal Francis Turbines",
       },
       primaryImage: {
-        url: "https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=1400&q=85",
+        url: "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/20150914_152820_164b397b.jpg",
         alt: "Sarju III Hydroelectric Powerhouse and high-pressure penstock infrastructure",
         caption:
           "Sarju III powerhouse and penstock assembly commissioned on 11.07.2014.",
@@ -149,13 +149,13 @@ export const HERITAGE_TIMELINE_DATA: HeritageTimelinePageData = {
         label: "155.0m Rated Head · 3 × 4,200 kW Units",
       },
       primaryImage: {
-        url: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1400&q=85",
+        url: "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/_MG_3560_bcb2ca66.webp",
         alt: "High-voltage switchyard and transmission lines evacuating power from Sarju II",
         caption:
           "Switchyard synchronization following Sarju II commissioning on 25.05.2016.",
       },
       secondaryImage: {
-        url: "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=900&q=80",
+        url: "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/_MG_3326_fa877723.webp",
         alt: "Electro-mechanical turbine governor and control room telemetry",
         caption:
           "Automated SCADA control systems managing turbine load and headrace levels.",
@@ -164,26 +164,26 @@ export const HERITAGE_TIMELINE_DATA: HeritageTimelinePageData = {
         "Rated Net Head: 155.0 m | Rated Discharge: 2.59 m³/s | COD: 25.05.2016.",
     },
     {
-      id: "era-sarju-i-agro",
+      id: "era-green-fuels-expansion",
       year: "2021",
-      dateStamp: "Cascade Completion & Agro-Ventures",
+      dateStamp: "Diversification & Green Fuels",
       isoDate: "2021-09-15",
-      eraTitle: "Upstream Hydro & Sustainable Agriculture",
-      headline: "Advancing Sarju I (7.50 MW) & Biomass Integration",
+      eraTitle: "Venturing into Other Green Energy Streams",
+      headline: "Setting up Rajasthan's First and Largest Ethanol Distillery",
       narrative: [
-        "With second-generation directors Mr. Amul Goel and Mr. Aadish Goel expanding strategic execution, the group advanced civil works on the upstream 7.50 MW Sarju I project (160m design head, 2 × 3,750 kW units).",
-        "Simultaneously, the group pioneered large-scale agrarian supply-chain integration—laying the feedstock foundation and community networks for our upcoming entry into green biofuels.",
+        "Venturing into other green energy streams, the group began its strategic diversification into green fuels.",
+        "This pivotal milestone was marked by setting up Rajasthan's first and largest ethanol distillery, establishing a major foundation for the group in the bio-energy sector and agrarian supply-chain integration.",
       ],
-      location: "Uttarakhand & Northern Agrarian Belt",
+      location: "Rajasthan",
       keyFigure: {
-        number: "7.50 MW",
-        label: "Sarju I Upstream Hydro (160m Design Head)",
+        number: "1st & Largest",
+        label: "Ethanol Distillery in Rajasthan",
       },
       primaryImage: {
-        url: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=1400&q=85",
-        alt: "Agricultural cultivation and rural integration",
+        url: "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/IMG_7095_edited_03c57d3d.webp",
+        alt: "Agricultural integration and early distillery site setup",
         caption:
-          "Establishing robust agrarian procurement networks for bio-energy transition.",
+          "Laying the groundwork for green fuel diversification in Rajasthan.",
       },
     },
     {
@@ -192,19 +192,19 @@ export const HERITAGE_TIMELINE_DATA: HeritageTimelinePageData = {
       dateStamp: "Corporate Transformation",
       isoDate: "2024-01-22",
       eraTitle: "The Pingaksh Group Identity",
-      headline: "Commissioning PBPL Green Fuels & Industrial Circularity",
+      headline: "Commissioning the Group's Green Fuel Plant in Rajasthan",
       narrative: [
-        "Unifying our hydro, biofuel, and agro-industrial entities under the Pingaksh Group banner, we established Pingaksh Beverages Pvt. Ltd. (PBPL) to operate a state-of-the-art grain-based ethanol biorefinery.",
+        "Unifying our hydro, biofuel, and agro-industrial entities under the Pingaksh Group banner, we successfully commissioned the group's green fuel plant in Rajasthan.",
         "Scaling to a robust 250 KLPD capacity with closed-loop Distillers Dried Grains with Solubles (DDGS) recovery, the facility firmly positioned the group as a key contributor to India's E20 fuel blending mandate.",
       ],
-      location: "Corporate Headquarters & Biorefinery Complex",
+      location: "Corporate Headquarters & Rajasthan Biorefinery",
       keyFigure: {
         number: "250 KLPD",
         label: "Operational Bio-Ethanol Distillation Capacity",
       },
       primaryImage: {
-        url: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1400&q=85",
-        alt: "Pingaksh Beverages PBPL automated distillation columns and process plant",
+        url: "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/dji_fly_20240307_160310_241_1709808715887_photo_87485549.webp",
+        alt: "Pingaksh green fuel plant and automated distillation columns in Rajasthan",
         caption:
           "Automated multi-pressure distillation and zero-liquid-discharge recovery units.",
       },
@@ -226,7 +226,7 @@ export const HERITAGE_TIMELINE_DATA: HeritageTimelinePageData = {
         label: "Tonnes of Cumulative Carbon Offset Achieved",
       },
       primaryImage: {
-        url: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1400&q=85",
+        url: "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/_MG_3751_a4bd973c.webp",
         alt: "Pingaksh modern corporate headquarters and future growth horizon",
         caption:
           "Institutional governance preparing Pingaksh for capital-market scale.",
