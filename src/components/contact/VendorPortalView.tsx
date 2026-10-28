@@ -21,6 +21,8 @@ import {
   Trash2,
   KeyRound,
   Mail,
+  CopyCheck,
+  Factory,
 } from "lucide-react";
 import type { VendorPortalPageData } from "@/data/vendorPortalData";
 
@@ -29,25 +31,52 @@ interface VendorPortalViewProps {
 }
 
 interface VendorKycFormState {
-  companyName: string;
-  address: string;
-  name1: string;
-  mobile1: string;
-  name2: string;
-  mobile2: string;
-  office1: string;
-  office2: string;
-  residence: string;
-  email: string;
+  // Step 1: Party, Principal Place of Supply, GST Contact & Directors (1-4)
+  nameOfParty: string;
+  contactPerson: string;
+  contactMobile: string;
+
+  principalAddress: string;
+  principalCity: string;
+  principalPinCode: string;
+  principalState: string;
+  principalTelNo: string;
+  principalFaxNo: string;
+  principalEmailId: string;
+
+  gstContactName: string;
+  gstContactDesignation: string;
+  gstContactAddress: string;
+  gstContactCity: string;
+  gstContactPinCode: string;
+  gstContactState: string;
+  gstContactTelNo: string;
+  gstContactMobileNo: string;
+  gstContactEmailId: string;
+
+  director1: string;
+  director2: string;
+  director3: string;
+  director4: string;
+
+  // Step 2: GST Status, HSN/SAC, PAN/MSMED/IEC, Bank & Mfg Status
+  gstStatus: "Registered" | "Not Registered" | "Compounding Scheme" | "";
+  gstRegNumber: string;
+  materialServicesDealing: string;
+  hsnSacCode: string;
+  panNumber: string;
+  ssiMsmedNumber: string;
+  iecNumber: string;
+
   bankName: string;
-  branch: string;
+  accountType: string;
   accountNumber: string;
   ifscCode: string;
-  tinNumber: string;
-  panNumber: string;
-  gstinNumber: string;
-  msmeRegistered: string;
-  reference: string;
+
+  mfgUnitStatus: string;
+  msmedSection2n: string;
+
+  // Step 3: Declaration
   agreeTerms: boolean;
 }
 
@@ -70,7 +99,7 @@ export default function VendorPortalView({ data }: VendorPortalViewProps) {
   const [authError, setAuthError] = useState("");
 
   // =================================================================
-  // 2. MULTI-STEP KYC FORM STATE (All Legacy Fields Preserved)
+  // 2. MULTI-STEP KYC FORM STATE (Aligned with VENDOR_PORTAL_DATA)
   // =================================================================
   const [currentStep, setCurrentStep] = useState<number>(1);
   const [stepError, setStepError] = useState<string>("");
@@ -78,39 +107,83 @@ export default function VendorPortalView({ data }: VendorPortalViewProps) {
   const [submissionRefId, setSubmissionRefId] = useState<string>("");
 
   const [formData, setFormData] = useState<VendorKycFormState>({
-    companyName: "",
-    address: "",
-    name1: "",
-    mobile1: "",
-    name2: "",
-    mobile2: "",
-    office1: "",
-    office2: "",
-    residence: "",
-    email: "",
+    nameOfParty: "",
+    contactPerson: "",
+    contactMobile: "",
+
+    principalAddress: "",
+    principalCity: "",
+    principalPinCode: "",
+    principalState: "",
+    principalTelNo: "",
+    principalFaxNo: "",
+    principalEmailId: "",
+
+    gstContactName: "",
+    gstContactDesignation: "",
+    gstContactAddress: "",
+    gstContactCity: "",
+    gstContactPinCode: "",
+    gstContactState: "",
+    gstContactTelNo: "",
+    gstContactMobileNo: "",
+    gstContactEmailId: "",
+
+    director1: "",
+    director2: "",
+    director3: "",
+    director4: "",
+
+    gstStatus: "Registered",
+    gstRegNumber: "",
+    materialServicesDealing: "",
+    hsnSacCode: "",
+    panNumber: "",
+    ssiMsmedNumber: "",
+    iecNumber: "",
+
     bankName: "",
-    branch: "",
+    accountType: "",
     accountNumber: "",
     ifscCode: "",
-    tinNumber: "",
-    panNumber: "",
-    gstinNumber: "",
-    msmeRegistered: "",
-    reference: "",
+
+    mfgUnitStatus: "",
+    msmedSection2n: "",
+
     agreeTerms: false,
   });
 
-  // Track uploaded files by document ID
+  // Track uploaded files dynamically from requiredDocuments IDs
   const [uploadedFiles, setUploadedFiles] = useState<
     Record<string, File | null>
-  >({
-    addressProof: null,
-    panScanCopy: null,
-    gstinCertificate: null,
-    msmeCertification: null,
-    tinScanCopy: null,
-    companyRegCertificate: null,
-  });
+  >(() =>
+    requiredDocuments.reduce(
+      (acc, doc) => {
+        acc[doc.id] = null;
+        return acc;
+      },
+      {} as Record<string, File | null>,
+    ),
+  );
+
+  // Helper: Check if a document is dynamically required based on Step 2 answers
+  const isDocumentRequired = (
+    docId: string,
+    baseRequired: boolean,
+  ): boolean => {
+    if (baseRequired) return true;
+    if (
+      docId === "gstinCertificate" &&
+      (formData.gstStatus === "Registered" ||
+        formData.gstStatus === "Compounding Scheme")
+    ) {
+      return true;
+    }
+    if (docId === "ssiMsmedEmCopy" && formData.msmedSection2n === "Yes") {
+      return true;
+    }
+    return false;
+  };
 
   // Handle Password Verification
   const handleUnlockSubmit = (e: React.FormEvent) => {
@@ -123,12 +196,12 @@ export default function VendorPortalView({ data }: VendorPortalViewProps) {
       setIsUnlocked(true);
     } else {
       setAuthError(
-        "Invalid Partner Access Code. Please verify with the Procurement Desk or use PINGAKSH2026.",
+        `Invalid Partner Access Code. Please verify with the Procurement Desk or use ${securityGate.demoAccessCode}.`,
       );
     }
   };
 
-  // Handle Text / Select Input Changes
+  // Handle Text / Select / Checkbox Input Changes
   const handleInputChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
@@ -142,6 +215,22 @@ export default function VendorPortalView({ data }: VendorPortalViewProps) {
     } else {
       setFormData((prev) => ({ ...prev, [name]: value }));
     }
+  };
+
+  // 1-Click Autofill GST Contact from Principal Place of Supply
+  const copyPrincipalToGstContact = () => {
+    setStepError("");
+    setFormData((prev) => ({
+      ...prev,
+      gstContactName: prev.gstContactName || prev.contactPerson,
+      gstContactAddress: prev.principalAddress,
+      gstContactCity: prev.principalCity,
+      gstContactPinCode: prev.principalPinCode,
+      gstContactState: prev.principalState,
+      gstContactTelNo: prev.principalTelNo,
+      gstContactMobileNo: prev.gstContactMobileNo || prev.contactMobile,
+      gstContactEmailId: prev.gstContactEmailId || prev.principalEmailId,
+    }));
   };
 
   // Handle File Selection
@@ -160,40 +249,71 @@ export default function VendorPortalView({ data }: VendorPortalViewProps) {
   const validateStep = (step: number): boolean => {
     if (step === 1) {
       if (
-        !formData.companyName.trim() ||
-        !formData.address.trim() ||
-        !formData.name1.trim() ||
-        !formData.mobile1.trim() ||
-        !formData.office1.trim() ||
-        !formData.email.trim()
+        !formData.nameOfParty.trim() ||
+        !formData.contactPerson.trim() ||
+        !formData.contactMobile.trim() ||
+        !formData.principalAddress.trim() ||
+        !formData.principalCity.trim() ||
+        !formData.principalPinCode.trim() ||
+        !formData.principalState.trim() ||
+        !formData.principalEmailId.trim() ||
+        !formData.gstContactName.trim() ||
+        !formData.gstContactMobileNo.trim() ||
+        !formData.gstContactEmailId.trim() ||
+        !formData.director1.trim()
       ) {
         setStepError(
-          "Please fill in all mandatory (*) Company, Promoter (Name 1 & Mobile), Office 1, and Email fields.",
+          "Please fill in all mandatory (*) fields across Party Details, Principal Place of Supply, GST Contact Person, and at least 1 Director / Partner / Proprietor.",
         );
         return false;
       }
     } else if (step === 2) {
       if (
+        !formData.gstStatus ||
+        !formData.materialServicesDealing.trim() ||
+        !formData.hsnSacCode.trim() ||
+        !formData.panNumber.trim() ||
         !formData.bankName.trim() ||
-        !formData.branch.trim() ||
+        !formData.accountType ||
         !formData.accountNumber.trim() ||
         !formData.ifscCode.trim() ||
-        !formData.panNumber.trim() ||
-        !formData.gstinNumber.trim() ||
-        !formData.msmeRegistered
+        !formData.mfgUnitStatus ||
+        !formData.msmedSection2n
       ) {
         setStepError(
-          "Please complete all mandatory (*) Bank Details, PAN Number, GSTIN Number, and MSME Registered selection.",
+          "Please complete all mandatory (*) GST Status, Material/Services, HSN/SAC Code, PAN, Bank Details, Mfg. Unit Status, and Section 2(n) MSMED fields.",
+        );
+        return false;
+      }
+
+      if (
+        (formData.gstStatus === "Registered" ||
+          formData.gstStatus === "Compounding Scheme") &&
+        !formData.gstRegNumber.trim()
+      ) {
+        setStepError(
+          "Please enter your 15-digit GST Registration Number (mandatory when GST Status is Registered or Compounding Scheme).",
+        );
+        return false;
+      }
+
+      if (
+        formData.msmedSection2n === "Yes" &&
+        !formData.ssiMsmedNumber.trim()
+      ) {
+        setStepError(
+          'Please enter your SSI / MSMED Registration No. since you selected "Yes" under Section 2(n) of the MSMED Act.',
         );
         return false;
       }
     } else if (step === 3) {
       const missingDocs = requiredDocuments.filter(
-        (doc) => doc.required && !uploadedFiles[doc.id],
+        (doc) =>
+          isDocumentRequired(doc.id, doc.required) && !uploadedFiles[doc.id],
       );
       if (missingDocs.length > 0) {
         setStepError(
-          `Please upload all mandatory (*) documents: ${missingDocs
+          `Please upload all mandatory (*) enclosures: ${missingDocs
             .map((d) => d.label)
             .join(", ")}.`,
         );
@@ -201,7 +321,7 @@ export default function VendorPortalView({ data }: VendorPortalViewProps) {
       }
       if (!formData.agreeTerms) {
         setStepError(
-          "You must agree to the Terms and Conditions of Pingaksh before submitting.",
+          "You must tick the declaration and agree to the Vendor Terms of Pingaksh Group before submitting.",
         );
         return false;
       }
@@ -265,7 +385,7 @@ export default function VendorPortalView({ data }: VendorPortalViewProps) {
       />
 
       {/* =====================================================================
-          1. ARCHITECTURAL HERO HEADER (With Safe Top Clearance for Fixed Navbar)
+          1. ARCHITECTURAL HERO HEADER
       ===================================================================== */}
       <header className="relative w-full min-h-[52vh] bg-pingaksh-navy text-white flex flex-col justify-end overflow-hidden pt-36 pb-14 sm:pb-20">
         <figure className="absolute inset-0 m-0">
@@ -513,13 +633,14 @@ export default function VendorPortalView({ data }: VendorPortalViewProps) {
                   Vendor Registration Submitted Successfully
                 </h2>
                 <p className="text-sm text-navy-600 max-w-xl mx-auto">
-                  Thank you, <strong>{formData.companyName}</strong>. Your
-                  statutory KYC details and uploaded certificates have been
-                  transmitted to the Pingaksh Group Vendor Empanelment Cell.
+                  Thank you, <strong>{formData.nameOfParty}</strong>. Your
+                  statutory Vendor Registration Form and enclosures have been
+                  transmitted to the Pingaksh Group Procurement &amp; Accounts
+                  Payable Desk.
                 </p>
               </div>
 
-              <div className="p-6 rounded-2xl bg-sand-50 border border-sand-300 max-w-lg mx-auto text-left space-y-2 text-xs">
+              <div className="p-6 rounded-2xl bg-sand-50 border border-sand-300 max-w-lg mx-auto text-left space-y-2.5 text-xs">
                 <div className="flex justify-between py-1 border-b border-sand-200">
                   <span className="text-navy-500">Application Reference:</span>
                   <strong className="font-mono text-pingaksh-terracotta">
@@ -527,22 +648,36 @@ export default function VendorPortalView({ data }: VendorPortalViewProps) {
                   </strong>
                 </div>
                 <div className="flex justify-between py-1 border-b border-sand-200">
-                  <span className="text-navy-500">Legal Entity:</span>
+                  <span className="text-navy-500">Name of Party:</span>
                   <strong className="text-pingaksh-navy">
-                    {formData.companyName}
+                    {formData.nameOfParty}
                   </strong>
                 </div>
                 <div className="flex justify-between py-1 border-b border-sand-200">
-                  <span className="text-navy-500">PAN / GSTIN:</span>
+                  <span className="text-navy-500">Principal City / State:</span>
                   <strong className="text-pingaksh-navy">
-                    {formData.panNumber.toUpperCase()} ·{" "}
-                    {formData.gstinNumber.toUpperCase()}
+                    {formData.principalCity}, {formData.principalState} (
+                    {formData.principalPinCode})
+                  </strong>
+                </div>
+                <div className="flex justify-between py-1 border-b border-sand-200">
+                  <span className="text-navy-500">GST Status &amp; PAN:</span>
+                  <strong className="font-mono text-pingaksh-navy">
+                    {formData.gstStatus} · {formData.panNumber.toUpperCase()}
+                  </strong>
+                </div>
+                <div className="flex justify-between py-1 border-b border-sand-200">
+                  <span className="text-navy-500">HSN / SAC Code:</span>
+                  <strong className="font-mono text-pingaksh-navy">
+                    {formData.hsnSacCode}
                   </strong>
                 </div>
                 <div className="flex justify-between py-1">
-                  <span className="text-navy-500">MSME Registered:</span>
+                  <span className="text-navy-500">
+                    Mfg. Unit / Section 2(n) MSMED:
+                  </span>
                   <strong className="text-pingaksh-navy">
-                    {formData.msmeRegistered}
+                    {formData.mfgUnitStatus} · MSMED: {formData.msmedSection2n}
                   </strong>
                 </div>
               </div>
@@ -670,7 +805,7 @@ export default function VendorPortalView({ data }: VendorPortalViewProps) {
                   )}
 
                   {/* =========================================================
-                      STEP 1: COMPANY, PROPRIETOR/DIRECTOR & PHONE NUMBERS
+                      STEP 1: PARTY, PRINCIPAL PLACE OF SUPPLY, GST CONTACT & DIRECTORS
                   ========================================================= */}
                   {currentStep === 1 && (
                     <motion.div
@@ -685,234 +820,477 @@ export default function VendorPortalView({ data }: VendorPortalViewProps) {
                             Step 01 of 03
                           </span>
                           <h3 className="font-logo text-2xl sm:text-3xl text-pingaksh-navy">
-                            Company &amp; Leadership Details
+                            {steps[0].title}
                           </h3>
                         </div>
                       </div>
 
-                      {/* Company Name & Address */}
-                      <div className="grid grid-cols-1 gap-5">
-                        <div>
+                      {/* 1. Primary Party & Contact Person */}
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+                        <div className="sm:col-span-3">
                           <label
-                            htmlFor="companyName"
+                            htmlFor="nameOfParty"
                             className="block text-xs font-bold uppercase tracking-wider text-pingaksh-navy mb-2"
                           >
-                            {formLabels.companyName}
+                            {formLabels.nameOfParty}
                           </label>
                           <input
-                            id="companyName"
-                            name="companyName"
+                            id="nameOfParty"
+                            name="nameOfParty"
                             type="text"
                             required
-                            value={formData.companyName}
+                            value={formData.nameOfParty}
                             onChange={handleInputChange}
-                            placeholder="Enter Legal Company / Firm Name"
+                            placeholder="Enter Legal Name of Company / Firm / Party"
+                            className="w-full px-4 py-3 rounded-xl bg-sand-50 border border-sand-300 text-sm text-pingaksh-navy focus:outline-none focus:border-pingaksh-terracotta"
+                          />
+                        </div>
+
+                        <div className="sm:col-span-2">
+                          <label
+                            htmlFor="contactPerson"
+                            className="block text-xs font-bold uppercase tracking-wider text-pingaksh-navy mb-2"
+                          >
+                            {formLabels.contactPerson}
+                          </label>
+                          <input
+                            id="contactPerson"
+                            name="contactPerson"
+                            type="text"
+                            required
+                            value={formData.contactPerson}
+                            onChange={handleInputChange}
+                            placeholder="Full Name of Primary Contact Person"
                             className="w-full px-4 py-3 rounded-xl bg-sand-50 border border-sand-300 text-sm text-pingaksh-navy focus:outline-none focus:border-pingaksh-terracotta"
                           />
                         </div>
 
                         <div>
                           <label
-                            htmlFor="address"
+                            htmlFor="contactMobile"
                             className="block text-xs font-bold uppercase tracking-wider text-pingaksh-navy mb-2"
                           >
-                            {formLabels.address}
+                            {formLabels.contactMobile}
                           </label>
-                          <textarea
-                            id="address"
-                            name="address"
-                            rows={3}
+                          <input
+                            id="contactMobile"
+                            name="contactMobile"
+                            type="tel"
                             required
-                            value={formData.address}
+                            value={formData.contactMobile}
                             onChange={handleInputChange}
-                            placeholder="Enter Complete Registered / Corporate Street Address, City, State & PIN"
+                            placeholder="+91 98765 43210"
                             className="w-full px-4 py-3 rounded-xl bg-sand-50 border border-sand-300 text-sm text-pingaksh-navy focus:outline-none focus:border-pingaksh-terracotta"
                           />
                         </div>
                       </div>
 
-                      {/* Proprietor / Director / Partner's Name */}
-                      <div className="pt-4 border-t border-sand-200 space-y-4">
+                      {/* 2. Address of Principal Place of Supply */}
+                      <div className="pt-6 border-t border-sand-200 space-y-4">
+                        <h4 className="text-sm font-bold text-pingaksh-navy flex items-center gap-2">
+                          <Building2 className="w-4 h-4 text-pingaksh-terracotta" />
+                          <span>{formLabels.principalAddressHeader}</span>
+                        </h4>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                          <div className="sm:col-span-3">
+                            <label
+                              htmlFor="principalAddress"
+                              className="block text-xs font-bold uppercase tracking-wider text-pingaksh-navy mb-1.5"
+                            >
+                              {formLabels.principalAddress}
+                            </label>
+                            <textarea
+                              id="principalAddress"
+                              name="principalAddress"
+                              rows={2}
+                              required
+                              value={formData.principalAddress}
+                              onChange={handleInputChange}
+                              placeholder="Building, Plot No., Industrial Area / Street"
+                              className="w-full px-4 py-3 rounded-xl bg-sand-50 border border-sand-300 text-sm text-pingaksh-navy focus:outline-none focus:border-pingaksh-terracotta"
+                            />
+                          </div>
+
+                          <div>
+                            <label
+                              htmlFor="principalCity"
+                              className="block text-xs font-bold uppercase tracking-wider text-pingaksh-navy mb-1.5"
+                            >
+                              {formLabels.principalCity}
+                            </label>
+                            <input
+                              id="principalCity"
+                              name="principalCity"
+                              type="text"
+                              required
+                              value={formData.principalCity}
+                              onChange={handleInputChange}
+                              placeholder="City / Town"
+                              className="w-full px-4 py-3 rounded-xl bg-sand-50 border border-sand-300 text-sm text-pingaksh-navy focus:outline-none focus:border-pingaksh-terracotta"
+                            />
+                          </div>
+
+                          <div>
+                            <label
+                              htmlFor="principalPinCode"
+                              className="block text-xs font-bold uppercase tracking-wider text-pingaksh-navy mb-1.5"
+                            >
+                              {formLabels.principalPinCode}
+                            </label>
+                            <input
+                              id="principalPinCode"
+                              name="principalPinCode"
+                              type="text"
+                              required
+                              maxLength={6}
+                              value={formData.principalPinCode}
+                              onChange={handleInputChange}
+                              placeholder="6-Digit PIN Code"
+                              className="w-full px-4 py-3 rounded-xl bg-sand-50 border border-sand-300 text-sm font-mono text-pingaksh-navy focus:outline-none focus:border-pingaksh-terracotta"
+                            />
+                          </div>
+
+                          <div>
+                            <label
+                              htmlFor="principalState"
+                              className="block text-xs font-bold uppercase tracking-wider text-pingaksh-navy mb-1.5"
+                            >
+                              {formLabels.principalState}
+                            </label>
+                            <input
+                              id="principalState"
+                              name="principalState"
+                              type="text"
+                              required
+                              value={formData.principalState}
+                              onChange={handleInputChange}
+                              placeholder="State / UT"
+                              className="w-full px-4 py-3 rounded-xl bg-sand-50 border border-sand-300 text-sm text-pingaksh-navy focus:outline-none focus:border-pingaksh-terracotta"
+                            />
+                          </div>
+
+                          <div>
+                            <label
+                              htmlFor="principalTelNo"
+                              className="block text-xs font-bold uppercase tracking-wider text-navy-600 mb-1.5"
+                            >
+                              {formLabels.principalTelNo}
+                            </label>
+                            <input
+                              id="principalTelNo"
+                              name="principalTelNo"
+                              type="tel"
+                              value={formData.principalTelNo}
+                              onChange={handleInputChange}
+                              placeholder="STD + Landline No."
+                              className="w-full px-4 py-3 rounded-xl bg-sand-50 border border-sand-300 text-sm text-pingaksh-navy focus:outline-none focus:border-pingaksh-terracotta"
+                            />
+                          </div>
+
+                          <div>
+                            <label
+                              htmlFor="principalFaxNo"
+                              className="block text-xs font-bold uppercase tracking-wider text-navy-600 mb-1.5"
+                            >
+                              {formLabels.principalFaxNo}
+                            </label>
+                            <input
+                              id="principalFaxNo"
+                              name="principalFaxNo"
+                              type="text"
+                              value={formData.principalFaxNo}
+                              onChange={handleInputChange}
+                              placeholder="Fax No. (Optional)"
+                              className="w-full px-4 py-3 rounded-xl bg-sand-50 border border-sand-300 text-sm text-pingaksh-navy focus:outline-none focus:border-pingaksh-terracotta"
+                            />
+                          </div>
+
+                          <div>
+                            <label
+                              htmlFor="principalEmailId"
+                              className="block text-xs font-bold uppercase tracking-wider text-pingaksh-navy mb-1.5"
+                            >
+                              {formLabels.principalEmailId}
+                            </label>
+                            <input
+                              id="principalEmailId"
+                              name="principalEmailId"
+                              type="email"
+                              required
+                              value={formData.principalEmailId}
+                              onChange={handleInputChange}
+                              placeholder="corporate@vendor.com"
+                              className="w-full px-4 py-3 rounded-xl bg-sand-50 border border-sand-300 text-sm text-pingaksh-navy focus:outline-none focus:border-pingaksh-terracotta"
+                            />
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* 3. Contact Person (for GST related Issues) */}
+                      <div className="pt-6 border-t border-sand-200 space-y-4">
+                        <div className="flex flex-wrap items-center justify-between gap-2">
+                          <h4 className="text-sm font-bold text-pingaksh-navy flex items-center gap-2">
+                            <Phone className="w-4 h-4 text-pingaksh-terracotta" />
+                            <span>{formLabels.gstContactHeader}</span>
+                          </h4>
+
+                          <button
+                            type="button"
+                            onClick={copyPrincipalToGstContact}
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-sand-100 hover:bg-pingaksh-navy text-pingaksh-navy hover:text-pingaksh-sand text-[11px] font-bold transition-colors cursor-pointer"
+                          >
+                            <CopyCheck className="w-3.5 h-3.5" />
+                            <span>Copy from Principal Place of Supply</span>
+                          </button>
+                        </div>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                          <div className="sm:col-span-2">
+                            <label
+                              htmlFor="gstContactName"
+                              className="block text-xs font-bold uppercase tracking-wider text-pingaksh-navy mb-1.5"
+                            >
+                              {formLabels.gstContactName}
+                            </label>
+                            <input
+                              id="gstContactName"
+                              name="gstContactName"
+                              type="text"
+                              required
+                              value={formData.gstContactName}
+                              onChange={handleInputChange}
+                              placeholder="GST Nodal Officer / Accounts Contact Name"
+                              className="w-full px-4 py-3 rounded-xl bg-sand-50 border border-sand-300 text-sm text-pingaksh-navy focus:outline-none focus:border-pingaksh-terracotta"
+                            />
+                          </div>
+
+                          <div>
+                            <label
+                              htmlFor="gstContactDesignation"
+                              className="block text-xs font-bold uppercase tracking-wider text-navy-600 mb-1.5"
+                            >
+                              {formLabels.gstContactDesignation}
+                            </label>
+                            <input
+                              id="gstContactDesignation"
+                              name="gstContactDesignation"
+                              type="text"
+                              value={formData.gstContactDesignation}
+                              onChange={handleInputChange}
+                              placeholder="e.g., Accounts Manager"
+                              className="w-full px-4 py-3 rounded-xl bg-sand-50 border border-sand-300 text-sm text-pingaksh-navy focus:outline-none focus:border-pingaksh-terracotta"
+                            />
+                          </div>
+
+                          <div className="sm:col-span-3">
+                            <label
+                              htmlFor="gstContactAddress"
+                              className="block text-xs font-bold uppercase tracking-wider text-navy-600 mb-1.5"
+                            >
+                              {formLabels.gstContactAddress}
+                            </label>
+                            <input
+                              id="gstContactAddress"
+                              name="gstContactAddress"
+                              type="text"
+                              value={formData.gstContactAddress}
+                              onChange={handleInputChange}
+                              placeholder="Billing / GST Correspondence Street Address"
+                              className="w-full px-4 py-3 rounded-xl bg-sand-50 border border-sand-300 text-sm text-pingaksh-navy focus:outline-none focus:border-pingaksh-terracotta"
+                            />
+                          </div>
+
+                          <div>
+                            <label
+                              htmlFor="gstContactCity"
+                              className="block text-xs font-bold uppercase tracking-wider text-navy-600 mb-1.5"
+                            >
+                              {formLabels.gstContactCity}
+                            </label>
+                            <input
+                              id="gstContactCity"
+                              name="gstContactCity"
+                              type="text"
+                              value={formData.gstContactCity}
+                              onChange={handleInputChange}
+                              placeholder="City"
+                              className="w-full px-4 py-3 rounded-xl bg-sand-50 border border-sand-300 text-sm text-pingaksh-navy focus:outline-none focus:border-pingaksh-terracotta"
+                            />
+                          </div>
+
+                          <div>
+                            <label
+                              htmlFor="gstContactPinCode"
+                              className="block text-xs font-bold uppercase tracking-wider text-navy-600 mb-1.5"
+                            >
+                              {formLabels.gstContactPinCode}
+                            </label>
+                            <input
+                              id="gstContactPinCode"
+                              name="gstContactPinCode"
+                              type="text"
+                              maxLength={6}
+                              value={formData.gstContactPinCode}
+                              onChange={handleInputChange}
+                              placeholder="PIN Code"
+                              className="w-full px-4 py-3 rounded-xl bg-sand-50 border border-sand-300 text-sm font-mono text-pingaksh-navy focus:outline-none focus:border-pingaksh-terracotta"
+                            />
+                          </div>
+
+                          <div>
+                            <label
+                              htmlFor="gstContactState"
+                              className="block text-xs font-bold uppercase tracking-wider text-navy-600 mb-1.5"
+                            >
+                              {formLabels.gstContactState}
+                            </label>
+                            <input
+                              id="gstContactState"
+                              name="gstContactState"
+                              type="text"
+                              value={formData.gstContactState}
+                              onChange={handleInputChange}
+                              placeholder="State"
+                              className="w-full px-4 py-3 rounded-xl bg-sand-50 border border-sand-300 text-sm text-pingaksh-navy focus:outline-none focus:border-pingaksh-terracotta"
+                            />
+                          </div>
+
+                          <div>
+                            <label
+                              htmlFor="gstContactTelNo"
+                              className="block text-xs font-bold uppercase tracking-wider text-navy-600 mb-1.5"
+                            >
+                              {formLabels.gstContactTelNo}
+                            </label>
+                            <input
+                              id="gstContactTelNo"
+                              name="gstContactTelNo"
+                              type="tel"
+                              value={formData.gstContactTelNo}
+                              onChange={handleInputChange}
+                              placeholder="Tel No."
+                              className="w-full px-4 py-3 rounded-xl bg-sand-50 border border-sand-300 text-sm text-pingaksh-navy focus:outline-none focus:border-pingaksh-terracotta"
+                            />
+                          </div>
+
+                          <div>
+                            <label
+                              htmlFor="gstContactMobileNo"
+                              className="block text-xs font-bold uppercase tracking-wider text-pingaksh-navy mb-1.5"
+                            >
+                              {formLabels.gstContactMobileNo}
+                            </label>
+                            <input
+                              id="gstContactMobileNo"
+                              name="gstContactMobileNo"
+                              type="tel"
+                              required
+                              value={formData.gstContactMobileNo}
+                              onChange={handleInputChange}
+                              placeholder="Mobile No. *"
+                              className="w-full px-4 py-3 rounded-xl bg-sand-50 border border-sand-300 text-sm text-pingaksh-navy focus:outline-none focus:border-pingaksh-terracotta"
+                            />
+                          </div>
+
+                          <div>
+                            <label
+                              htmlFor="gstContactEmailId"
+                              className="block text-xs font-bold uppercase tracking-wider text-pingaksh-navy mb-1.5"
+                            >
+                              {formLabels.gstContactEmailId}
+                            </label>
+                            <input
+                              id="gstContactEmailId"
+                              name="gstContactEmailId"
+                              type="email"
+                              required
+                              value={formData.gstContactEmailId}
+                              onChange={handleInputChange}
+                              placeholder="gst@vendor.com"
+                              className="w-full px-4 py-3 rounded-xl bg-sand-50 border border-sand-300 text-sm text-pingaksh-navy focus:outline-none focus:border-pingaksh-terracotta"
+                            />
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* 4. Names of all Directors / Partners / Proprietors (1-4) */}
+                      <div className="pt-6 border-t border-sand-200 space-y-4">
                         <h4 className="text-sm font-bold text-pingaksh-navy flex items-center gap-2">
                           <UserCheck className="w-4 h-4 text-pingaksh-terracotta" />
-                          <span>{formLabels.proprietorHeader}</span>
+                          <span>{formLabels.directorsHeader}</span>
                         </h4>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                           <div>
                             <label
-                              htmlFor="name1"
+                              htmlFor="director1"
                               className="block text-xs font-bold uppercase tracking-wider text-pingaksh-navy mb-1.5"
                             >
-                              {formLabels.name1}
+                              {formLabels.director1}
                             </label>
                             <input
-                              id="name1"
-                              name="name1"
+                              id="director1"
+                              name="director1"
                               type="text"
                               required
-                              value={formData.name1}
+                              value={formData.director1}
                               onChange={handleInputChange}
-                              placeholder="Primary Director / Partner Name"
+                              placeholder="Full Name of Director / Partner 1"
                               className="w-full px-4 py-3 rounded-xl bg-sand-50 border border-sand-300 text-sm text-pingaksh-navy focus:outline-none focus:border-pingaksh-terracotta"
                             />
                           </div>
 
                           <div>
                             <label
-                              htmlFor="mobile1"
-                              className="block text-xs font-bold uppercase tracking-wider text-pingaksh-navy mb-1.5"
-                            >
-                              {formLabels.mobile1}
-                            </label>
-                            <input
-                              id="mobile1"
-                              name="mobile1"
-                              type="tel"
-                              required
-                              value={formData.mobile1}
-                              onChange={handleInputChange}
-                              placeholder="+91 98765 43210"
-                              className="w-full px-4 py-3 rounded-xl bg-sand-50 border border-sand-300 text-sm text-pingaksh-navy focus:outline-none focus:border-pingaksh-terracotta"
-                            />
-                          </div>
-
-                          <div>
-                            <label
-                              htmlFor="name2"
+                              htmlFor="director2"
                               className="block text-xs font-bold uppercase tracking-wider text-navy-600 mb-1.5"
                             >
-                              {formLabels.name2}
+                              {formLabels.director2}
                             </label>
                             <input
-                              id="name2"
-                              name="name2"
+                              id="director2"
+                              name="director2"
                               type="text"
-                              value={formData.name2}
+                              value={formData.director2}
                               onChange={handleInputChange}
-                              placeholder="Secondary Director / Partner (Optional)"
+                              placeholder="Full Name of Director / Partner 2 (Optional)"
                               className="w-full px-4 py-3 rounded-xl bg-sand-50 border border-sand-300 text-sm text-pingaksh-navy focus:outline-none focus:border-pingaksh-terracotta"
                             />
                           </div>
 
                           <div>
                             <label
-                              htmlFor="mobile2"
+                              htmlFor="director3"
                               className="block text-xs font-bold uppercase tracking-wider text-navy-600 mb-1.5"
                             >
-                              {formLabels.mobile2}
+                              {formLabels.director3}
                             </label>
                             <input
-                              id="mobile2"
-                              name="mobile2"
-                              type="tel"
-                              value={formData.mobile2}
-                              onChange={handleInputChange}
-                              placeholder="Secondary Mobile (Optional)"
-                              className="w-full px-4 py-3 rounded-xl bg-sand-50 border border-sand-300 text-sm text-pingaksh-navy focus:outline-none focus:border-pingaksh-terracotta"
-                            />
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Phone Numbers & Email & Reference */}
-                      <div className="pt-4 border-t border-sand-200 space-y-4">
-                        <h4 className="text-sm font-bold text-pingaksh-navy flex items-center gap-2">
-                          <Phone className="w-4 h-4 text-pingaksh-terracotta" />
-                          <span>{formLabels.phoneHeader} &amp; Contact</span>
-                        </h4>
-
-                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                          <div>
-                            <label
-                              htmlFor="office1"
-                              className="block text-xs font-bold uppercase tracking-wider text-pingaksh-navy mb-1.5"
-                            >
-                              {formLabels.office1}
-                            </label>
-                            <input
-                              id="office1"
-                              name="office1"
-                              type="tel"
-                              required
-                              value={formData.office1}
-                              onChange={handleInputChange}
-                              placeholder="Primary Office Phone"
-                              className="w-full px-4 py-3 rounded-xl bg-sand-50 border border-sand-300 text-sm text-pingaksh-navy focus:outline-none focus:border-pingaksh-terracotta"
-                            />
-                          </div>
-
-                          <div>
-                            <label
-                              htmlFor="office2"
-                              className="block text-xs font-bold uppercase tracking-wider text-navy-600 mb-1.5"
-                            >
-                              {formLabels.office2}
-                            </label>
-                            <input
-                              id="office2"
-                              name="office2"
-                              type="tel"
-                              value={formData.office2}
-                              onChange={handleInputChange}
-                              placeholder="Secondary Office Phone"
-                              className="w-full px-4 py-3 rounded-xl bg-sand-50 border border-sand-300 text-sm text-pingaksh-navy focus:outline-none focus:border-pingaksh-terracotta"
-                            />
-                          </div>
-
-                          <div>
-                            <label
-                              htmlFor="residence"
-                              className="block text-xs font-bold uppercase tracking-wider text-navy-600 mb-1.5"
-                            >
-                              {formLabels.residence}
-                            </label>
-                            <input
-                              id="residence"
-                              name="residence"
-                              type="tel"
-                              value={formData.residence}
-                              onChange={handleInputChange}
-                              placeholder="Residence Phone"
-                              className="w-full px-4 py-3 rounded-xl bg-sand-50 border border-sand-300 text-sm text-pingaksh-navy focus:outline-none focus:border-pingaksh-terracotta"
-                            />
-                          </div>
-                        </div>
-
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                          <div>
-                            <label
-                              htmlFor="email"
-                              className="block text-xs font-bold uppercase tracking-wider text-pingaksh-navy mb-1.5"
-                            >
-                              {formLabels.email}
-                            </label>
-                            <input
-                              id="email"
-                              name="email"
-                              type="email"
-                              required
-                              value={formData.email}
-                              onChange={handleInputChange}
-                              placeholder="official@vendorcompany.com"
-                              className="w-full px-4 py-3 rounded-xl bg-sand-50 border border-sand-300 text-sm text-pingaksh-navy focus:outline-none focus:border-pingaksh-terracotta"
-                            />
-                          </div>
-
-                          <div>
-                            <label
-                              htmlFor="reference"
-                              className="block text-xs font-bold uppercase tracking-wider text-navy-600 mb-1.5"
-                            >
-                              {formLabels.reference}
-                            </label>
-                            <input
-                              id="reference"
-                              name="reference"
+                              id="director3"
+                              name="director3"
                               type="text"
-                              value={formData.reference}
+                              value={formData.director3}
                               onChange={handleInputChange}
-                              placeholder="Pingaksh Contact / Tender Ref (Optional)"
+                              placeholder="Full Name of Director / Partner 3 (Optional)"
+                              className="w-full px-4 py-3 rounded-xl bg-sand-50 border border-sand-300 text-sm text-pingaksh-navy focus:outline-none focus:border-pingaksh-terracotta"
+                            />
+                          </div>
+
+                          <div>
+                            <label
+                              htmlFor="director4"
+                              className="block text-xs font-bold uppercase tracking-wider text-navy-600 mb-1.5"
+                            >
+                              {formLabels.director4}
+                            </label>
+                            <input
+                              id="director4"
+                              name="director4"
+                              type="text"
+                              value={formData.director4}
+                              onChange={handleInputChange}
+                              placeholder="Full Name of Director / Partner 4 (Optional)"
                               className="w-full px-4 py-3 rounded-xl bg-sand-50 border border-sand-300 text-sm text-pingaksh-navy focus:outline-none focus:border-pingaksh-terracotta"
                             />
                           </div>
@@ -922,7 +1300,7 @@ export default function VendorPortalView({ data }: VendorPortalViewProps) {
                   )}
 
                   {/* =========================================================
-                      STEP 2: BANK DETAILS & STATUTORY TAX IDENTIFIERS
+                      STEP 2: GST STATUS, HSN/SAC, PAN/MSMED/IEC, BANK & MFG STATUS
                   ========================================================= */}
                   {currentStep === 2 && (
                     <motion.div
@@ -937,97 +1315,113 @@ export default function VendorPortalView({ data }: VendorPortalViewProps) {
                             Step 02 of 03
                           </span>
                           <h3 className="font-logo text-2xl sm:text-3xl text-pingaksh-navy">
-                            {formLabels.bankHeader} &amp; Tax KYC
+                            {steps[1].title}
                           </h3>
                         </div>
                       </div>
 
-                      {/* Bank Details Grid */}
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                      {/* 1. GST Registration Category & Tax Identifiers */}
+                      <div className="space-y-5">
                         <div>
-                          <label
-                            htmlFor="bankName"
-                            className="block text-xs font-bold uppercase tracking-wider text-pingaksh-navy mb-2"
-                          >
-                            {formLabels.bankName}
-                          </label>
-                          <input
-                            id="bankName"
-                            name="bankName"
-                            type="text"
-                            required
-                            value={formData.bankName}
-                            onChange={handleInputChange}
-                            placeholder="e.g., State Bank of India / HDFC Bank"
-                            className="w-full px-4 py-3 rounded-xl bg-sand-50 border border-sand-300 text-sm text-pingaksh-navy focus:outline-none focus:border-pingaksh-terracotta"
-                          />
+                          <span className="block text-xs font-bold uppercase tracking-wider text-pingaksh-navy mb-2.5">
+                            {formLabels.gstStatusHeader}
+                          </span>
+                          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                            {formLabels.gstStatusOptions.map((opt) => {
+                              const isSelected =
+                                formData.gstStatus === opt.value;
+                              return (
+                                <label
+                                  key={opt.value}
+                                  className={`p-3.5 rounded-xl border text-xs sm:text-sm font-semibold flex items-center gap-2.5 cursor-pointer transition-all ${
+                                    isSelected
+                                      ? "bg-pingaksh-navy text-pingaksh-sand border-pingaksh-navy shadow-sm"
+                                      : "bg-sand-50 text-pingaksh-navy border-sand-300 hover:border-pingaksh-terracotta"
+                                  }`}
+                                >
+                                  <input
+                                    type="radio"
+                                    name="gstStatus"
+                                    value={opt.value}
+                                    checked={isSelected}
+                                    onChange={handleInputChange}
+                                    className="accent-pingaksh-terracotta"
+                                  />
+                                  <span>{opt.label}</span>
+                                </label>
+                              );
+                            })}
+                          </div>
                         </div>
-
-                        <div>
-                          <label
-                            htmlFor="branch"
-                            className="block text-xs font-bold uppercase tracking-wider text-pingaksh-navy mb-2"
-                          >
-                            {formLabels.branch}
-                          </label>
-                          <input
-                            id="branch"
-                            name="branch"
-                            type="text"
-                            required
-                            value={formData.branch}
-                            onChange={handleInputChange}
-                            placeholder="Branch Name & City"
-                            className="w-full px-4 py-3 rounded-xl bg-sand-50 border border-sand-300 text-sm text-pingaksh-navy focus:outline-none focus:border-pingaksh-terracotta"
-                          />
-                        </div>
-
-                        <div>
-                          <label
-                            htmlFor="accountNumber"
-                            className="block text-xs font-bold uppercase tracking-wider text-pingaksh-navy mb-2"
-                          >
-                            {formLabels.accountNumber}
-                          </label>
-                          <input
-                            id="accountNumber"
-                            name="accountNumber"
-                            type="text"
-                            required
-                            value={formData.accountNumber}
-                            onChange={handleInputChange}
-                            placeholder="Enter Corporate Bank Account No."
-                            className="w-full px-4 py-3 rounded-xl bg-sand-50 border border-sand-300 text-sm font-mono text-pingaksh-navy focus:outline-none focus:border-pingaksh-terracotta"
-                          />
-                        </div>
-
-                        <div>
-                          <label
-                            htmlFor="ifscCode"
-                            className="block text-xs font-bold uppercase tracking-wider text-pingaksh-navy mb-2"
-                          >
-                            {formLabels.ifscCode}
-                          </label>
-                          <input
-                            id="ifscCode"
-                            name="ifscCode"
-                            type="text"
-                            required
-                            value={formData.ifscCode}
-                            onChange={handleInputChange}
-                            placeholder="11-Character IFSC (e.g., SBIN0001234)"
-                            className="w-full px-4 py-3 rounded-xl bg-sand-50 border border-sand-300 text-sm font-mono uppercase text-pingaksh-navy focus:outline-none focus:border-pingaksh-terracotta"
-                          />
-                        </div>
-                      </div>
-
-                      {/* Tax & MSME Identifiers */}
-                      <div className="pt-6 border-t border-sand-200 space-y-5">
-                        <h4 className="text-sm font-bold text-pingaksh-navy">
-                          {formLabels.taxHeader}
-                        </h4>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                          <div>
+                            <label
+                              htmlFor="gstRegNumber"
+                              className="block text-xs font-bold uppercase tracking-wider text-pingaksh-navy mb-2"
+                            >
+                              {formLabels.gstRegNumber}{" "}
+                              {formData.gstStatus !== "Not Registered" && (
+                                <span className="text-pingaksh-terracotta">
+                                  *
+                                </span>
+                              )}
+                            </label>
+                            <input
+                              id="gstRegNumber"
+                              name="gstRegNumber"
+                              type="text"
+                              maxLength={15}
+                              disabled={formData.gstStatus === "Not Registered"}
+                              value={formData.gstRegNumber}
+                              onChange={handleInputChange}
+                              placeholder={
+                                formData.gstStatus === "Not Registered"
+                                  ? "Not Applicable (Not Registered)"
+                                  : "15-Digit GSTIN (e.g., 05AAACP1234A1Z5)"
+                              }
+                              className="w-full px-4 py-3 rounded-xl bg-sand-50 border border-sand-300 text-sm font-mono uppercase text-pingaksh-navy focus:outline-none focus:border-pingaksh-terracotta disabled:opacity-50"
+                            />
+                          </div>
+
+                          <div>
+                            <label
+                              htmlFor="hsnSacCode"
+                              className="block text-xs font-bold uppercase tracking-wider text-pingaksh-navy mb-2"
+                            >
+                              {formLabels.hsnSacCode}
+                            </label>
+                            <input
+                              id="hsnSacCode"
+                              name="hsnSacCode"
+                              type="text"
+                              required
+                              value={formData.hsnSacCode}
+                              onChange={handleInputChange}
+                              placeholder="4 / 6 / 8-Digit HSN or SAC Code"
+                              className="w-full px-4 py-3 rounded-xl bg-sand-50 border border-sand-300 text-sm font-mono text-pingaksh-navy focus:outline-none focus:border-pingaksh-terracotta"
+                            />
+                          </div>
+
+                          <div className="sm:col-span-2">
+                            <label
+                              htmlFor="materialServicesDealing"
+                              className="block text-xs font-bold uppercase tracking-wider text-pingaksh-navy mb-2"
+                            >
+                              {formLabels.materialServicesDealing}
+                            </label>
+                            <input
+                              id="materialServicesDealing"
+                              name="materialServicesDealing"
+                              type="text"
+                              required
+                              value={formData.materialServicesDealing}
+                              onChange={handleInputChange}
+                              placeholder="Describe primary goods, raw materials, civil works, or OEM services supplied"
+                              className="w-full px-4 py-3 rounded-xl bg-sand-50 border border-sand-300 text-sm text-pingaksh-navy focus:outline-none focus:border-pingaksh-terracotta"
+                            />
+                          </div>
+
                           <div>
                             <label
                               htmlFor="panNumber"
@@ -1043,61 +1437,183 @@ export default function VendorPortalView({ data }: VendorPortalViewProps) {
                               maxLength={10}
                               value={formData.panNumber}
                               onChange={handleInputChange}
-                              placeholder="10-Digit PAN (e.g., AAACP1234A)"
+                              placeholder="10-Character PAN (e.g., AAACP1234A)"
                               className="w-full px-4 py-3 rounded-xl bg-sand-50 border border-sand-300 text-sm font-mono uppercase text-pingaksh-navy focus:outline-none focus:border-pingaksh-terracotta"
                             />
                           </div>
 
                           <div>
                             <label
-                              htmlFor="gstinNumber"
+                              htmlFor="ssiMsmedNumber"
                               className="block text-xs font-bold uppercase tracking-wider text-pingaksh-navy mb-2"
                             >
-                              {formLabels.gstinNumber}
+                              {formLabels.ssiMsmedNumber}
                             </label>
                             <input
-                              id="gstinNumber"
-                              name="gstinNumber"
+                              id="ssiMsmedNumber"
+                              name="ssiMsmedNumber"
+                              type="text"
+                              value={formData.ssiMsmedNumber}
+                              onChange={handleInputChange}
+                              placeholder="Udyam / SSI / MSMED Reg. No."
+                              className="w-full px-4 py-3 rounded-xl bg-sand-50 border border-sand-300 text-sm font-mono uppercase text-pingaksh-navy focus:outline-none focus:border-pingaksh-terracotta"
+                            />
+                          </div>
+
+                          <div className="sm:col-span-2">
+                            <label
+                              htmlFor="iecNumber"
+                              className="block text-xs font-bold uppercase tracking-wider text-navy-600 mb-2"
+                            >
+                              {formLabels.iecNumber}
+                            </label>
+                            <input
+                              id="iecNumber"
+                              name="iecNumber"
+                              type="text"
+                              value={formData.iecNumber}
+                              onChange={handleInputChange}
+                              placeholder="10-Digit Import Export Code (Optional)"
+                              className="w-full px-4 py-3 rounded-xl bg-sand-50 border border-sand-300 text-sm font-mono uppercase text-pingaksh-navy focus:outline-none focus:border-pingaksh-terracotta"
+                            />
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* 2. Bank Details */}
+                      <div className="pt-6 border-t border-sand-200 space-y-4">
+                        <h4 className="text-sm font-bold text-pingaksh-navy flex items-center gap-2">
+                          <Landmark className="w-4 h-4 text-pingaksh-terracotta" />
+                          <span>{formLabels.bankHeader}</span>
+                        </h4>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                          <div>
+                            <label
+                              htmlFor="bankName"
+                              className="block text-xs font-bold uppercase tracking-wider text-pingaksh-navy mb-2"
+                            >
+                              {formLabels.bankName}
+                            </label>
+                            <input
+                              id="bankName"
+                              name="bankName"
                               type="text"
                               required
-                              maxLength={15}
-                              value={formData.gstinNumber}
+                              value={formData.bankName}
                               onChange={handleInputChange}
-                              placeholder="15-Digit GSTIN Number"
-                              className="w-full px-4 py-3 rounded-xl bg-sand-50 border border-sand-300 text-sm font-mono uppercase text-pingaksh-navy focus:outline-none focus:border-pingaksh-terracotta"
+                              placeholder="e.g., State Bank of India / HDFC Bank"
+                              className="w-full px-4 py-3 rounded-xl bg-sand-50 border border-sand-300 text-sm text-pingaksh-navy focus:outline-none focus:border-pingaksh-terracotta"
                             />
                           </div>
 
                           <div>
                             <label
-                              htmlFor="tinNumber"
-                              className="block text-xs font-bold uppercase tracking-wider text-navy-600 mb-2"
+                              htmlFor="accountType"
+                              className="block text-xs font-bold uppercase tracking-wider text-pingaksh-navy mb-2"
                             >
-                              {formLabels.tinNumber}
+                              {formLabels.accountType}
+                            </label>
+                            <select
+                              id="accountType"
+                              name="accountType"
+                              required
+                              value={formData.accountType}
+                              onChange={handleInputChange}
+                              className="w-full px-4 py-3 rounded-xl bg-sand-50 border border-sand-300 text-sm text-pingaksh-navy focus:outline-none focus:border-pingaksh-terracotta"
+                            >
+                              {formLabels.accountTypeOptions.map((opt) => (
+                                <option key={opt.label} value={opt.value}>
+                                  {opt.label}
+                                </option>
+                              ))}
+                            </select>
+                          </div>
+
+                          <div>
+                            <label
+                              htmlFor="accountNumber"
+                              className="block text-xs font-bold uppercase tracking-wider text-pingaksh-navy mb-2"
+                            >
+                              {formLabels.accountNumber}
                             </label>
                             <input
-                              id="tinNumber"
-                              name="tinNumber"
+                              id="accountNumber"
+                              name="accountNumber"
                               type="text"
-                              value={formData.tinNumber}
+                              required
+                              value={formData.accountNumber}
                               onChange={handleInputChange}
-                              placeholder="TIN Number (Optional)"
+                              placeholder="Enter Corporate Bank A/c Number"
                               className="w-full px-4 py-3 rounded-xl bg-sand-50 border border-sand-300 text-sm font-mono text-pingaksh-navy focus:outline-none focus:border-pingaksh-terracotta"
                             />
                           </div>
 
                           <div>
                             <label
-                              htmlFor="msmeRegistered"
+                              htmlFor="ifscCode"
                               className="block text-xs font-bold uppercase tracking-wider text-pingaksh-navy mb-2"
                             >
-                              {formLabels.msmeRegistered}
+                              {formLabels.ifscCode}
+                            </label>
+                            <input
+                              id="ifscCode"
+                              name="ifscCode"
+                              type="text"
+                              required
+                              maxLength={11}
+                              value={formData.ifscCode}
+                              onChange={handleInputChange}
+                              placeholder="11-Character IFSC (e.g., SBIN0001234)"
+                              className="w-full px-4 py-3 rounded-xl bg-sand-50 border border-sand-300 text-sm font-mono uppercase text-pingaksh-navy focus:outline-none focus:border-pingaksh-terracotta"
+                            />
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* 3. Status Of Your Mfg. Unit & MSMED Section 2(n) */}
+                      <div className="pt-6 border-t border-sand-200 space-y-5">
+                        <h4 className="text-sm font-bold text-pingaksh-navy flex items-center gap-2">
+                          <Factory className="w-4 h-4 text-pingaksh-terracotta" />
+                          <span>{formLabels.mfgStatusHeader}</span>
+                        </h4>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                          <div>
+                            <label
+                              htmlFor="mfgUnitStatus"
+                              className="block text-xs font-bold uppercase tracking-wider text-pingaksh-navy mb-2"
+                            >
+                              {formLabels.mfgUnitStatus}
                             </label>
                             <select
-                              id="msmeRegistered"
-                              name="msmeRegistered"
+                              id="mfgUnitStatus"
+                              name="mfgUnitStatus"
                               required
-                              value={formData.msmeRegistered}
+                              value={formData.mfgUnitStatus}
+                              onChange={handleInputChange}
+                              className="w-full px-4 py-3 rounded-xl bg-sand-50 border border-sand-300 text-sm text-pingaksh-navy focus:outline-none focus:border-pingaksh-terracotta"
+                            >
+                              {formLabels.mfgStatusOptions.map((opt) => (
+                                <option key={opt.label} value={opt.value}>
+                                  {opt.label}
+                                </option>
+                              ))}
+                            </select>
+                          </div>
+
+                          <div>
+                            <label
+                              htmlFor="msmedSection2n"
+                              className="block text-xs font-bold uppercase tracking-wider text-pingaksh-navy mb-2"
+                            >
+                              {formLabels.msmedSection2nQuestion}
+                            </label>
+                            <select
+                              id="msmedSection2n"
+                              name="msmedSection2n"
+                              required
+                              value={formData.msmedSection2n}
                               onChange={handleInputChange}
                               className="w-full px-4 py-3 rounded-xl bg-sand-50 border border-sand-300 text-sm text-pingaksh-navy focus:outline-none focus:border-pingaksh-terracotta"
                             >
@@ -1109,12 +1625,16 @@ export default function VendorPortalView({ data }: VendorPortalViewProps) {
                             </select>
                           </div>
                         </div>
+
+                        <div className="p-4 rounded-xl bg-sand-100 border border-sand-300 text-xs text-navy-700 leading-relaxed">
+                          {formLabels.msmedSection2nNote}
+                        </div>
                       </div>
                     </motion.div>
                   )}
 
                   {/* =========================================================
-                      STEP 3: DOCUMENTS REQUIRED (6 UPLOAD CARDS) & TERMS
+                      STEP 3: MANDATORY STATUTORY ENCLOSURES & DECLARATION
                   ========================================================= */}
                   {currentStep === 3 && (
                     <motion.div
@@ -1134,10 +1654,15 @@ export default function VendorPortalView({ data }: VendorPortalViewProps) {
                         </div>
                       </div>
 
-                      {/* 2-Column Grid of 6 Document Upload Dropzones */}
+                      {/* 2-Column Grid of Statutory Document Upload Dropzones */}
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                         {requiredDocuments.map((doc) => {
                           const selectedFile = uploadedFiles[doc.id];
+                          const isReq = isDocumentRequired(
+                            doc.id,
+                            doc.required,
+                          );
+
                           return (
                             <div
                               key={doc.id}
@@ -1148,19 +1673,32 @@ export default function VendorPortalView({ data }: VendorPortalViewProps) {
                               }`}
                             >
                               <div>
-                                <div className="flex items-center justify-between gap-2">
+                                <div className="flex items-start justify-between gap-2">
                                   <span className="text-xs font-bold uppercase tracking-wider text-pingaksh-navy">
                                     {doc.label}{" "}
-                                    {doc.required && (
+                                    {isReq && (
                                       <span className="text-pingaksh-terracotta">
                                         *
                                       </span>
                                     )}
                                   </span>
-                                  <span className="text-[10px] font-semibold px-2 py-0.5 rounded bg-sand-200 text-navy-700">
-                                    {doc.required ? "Mandatory" : "Optional"}
+                                  <span
+                                    className={`text-[10px] font-semibold px-2 py-0.5 rounded shrink-0 ${
+                                      isReq
+                                        ? "bg-pingaksh-terracotta/15 text-pingaksh-terracotta"
+                                        : "bg-sand-200 text-navy-700"
+                                    }`}
+                                  >
+                                    {isReq ? "Mandatory" : "Optional"}
                                   </span>
                                 </div>
+
+                                {doc.conditionalNote && (
+                                  <p className="text-[10px] font-semibold text-pingaksh-terracotta mt-1">
+                                    ({doc.conditionalNote})
+                                  </p>
+                                )}
+
                                 <p className="text-[11px] text-navy-500 mt-1">
                                   {doc.helperText}
                                 </p>
@@ -1253,7 +1791,7 @@ export default function VendorPortalView({ data }: VendorPortalViewProps) {
                       </button>
                     ) : (
                       <span className="text-xs text-navy-500">
-                        * Indicates mandatory KYC field
+                        * Indicates mandatory statutory field
                       </span>
                     )}
 
