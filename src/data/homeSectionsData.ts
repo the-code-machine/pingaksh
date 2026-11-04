@@ -82,7 +82,7 @@ export const HOME_SECTIONS_DATA = {
       },
       {
         id: "hydro-capacity",
-        value: "30.60",
+        value: "23.60",
         unit: "MW",
         label: "Sarju II & III Hydro",
         subtext: "Run-of-the-River cascade in Bageshwar, Uttarakhand",
