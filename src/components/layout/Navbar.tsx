@@ -13,8 +13,6 @@ import {
   Menu,
   X,
   Lock,
-  Sparkles,
-  ExternalLink,
   Building2,
 } from "lucide-react";
 import { NAVIGATION_DATA, type NavItem } from "@/data/navigationData";
@@ -74,7 +72,7 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [activeTabId, groupSitesOpen, mobileDrawerOpen]);
 
-  // Sync CSS variable so sticky sub-headers (like the Year Scrubber) can optionally offset when Navbar reveals
+  // Sync CSS variable so sticky sub-headers can optionally offset when Navbar reveals
   useEffect(() => {
     document.documentElement.style.setProperty(
       "--navbar-offset",
@@ -111,20 +109,23 @@ export default function Navbar() {
       className={`fixed top-0 left-0 right-0 z-50 transition-transform duration-300 ease-in-out will-change-transform ${
         shouldHideHeader ? "-translate-y-full" : "translate-y-0"
       }`}
-      onMouseLeave={() => setActiveTabId(null)}
+      onMouseLeave={() => {
+        setActiveTabId(null);
+        setGroupSitesOpen(false);
+      }}
     >
       {/* =========================================================
-          1. TOP CORPORATE UTILITY BAR (Matches Pingaksh Figma)
+          1. TOP CORPORATE UTILITY BAR
       ========================================================= */}
       <div className="bg-navy-950 text-white border-b border-white/10 text-xs">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 h-9 flex items-center justify-between">
           {/* Left: Clean Energy | Sustainable Tomorrow */}
-          <div className="flex items-center gap-2.5 text-sand-200/90">
+          <div className="flex items-center gap-2.5 text-sand-200/90 shrink-0">
             <span className="inline-flex items-center gap-1.5 font-medium text-white">
               <Leaf className="w-3.5 h-3.5 text-emerald-400 fill-emerald-400/20" />
               Clean Energy
             </span>
-            <span className="text-white/30">|</span>
+            <span className="hidden sm:inline text-white/30">|</span>
             <span className="hidden sm:inline text-white/85">
               Sustainable Tomorrow
             </span>
@@ -160,7 +161,7 @@ export default function Navbar() {
             {/* Country Selector */}
             <button
               type="button"
-              className="inline-flex items-center gap-1 text-white/90 hover:text-pingaksh-sand transition-colors cursor-pointer"
+              className="inline-flex items-center gap-1 text-white/90 hover:text-pingaksh-sand transition-colors cursor-pointer shrink-0"
             >
               <Globe className="w-3.5 h-3.5 text-sand-200" />
               <span>India</span>
@@ -175,27 +176,27 @@ export default function Navbar() {
       ========================================================= */}
       <div
         className={`transition-colors duration-300 ${
-          activeTabId || isScrolled
+          activeTabId || isScrolled || mobileDrawerOpen
             ? "bg-pingaksh-navy/95 backdrop-blur-md shadow-lg border-b border-white/10"
             : "bg-gradient-to-b from-pingaksh-navy/90 via-pingaksh-navy/70 to-transparent"
         }`}
       >
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 h-20 flex items-center justify-between gap-4">
+          {/* Brand Logo (With bounded mobile + desktop dimensions) */}
           <Link
             href="/"
             className="inline-flex items-center gap-3 group shrink-0 focus:outline-none"
           >
-            {/* Emblem matched to the exact total height of the 3-tier text block (~52px) */}
-            <div className=" sm:w-[13rem] sm:h-[9rem] flex items-start justify-center shrink-0">
+            <div className="w-36 h-12 sm:w-[13rem] sm:h-[4.5rem] flex items-center justify-start shrink-0">
               <img
                 src="/logo/logo-icon.svg"
                 alt="Pingaksh Renewables Limited"
-                className="w-full h-full object-contain "
+                className="w-full h-full object-contain object-left"
               />
             </div>
           </Link>
 
-          {/* Desktop Navigation Tabs (Reliance-style framed active state) */}
+          {/* Desktop Navigation Tabs (Visible on xl+ screens) */}
           <nav
             aria-label="Main Navigation"
             className="hidden xl:flex items-center gap-1 2xl:gap-2 h-full"
@@ -206,7 +207,10 @@ export default function Navbar() {
                 <div
                   key={item.id}
                   className="relative h-full flex items-center"
-                  onMouseEnter={() => setActiveTabId(item.id)}
+                  onMouseEnter={() => {
+                    setActiveTabId(item.id);
+                    setGroupSitesOpen(false);
+                  }}
                 >
                   <Link
                     href={item.href}
@@ -224,7 +228,6 @@ export default function Navbar() {
                           : "opacity-80"
                       }`}
                     />
-                    {/* Reliance-style Gold/Terracotta Bottom Active Bar */}
                     <span
                       className={`absolute bottom-0 left-0 right-0 h-[3px] bg-pingaksh-sand transition-opacity duration-200 ${
                         isActive ? "opacity-100" : "opacity-0"
@@ -236,7 +239,28 @@ export default function Navbar() {
             })}
           </nav>
 
-          {/* Right Actions: Group Sites Pill + Mobile/Tablet Hamburger */}
+          {/* Right Actions: Group Entities Switcher + Mobile/Tablet Hamburger Button */}
+          <div className="flex items-center gap-2.5 sm:gap-3 shrink-0">
+            {/* Group Entities Quick Popover (Visible on sm+ screens) */}
+
+            {/* MOBILE & TABLET HAMBURGER MENU BUTTON (Visible below xl breakpoint) */}
+            <button
+              type="button"
+              onClick={() => setMobileDrawerOpen((prev) => !prev)}
+              aria-label={mobileDrawerOpen ? "Close Menu" : "Open Menu"}
+              aria-expanded={mobileDrawerOpen}
+              className="xl:hidden inline-flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white transition-colors cursor-pointer focus:outline-none"
+            >
+              <span className="text-xs font-semibold tracking-wide hidden sm:inline">
+                Menu
+              </span>
+              {mobileDrawerOpen ? (
+                <X className="w-6 h-6 text-pingaksh-sand" />
+              ) : (
+                <Menu className="w-6 h-6 text-pingaksh-sand" />
+              )}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -280,7 +304,7 @@ export default function Navbar() {
                   </Link>
                 </div>
 
-                {/* Center Multi-Column Sub-Links (Reliance Style, Cols 4-8) */}
+                {/* Center Multi-Column Sub-Links (Cols 4-8) */}
                 <div className="col-span-5 grid grid-cols-2 gap-8">
                   {activeNavData.columns.map((col, idx) => (
                     <div key={idx} className="space-y-4">
@@ -381,7 +405,7 @@ export default function Navbar() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.25 }}
               onClick={() => setMobileDrawerOpen(false)}
-              className="fixed top-0 left-0 w-screen h-dvh bg-navy-950/70 backdrop-blur-xs z-50 xl:hidden"
+              className="fixed top-0 left-0 w-screen h-dvh bg-navy-950/75 backdrop-blur-xs z-50 xl:hidden"
             />
 
             {/* Right-to-Left Slide Panel */}
@@ -399,37 +423,12 @@ export default function Navbar() {
                   onClick={() => setMobileDrawerOpen(false)}
                   className="flex items-center gap-3"
                 >
-                  <div className="w-9 h-9 flex items-center justify-center text-pingaksh-sand">
-                    <svg
-                      viewBox="0 0 64 64"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="w-full h-full"
-                    >
-                      <path
-                        d="M22 14C13 14 8 20 8 27C8 35 16 40 28 38C25 26 26 14 22 14Z"
-                        stroke="currentColor"
-                        strokeWidth="3.5"
-                      />
-                      <path
-                        d="M42 14C51 14 56 20 56 27C56 35 48 40 36 38C39 26 38 14 42 14Z"
-                        stroke="currentColor"
-                        strokeWidth="3.5"
-                      />
-                      <path
-                        d="M32 18L18 50H46L32 18Z"
-                        stroke="currentColor"
-                        strokeWidth="3.5"
-                      />
-                    </svg>
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="font-logo text-lg tracking-wider text-pingaksh-sand leading-none">
-                      PINGAKSH
-                    </span>
-                    <span className="font-tagline text-[8.5px] tracking-[0.2em] text-sand-200/80 uppercase mt-1">
-                      RENEWABLES
-                    </span>
+                  <div className="w-32 h-10 flex items-center justify-start">
+                    <img
+                      src="/logo/logo-icon.svg"
+                      alt="Pingaksh Renewables Limited"
+                      className="w-full h-full object-contain object-left"
+                    />
                   </div>
                 </Link>
 
@@ -532,14 +531,21 @@ export default function Navbar() {
               {/* Drawer Footer */}
               <div className="p-5 bg-navy-950 border-t border-white/10 space-y-3 shrink-0">
                 <div className="flex items-center justify-between text-xs text-sand-200">
-                  <span>NSE: ₹1,198.70 (+2.05%)</span>
+                  <Link
+                    href="/investors/financial-reports"
+                    onClick={() => setMobileDrawerOpen(false)}
+                    className="hover:text-white flex items-center gap-1.5"
+                  >
+                    <FileText className="w-3.5 h-3.5 text-pingaksh-sand" />
+                    <span>Investor Reports</span>
+                  </Link>
                   <Link
                     href="/sustainability/carbon-dashboard"
                     onClick={() => setMobileDrawerOpen(false)}
                     className="text-emerald-400 hover:underline flex items-center gap-1"
                   >
                     <Leaf className="w-3.5 h-3.5" />
-                    CO₂ Ticker
+                    <span>CO₂ Dashboard</span>
                   </Link>
                 </div>
               </div>
