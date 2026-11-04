@@ -74,7 +74,8 @@ export const FOUNDERS_HOMAGE_DATA: FoundersHomageData = {
         name: "Late Shri Hans Raj Goel",
         titleTag: "Patriarch & Guiding Inspiration",
         // Replace with your uploaded Media Manager path once uploaded
-        portraitUrl: "/uploads/media/shri-hans-raj-goel.webp",
+        portraitUrl:
+          "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/Screenshot_2026-11-04_at_12_43_17___PM_bb846f62.png",
         portraitAlt: "Portrait of Late Shri Hans Raj Goel",
       },
       {
@@ -82,7 +83,8 @@ export const FOUNDERS_HOMAGE_DATA: FoundersHomageData = {
         name: "Smt. Santosh Devi",
         titleTag: "Matriarch & Pillar of Strength",
         // Replace with your uploaded Media Manager path once uploaded
-        portraitUrl: "/uploads/media/smt-santosh-devi.webp",
+        portraitUrl:
+          "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/Screenshot_2026-11-04_at_12_43_24___PM_dd8559df.png",
         portraitAlt: "Portrait of Smt. Santosh Devi",
       },
     ],
@@ -113,7 +115,8 @@ export const FOUNDERS_HOMAGE_DATA: FoundersHomageData = {
     name: "Mr. Naresh Goel",
     designation: "Chairman & Visionary Leader — Pingaksh Group",
     // Replace with your uploaded Media Manager path once uploaded
-    portraitUrl: "/uploads/media/mr-naresh-goel.webp",
+    portraitUrl:
+      "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/directors/director_89bec1ff20800c2f_1792514583.png",
     portraitAlt: "Mr. Naresh Goel — Visionary Leader of Pingaksh Group",
     leadParagraph:
       "Mr. Naresh Goel is a visionary entrepreneur and dynamic leader steering the Pingaksh Group’s diversified growth across multiple sectors. With an exceptional ability to integrate innovation, sustainability, and strategic foresight, he has built a business ecosystem that balances industrial scale with ecological stewardship.",

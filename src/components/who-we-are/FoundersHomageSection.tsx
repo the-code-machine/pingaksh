@@ -38,11 +38,6 @@ export default function FoundersHomageSection({
             transition={{ duration: 0.7, ease: transitionEase }}
             className="text-center space-y-3 mb-12 sm:mb-14"
           >
-            {/* Subtle Heritage Lotus/Crest Emblem */}
-            <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-pingaksh-navy text-pingaksh-sand shadow-md mb-1">
-              <Sparkles className="w-5 h-5" aria-hidden="true" />
-            </div>
-
             <span className="block font-tagline text-xs uppercase tracking-[0.22em] text-pingaksh-terracotta font-bold">
               {memorialTribute.sectionEyebrow}
             </span>
