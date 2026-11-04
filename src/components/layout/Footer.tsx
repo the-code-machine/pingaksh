@@ -122,52 +122,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8">
           {/* Left Column (Cols 1-4): Brand Identity, SEO Summary & Contact Address */}
           <div className="lg:col-span-4 space-y-6 pr-0 lg:pr-6">
-            <Link
-              href="/"
-              title="Pingaksh Group - Empowering Excellence Home"
-              className="inline-flex items-center gap-3.5 group"
-            >
-              {/* Brand Emblem SVG with Accessible Title */}
-              <div className="w-11 h-14 sm:w-16 sm:h-16 flex items-center justify-center shrink-0">
-                <img
-                  src="/logo/logo-icon.svg"
-                  alt="logo"
-                  className="w-full h-full"
-                />
-              </div>
-
-              <div className="flex flex-col w-fit font-logo">
-                {/* Tier 1: Primary Brand Name */}
-                <span className="text-[22px] sm:text-[30px] capitalize font-medium leading-[0.95] tracking-[0.02em] text-pingaksh-sand">
-                  PINGAKSH
-                </span>
-
-                {/* Tier 2: Entity Name (Sized & tracked to match the width of "Pingaksh") */}
-                <span className="text-[11px] sm:text-[16.5px] font-normal leading-tight tracking-[0.015em] text-pingaksh-sand/95  whitespace-nowrap">
-                  Renewables Limited
-                </span>
-
-                {/* Divider Rule */}
-                <div className="w-full h-[1px] bg-pingaksh-sand/40 my-1" />
-
-                {/* Tier 3: Centered Tagline */}
-                <span className="text-[9.5px] sm:text-[11px] font-normal leading-none tracking-[0.04em] text-pingaksh-sand/85 text-center">
-                  Building Tomorrow, Today
-                </span>
-              </div>
-            </Link>
-
-            <p className="text-xs sm:text-sm text-sand-100/80 leading-relaxed">
-              Evolving from Uttar Bharat Hydro Power (UBHP) into a diversified
-              clean-energy conglomerate operating the{" "}
-              <strong>Sarju II &amp; III</strong> run-of-the-river hydro
-              projects and a{" "}
-              <strong>250 KLPD grain-based ethanol distillery</strong> with
-              circular DDGS and CO₂ recovery.
-            </p>
-
             {/* Semantic <address> tag for Local & Corporate On-Page SEO */}
-            <address className="not-italic space-y-3 pt-2 border-t border-white/10 text-xs sm:text-sm text-sand-100/90">
+            <address className="not-italic space-y-3 pt-2  border-white/10 text-xs sm:text-sm text-sand-100/90">
               <div className="flex items-start gap-3">
                 <MapPin
                   className="w-4 h-4 text-pingaksh-terracotta shrink-0 mt-1"

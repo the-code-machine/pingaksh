@@ -52,6 +52,12 @@ export const NAVIGATION_DATA: NavItem[] = [
         heading: "Governance & Leadership",
         items: [
           {
+            label: "Founders' Homage",
+            href: "/who-we-are/founders-homage",
+            description:
+              "Honouring the guiding legacy of Late Shri Hans Raj Goel and Smt. Santosh Devi.",
+          },
+          {
             label: "Board of Directors",
             href: "/who-we-are/board-of-directors",
             description: "The leadership team guiding our strategic growth.",

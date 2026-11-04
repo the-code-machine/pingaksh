@@ -181,39 +181,17 @@ export default function Navbar() {
         }`}
       >
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 h-20 flex items-center justify-between gap-4">
-          {/* Brand Logo + Wordmark + Tagline */}
           <Link
             href="/"
-            className="inline-flex items-start gap-3 sm:gap-3.5 group shrink-0 focus:outline-none"
+            className="inline-flex items-center gap-3 group shrink-0 focus:outline-none"
           >
-            {/* Emblem aligned with the main title block (Top + Subtitle) */}
-            <div className="w-11 h-11 sm:w-[54px] sm:h-[54px] flex items-center justify-center shrink-0 mt-0.5">
+            {/* Emblem matched to the exact total height of the 3-tier text block (~52px) */}
+            <div className=" sm:w-[13rem] sm:h-[9rem] flex items-start justify-center shrink-0">
               <img
                 src="/logo/logo-icon.svg"
                 alt="Pingaksh Renewables Limited"
-                className="w-full h-full object-contain"
+                className="w-full h-full object-contain "
               />
-            </div>
-
-            {/* Reliance-Style 3-Tier Typography Lockup */}
-            <div className="flex flex-col w-fit font-logo">
-              {/* Tier 1: Primary Brand Name */}
-              <span className="text-[22px] sm:text-[30px] capitalize font-medium leading-[0.95] tracking-[0.02em] text-pingaksh-sand">
-                PINGAKSH
-              </span>
-
-              {/* Tier 2: Entity Name (Sized & tracked to match the width of "Pingaksh") */}
-              <span className="text-[11px] sm:text-[16.5px] font-normal leading-tight tracking-[0.015em] text-pingaksh-sand/95  whitespace-nowrap">
-                Renewables Limited
-              </span>
-
-              {/* Divider Rule */}
-              <div className="w-full h-[1px] bg-pingaksh-sand/40 my-1" />
-
-              {/* Tier 3: Centered Tagline */}
-              <span className="text-[9.5px] sm:text-[11px] font-normal leading-none tracking-[0.04em] text-pingaksh-sand/85 text-center">
-                Building Tomorrow, Today
-              </span>
             </div>
           </Link>
 

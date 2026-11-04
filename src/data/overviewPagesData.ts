@@ -145,19 +145,6 @@ export const OVERVIEW_PAGES_DATA: Record<string, OverviewPageData> = {
       sectionSubtitle:
         "Navigate directly to our institutional history, milestone timeline, core values, and board of directors.",
       cards: [
-        // {
-        //   id: "corporate-overview",
-        //   badge: "01 · Institutional Evolution",
-        //   title: "Corporate Overview (UBHP to Pingaksh)",
-        //   description:
-        //     "Trace our strategic transformation from Uttar Bharat Hydro Power into a multi-vertical renewable energy and bio-refining group.",
-        //   href: "/who-we-are/corporate-overview",
-        //   imageUrl:
-        //     "https://images.unsplash.com/photo-1574482620811-1aa16ffe3c82?auto=format&fit=crop&w=1200&q=80",
-        //   imageAlt: "UBHP to Pingaksh Renewables Corporate Overview",
-        //   ctaLabel: "Read Overview",
-        //   featuredSpan: true,
-        // },
         {
           id: "heritage-timeline",
           badge: "01 · Interactive Scrubber",
@@ -196,16 +183,16 @@ export const OVERVIEW_PAGES_DATA: Record<string, OverviewPageData> = {
           ctaLabel: "Meet the Board",
         },
         {
-          id: "subsidiary-leadership",
-          badge: "04 · SPV Architecture",
-          title: "Subsidiary Leadership & Group Structure",
+          id: "founders-homage",
+          badge: "01 · Guiding Legacy",
+          title: "About The Founders — Homage",
           description:
-            "Inspect our ring-fenced Special Purpose Vehicles (UBHP, PBPL, Pingaksh Farms) and our 2 Subsidiary Additional Directors.",
-          href: "/who-we-are/subsidiary-leadership",
-          imageUrl:
-            "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80",
-          imageAlt: "Pingaksh Subsidiary Leadership and SPV Group Structure",
-          ctaLabel: "View Group Structure",
+            "Honouring the enduring spirit and principles of Late Shri Hans Raj Goel and Smt. Santosh Devi that guide all our endeavours.",
+          href: "/who-we-are/founders-homage",
+          imageUrl: "/uploads/media/shri-hans-raj-goel.webp",
+          imageAlt: "Late Shri Hans Raj Goel and Smt. Santosh Devi",
+          ctaLabel: "Read Founders' Tribute",
+          featuredSpan: true,
         },
       ],
     },

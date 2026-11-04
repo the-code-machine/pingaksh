@@ -153,7 +153,7 @@ export const HOME_SECTIONS_DATA = {
         secondaryDescription:
           "By substituting imported fossil crude with indigenous biofuels and operating on a strict Zero-Liquid Discharge (ZLD) standard, we strengthen the rural agricultural economy while cutting over 600 tonnes of vehicular carbon emissions daily.",
         backgroundImage:
-          "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1800&q=85",
+          "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/dji_fly_20240307_160310_241_1709808715887_photo_87485549.webp",
         imageAlt:
           "Pingaksh Green Fuels PBPL Grain-Based Bio-Ethanol Distillery Facility",
         ctaText: "read more",

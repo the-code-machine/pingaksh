@@ -113,13 +113,17 @@ export default function HomeCoreSections() {
                 }}
                 className="group relative rounded-xl bg-white p-8 border border-sand-300 hover:border-pingaksh-navy transition-colors duration-500 shadow-sm flex flex-col justify-between"
               >
-                <div className="flex items-baseline justify-between gap-2 mb-6">
-                  <span className="font-logo text-4xl sm:text-5xl font-bold text-pingaksh-navy transition-colors duration-500">
+                {/* Replace the top div inside motion.article with this: */}
+                <div className="mb-6">
+                  <div className="inline-flex items-center gap-2 mb-2.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-pingaksh-navy/60" />
+                    <span className="font-tagline text-[11px] font-bold uppercase tracking-[0.16em] text-navy-600 whitespace-nowrap">
+                      {stat.unit}
+                    </span>
+                  </div>
+                  <div className="font-logo text-4xl xl:text-5xl font-bold text-pingaksh-navy leading-none tracking-tight">
                     {stat.value}
-                  </span>
-                  <span className="font-tagline text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded bg-sand-200 text-pingaksh-navy">
-                    {stat.unit}
-                  </span>
+                  </div>
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-pingaksh-navy">
