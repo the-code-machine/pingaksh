@@ -1,15 +1,17 @@
+'use client";';
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
+import { useRouter } from "next/router";
 import React from "react";
 
 export default function Wrapper({ children }: { children: React.ReactNode }) {
-  const isFestive = true; // Replace with your actual condition to check for festive season
+  const router = useRouter();
 
   return (
     <div>
-      {isFestive ? null : <Navbar />}
+      {router.pathname === "/festive/diwali" ? null : <Navbar />}
       {children}
-      {isFestive ? null : <Footer />}
+      {router.pathname === "/festive/diwali" ? null : <Footer />}
     </div>
   );
 }
