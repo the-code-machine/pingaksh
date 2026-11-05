@@ -1,17 +1,16 @@
-'use client";';
+"use client";
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
-import { useRouter } from "next/router";
-import React from "react";
+import { usePathname } from "next/navigation";
 
 export default function Wrapper({ children }: { children: React.ReactNode }) {
-  const router = useRouter();
+  const router = usePathname();
 
   return (
     <div>
-      {router.pathname === "/festive/diwali" ? null : <Navbar />}
+      {router === "/festive/diwali" ? null : <Navbar />}
       {children}
-      {router.pathname === "/festive/diwali" ? null : <Footer />}
+      {router === "/festive/diwali" ? null : <Footer />}
     </div>
   );
 }
