@@ -41,13 +41,6 @@ export default function FoundersHomageSection({
             <span className="block font-tagline text-xs uppercase tracking-[0.22em] text-pingaksh-terracotta font-bold">
               {memorialTribute.sectionEyebrow}
             </span>
-
-            <h2
-              id="founders-homage-heading"
-              className="font-logo text-4xl sm:text-5xl lg:text-6xl text-pingaksh-navy tracking-wide"
-            >
-              {memorialTribute.heading}
-            </h2>
           </motion.div>
 
           {/* Dual Memorial Portrait Frame (Styled after Reference Image) */}
@@ -130,6 +123,12 @@ export default function FoundersHomageSection({
           </motion.div>
         </div>
 
+        <h2
+          id="founders-homage-heading"
+          className="font-logo text-4xl sm:text-5xl lg:text-6xl text-pingaksh-navy tracking-wide"
+        >
+          {memorialTribute.heading}
+        </h2>
         {/* ===================================================================
             PART 2: TORCHBEARER SPOTLIGHT — MR. NARESH GOEL
         =================================================================== */}
