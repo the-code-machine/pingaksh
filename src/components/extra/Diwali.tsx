@@ -17,7 +17,7 @@ import Link from "next/link";
 
 const ASSETS = {
   // Intro & Finale
-  frame01_ayodhyaRiver: "/diwali/Diwali Glow at Ayodhya’s Ram Mandir.png",
+  frame01_ayodhyaRiver: "/diwali/Diwali Glow at Ayodhyas Ram Mandir.png", //
   frame02_warriorFiveHeads: "/diwali/Warrior Before the Five Stone Kings.png",
   frame11_ayodhyaFinale: "/diwali/Diwali Night at the Grand Temple.png",
 
