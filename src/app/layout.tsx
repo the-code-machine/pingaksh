@@ -4,6 +4,7 @@ import { Prata } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import Wrapper from "./Wrapper";
 
 // 1. Body Font: Montserrat-Regular.ttf
 const bodyFont = localFont({
@@ -49,9 +50,7 @@ export default function RootLayout({
       className={`${bodyFont.variable} ${logoFont.variable} ${taglineFont.variable} scroll-smooth`}
     >
       <body className="font-body antialiased bg-background text-foreground selection:bg-pingaksh-terracotta selection:text-white">
-        <Navbar />
-        {children}
-        <Footer />
+        <Wrapper>{children} </Wrapper>
       </body>
     </html>
   );
