@@ -17,7 +17,7 @@ import Link from "next/link";
 
 const ASSETS = {
   // Intro & Finale
-  frame01_ayodhyaRiver: "/diwali/Diwali Glow at Ayodhyas Ram Mandir.png", //
+  frame01_ayodhyaRiver: "/diwali/Diwali Glow at Ayodhyas Ram Mandir.png",
   frame02_warriorFiveHeads: "/diwali/Warrior Before the Five Stone Kings.png",
   frame11_ayodhyaFinale: "/diwali/Diwali Night at the Grand Temple.png",
 
@@ -47,45 +47,41 @@ const MYTHS: Myth[] = [
   {
     id: 0,
     category: "Ethanol Blending",
-    mythText: "“Destroys Car Engines”",
+    mythText: "“Ethanol Ruins Engines”",
     factText:
-      "Modern vehicles are engineered with ethanol-resistant materials, preventing wear and ensuring long-term engine safety.",
+      "False. Today's vehicles are built with advanced ethanol-resistant components, ensuring peak performance and longevity.",
   },
   {
     id: 1,
     category: "Ethanol Blending",
-    mythText: "“Causes Food Shortages”",
+    mythText: "“Biofuels Cause Food Scarcity”",
     factText:
-      "Ethanol production utilizes surplus or damaged grains and creates high-protein animal feed as a secondary byproduct.",
+      "Ethanol relies on surplus and damaged grains, while simultaneously producing nutrient-rich animal feed for the agricultural sector.",
   },
   {
     id: 2,
     category: "Ethanol Blending",
-    mythText: "“Wrecks Fuel Mileage”",
+    mythText: "“Ethanol Kills Mileage”",
     factText:
-      "E20 blends cause only a negligible 1% to 6% efficiency drop, which is barely noticeable in daily driving conditions.",
+      "E20 blends maintain optimal performance, with an imperceptible 1% to 2% efficiency difference in real-world driving.",
   },
   {
     id: 3,
     category: "Ethanol Blending",
-    mythText: "“Wastes More Energy Than It Makes”",
+    mythText: "“Biofuel Production is Energy-Inefficient”",
     factText:
-      "Modern production methods ensure grain ethanol delivers up to 67% more energy than the fossil fuels required to make it.",
+      "Grain ethanol generates substantially more energy than the fossil fuels consumed during its entire production cycle.",
   },
   {
     id: 4,
     category: "Hydropower",
-    mythText: "“Mega-Dams Are The Only Option”",
+    mythText: "“Hydropower Requires Massive Dams”",
     factText:
-      "Today's modular, low-head turbines provide highly efficient baseline power without requiring massive, environmentally disruptive reservoirs.",
+      "Next-generation, run-of-river turbines generate clean baseline power without destroying natural landscapes or communities.",
   },
 ];
 
 export default function InteractiveDiwaliCampaign() {
-  // Stages:
-  // 1: Intro | 2: Challenge | 3: 5-Heads Overview | 4: Hammer Ready
-  // 5: Hammer Shattered | 6: Progressive Ruins Overview (1..4 crushed)
-  // 8: Ram's Bow Aiming | 9: Final Arrow Strike | 11: Happy Diwali & Pledge
   const [frame, setFrame] = useState<number>(1);
   const [currentMythIdx, setCurrentMythIdx] = useState<number>(0);
   const [brokenMyths, setBrokenMyths] = useState<number[]>([]);
@@ -104,7 +100,6 @@ export default function InteractiveDiwaliCampaign() {
     });
   };
 
-  // Hammer strike for Myths 1 to 4 (indices 0, 1, 2, 3)
   const handleHammerStrike = () => {
     if (isStriking) return;
     setIsStriking(true);
@@ -122,7 +117,6 @@ export default function InteractiveDiwaliCampaign() {
     setTimeout(() => setFlashBurst(false), 480);
   };
 
-  // Ram's Bow strike for Final Myth #5 (index 4)
   const handleBowStrike = () => {
     if (isStriking) return;
     setIsStriking(true);
@@ -138,7 +132,6 @@ export default function InteractiveDiwaliCampaign() {
     setTimeout(() => setFlashBurst(false), 550);
   };
 
-  // Dynamically picks the exact ruin image based on how many heads are crushed
   const getOverviewImageByProgress = () => {
     switch (brokenMyths.length) {
       case 0:
@@ -205,7 +198,6 @@ export default function InteractiveDiwaliCampaign() {
         transition={{ duration: 0.35 }}
         className="relative w-full h-full flex items-center justify-center"
       >
-        {/* Full-Screen Cinematic Background */}
         <AnimatePresence mode="wait">
           <motion.img
             key={getBackgroundForFrame()}
@@ -219,10 +211,8 @@ export default function InteractiveDiwaliCampaign() {
           />
         </AnimatePresence>
 
-        {/* Top & Bottom Gradient Vignette so fixed text is always readable */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-transparent to-black/90 pointer-events-none" />
 
-        {/* Impact Light Burst Overlay */}
         <AnimatePresence>
           {flashBurst && (
             <motion.img
@@ -245,11 +235,11 @@ export default function InteractiveDiwaliCampaign() {
           >
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/15 border border-amber-400/40 text-amber-300 uppercase tracking-[0.2em] text-xs font-semibold mb-4">
               <Flame className="w-3.5 h-3.5 text-amber-400" />
-              Interactive Diwali Campaign
+              Powering the Future
             </span>
             <h1 className="text-3xl sm:text-5xl md:text-6xl font-serif font-bold text-white drop-shadow-lg leading-tight">
               This Diwali, let’s{" "}
-              <span className="text-amber-400">spark clarity</span>
+              <span className="text-amber-400">ignite the truth</span>
             </h1>
             <button
               onClick={() => setFrame(2)}
@@ -269,7 +259,7 @@ export default function InteractiveDiwaliCampaign() {
             className="relative z-20 mx-4 md:ml-auto md:mr-20 max-w-lg text-center md:text-right bg-black/65 backdrop-blur-md p-6 md:p-8 rounded-2xl border border-amber-500/30 shadow-2xl"
           >
             <p className="text-stone-200 text-lg md:text-2xl leading-relaxed">
-              Let’s break the misconceptions around
+              Strike down the barriers holding back
             </p>
             <h2 className="text-2xl md:text-4xl font-bold text-amber-400 mt-1.5">
               Ethanol Blending & Hydropower
@@ -278,7 +268,7 @@ export default function InteractiveDiwaliCampaign() {
               onClick={() => setFrame(3)}
               className="mt-6 inline-flex items-center gap-2.5 px-7 py-3 bg-amber-400 hover:bg-amber-300 text-stone-950 font-bold rounded-full shadow-lg transition cursor-pointer"
             >
-              <span>Identify the Myths</span>
+              <span>Confront the Barriers</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </motion.div>
@@ -287,13 +277,12 @@ export default function InteractiveDiwaliCampaign() {
         {/* ================= FRAMES 03 & 06: FIXED 5-HEAD ALIGNED OVERVIEW ================= */}
         {(frame === 3 || frame === 6) && (
           <div className="relative z-20 w-full h-full flex flex-col justify-between py-6 md:py-10 px-4">
-            {/* Fixed Top Header */}
             <div className="text-center pt-2">
               {frame === 3 ? (
                 <>
                   <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/65 border border-amber-500/40 text-amber-300 text-xs uppercase tracking-widest">
                     <ShieldAlert className="w-3.5 h-3.5 text-amber-400" />5
-                    Common Misconceptions Standing in the Way
+                    Barriers Holding Back Progress
                   </span>
                   <h2 className="text-2xl md:text-4xl font-bold text-white mt-2 drop-shadow-md">
                     Identify the Myths
@@ -313,9 +302,7 @@ export default function InteractiveDiwaliCampaign() {
               )}
             </div>
 
-            {/* Bottom Section: Fixed 5-Column Alignment Directly Under the 5 Heads */}
             <div className="w-full max-w-[1380px] mx-auto flex flex-col items-center gap-5 md:gap-7 pb-2 md:pb-4">
-              {/* 5-Column Fixed Grid on Desktop, Horizontal Scroll/Grid on Mobile */}
               <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2.5 md:gap-4">
                 {MYTHS.map((m, idx) => {
                   const isCrushed = brokenMyths.includes(idx);
@@ -373,7 +360,6 @@ export default function InteractiveDiwaliCampaign() {
                 })}
               </div>
 
-              {/* Fixed Bottom Action Button */}
               <div>
                 {frame === 3 ? (
                   <button
@@ -384,7 +370,7 @@ export default function InteractiveDiwaliCampaign() {
                     className="inline-flex items-center gap-2.5 px-7 py-3.5 md:px-9 md:py-4 bg-amber-400 hover:bg-amber-300 text-stone-950 font-extrabold text-base md:text-lg rounded-full shadow-[0_0_25px_rgba(251,191,36,0.75)] transition cursor-pointer"
                   >
                     <Hammer className="w-5 h-5" />
-                    <span>Break Myth #1</span>
+                    <span>Strike Myth #1</span>
                   </button>
                 ) : brokenMyths.length < 4 ? (
                   <button
@@ -396,7 +382,7 @@ export default function InteractiveDiwaliCampaign() {
                     className="inline-flex items-center gap-2.5 px-7 py-3.5 md:px-9 md:py-4 bg-amber-400 hover:bg-amber-300 text-stone-950 font-extrabold text-base md:text-lg rounded-full shadow-[0_0_25px_rgba(251,191,36,0.75)] transition cursor-pointer"
                   >
                     <Hammer className="w-5 h-5" />
-                    <span>Break Myth #{brokenMyths.length + 1}</span>
+                    <span>Strike Myth #{brokenMyths.length + 1}</span>
                   </button>
                 ) : (
                   <button
@@ -415,20 +401,18 @@ export default function InteractiveDiwaliCampaign() {
           </div>
         )}
 
-        {/* ================= FRAME 04: HAMMER INTERACTION (MYTHS 1-4) ================= */}
+        {/* ================= FRAME 04: HAMMER INTERACTION ================= */}
         {frame === 4 && (
           <div
             onClick={handleHammerStrike}
             className="relative z-20 w-full h-full flex flex-col justify-between p-6 md:p-10 cursor-pointer"
           >
-            {/* Fixed Top Badge */}
             <div className="text-center">
               <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/70 border border-amber-400/60 text-amber-300 text-xs uppercase tracking-widest">
                 Myth {currentMythIdx + 1} of 5 • {currentMyth.category}
               </span>
             </div>
 
-            {/* Fixed Bottom Bar: Myth Card on Left, Strike Button on Right */}
             <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 pb-4">
               <div className="w-full md:max-w-md bg-black/75 backdrop-blur-md p-5 md:p-6 rounded-2xl border border-amber-500/40 text-center md:text-left shadow-2xl">
                 <p className="text-amber-400 text-xs uppercase tracking-widest font-semibold mb-1">
@@ -449,13 +433,13 @@ export default function InteractiveDiwaliCampaign() {
                 className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-amber-400 to-orange-500 text-stone-950 font-extrabold text-lg md:text-xl rounded-full shadow-[0_0_35px_rgba(251,191,36,0.9)] cursor-pointer"
               >
                 <Hammer className="w-5 h-5" />
-                <span>Click to Break</span>
+                <span>Click to Strike</span>
               </motion.button>
             </div>
           </div>
         )}
 
-        {/* ================= FRAME 05: SHATTERED HEAD + FIXED BOTTOM FACT CARD ================= */}
+        {/* ================= FRAME 05: SHATTERED HEAD ================= */}
         {frame === 5 && (
           <div className="relative z-20 w-full h-full flex flex-col justify-end items-center p-6 md:p-10">
             <motion.div
@@ -551,7 +535,6 @@ export default function InteractiveDiwaliCampaign() {
                 {MYTHS[4].factText}
               </p>
 
-              {/* Directly transitions to Frame 11 (Happy Diwali & Pledge) without Frame 10 sparkle banner */}
               <button
                 onClick={() => {
                   triggerParticles(true);
@@ -578,7 +561,7 @@ export default function InteractiveDiwaliCampaign() {
             >
               <span className="inline-flex items-center gap-1.5 text-amber-300 text-xs uppercase tracking-[0.25em] font-semibold mb-2">
                 <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-                Festival of Light & Truth
+                The Triumph of Truth
               </span>
 
               <h1 className="text-5xl sm:text-6xl md:text-7xl font-serif italic text-transparent bg-clip-text bg-gradient-to-b from-amber-200 via-amber-400 to-yellow-600 drop-shadow-[0_4px_25px_rgba(251,191,36,0.5)] py-1">
@@ -588,11 +571,10 @@ export default function InteractiveDiwaliCampaign() {
               <div className="w-24 h-0.5 bg-amber-400/50 mx-auto my-5" />
 
               <p className="text-stone-200 text-base sm:text-lg md:text-xl leading-relaxed font-light">
-                This Diwali, let’s replace misconceptions with facts, and light
-                the way to a
+                Shatter the myths. Together, let’s fuel a
               </p>
               <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-amber-400 mt-2 leading-snug">
-                cleaner, greener and self-reliant India.
+                stronger, self-reliant, and sustainable India.
               </h2>
 
               <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
