@@ -33,6 +33,8 @@ export default function LeadershipDirectoryView({
 }: {
   LEADERSHIP_DATA: {
     directors: DirectorProfile[];
+    prlDirectors?: DirectorProfile[];
+    subsidiaryBoards?: LeadershipPageData["subsidiaryBoards"];
     seo: LeadershipPageData["seo"];
     breadcrumbs: LeadershipPageData["breadcrumbs"];
     hero: LeadershipPageData["hero"];
@@ -40,51 +42,51 @@ export default function LeadershipDirectoryView({
 }) {
   const [activeFilter, setActiveFilter] = useState<FilterType>("All");
 
-  const founder = LEADERSHIP_DATA.directors.find((d) => d.isFounder);
+  // Main PRL Board (excludes PBPL-only director Aadish Goel so PRL shows the 6 PRL directors)
+  const prlDirectorsList =
+    LEADERSHIP_DATA.prlDirectors ??
+    LEADERSHIP_DATA.directors.filter(
+      (d) => d.entity !== "PBPL" && d.slug !== "aadish-goel",
+    );
+
+  // Pull Aadish Goel's profile for the Subsidiary (Pingaksh Beverages Private Limited) section
+  const aadishDirector = LEADERSHIP_DATA.directors.find(
+    (d) => d.slug === "aadish-goel",
+  );
+
+  // The other 3 PBPL Directors hyperlinked to their PRL profile pages
+  const pbplLinkedDirectors = [
+    {
+      name: "Naresh Goel",
+      designation: "Chairman & Managing Director, PRL",
+      roleInSubsidiary: "Director, Pingaksh Beverages Pvt. Ltd.",
+      href: "/who-we-are/board-of-directors/naresh-goel",
+    },
+    {
+      name: "Amul Goel",
+      designation: "Director, PRL",
+      roleInSubsidiary: "Director, Pingaksh Beverages Pvt. Ltd.",
+      href: "/who-we-are/board-of-directors/amul-goel",
+    },
+    {
+      name: "Suman Goel",
+      designation: "Director, PRL",
+      roleInSubsidiary: "Director, Pingaksh Beverages Pvt. Ltd.",
+      href: "/who-we-are/board-of-directors/suman-goel",
+    },
+  ];
+
+  const founder = prlDirectorsList.find((d) => d.isFounder);
+
   const filteredDirectors: DirectorProfile[] =
     activeFilter === "All"
-      ? LEADERSHIP_DATA.directors
-      : LEADERSHIP_DATA.directors.filter(
-          (d) => d.boardCategory === activeFilter,
-        );
+      ? prlDirectorsList
+      : prlDirectorsList.filter((d) => d.boardCategory === activeFilter);
 
   const filterCategories: FilterType[] = [
     "All",
     "Promoter & Executive",
-    "Executive Director",
     "Independent Director",
-  ];
-
-  // ============================================================================
-  // LOCAL DATA OBJECT: SUBSIDIARY & SPV DIRECTORS
-  // ============================================================================
-  const SUBSIDIARY_DIRECTORS = [
-    {
-      id: "spv-dir-1",
-      name: "Mr. Rajendra Singh",
-      designation: "Additional Director (Hydro Operations)",
-      boardCategory: "Subsidiary Board",
-      entityName: "Uttar Bharat Hydro Power Pvt. Ltd. (UBHP)",
-      portraitImage:
-        "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80",
-      portraitAlt: "Director of Hydro Operations",
-      shortSummary:
-        "Oversees the technical uptime and grid synchronization for the 30.60 MW Sarju cascade. Brings over two decades of specialized expertise in Himalayan hydro-mechanical engineering.",
-      almaMater: "IIT Roorkee",
-    },
-    {
-      id: "spv-dir-2",
-      name: "Dr. Anjali Desai",
-      designation: "Additional Director (Bio-Refinery)",
-      boardCategory: "Subsidiary Board",
-      entityName: "Pingaksh Beverages Pvt. Ltd. (PBPL)",
-      portraitImage:
-        "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80",
-      portraitAlt: "Director of Bio-Refinery Operations",
-      shortSummary:
-        "Leads the chemical and distillation operations at the 250 KLPD grain bio-refinery, ensuring rigorous adherence to CPCB ZLD norms and national E20 fuel standards.",
-      almaMater: "ICT Mumbai",
-    },
   ];
 
   return (
@@ -226,7 +228,7 @@ export default function LeadershipDirectoryView({
       )}
 
       {/* =====================================================================
-          3. FULL BOARD OF DIRECTORS PORTRAIT GRID
+          3. FULL BOARD OF DIRECTORS PORTRAIT GRID (6 PRL DIRECTORS)
       ===================================================================== */}
       <section className="py-16 lg:py-24">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10">
@@ -234,7 +236,7 @@ export default function LeadershipDirectoryView({
           <div className="flex flex-col md:flex-row md:items-end justify-between pb-10 border-b border-sand-300 gap-6">
             <div>
               <h2 className="font-logo text-3xl sm:text-4xl text-pingaksh-navy">
-                Board Composition
+                Board Composition — Pingaksh Renewables Limited
               </h2>
               <p className="text-sm text-navy-600 mt-1">
                 Select any director to view their complete biography, academic
@@ -330,73 +332,153 @@ export default function LeadershipDirectoryView({
       </section>
 
       {/* =====================================================================
-          4. SUBSIDIARY & SPV LEADERSHIP (Data passed locally)
+          4. SUBSIDIARY LEADERSHIP — PINGAKSH BEVERAGES PRIVATE LIMITED (PBPL)
       ===================================================================== */}
       <section className="py-16 lg:py-24 bg-sand-200 border-t border-sand-300">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10">
           <div className="flex flex-col md:flex-row md:items-end justify-between pb-10 border-b border-sand-300 gap-6">
             <div>
+              <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-pingaksh-terracotta mb-2">
+                <Building2 className="w-4 h-4" />
+                <span>Subsidiary Board of Directors</span>
+              </div>
               <h2 className="font-logo text-3xl sm:text-4xl text-pingaksh-navy">
-                Subsidiary &amp; SPV Leadership
+                Pingaksh Beverages Private Limited
               </h2>
               <p className="text-sm text-navy-600 mt-1">
-                Additional directors steering our specialized ring-fenced
-                operations across hydro and bio-refinery assets.
+                Leadership overseeing the Group&apos;s grain-based ethanol
+                subsidiary and distillery operations.
               </p>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-10">
-            {SUBSIDIARY_DIRECTORS.map((director, idx) => (
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pt-10 items-stretch">
+            {/* Left: Aadish Goel Full Profile Card (Waist-Level Crop Applied) */}
+            {aadishDirector && (
               <motion.div
-                key={director.id}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-40px" }}
                 variants={revealVariants}
-                custom={idx * 0.1}
-                className="group flex flex-col justify-between h-full bg-white border border-sand-300 shadow-sm hover:shadow-md transition-shadow duration-300"
+                className="lg:col-span-5"
               >
-                <div>
-                  <div className="relative aspect-[4/4.6] overflow-hidden bg-navy-950">
-                    <img
-                      src={director.portraitImage}
-                      alt={director.portraitAlt}
-                      className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105 opacity-90"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-navy-950/70 via-transparent to-transparent opacity-60" />
+                <Link
+                  href={`/who-we-are/board-of-directors/${aadishDirector.slug}`}
+                  className="group flex flex-col justify-between h-full bg-white border border-sand-300 hover:border-pingaksh-navy shadow-sm transition-all duration-300"
+                >
+                  <div>
+                    {/* Waist-Level Crop Container for Aadish Goel */}
+                    <div className="relative aspect-[4/4.3] overflow-hidden bg-navy-950">
+                      <img
+                        src={aadishDirector.portraitImage}
+                        alt={aadishDirector.portraitAlt}
+                        width={600}
+                        height={700}
+                        className="w-full h-full object-cover object-top scale-125 origin-top transition-transform duration-700 group-hover:scale-[1.3]"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-navy-950/70 via-transparent to-transparent opacity-60" />
 
-                    <span className="absolute top-4 left-4 px-3 py-1 bg-pingaksh-terracotta text-white text-[11px] font-bold tracking-wide shadow-sm">
-                      {director.boardCategory}
-                    </span>
-                  </div>
-
-                  <div className="p-6 sm:p-7">
-                    <h3 className="font-logo text-2xl text-pingaksh-navy">
-                      {director.name}
-                    </h3>
-                    <p className="text-xs font-semibold text-pingaksh-terracotta mt-1">
-                      {director.designation}
-                    </p>
-
-                    <div className="mt-3 inline-flex items-center gap-2 text-[10px] font-mono uppercase tracking-widest text-navy-500 bg-sand-100 px-2 py-1 rounded">
-                      <Building2 className="w-3.5 h-3.5 text-pingaksh-terracotta" />
-                      <span className="truncate max-w-[200px]">
-                        {director.entityName}
+                      <span className="absolute top-4 left-4 px-3 py-1 bg-pingaksh-terracotta text-white text-[11px] font-bold tracking-wide shadow-sm">
+                        Subsidiary Director
                       </span>
                     </div>
 
-                    <p className="text-xs text-navy-600 mt-4 leading-relaxed">
-                      {director.shortSummary}
-                    </p>
+                    <div className="p-6 sm:p-8">
+                      <div className="flex items-start justify-between gap-3">
+                        <h3 className="font-logo text-2xl sm:text-3xl text-pingaksh-navy group-hover:text-pingaksh-terracotta transition-colors">
+                          {aadishDirector.name}
+                        </h3>
+                        <ArrowUpRight className="w-5 h-5 text-navy-400 group-hover:text-pingaksh-terracotta group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform shrink-0 mt-1" />
+                      </div>
+
+                      <p className="text-xs font-semibold text-pingaksh-terracotta mt-1">
+                        {aadishDirector.designation}
+                      </p>
+
+                      <div className="mt-3 inline-flex items-center gap-2 text-[11px] font-mono uppercase tracking-widest text-navy-600 bg-sand-100 px-2.5 py-1 rounded">
+                        <Building2 className="w-3.5 h-3.5 text-pingaksh-terracotta" />
+                        <span>Pingaksh Beverages Pvt. Ltd. (PBPL)</span>
+                      </div>
+
+                      <p className="text-xs sm:text-sm text-navy-600 mt-4 leading-relaxed">
+                        {aadishDirector.shortSummary}
+                      </p>
+                    </div>
                   </div>
+
+                  <div className="px-6 sm:px-8 py-4 border-t border-sand-200 flex items-center justify-between text-xs text-navy-500 bg-sand-50/50">
+                    <span>{aadishDirector.almaMater}</span>
+                    <span className="font-semibold text-pingaksh-navy group-hover:text-pingaksh-terracotta">
+                      Read Full Profile →
+                    </span>
+                  </div>
+                </Link>
+              </motion.div>
+            )}
+
+            {/* Right: Other Directors on the PBPL Board (Hyperlinked to PRL Profiles) */}
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-40px" }}
+              variants={revealVariants}
+              custom={0.1}
+              className="lg:col-span-7 bg-white border border-sand-300 p-8 sm:p-10 lg:p-12 flex flex-col justify-between shadow-sm"
+            >
+              <div>
+                <div className="pb-6 border-b border-sand-200">
+                  <span className="text-xs font-mono uppercase tracking-widest text-pingaksh-terracotta font-semibold">
+                    Board of Directors • PBPL
+                  </span>
+                  <h3 className="font-logo text-2xl sm:text-3xl text-pingaksh-navy mt-1">
+                    Other Directors on the Subsidiary Board
+                  </h3>
+                  <p className="text-xs sm:text-sm text-navy-600 mt-2 leading-relaxed">
+                    Along with Aadish Goel, the Board of Directors of Pingaksh
+                    Beverages Private Limited comprises the following promoter
+                    directors from Pingaksh Renewables Limited. Select any name
+                    below to view their full profile:
+                  </p>
                 </div>
 
-                <div className="px-6 sm:px-7 py-4 border-t border-sand-200 flex items-center justify-between text-[11px] text-navy-500 bg-sand-50/50">
-                  <span>{director.almaMater}</span>
+                {/* Hyperlinked List of Naresh Goel, Amul Goel, Suman Goel */}
+                <div className="divide-y divide-sand-200 mt-4">
+                  {pbplLinkedDirectors.map((member) => (
+                    <Link
+                      key={member.href}
+                      href={member.href}
+                      className="group py-5 flex items-center justify-between gap-4 hover:bg-sand-100/60 px-4 -mx-4 transition-colors"
+                    >
+                      <div>
+                        <h4 className="font-logo text-xl sm:text-2xl text-pingaksh-navy group-hover:text-pingaksh-terracotta transition-colors">
+                          {member.name}
+                        </h4>
+                        <p className="text-xs text-navy-600 mt-0.5">
+                          {member.roleInSubsidiary} •{" "}
+                          <span className="text-pingaksh-terracotta font-medium">
+                            {member.designation}
+                          </span>
+                        </p>
+                      </div>
+
+                      <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-pingaksh-navy group-hover:text-pingaksh-terracotta shrink-0">
+                        <span>View PRL Profile</span>
+                        <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                      </span>
+                    </Link>
+                  ))}
                 </div>
-              </motion.div>
-            ))}
+              </div>
+
+              <div className="pt-6 mt-6 border-t border-sand-200 flex items-center justify-between text-xs text-navy-500">
+                <span>
+                  Subsidiary Entity: Pingaksh Beverages Private Limited
+                </span>
+                <span className="font-mono text-[11px] text-pingaksh-terracotta">
+                  Grain-Based Ethanol Division
+                </span>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>

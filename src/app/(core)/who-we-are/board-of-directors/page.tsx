@@ -124,7 +124,7 @@ export default async function LeadershipPage() {
         }}
       />
 
-      <LeadershipDirectoryView LEADERSHIP_DATA={leadershipData} />
+      <LeadershipDirectoryView LEADERSHIP_DATA={LEADERSHIP_DATA} />
     </>
   );
 }

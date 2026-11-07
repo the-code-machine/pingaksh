@@ -13,7 +13,6 @@ import {
   Flame,
   ShieldAlert,
 } from "lucide-react";
-import Link from "next/link";
 
 const ASSETS = {
   // Intro & Finale
@@ -87,7 +86,6 @@ export default function InteractiveDiwaliCampaign() {
   const [brokenMyths, setBrokenMyths] = useState<number[]>([]);
   const [isStriking, setIsStriking] = useState<boolean>(false);
   const [flashBurst, setFlashBurst] = useState<boolean>(false);
-  const [showPledgeCard, setShowPledgeCard] = useState<boolean>(false);
 
   const currentMyth = MYTHS[currentMythIdx];
 
@@ -175,20 +173,6 @@ export default function InteractiveDiwaliCampaign() {
 
   return (
     <main className="relative w-full h-[100dvh] bg-stone-950 overflow-hidden select-none font-sans">
-      <div className="absolute top-4 left-4 md:top-6 md:left-8 z-50">
-        <Link
-          href="/"
-          className="inline-flex items-center gap-3 group shrink-0 focus:outline-none"
-        >
-          <div className="w-36 h-12 sm:w-[13rem] sm:h-[4.5rem] flex items-center justify-start shrink-0">
-            <img
-              src="/logo/logo-icon.svg"
-              alt="Pingaksh Renewables Limited"
-              className="w-full h-full object-contain object-left drop-shadow-md"
-            />
-          </div>
-        </Link>
-      </div>
       <motion.div
         animate={
           isStriking
@@ -211,7 +195,7 @@ export default function InteractiveDiwaliCampaign() {
           />
         </AnimatePresence>
 
-        <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-transparent to-black/90 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/25 to-black/90 pointer-events-none" />
 
         <AnimatePresence>
           {flashBurst && (
@@ -231,16 +215,19 @@ export default function InteractiveDiwaliCampaign() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="relative z-20 flex flex-col items-center text-center px-6 max-w-2xl mt-20 md:mt-28"
+            className="relative z-20 flex flex-col items-center text-center px-6 max-w-2xl mt-12 md:mt-24"
           >
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/15 border border-amber-400/40 text-amber-300 uppercase tracking-[0.2em] text-xs font-semibold mb-4">
-              <Flame className="w-3.5 h-3.5 text-amber-400" />
+            {/* High-Contrast Pill Badge for Complete Legibility */}
+            <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-black/85 backdrop-blur-md border-2 border-amber-400 text-amber-300 uppercase tracking-[0.22em] text-xs sm:text-sm font-extrabold mb-5 shadow-[0_4px_25px_rgba(0,0,0,0.95)]">
+              <Flame className="w-4 h-4 text-amber-400 shrink-0" />
               Powering the Future
             </span>
-            <h1 className="text-3xl sm:text-5xl md:text-6xl font-serif font-bold text-white drop-shadow-lg leading-tight">
+
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-serif font-bold text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.9)] leading-tight">
               This Diwali, let’s{" "}
               <span className="text-amber-400">ignite the truth</span>
             </h1>
+
             <button
               onClick={() => setFrame(2)}
               className="mt-8 inline-flex items-center gap-3 px-7 py-3.5 md:px-9 md:py-4 bg-gradient-to-r from-amber-500 to-yellow-400 text-stone-950 font-bold text-base md:text-lg rounded-full shadow-[0_0_30px_rgba(251,191,36,0.6)] hover:scale-105 transition cursor-pointer"
@@ -256,7 +243,7 @@ export default function InteractiveDiwaliCampaign() {
           <motion.div
             initial={{ opacity: 0, x: 25 }}
             animate={{ opacity: 1, x: 0 }}
-            className="relative z-20 mx-4 md:ml-auto md:mr-20 max-w-lg text-center md:text-right bg-black/65 backdrop-blur-md p-6 md:p-8 rounded-2xl border border-amber-500/30 shadow-2xl"
+            className="relative z-20 mx-4 md:ml-auto md:mr-20 max-w-lg text-center md:text-right bg-black/75 backdrop-blur-md p-6 md:p-8 rounded-2xl border border-amber-500/40 shadow-2xl"
           >
             <p className="text-stone-200 text-lg md:text-2xl leading-relaxed">
               Strike down the barriers holding back
@@ -276,13 +263,13 @@ export default function InteractiveDiwaliCampaign() {
 
         {/* ================= FRAMES 03 & 06: FIXED 5-HEAD ALIGNED OVERVIEW ================= */}
         {(frame === 3 || frame === 6) && (
-          <div className="relative z-20 w-full h-full flex flex-col justify-between py-6 md:py-10 px-4">
-            <div className="text-center pt-2">
+          <div className="relative z-20 w-full h-full flex flex-col justify-between py-5 md:py-10 px-4">
+            <div className="text-center pt-1">
               {frame === 3 ? (
                 <>
-                  <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/65 border border-amber-500/40 text-amber-300 text-xs uppercase tracking-widest">
-                    <ShieldAlert className="w-3.5 h-3.5 text-amber-400" />5
-                    Barriers Holding Back Progress
+                  <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/80 border border-amber-400/60 text-amber-300 text-[11px] sm:text-xs font-bold uppercase tracking-widest shadow-lg">
+                    <ShieldAlert className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                    5 Barriers Holding Back Progress
                   </span>
                   <h2 className="text-2xl md:text-4xl font-bold text-white mt-2 drop-shadow-md">
                     Identify the Myths
@@ -302,8 +289,8 @@ export default function InteractiveDiwaliCampaign() {
               )}
             </div>
 
-            <div className="w-full max-w-[1380px] mx-auto flex flex-col items-center gap-5 md:gap-7 pb-2 md:pb-4">
-              <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2.5 md:gap-4">
+            <div className="w-full max-w-[1380px] mx-auto flex flex-col items-center gap-4 md:gap-7 pb-1 md:pb-4">
+              <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2 md:gap-4">
                 {MYTHS.map((m, idx) => {
                   const isCrushed = brokenMyths.includes(idx);
                   const isNextTarget =
@@ -321,12 +308,12 @@ export default function InteractiveDiwaliCampaign() {
                           setFrame(idx === 4 ? 8 : 4);
                         }
                       }}
-                      className={`relative min-h-[96px] md:min-h-[118px] p-3.5 md:p-4 rounded-xl border backdrop-blur-md flex flex-col justify-between transition-all ${
+                      className={`relative min-h-[68px] md:min-h-[118px] py-2.5 px-3.5 md:p-4 rounded-xl border backdrop-blur-md flex flex-col justify-between transition-all ${
                         isCrushed
-                          ? "bg-emerald-950/65 border-emerald-500/50 text-stone-300"
+                          ? "bg-emerald-950/75 border-emerald-500/50 text-stone-300"
                           : isNextTarget
-                            ? "bg-amber-950/70 border-2 border-amber-400 shadow-[0_0_25px_rgba(251,191,36,0.45)] cursor-pointer hover:scale-[1.02]"
-                            : "bg-black/70 border-white/15 opacity-75"
+                            ? "bg-amber-950/80 border-2 border-amber-400 shadow-[0_0_25px_rgba(251,191,36,0.45)] cursor-pointer hover:scale-[1.02]"
+                            : "bg-black/75 border-white/15 opacity-80"
                       }`}
                     >
                       <div className="flex items-center justify-between gap-2">
@@ -347,7 +334,7 @@ export default function InteractiveDiwaliCampaign() {
                       </div>
 
                       <p
-                        className={`font-bold text-xs md:text-sm leading-snug mt-2 ${
+                        className={`font-bold text-xs md:text-sm leading-snug mt-1 md:mt-2 ${
                           isCrushed
                             ? "line-through text-stone-400"
                             : "text-white"
@@ -367,7 +354,7 @@ export default function InteractiveDiwaliCampaign() {
                       setCurrentMythIdx(0);
                       setFrame(4);
                     }}
-                    className="inline-flex items-center gap-2.5 px-7 py-3.5 md:px-9 md:py-4 bg-amber-400 hover:bg-amber-300 text-stone-950 font-extrabold text-base md:text-lg rounded-full shadow-[0_0_25px_rgba(251,191,36,0.75)] transition cursor-pointer"
+                    className="inline-flex items-center gap-2.5 px-7 py-3 md:px-9 md:py-4 bg-amber-400 hover:bg-amber-300 text-stone-950 font-extrabold text-base md:text-lg rounded-full shadow-[0_0_25px_rgba(251,191,36,0.75)] transition cursor-pointer"
                   >
                     <Hammer className="w-5 h-5" />
                     <span>Strike Myth #1</span>
@@ -379,7 +366,7 @@ export default function InteractiveDiwaliCampaign() {
                       setCurrentMythIdx(nextIdx);
                       setFrame(4);
                     }}
-                    className="inline-flex items-center gap-2.5 px-7 py-3.5 md:px-9 md:py-4 bg-amber-400 hover:bg-amber-300 text-stone-950 font-extrabold text-base md:text-lg rounded-full shadow-[0_0_25px_rgba(251,191,36,0.75)] transition cursor-pointer"
+                    className="inline-flex items-center gap-2.5 px-7 py-3 md:px-9 md:py-4 bg-amber-400 hover:bg-amber-300 text-stone-950 font-extrabold text-base md:text-lg rounded-full shadow-[0_0_25px_rgba(251,191,36,0.75)] transition cursor-pointer"
                   >
                     <Hammer className="w-5 h-5" />
                     <span>Strike Myth #{brokenMyths.length + 1}</span>
@@ -390,7 +377,7 @@ export default function InteractiveDiwaliCampaign() {
                       setCurrentMythIdx(4);
                       setFrame(8);
                     }}
-                    className="inline-flex items-center gap-2.5 px-8 py-4 bg-gradient-to-r from-amber-400 via-yellow-300 to-orange-400 text-stone-950 font-extrabold text-base md:text-lg rounded-full shadow-[0_0_35px_rgba(251,191,36,0.9)] transition cursor-pointer"
+                    className="inline-flex items-center gap-2.5 px-8 py-3.5 md:py-4 bg-gradient-to-r from-amber-400 via-yellow-300 to-orange-400 text-stone-950 font-extrabold text-base md:text-lg rounded-full shadow-[0_0_35px_rgba(251,191,36,0.9)] transition cursor-pointer"
                   >
                     <Crosshair className="w-5 h-5" />
                     <span>Summon Ram’s Bow for Final Myth</span>
@@ -408,13 +395,13 @@ export default function InteractiveDiwaliCampaign() {
             className="relative z-20 w-full h-full flex flex-col justify-between p-6 md:p-10 cursor-pointer"
           >
             <div className="text-center">
-              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/70 border border-amber-400/60 text-amber-300 text-xs uppercase tracking-widest">
+              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/80 border border-amber-400/60 text-amber-300 text-xs font-bold uppercase tracking-widest">
                 Myth {currentMythIdx + 1} of 5 • {currentMyth.category}
               </span>
             </div>
 
             <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 pb-4">
-              <div className="w-full md:max-w-md bg-black/75 backdrop-blur-md p-5 md:p-6 rounded-2xl border border-amber-500/40 text-center md:text-left shadow-2xl">
+              <div className="w-full md:max-w-md bg-black/80 backdrop-blur-md p-5 md:p-6 rounded-2xl border border-amber-500/40 text-center md:text-left shadow-2xl">
                 <p className="text-amber-400 text-xs uppercase tracking-widest font-semibold mb-1">
                   Misconception #{currentMythIdx + 1}
                 </p>
@@ -482,14 +469,14 @@ export default function InteractiveDiwaliCampaign() {
             className="relative z-20 w-full h-full flex flex-col justify-between p-6 md:p-10 cursor-pointer"
           >
             <div className="text-center">
-              <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-black/70 border border-amber-400 text-amber-300 text-xs md:text-sm font-semibold">
+              <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-black/80 border border-amber-400 text-amber-300 text-xs md:text-sm font-semibold">
                 <Crosshair className="w-4 h-4 text-amber-400" />
                 Final Strike • Myth 5 of 5
               </span>
             </div>
 
             <div className="w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 pb-4">
-              <div className="w-full md:max-w-md bg-black/75 backdrop-blur-md p-5 md:p-6 rounded-2xl border border-amber-400/50 text-center md:text-left">
+              <div className="w-full md:max-w-md bg-black/80 backdrop-blur-md p-5 md:p-6 rounded-2xl border border-amber-400/50 text-center md:text-left">
                 <p className="text-amber-400 text-xs uppercase tracking-widest font-semibold mb-1">
                   Final Misconception
                 </p>
@@ -538,7 +525,6 @@ export default function InteractiveDiwaliCampaign() {
               <button
                 onClick={() => {
                   triggerParticles(true);
-                  setShowPledgeCard(false);
                   setFrame(11);
                 }}
                 className="mt-6 inline-flex items-center gap-2 px-8 py-3.5 bg-gradient-to-r from-amber-400 to-yellow-300 text-stone-950 font-extrabold rounded-full shadow-lg hover:scale-105 transition cursor-pointer"
@@ -557,7 +543,7 @@ export default function InteractiveDiwaliCampaign() {
               initial={{ opacity: 0, y: 25 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
-              className="w-full max-w-xl bg-black/70 backdrop-blur-md p-7 sm:p-9 md:p-10 rounded-3xl border border-amber-400/40 text-center shadow-[0_0_60px_rgba(0,0,0,0.85)]"
+              className="w-full max-w-xl bg-black/75 backdrop-blur-md p-7 sm:p-9 md:p-10 rounded-3xl border border-amber-400/40 text-center shadow-[0_0_60px_rgba(0,0,0,0.85)]"
             >
               <span className="inline-flex items-center gap-1.5 text-amber-300 text-xs uppercase tracking-[0.25em] font-semibold mb-2">
                 <Sparkles className="w-3.5 h-3.5 text-amber-400" />
@@ -571,10 +557,10 @@ export default function InteractiveDiwaliCampaign() {
               <div className="w-24 h-0.5 bg-amber-400/50 mx-auto my-5" />
 
               <p className="text-stone-200 text-base sm:text-lg md:text-xl leading-relaxed font-light">
-                Shatter the myths. Together, let’s fuel a
+                Together, let’s aim to be self-reliant and
               </p>
               <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-amber-400 mt-2 leading-snug">
-                stronger, self-reliant, and sustainable India.
+                build a sustainable future for India.
               </h2>
 
               <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
@@ -582,7 +568,6 @@ export default function InteractiveDiwaliCampaign() {
                   onClick={() => {
                     setBrokenMyths([]);
                     setCurrentMythIdx(0);
-                    setShowPledgeCard(false);
                     setFrame(1);
                   }}
                   className="inline-flex items-center gap-2 px-6 py-3 border border-amber-400/60 text-amber-300 hover:bg-amber-400/15 rounded-full text-sm font-semibold transition cursor-pointer"

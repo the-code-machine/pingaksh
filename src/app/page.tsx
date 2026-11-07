@@ -83,9 +83,9 @@ export default async function Home() {
 
       <HomeCoreSections />
 
-      <HomeCorporateSections />
+      {/* <HomeCorporateSections /> */}
 
-      <Announment announcementsSection={announcementsSection} />
+      {/* <Announment announcementsSection={announcementsSection} /> */}
     </>
   );
 }

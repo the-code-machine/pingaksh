@@ -67,7 +67,7 @@ export const FOUNDERS_HOMAGE_DATA: FoundersHomageData = {
   },
   memorialTribute: {
     sectionEyebrow: "In Loving Memory & Reverence",
-    heading: "About The Founders",
+    heading: "About The Founder",
     honorees: [
       {
         id: "shri-hans-raj-goel",

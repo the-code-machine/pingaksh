@@ -4,12 +4,19 @@ import React from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import DirectorProfileView from "@/components/who-we-are/DirectorProfileView";
-import { LEADERSHIP_DATA } from "@/data/leadershipData";
+import {
+  LEADERSHIP_DATA,
+  getDirectorBySlug,
+  type DirectorProfile,
+} from "@/data/leadershipData";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
+/* ============================================================================
+ * COMMENTED OUT: Hostinger Dynamic API Fetch (Reverted to Static Data)
+ * ============================================================================
 async function getDirectors() {
   "use cache";
 
@@ -60,16 +67,18 @@ async function getDirectors() {
   }));
 }
 
-async function getDirectorBySlug(slug: string) {
+async function getDirectorBySlugFromApi(slug: string) {
   const directors = await getDirectors();
 
   return directors.find((director: { slug: string }) => director.slug === slug);
 }
+============================================================================ */
 
 export async function generateStaticParams() {
-  const directors = await getDirectors();
+  // const directors = await getDirectors();
+  const directors = LEADERSHIP_DATA.directors;
 
-  return directors.map((director: { slug: string }) => ({
+  return directors.map((director: DirectorProfile) => ({
     slug: director.slug,
   }));
 }
@@ -78,7 +87,8 @@ export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const director = await getDirectorBySlug(slug);
+  // const director = await getDirectorBySlugFromApi(slug);
+  const director = getDirectorBySlug(slug);
 
   if (!director) {
     return {
@@ -86,7 +96,7 @@ export async function generateMetadata({
     };
   }
 
-  const canonicalUrl = `https://pingaksh.com/who-we-are/board-of-directors/${director.slug}`;
+  const canonicalUrl = `https://pingaksh.com/who-we-are/leadership/${director.slug}`;
 
   return {
     title: `${director.name} — ${director.designation} | Pingaksh Renewables`,
@@ -119,19 +129,20 @@ export async function generateMetadata({
 export default async function DirectorDetailPage({ params }: PageProps) {
   const { slug } = await params;
 
-  // Fetch complete directors data
-  const directors = await getDirectors();
+  // Commented out API calls:
+  // const directors = await getDirectors();
+  // const director = directors.find(
+  //   (item: { slug: string }) => item.slug === slug,
+  // );
 
-  // Find requested director from complete API response
-  const director = directors.find(
-    (item: { slug: string }) => item.slug === slug,
-  );
+  // Using static LEADERSHIP_DATA:
+  const director = getDirectorBySlug(slug);
 
   if (!director) {
     notFound();
   }
 
-  const canonicalUrl = `https://pingaksh.com/who-we-are/board-of-directors/${director.slug}`;
+  const canonicalUrl = `https://pingaksh.com/who-we-are/leadership/${director.slug}`;
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -155,7 +166,7 @@ export default async function DirectorDetailPage({ params }: PageProps) {
             "@type": "ListItem",
             position: 3,
             name: "Board of Directors",
-            item: "https://pingaksh.com/who-we-are/board-of-directors",
+            item: "https://pingaksh.com/who-we-are/leadership",
           },
           {
             "@type": "ListItem",
@@ -188,7 +199,7 @@ export default async function DirectorDetailPage({ params }: PageProps) {
             : {}),
           worksFor: {
             "@type": "Corporation",
-            name: "Pingaksh Renewables (Pingaksh Group)",
+            name: "Pingaksh Renewables Limited",
             url: "https://pingaksh.com",
           },
         },
