@@ -33,6 +33,9 @@ const ASSETS = {
   frame08_archerAiming: "/diwali/Golden Archer Faces Colossal Stone King.png",
   frame09_arrowStrike: "/diwali/Molten Arrow Strikes the Stone King.png",
   vfx_energyBurst: "/diwali/Golden Energy Burst Over Rocky Plain.png",
+
+  // Festive Logo
+  logo: "/logo/diwali-icon-ping.svg",
 };
 
 interface Myth {
@@ -173,6 +176,14 @@ export default function InteractiveDiwaliCampaign() {
 
   return (
     <main className="relative w-full h-[100dvh] bg-stone-950 overflow-hidden select-none font-sans">
+      {/* ================= GLOBAL WATERMARK ================= */}
+      <div className="absolute bottom-3 right-4 md:bottom-4 md:right-6 z-50 pointer-events-none select-none">
+        <span className="px-2 py-1 bg-black/40 backdrop-blur-sm rounded text-white/30 font-mono text-[10px] md:text-xs tracking-widest font-semibold">
+          © Pingaksh Renewables
+        </span>
+      </div>
+      {/* ==================================================== */}
+
       <motion.div
         animate={
           isStriking
@@ -212,30 +223,46 @@ export default function InteractiveDiwaliCampaign() {
 
         {/* ================= FRAME 01: AYODHYA INTRO ================= */}
         {frame === 1 && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="relative z-20 flex flex-col items-center text-center px-6 max-w-2xl mt-12 md:mt-24"
-          >
-            {/* High-Contrast Pill Badge for Complete Legibility */}
-            <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-black/85 backdrop-blur-md border-2 border-amber-400 text-amber-300 uppercase tracking-[0.22em] text-xs sm:text-sm font-extrabold mb-5 shadow-[0_4px_25px_rgba(0,0,0,0.95)]">
-              <Flame className="w-4 h-4 text-amber-400 shrink-0" />
-              LIGHTING TOMORROW
-            </span>
-
-            <h1 className="text-3xl sm:text-5xl md:text-6xl font-serif font-bold text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.9)] leading-tight">
-              This Diwali, let’s{" "}
-              <span className="text-amber-400">ignite the truth</span>
-            </h1>
-
-            <button
-              onClick={() => setFrame(2)}
-              className="mt-8 inline-flex items-center gap-3 px-7 py-3.5 md:px-9 md:py-4 bg-gradient-to-r from-amber-500 to-yellow-400 text-stone-950 font-bold text-base md:text-lg rounded-full shadow-[0_0_30px_rgba(251,191,36,0.6)] hover:scale-105 transition cursor-pointer"
+          <>
+            {/* Top Left Festive Logo (Only on Intro Screen) */}
+            <motion.div
+              initial={{ opacity: 0, x: -15 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              className="absolute top-5 left-5 md:top-8 md:left-10 z-50 pointer-events-none"
             >
-              <span>Begin the Journey</span>
-              <ArrowRight className="w-5 h-5" />
-            </button>
-          </motion.div>
+              <img
+                src={ASSETS.logo}
+                alt="Pingaksh Renewables"
+                className="h-9 sm:h-12 md:h-14 w-auto drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]"
+              />
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="relative z-20 flex flex-col items-center text-center px-6 max-w-2xl mt-12 md:mt-24"
+            >
+              {/* High-Contrast Pill Badge for Complete Legibility */}
+              <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-black/85 backdrop-blur-md border-2 border-amber-400 text-amber-300 uppercase tracking-[0.22em] text-xs sm:text-sm font-extrabold mb-5 shadow-[0_4px_25px_rgba(0,0,0,0.95)]">
+                <Flame className="w-4 h-4 text-amber-400 shrink-0" />
+                LIGHTING TOMORROW
+              </span>
+
+              <h1 className="text-3xl sm:text-5xl md:text-6xl font-serif font-bold text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.9)] leading-tight">
+                This Diwali, let’s{" "}
+                <span className="text-amber-400">ignite the truth</span>
+              </h1>
+
+              <button
+                onClick={() => setFrame(2)}
+                className="mt-8 inline-flex items-center gap-3 px-7 py-3.5 md:px-9 md:py-4 bg-gradient-to-r from-amber-500 to-yellow-400 text-stone-950 font-bold text-base md:text-lg rounded-full shadow-[0_0_30px_rgba(251,191,36,0.6)] hover:scale-105 transition cursor-pointer"
+              >
+                <span>Begin the Journey</span>
+                <ArrowRight className="w-5 h-5" />
+              </button>
+            </motion.div>
+          </>
         )}
 
         {/* ================= FRAME 02: THE CHALLENGE ================= */}
@@ -543,38 +570,48 @@ export default function InteractiveDiwaliCampaign() {
               initial={{ opacity: 0, y: 25 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
-              className="w-full max-w-xl bg-black/75 backdrop-blur-md p-7 sm:p-9 md:p-10 rounded-3xl border border-amber-400/40 text-center shadow-[0_0_60px_rgba(0,0,0,0.85)]"
+              className="w-full max-w-xl flex flex-col items-center"
             >
-              <span className="inline-flex items-center gap-1.5 text-amber-300 text-xs uppercase tracking-[0.25em] font-semibold mb-2">
-                <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-                The Triumph of Truth
-              </span>
+              {/* Centered Logo positioned directly above the Pledge Card */}
+              <img
+                src={ASSETS.logo}
+                alt="Pingaksh Renewables Diwali"
+                className="h-10 sm:h-12 md:h-16 w-auto drop-shadow-[0_4px_15px_rgba(0,0,0,0.6)] mb-6 md:mb-8"
+              />
 
-              <h1 className="text-5xl sm:text-6xl md:text-7xl font-serif italic text-transparent bg-clip-text bg-gradient-to-b from-amber-200 via-amber-400 to-yellow-600 drop-shadow-[0_4px_25px_rgba(251,191,36,0.5)] py-1">
-                Happy Diwali
-              </h1>
+              {/* The Pledge Card */}
+              <div className="w-full bg-black/75 backdrop-blur-md p-7 sm:p-9 md:p-10 rounded-3xl border border-amber-400/40 text-center shadow-[0_0_60px_rgba(0,0,0,0.85)]">
+                <span className="inline-flex items-center gap-1.5 text-amber-300 text-xs uppercase tracking-[0.25em] font-semibold mb-2">
+                  <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+                  The Triumph of Truth
+                </span>
 
-              <div className="w-24 h-0.5 bg-amber-400/50 mx-auto my-5" />
+                <h1 className="text-5xl sm:text-6xl md:text-7xl font-serif italic text-transparent bg-clip-text bg-gradient-to-b from-amber-200 via-amber-400 to-yellow-600 drop-shadow-[0_4px_25px_rgba(251,191,36,0.5)] py-1">
+                  Happy Diwali
+                </h1>
 
-              <p className="text-stone-200 text-base sm:text-lg md:text-xl leading-relaxed font-light">
-                Together, let’s aim to be self-reliant and
-              </p>
-              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-amber-400 mt-2 leading-snug">
-                build a sustainable future for India.
-              </h2>
+                <div className="w-24 h-0.5 bg-amber-400/50 mx-auto my-5" />
 
-              <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
-                <button
-                  onClick={() => {
-                    setBrokenMyths([]);
-                    setCurrentMythIdx(0);
-                    setFrame(1);
-                  }}
-                  className="inline-flex items-center gap-2 px-6 py-3 border border-amber-400/60 text-amber-300 hover:bg-amber-400/15 rounded-full text-sm font-semibold transition cursor-pointer"
-                >
-                  <RotateCcw className="w-4 h-4" />
-                  <span>Replay Experience</span>
-                </button>
+                <p className="text-stone-200 text-base sm:text-lg md:text-xl leading-relaxed font-light">
+                  Together, let’s aim to be self-reliant and
+                </p>
+                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-amber-400 mt-2 leading-snug">
+                  build a sustainable future for India.
+                </h2>
+
+                <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
+                  <button
+                    onClick={() => {
+                      setBrokenMyths([]);
+                      setCurrentMythIdx(0);
+                      setFrame(1);
+                    }}
+                    className="inline-flex items-center gap-2 px-6 py-3 border border-amber-400/60 text-amber-300 hover:bg-amber-400/15 rounded-full text-sm font-semibold transition cursor-pointer"
+                  >
+                    <RotateCcw className="w-4 h-4" />
+                    <span>Replay Experience</span>
+                  </button>
+                </div>
               </div>
             </motion.div>
           </div>
