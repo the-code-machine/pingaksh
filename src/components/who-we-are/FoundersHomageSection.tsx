@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { motion } from "motion/react";
-import { ArrowUpRight, Sparkles } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import {
   FOUNDERS_HOMAGE_DATA,
   type FoundersHomageData,
@@ -26,16 +26,20 @@ export default function FoundersHomageSection({
       className="w-full bg-sand-100 text-pingaksh-navy py-20 sm:py-28 border-b border-sand-300 overflow-hidden"
     >
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 space-y-20 sm:space-y-28">
-        {/* ===================================================================
-            PART 1: MEMORIAL HOMAGE TO LATE SHRI HANS RAJ GOEL & SMT. SANTOSH DEVI
-        =================================================================== */}
+        {/* =========================================================
+            PART 1: MEMORIAL HOMAGE TO FOUNDERS
+        ========================================================= */}
+
         <div className="max-w-5xl mx-auto">
-          {/* Top Ornamental Crest & Centered Heading */}
+          {/* Centered Heading */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.7, ease: transitionEase }}
+            transition={{
+              duration: 0.7,
+              ease: transitionEase,
+            }}
             className="text-center space-y-3 mb-12 sm:mb-14"
           >
             <span className="block font-tagline text-xs uppercase tracking-[0.22em] text-pingaksh-terracotta font-bold">
@@ -43,44 +47,27 @@ export default function FoundersHomageSection({
             </span>
           </motion.div>
 
-          {/* Dual Memorial Portrait Frame (Styled after Reference Image) */}
+          {/* Single Combined Memorial Image */}
           <motion.div
             initial={{ opacity: 0, y: 32 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.8, delay: 0.1, ease: transitionEase }}
+            transition={{
+              duration: 0.8,
+              delay: 0.1,
+              ease: transitionEase,
+            }}
             className="rounded-3xl bg-white border-2 border-sand-300 shadow-2xl overflow-hidden p-6 sm:p-10 lg:p-12"
           >
-            {/* Framed Side-by-Side Portraits */}
-            <div className="max-w-2xl mx-auto grid grid-cols-1 sm:grid-cols-2 rounded-2xl overflow-hidden border border-sand-300 shadow-lg bg-navy-950">
-              {memorialTribute.honorees.map((person, idx) => (
-                <figure
-                  key={person.id}
-                  className={`relative aspect-[4/5] m-0 overflow-hidden group ${
-                    idx === 0 ? "sm:border-r border-white/15" : ""
-                  }`}
-                >
-                  <img
-                    src={person.portraitUrl}
-                    alt={person.portraitAlt}
-                    width={600}
-                    height={750}
-                    className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-103"
-                  />
-                  <div
-                    aria-hidden="true"
-                    className="absolute inset-0 bg-gradient-to-t from-navy-950/85 via-navy-950/15 to-transparent"
-                  />
-                  <figcaption className="absolute bottom-0 inset-x-0 p-5 text-center">
-                    <span className="block font-tagline text-[10px] uppercase tracking-[0.18em] text-pingaksh-sand font-semibold">
-                      {person.titleTag}
-                    </span>
-                    <strong className="font-logo text-xl sm:text-2xl text-white mt-0.5 block">
-                      {person.name}
-                    </strong>
-                  </figcaption>
-                </figure>
-              ))}
+            <div className="max-w-3xl mx-auto rounded-2xl overflow-hidden border border-sand-300 shadow-lg bg-navy-950">
+              <img
+                src="https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/ChatGPT_Image_Nov_7__2026__05_18_31_PM_26996a58.png"
+                alt="Late Shri Hans Raj Goel and Smt. Santosh Devi"
+                width={1200}
+                height={900}
+                className="w-full h-auto object-contain"
+                loading="lazy"
+              />
             </div>
 
             {/* Tribute Typography Block */}
@@ -110,10 +97,12 @@ export default function FoundersHomageSection({
                     <h3 className="font-logo text-lg text-pingaksh-navy font-bold">
                       {pillar.title}
                     </h3>
+
                     <span className="font-logo text-sm text-pingaksh-terracotta font-bold">
                       0{idx + 1}
                     </span>
                   </div>
+
                   <p className="text-xs text-navy-600 leading-relaxed">
                     {pillar.description}
                   </p>
@@ -123,23 +112,29 @@ export default function FoundersHomageSection({
           </motion.div>
         </div>
 
+        {/* Memorial Section Heading */}
         <h2
           id="founders-homage-heading"
           className="font-logo text-4xl sm:text-5xl lg:text-6xl text-pingaksh-navy text-center tracking-wide"
         >
           {memorialTribute.heading}
         </h2>
-        {/* ===================================================================
+
+        {/* =========================================================
             PART 2: TORCHBEARER SPOTLIGHT — MR. NARESH GOEL
-        =================================================================== */}
+        ========================================================= */}
+
         <motion.div
           initial={{ opacity: 0, y: 32 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.8, ease: transitionEase }}
+          transition={{
+            duration: 0.8,
+            ease: transitionEase,
+          }}
           className="rounded-3xl bg-pingaksh-navy text-white border border-white/10 shadow-2xl overflow-hidden grid grid-cols-1 lg:grid-cols-12"
         >
-          {/* Left Portrait Column (Cols 1-5) */}
+          {/* Left Portrait Column */}
           <figure className="lg:col-span-5 relative aspect-[4/4.8] lg:aspect-auto m-0 bg-navy-950 overflow-hidden">
             <img
               src={torchbearerSpotlight.portraitUrl}
@@ -147,23 +142,27 @@ export default function FoundersHomageSection({
               width={800}
               height={960}
               className="w-full h-full object-cover object-top"
+              loading="lazy"
             />
+
             <div
               aria-hidden="true"
               className="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-transparent to-transparent lg:hidden"
             />
           </figure>
 
-          {/* Right Narrative Column (Cols 6-12) */}
+          {/* Right Narrative Column */}
           <div className="lg:col-span-7 p-8 sm:p-12 lg:p-16 flex flex-col justify-between space-y-8">
             <div className="space-y-6">
               <div className="border-b border-white/15 pb-5">
                 <span className="font-tagline text-xs uppercase tracking-[0.2em] text-pingaksh-sand font-bold block">
                   {torchbearerSpotlight.eyebrow}
                 </span>
+
                 <h3 className="font-logo text-3xl sm:text-5xl text-white mt-2">
                   {torchbearerSpotlight.name}
                 </h3>
+
                 <p className="text-xs sm:text-sm font-semibold text-pingaksh-sand/90 mt-1">
                   {torchbearerSpotlight.designation}
                 </p>
@@ -182,6 +181,7 @@ export default function FoundersHomageSection({
               </blockquote>
             </div>
 
+            {/* Footer and CTA */}
             <div className="pt-4 border-t border-white/15 flex items-center justify-between">
               <span className="text-xs font-mono text-sand-200/70">
                 Pingaksh Group · Leadership Continuum
