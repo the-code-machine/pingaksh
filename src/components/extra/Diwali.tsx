@@ -220,7 +220,7 @@ export default function InteractiveDiwaliCampaign() {
             {/* High-Contrast Pill Badge for Complete Legibility */}
             <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-black/85 backdrop-blur-md border-2 border-amber-400 text-amber-300 uppercase tracking-[0.22em] text-xs sm:text-sm font-extrabold mb-5 shadow-[0_4px_25px_rgba(0,0,0,0.95)]">
               <Flame className="w-4 h-4 text-amber-400 shrink-0" />
-              Powering the Future
+              LIGHTING TOMORROW
             </span>
 
             <h1 className="text-3xl sm:text-5xl md:text-6xl font-serif font-bold text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.9)] leading-tight">
