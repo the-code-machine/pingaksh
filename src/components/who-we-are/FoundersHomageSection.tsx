@@ -125,7 +125,7 @@ export default function FoundersHomageSection({
 
         <h2
           id="founders-homage-heading"
-          className="font-logo text-4xl sm:text-5xl lg:text-6xl text-pingaksh-navy tracking-wide"
+          className="font-logo text-4xl sm:text-5xl lg:text-6xl text-pingaksh-navy text-center tracking-wide"
         >
           {memorialTribute.heading}
         </h2>

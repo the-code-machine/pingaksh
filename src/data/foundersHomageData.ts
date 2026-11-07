@@ -57,7 +57,7 @@ export const FOUNDERS_HOMAGE_DATA: FoundersHomageData = {
   ],
   hero: {
     eyebrow: "Our Guiding Stars & Heritage",
-    title: "About The Founders",
+    title: "About The Founder",
     subtitle:
       "Honouring the timeless values, integrity, and community spirit that form the bedrock of the Pingaksh Group.",
     backgroundImage:
