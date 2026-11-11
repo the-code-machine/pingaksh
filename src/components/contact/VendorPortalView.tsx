@@ -343,17 +343,58 @@ export default function VendorPortalView({ data }: VendorPortalViewProps) {
     window.scrollTo({ top: 320, behavior: "smooth" });
   };
 
-  const handleFinalSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+
+  const handleFinalSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateStep(3)) return;
-    const generatedId = `PRPL-KYC-${new Date().getFullYear()}-${Math.floor(
-      100000 + Math.random() * 900000,
-    )}`;
-    setSubmissionRefId(generatedId);
-    setIsSubmitted(true);
-    window.scrollTo({ top: 280, behavior: "smooth" });
-  };
 
+    setIsSubmitting(true);
+    setStepError("");
+
+    try {
+      const payload = new FormData();
+
+      // Append all text/select fields from formData
+      Object.entries(formData).forEach(([key, value]) => {
+        payload.append(key, String(value));
+      });
+
+      // Append all uploaded file objects
+      Object.entries(uploadedFiles).forEach(([docId, fileObj]) => {
+        if (fileObj) {
+          payload.append(docId, fileObj);
+        }
+      });
+
+      const apiBase =
+        process.env.NEXT_PUBLIC_ADMIN_API_URL ||
+        "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin";
+
+      const response = await fetch(`${apiBase}/api/vendor-register.php`, {
+        method: "POST",
+        body: payload,
+      });
+
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(
+          result.message || "Failed to submit vendor registration.",
+        );
+      }
+
+      setSubmissionRefId(result.reference_id);
+      setIsSubmitted(true);
+      window.scrollTo({ top: 280, behavior: "smooth" });
+    } catch (error: any) {
+      setStepError(
+        error.message || "An error occurred while uploading your KYC dossier.",
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   // On-Page SEO JSON-LD Schema
   const structuredData = {
     "@context": "https://schema.org",
@@ -1807,10 +1848,15 @@ export default function VendorPortalView({ data }: VendorPortalViewProps) {
                     ) : (
                       <button
                         type="submit"
-                        className="inline-flex items-center gap-2.5 px-8 py-4 rounded-full bg-pingaksh-terracotta hover:bg-terracotta-600 text-white text-sm font-semibold transition-all shadow-lg cursor-pointer"
+                        disabled={isSubmitting}
+                        className="inline-flex items-center gap-2.5 px-8 py-4 rounded-full bg-pingaksh-terracotta hover:bg-terracotta-600 text-white text-sm font-semibold transition-all shadow-lg cursor-pointer disabled:opacity-70"
                       >
                         <ShieldCheck className="w-4 h-4" />
-                        <span>{formLabels.submitButton}</span>
+                        <span>
+                          {isSubmitting
+                            ? "Submitting KYC..."
+                            : formLabels.submitButton}
+                        </span>
                       </button>
                     )}
                   </div>

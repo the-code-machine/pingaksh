@@ -49,7 +49,7 @@ export const HERITAGE_TIMELINE_DATA: HeritageTimelinePageData = {
   seo: {
     title: "Our Heritage & Growth Timeline | Pingaksh Group",
     description:
-      "Trace the institutional history of Pingaksh Group from the founding of Uttar Bharat Hydro Power (UBHP) and the commissioning of Sarju cascade projects to our modern 250 KLPD bio-energy expansion.",
+      "Trace the institutional history of Pingaksh Group from the founding of Uttar Bharat Hydro Power (UBHP) and the commissioning of Sarju cascade projects to our modern bio-energy expansion.",
   },
   breadcrumbs: [
     { label: "Home", href: "/" },

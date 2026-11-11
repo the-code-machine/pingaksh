@@ -146,7 +146,10 @@ export const VISION_MISSION_DATA: VisionMissionPageData = {
     keywords: [
       "Pingaksh Renewables Vision and Mission",
       "Pingaksh Group Ethos",
-      "Uttar Bharat Hydro Power UBHP",
+      "Energy Transition India",
+      "Energy Transition",
+      "Enery Transition Bharat",
+      "Ethonol Biofuel India",
       "Pingaksh Green Fuels Bio-Ethanol",
       "Run-of-the-River Hydro Uttarakhand",
       "Naresh Goel Pingaksh Group",
@@ -177,7 +180,7 @@ export const VISION_MISSION_DATA: VisionMissionPageData = {
     title: "Engineered in Harmony with Nature.",
     highlightedTitle: "Built for Generational Scale.",
     subtitle:
-      "From high-head Himalayan river valleys in Bageshwar to zero-liquid-discharge bio-refineries, our purpose is to secure India’s energy future without compromising ecological balance.",
+      "Originating from Sanskrit, Pingaksh means ‘pink-eyed’ and is deeply associated with Lord Shiva, symbolising divine presence, reverence and spiritual strength. Rooted in India's rich cultural heritage, the name represents a timeless connection between tradition and progress, reflecting our commitment to preserving heritage while embracing innovation and shaping a sustainable future.",
     sanskritBadge: "पिंगाक्ष • TRADITION MEETS PROGRESS",
     backgroundImage:
       "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/_MG_3836_bfb9b053.webp",

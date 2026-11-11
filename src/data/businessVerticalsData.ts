@@ -135,7 +135,7 @@ export const BUSINESS_VERTICALS_DATA: BusinessVerticalData[] = [
       title:
         "Hydroelectric Power (Sarju II & III Cascade) | Pingaksh Renewables",
       description:
-        "Explore Uttar Bharat Hydro Power (UBHP)—operating the 30.60 MW Sarju-I, Sarju-II, and Sarju-III run-of-the-river hydroelectric cascade in Bageshwar, Uttarakhand.",
+        "Explore Uttar Bharat Hydro Power (UBHP)—operating the 23.60 MW  Sarju-II, and Sarju-III run-of-the-river hydroelectric cascade in Bageshwar, Uttarakhand.",
       keywords: [
         "Uttar Bharat Hydro Power UBHP",
         "Sarju I II III Hydro Project Bageshwar",
@@ -157,7 +157,7 @@ export const BUSINESS_VERTICALS_DATA: BusinessVerticalData[] = [
       keyMetrics: [
         {
           label: "Installed Cascade Capacity",
-          value: "30.60",
+          value: "23.60",
           unit: "MW (Sarju II–III)",
         },
         {
@@ -179,9 +179,9 @@ export const BUSINESS_VERTICALS_DATA: BusinessVerticalData[] = [
     },
     overview: {
       headline:
-        "High-head Himalayan civil engineering designed for a 50-year operational lifecycle without large reservoir submergence.",
+        "High-head Himalayan civil engineering designed for a 100-year operational lifecycle without large reservoir submergence.",
       leadParagraph:
-        "Operated under our flagship subsidiary Uttar Bharat Hydro Power Private Limited (UBHP), the Sarju Cascade in Kapkot tehsil, Bageshwar district represents a benchmark in ecologically sensitive small-hydro development. Rather than constructing massive dams that displace communities or submerge forests, our cascade utilizes compact diversion trench weirs and underground headrace tunnels.",
+        "Operated under our flagship subsidiary Pingaksh Renewables Limited (PRL), the Sarju Cascade in Kapkot tehsil, Bageshwar district represents a benchmark in ecologically sensitive small-hydro development. Rather than constructing massive dams that displace communities or submerge forests, our cascade utilizes compact diversion trench weirs and underground headrace tunnels.",
       bodyParagraph:
         "Water diverted from the Sarju River passes through underground desilting basins to remove abrasive quartz silt before entering high-pressure steel penstocks. After driving horizontal-shaft Francis turbines coupled to brushless synchronous generators, 100% of the water is returned cleanly to the natural river channel via tailrace conduits.",
       highlights: [
@@ -577,7 +577,7 @@ export const BUSINESS_VERTICALS_DATA: BusinessVerticalData[] = [
       subtitle:
         "Supplying 99.8% v/v anhydrous fuel-grade ethanol to Public Sector Oil Marketing Companies under India's National E20 Blending Programme with 100% Zero-Liquid Discharge.",
       heroImage:
-        "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/dji_fly_20240307_155924_235_1709808741262_photo_1edf128b.webp",
+        "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/0Y1A2514_copy_OPT_2_adbbd0ea.webp",
       heroImageAlt:
         "Pingaksh Beverages 250 KLPD Grain-Based Bio-Ethanol Distillation Columns",
       heroVideoUrl:
@@ -643,7 +643,7 @@ export const BUSINESS_VERTICALS_DATA: BusinessVerticalData[] = [
         summary:
           "Dust-free pneumatic grain handling, hammer milling, jet-cooking enzymatic liquefaction, and closed-loop temperature-controlled fermenters.",
         image:
-          "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1400&q=85",
+          "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/0Y1A2315_b0198791.webp",
         imageAlt: "Automated Grain Fermentation Vessels at PBPL",
         technicalSpecs: [
           {
@@ -677,7 +677,7 @@ export const BUSINESS_VERTICALS_DATA: BusinessVerticalData[] = [
         summary:
           "Vacuum-assisted multi-pressure distillation columns coupled with vapor-phase zeolite molecular sieve beds producing >99.8% v/v fuel ethanol.",
         image:
-          "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1400&q=85",
+          "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/0Y1A2425_0ec28832.webp",
         imageAlt: "Multi-Pressure Distillation Towers and Zeolite Sieve Unit",
         technicalSpecs: [
           {
@@ -711,7 +711,7 @@ export const BUSINESS_VERTICALS_DATA: BusinessVerticalData[] = [
         summary:
           "Biomass-fired high-pressure boiler island with back-pressure turbine generator and automated PESO Class-A ethanol dispatch bays.",
         image:
-          "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1400&q=85",
+          "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/0Y1A2077_f0f4e511.webp",
         imageAlt: "Captive Co-Generation Power Island and PESO Tank Farm",
         technicalSpecs: [
           {
@@ -883,7 +883,7 @@ export const BUSINESS_VERTICALS_DATA: BusinessVerticalData[] = [
           year: "Current Run",
           value: 85.0,
           displayValue: "85.0 ML",
-          benchmarkNote: "340+ Operating Days/Yr",
+          benchmarkNote: "355 Operating Days/Yr",
         },
       ],
       efficiencyBenchmarks: [
@@ -914,32 +914,48 @@ export const BUSINESS_VERTICALS_DATA: BusinessVerticalData[] = [
       slides: [
         {
           id: "ethanol-media-1",
-          type: "video",
-          src: "https://assets.mixkit.co/videos/preview/mixkit-industrial-plant-with-pipes-and-smoke-42654-large.mp4",
-          posterUrl:
-            "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1600&q=85",
-          title: "250 KLPD Multi-Pressure Distillation & MSDH Complex",
+          type: "image",
+          src: "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/0Y1A2077_f0f4e511.webp",
+          title: "Grain Feedstock & Raw Material Storage Silos",
           caption:
-            "Automated thermal vapor recompression columns producing fuel-grade anhydrous ethanol.",
-          locationTag: "PBPL Distillation Island",
+            "Large-capacity corrugated steel silos ensuring secure, moisture-controlled storage of non-food grain inputs for year-round distillation.",
+          locationTag: "PBPL Grain Storage",
         },
         {
           id: "ethanol-media-2",
           type: "image",
-          src: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1600&q=85",
-          title: "PESO Class-A Bulk Storage & OMC Tanker Dispatch",
+          src: "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/0Y1A2110_8b80fce9.webp",
+          title: "Integrated Distillation & Dehydration Towers",
           caption:
-            "Mass-flow metered loading bays ensuring rapid turnaround for IndianOil, BPCL, and HPCL tankers.",
-          locationTag: "PBPL Tank Farm",
+            "High-efficiency, multi-pressure distillation columns engineered to optimize thermal integration and yield 99.8% anhydrous ethanol.",
+          locationTag: "PBPL Distillation Block",
         },
         {
           id: "ethanol-media-3",
           type: "image",
-          src: "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1600&q=85",
-          title: "Captive Biomass Co-Generation Power Island",
+          src: "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/0Y1A2310_319bd884.webp",
+          title: "Engineering Team at Process Platform",
           caption:
-            "High-pressure boiler and back-pressure turbine supplying 100% captive steam and power.",
-          locationTag: "PBPL Co-Gen Block",
+            "Our technical operations and engineering leadership conducting routine inspection across the elevated distillation and dehydration decks.",
+          locationTag: "PBPL Process Platform",
+        },
+        {
+          id: "ethanol-media-4",
+          type: "image",
+          src: "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/0Y1A2425_0ec28832.webp",
+          title: "Stainless Steel Vapor Routing & Manifolds",
+          caption:
+            "Precision-engineered piping manifolds directing high-temperature vapors between the analyzer, rectifier, and molecular sieve beds.",
+          locationTag: "PBPL Piping Corridor",
+        },
+        {
+          id: "ethanol-media-5",
+          type: "image",
+          src: "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/0Y1A2555_a9e0a0da.webp",
+          title: "Bio-Refinery Complex Wide View",
+          caption:
+            "A comprehensive view of the PBPL biorefinery complex, capturing the grain silos, milling section, and multi-stage distillation infrastructure under a clear sky.",
+          locationTag: "PBPL Industrial Park",
         },
       ],
     },

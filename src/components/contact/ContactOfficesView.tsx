@@ -16,6 +16,7 @@ import {
   Send,
   ShieldCheck,
   Lock,
+  AlertCircle,
 } from "lucide-react";
 import type {
   ContactOfficesPageData,
@@ -57,9 +58,49 @@ export default function ContactOfficesView({ data }: ContactOfficesViewProps) {
     setSelectedOffice(firstMatch);
   };
 
-  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+
+  const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setFormSubmitted(true);
+    setIsSubmitting(true);
+    setSubmitError("");
+
+    const formElement = e.currentTarget;
+    const formDataObj = new FormData(formElement);
+
+    const payload = {
+      fullName: formDataObj.get("fullName"),
+      organization: formDataObj.get("organization"),
+      email: formDataObj.get("email"),
+      phone: formDataObj.get("phone"),
+      subject: formDataObj.get("subject"),
+      message: formDataObj.get("message"),
+    };
+
+    try {
+      const apiBase =
+        process.env.NEXT_PUBLIC_ADMIN_API_URL ||
+        "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin";
+
+      const res = await fetch(`${apiBase}/api/contact.php`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const result = await res.json();
+      if (!res.ok || !result.success) {
+        throw new Error(result.message || "Could not submit inquiry.");
+      }
+
+      setFormSubmitted(true);
+      formElement.reset();
+    } catch (err: any) {
+      setSubmitError(err.message || "Network error. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   // On-Page SEO JSON-LD: BreadcrumbList + ContactPage + Organization ContactPoints
@@ -726,6 +767,14 @@ export default function ContactOfficesView({ data }: ContactOfficesViewProps) {
                   />
                 </div>
 
+                {/* Add this right above your submit button to show errors */}
+                {submitError && (
+                  <div className="sm:col-span-2 p-4 rounded-xl bg-terracotta-50 border border-terracotta-200 text-pingaksh-terracotta text-xs font-medium flex items-center gap-2">
+                    <AlertCircle className="w-4 h-4 shrink-0" />
+                    <span>{submitError}</span>
+                  </div>
+                )}
+
                 <div className="sm:col-span-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2">
                   <span className="text-xs text-navy-500">
                     Protected under Pingaksh Group Corporate Data &amp; Privacy
@@ -734,10 +783,13 @@ export default function ContactOfficesView({ data }: ContactOfficesViewProps) {
 
                   <button
                     type="submit"
-                    className="inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-pingaksh-terracotta hover:bg-terracotta-600 text-white text-sm font-semibold transition-all shadow-lg cursor-pointer"
+                    disabled={isSubmitting}
+                    className="inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-pingaksh-terracotta hover:bg-terracotta-600 text-white text-sm font-semibold transition-all shadow-lg cursor-pointer disabled:opacity-70"
                   >
                     <Send className="w-4 h-4" aria-hidden="true" />
-                    <span>Dispatch Inquiry</span>
+                    <span>
+                      {isSubmitting ? "Dispatching..." : "Dispatch Inquiry"}
+                    </span>
                   </button>
                 </div>
               </form>

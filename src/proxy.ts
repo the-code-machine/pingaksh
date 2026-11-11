@@ -1,31 +1,31 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const DIWALI_PATH = "/festive/diwali";
-
 export function proxy(request: NextRequest) {
-  const { pathname } = request.nextUrl;
+  const pathname = request.nextUrl.pathname;
 
-  // Allow the Diwali campaign route to prevent redirect loops
-  if (pathname === DIWALI_PATH || pathname.startsWith(`${DIWALI_PATH}/`)) {
-    return NextResponse.next();
+  // Routes to restrict
+  const blockedRoutes = [
+    "/media/press-releases",
+    "/media/certifications-awards",
+    "/investors",
+  ];
+
+  // Redirect if route matches or is a nested page
+  const isBlocked = blockedRoutes.some(
+    (route) => pathname === route || pathname.startsWith(`${route}/`),
+  );
+
+  if (isBlocked) {
+    return NextResponse.redirect(new URL("/", request.url));
   }
 
-  // Allow Next.js internal assets and API routes
-  if (
-    pathname.startsWith("/_next") ||
-    pathname.startsWith("/api") ||
-    pathname.includes(".")
-  ) {
-    return NextResponse.next();
-  }
-
-  // Redirect all other routes to Diwali campaign
-  const url = request.nextUrl.clone();
-  url.pathname = DIWALI_PATH;
-
-  return NextResponse.redirect(url, 307);
+  return NextResponse.next();
 }
 
 export const config = {
-  matcher: ["/:path*"],
+  matcher: [
+    "/media/press-releases/:path*",
+    "/media/certifications-awards/:path*",
+    "/investors/:path*",
+  ],
 };

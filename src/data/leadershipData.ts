@@ -230,7 +230,8 @@ const ALL_DIRECTORS: DirectorProfile[] = [
       "Postgraduate Degree in Management — MDI, Gurgaon",
     ],
     almaMater: "IIT (BHU), Varanasi & MDI, Gurgaon",
-    portraitImage: "/images/leadership/subodh-kumar.jpg",
+    portraitImage:
+      "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/directors/WhatsApp_Image_2026-11-07_at_21_35_36_4306dcbd.jpg",
     portraitAlt:
       "Subodh Kumar - Independent Director, Pingaksh Renewables Limited",
     shortSummary:
@@ -276,7 +277,8 @@ const ALL_DIRECTORS: DirectorProfile[] = [
     appointedSince: "2024",
     qualifications: ["Bachelor's Degree in Chemical Engineering"],
     almaMater: "The Maharaja Sayajirao University of Baroda, Vadodara",
-    portraitImage: "/images/leadership/chintan-shah.jpg",
+    portraitImage:
+      "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/directors/WhatsApp_Image_2026-11-07_at_18_23_37_7cb5bfbd.jpg",
     portraitAlt:
       "Chintan Shah - Independent Director, Pingaksh Renewables Limited",
     shortSummary:
@@ -323,7 +325,7 @@ const ALL_DIRECTORS: DirectorProfile[] = [
     ],
     almaMater: "IIM Nagpur (Former Member, Board of Governors)",
     portraitImage:
-      "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/WhatsApp_Image_2026-11-06_at_17_08_41_debd5b9e.jpg",
+      "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/directors/WhatsApp_Image_2026-11-06_at_17_08_41_debd5b9e.jpg",
     portraitAlt:
       "Vaibhav Dange - Independent Director, Pingaksh Renewables Limited",
     shortSummary:
@@ -372,7 +374,7 @@ const ALL_DIRECTORS: DirectorProfile[] = [
     qualifications: ["LLM in Business Law"],
     almaMater: "King's College London",
     portraitImage:
-      "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/Man_in_Navy_Blazer_with_Gold_Belt_0beee35b.png",
+      "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/directors/director_125b1532d144cb40_1792514621.png",
     portraitAlt: "Aadish Goel - Director, Pingaksh Beverages Private Limited",
     // Waist-up framing hint for UI components rendering Aadish's portrait
     portraitObjectPosition: "object-top",

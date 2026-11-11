@@ -789,7 +789,7 @@ export default function BusinessVerticalShowcase({
                 {/* Integrated Stage Inspector + Live Video Animation Stage */}
                 <div className="rounded-2xl border border-sand-300 bg-pingaksh-navy text-white overflow-hidden shadow-2xl grid grid-cols-1 lg:grid-cols-12">
                   {/* Left 6 Cols: Active Stage Engineering Telemetry */}
-                  <div className="lg:col-span-6 p-7 sm:p-10 lg:p-12 flex flex-col justify-between">
+                  <div className="lg:col-span-12 p-7 sm:p-10 lg:p-12 flex flex-col justify-between">
                     <AnimatePresence mode="wait">
                       <motion.div
                         key={activeStep.stepNumber}
@@ -843,36 +843,6 @@ export default function BusinessVerticalShowcase({
                       <span className="font-mono">
                         {currentProcess.baselineFormulaText}
                       </span>
-                    </div>
-                  </div>
-
-                  {/* Right 6 Cols: Always-Visible Live Process Video Animation */}
-                  <div className="lg:col-span-6 relative min-h-[340px] sm:min-h-[420px] bg-black overflow-hidden">
-                    <video
-                      key={currentProcess.videoUrl}
-                      src={currentProcess.videoUrl}
-                      poster={currentProcess.videoPoster}
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
-                      className="absolute inset-0 w-full h-full object-cover opacity-85"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/20 to-transparent" />
-
-                    {/* Top Live Feed Pill */}
-                    <div className="absolute top-5 left-5 right-5 flex items-center justify-between">
-                      <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-navy-950/80 backdrop-blur-md border border-white/15 text-[11px] font-semibold text-white">
-                        <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                        {currentProcess.systemTitle.split(":")[0]} — Visual Feed
-                      </span>
-                    </div>
-
-                    {/* Bottom Video Caption */}
-                    <div className="absolute bottom-5 left-5 right-5 p-4 rounded-xl bg-navy-950/80 backdrop-blur-md border border-white/15">
-                      <p className="text-xs text-sand-100 leading-relaxed">
-                        {currentProcess.videoCaption}
-                      </p>
                     </div>
                   </div>
                 </div>
@@ -1325,57 +1295,6 @@ export default function BusinessVerticalShowcase({
               </div>
             </motion.div>
           </AnimatePresence>
-        </div>
-      </section>
-
-      {/* =====================================================================
-          9. CINEMATIC CROSS-BUSINESS VERTICAL PORTALS
-      ===================================================================== */}
-      <section className="py-20 lg:py-28 bg-white">
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10">
-          <div className="pb-10">
-            <span className="font-tagline text-xs uppercase tracking-[0.2em] text-pingaksh-terracotta font-bold">
-              Integrated Conglomerate
-            </span>
-            <h2 className="font-logo text-3xl sm:text-4xl text-pingaksh-navy mt-1">
-              Explore Other Pingaksh Business Verticals
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {otherBusinesses.map((other) => (
-              <Link
-                key={other.slug}
-                href={`/our-businesses/${other.slug}`}
-                className="group relative rounded-xl overflow-hidden min-h-[280px] flex flex-col justify-end p-8 sm:p-10 border border-sand-300 shadow-lg"
-              >
-                <img
-                  src={other.hero.heroImage}
-                  alt={other.name}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/75 to-navy-950/20 group-hover:via-navy-950/65 transition-colors" />
-
-                <div className="relative z-10 flex items-end justify-between gap-6">
-                  <div className="space-y-2 max-w-lg">
-                    <span className="font-tagline text-[10px] uppercase tracking-widest text-pingaksh-sand font-bold block">
-                      {other.legalEntity}
-                    </span>
-                    <h3 className="font-logo text-2xl sm:text-3xl text-white group-hover:text-pingaksh-sand transition-colors">
-                      {other.name}
-                    </h3>
-                    <p className="font-body text-xs sm:text-sm text-sand-100/85 line-clamp-2">
-                      {other.hero.subtitle}
-                    </p>
-                  </div>
-
-                  <div className="w-11 h-11 rounded-full bg-white/10 group-hover:bg-pingaksh-terracotta text-white flex items-center justify-center shrink-0 transition-all backdrop-blur-sm">
-                    <ArrowUpRight className="w-5 h-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
         </div>
       </section>
     </article>

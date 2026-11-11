@@ -153,7 +153,7 @@ export const HOME_SECTIONS_DATA = {
         secondaryDescription:
           "By substituting imported fossil crude with indigenous biofuels and operating on a strict Zero-Liquid Discharge (ZLD) standard, we strengthen the rural agricultural economy while cutting over 600 tonnes of vehicular carbon emissions daily.",
         backgroundImage:
-          "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/dji_fly_20240307_160310_241_1709808715887_photo_87485549.webp",
+          "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/0Y1A2555_a9e0a0da.webp",
         imageAlt:
           "Pingaksh Green Fuels PBPL Grain-Based Bio-Ethanol Distillery Facility",
         ctaText: "read more",
@@ -207,33 +207,23 @@ export const HOME_SECTIONS_DATA = {
     slides: [
       {
         id: "csr-slide-1",
-        category: "CSR Pillar 01 · Rural Healthcare & Sanitation",
-        title: "Himalayan Community Medical & Wellness Outreach",
-        caption:
-          "Conducting regular multi-specialty health camps, diagnostic screenings, and clean drinking water infrastructure projects for villages surrounding the Sarju I–III hydro cascade in District Bageshwar.",
-        imageUrl:
-          "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1600&q=85",
-        imageAlt: "Pingaksh Group CSR Healthcare Outreach in Rural Uttarakhand",
-      },
-      {
-        id: "csr-slide-2",
         category: "CSR Pillar 02 · Education & Technical Skilling",
         title: "Digital Classrooms & Youth Electro-Mechanical Training",
         caption:
           "Upgrading rural government schools with smart-board infrastructure and sponsoring technical apprenticeships for local diploma holders at our power stations and biorefineries.",
         imageUrl:
-          "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1600&q=85",
+          "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/_MG_3751_a4bd973c.webp",
         imageAlt:
           "Rural School Education and Technical Skilling CSR Initiative",
       },
       {
-        id: "csr-slide-3",
+        id: "csr-slide-2",
         category: "CSR Pillar 03 · Agrarian Livelihoods & Ecology",
         title: "Sustainable Farming & Van Panchayat Afforestation",
         caption:
           "Partnering with local village councils for native oak and deodar plantation drives while providing zero-middleman assured buyback for energy crops and non-food grains.",
         imageUrl:
-          "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=1600&q=85",
+          "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/_MG_3807_b730c0a3.webp",
         imageAlt:
           "Rural Farmer Livelihood and Himalayan Watershed Afforestation",
       },
