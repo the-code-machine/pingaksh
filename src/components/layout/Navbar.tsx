@@ -279,7 +279,7 @@ export default function Navbar() {
             <div className="max-w-[1440px] mx-auto px-10 py-10">
               <div className="grid grid-cols-12 gap-10">
                 {/* Left Brand Context Column (Cols 1-3) */}
-                <div className="col-span-3 border-r border-sand-200 pr-8 flex flex-col justify-between">
+                <div className="col-span-4 border-r border-sand-200 pr-8 flex flex-col justify-between">
                   <div>
                     <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-pingaksh-terracotta">
                       Pingaksh Group
@@ -305,7 +305,7 @@ export default function Navbar() {
                 </div>
 
                 {/* Center Multi-Column Sub-Links (Cols 4-8) */}
-                <div className="col-span-5 grid grid-cols-2 gap-8">
+                <div className="col-span-8 grid grid-cols-2 gap-8">
                   {activeNavData.columns.map((col, idx) => (
                     <div key={idx} className="space-y-4">
                       <h4 className="text-xs font-bold uppercase tracking-wider text-navy-900 border-b border-sand-200 pb-2">
@@ -346,7 +346,7 @@ export default function Navbar() {
                 </div>
 
                 {/* Right Insights Column (Cols 9-12) */}
-                <div className="col-span-4 pl-6 border-l border-sand-200">
+                {/* <div className="col-span-4 pl-6 border-l border-sand-200">
                   <div className="flex items-center justify-between mb-5 pb-3 border-b border-sand-200">
                     <h4 className="text-[11px] font-bold uppercase tracking-[0.15em] text-navy-400">
                       Featured Insight
@@ -385,7 +385,7 @@ export default function Navbar() {
                       <ArrowRight className="w-3.5 h-3.5" />
                     </div>
                   </Link>
-                </div>
+                </div> */}
               </div>
             </div>
           </motion.div>
