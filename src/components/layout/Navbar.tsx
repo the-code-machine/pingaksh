@@ -155,18 +155,6 @@ export default function Navbar() {
               <Leaf className="w-3.5 h-3.5 text-emerald-400" />
               <span>Sustainability Dashboard</span>
             </Link>
-
-            <span className="hidden sm:inline text-white/25">|</span>
-
-            {/* Country Selector */}
-            <button
-              type="button"
-              className="inline-flex items-center gap-1 text-white/90 hover:text-pingaksh-sand transition-colors cursor-pointer shrink-0"
-            >
-              <Globe className="w-3.5 h-3.5 text-sand-200" />
-              <span>India</span>
-              <ChevronDown className="w-3 h-3 opacity-75" />
-            </button>
           </div>
         </div>
       </div>

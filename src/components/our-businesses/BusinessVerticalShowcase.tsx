@@ -858,173 +858,6 @@ export default function BusinessVerticalShowcase({
       )}
 
       {/* =====================================================================
-          6. PERFORMANCE TELEMETRY & ANIMATED GRAPHS
-      ===================================================================== */}
-      <section
-        id="telemetry-graphs"
-        className="py-20 lg:py-32 bg-pingaksh-navy text-white border-b border-white/10 relative overflow-hidden"
-      >
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            className="max-w-3xl pb-14"
-          >
-            <div className="inline-flex items-center gap-2 font-tagline text-xs uppercase tracking-[0.2em] text-pingaksh-sand font-bold mb-2">
-              <Activity className="w-4 h-4 text-emerald-400" />
-              <span>Operational Telemetry</span>
-            </div>
-            <h2 className="font-logo text-3xl sm:text-5xl text-white">
-              {business.telemetry.heading}
-            </h2>
-            <p className="font-body text-sm sm:text-base text-sand-200/80 mt-3">
-              {business.telemetry.subheading}
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-60px" }}
-              variants={fadeUp}
-              className="lg:col-span-7 rounded-xl bg-navy-950/80 border border-white/15 p-7 sm:p-10 flex flex-col justify-between shadow-2xl"
-            >
-              <div className="flex flex-wrap items-baseline justify-between gap-2 pb-6 border-b border-white/10">
-                <div>
-                  <h3 className="font-logo text-2xl text-white">
-                    {business.telemetry.chartTitle}
-                  </h3>
-                  <p className="text-xs text-sand-300/70 mt-1">
-                    Historical output &amp; operational ramp-up trajectory
-                  </p>
-                </div>
-                <span className="font-tagline text-xs font-bold uppercase tracking-wider px-3 py-1 rounded bg-white/10 text-pingaksh-sand">
-                  Unit: {business.telemetry.chartUnit}
-                </span>
-              </div>
-
-              <div className="relative h-72 pt-10 pb-4 border-b border-white/15 flex items-end">
-                <div className="absolute inset-0 flex flex-col justify-between pointer-events-none pt-10 pb-4 opacity-15">
-                  <div className="border-b border-dashed border-white w-full" />
-                  <div className="border-b border-dashed border-white w-full" />
-                  <div className="border-b border-dashed border-white w-full" />
-                  <div className="border-b border-dashed border-white w-full" />
-                </div>
-
-                <div className="relative z-10 grid grid-cols-5 gap-4 sm:gap-8 items-end w-full h-full">
-                  {business.telemetry.series.map((point, idx) => {
-                    const heightPercent = Math.min(
-                      100,
-                      Math.round(
-                        (point.value / business.telemetry.maxScale) * 100,
-                      ),
-                    );
-                    return (
-                      <div
-                        key={point.year}
-                        className="h-full flex flex-col justify-end items-center group"
-                      >
-                        <motion.span
-                          initial={{ opacity: 0, y: 10 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 0.5, delay: 0.4 + idx * 0.1 }}
-                          className="text-xs sm:text-sm font-bold text-pingaksh-sand mb-2.5 group-hover:scale-110 transition-transform"
-                        >
-                          {point.displayValue}
-                        </motion.span>
-
-                        <div className="w-full max-w-[64px] h-48 bg-white/5 rounded-t-md flex items-end overflow-hidden border border-white/10 p-1">
-                          <motion.div
-                            initial={{ height: 0 }}
-                            whileInView={{ height: `${heightPercent}%` }}
-                            viewport={{ once: true }}
-                            transition={{
-                              duration: 1.1,
-                              delay: idx * 0.12,
-                              ease: enterpriseEase,
-                            }}
-                            className="w-full rounded-t-xs bg-gradient-to-t from-pingaksh-terracotta via-pingaksh-terracotta to-pingaksh-sand group-hover:brightness-110 transition-all"
-                          />
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-
-              <div className="grid grid-cols-5 gap-4 sm:gap-8 pt-4 text-center">
-                {business.telemetry.series.map((point) => (
-                  <div key={point.year}>
-                    <span className="block text-xs sm:text-sm font-bold text-white">
-                      {point.year}
-                    </span>
-                    <span className="hidden sm:block text-[11px] text-sand-300/70 mt-1 line-clamp-1">
-                      {point.benchmarkNote}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-60px" }}
-              variants={fadeUp}
-              custom={0.15}
-              className="lg:col-span-5 rounded-xl bg-navy-950/80 border border-white/15 p-7 sm:p-10 flex flex-col justify-between space-y-8 shadow-2xl"
-            >
-              <div className="pb-5 border-b border-white/10">
-                <h3 className="font-logo text-2xl text-white">
-                  Efficiency &amp; Compliance Benchmarks
-                </h3>
-                <p className="text-xs text-sand-300/80 mt-1.5">
-                  Audited plant performance against statutory norms
-                </p>
-              </div>
-
-              <div className="space-y-7 flex-1 flex flex-col justify-center">
-                {business.telemetry.efficiencyBenchmarks.map((bench, idx) => (
-                  <div key={bench.label} className="space-y-2.5">
-                    <div className="flex items-baseline justify-between text-xs sm:text-sm">
-                      <span className="font-semibold text-white">
-                        {bench.label}
-                      </span>
-                      <span className="font-logo text-2xl text-pingaksh-sand">
-                        {bench.valueText}
-                      </span>
-                    </div>
-
-                    <div className="w-full h-2.5 rounded-full bg-white/10 overflow-hidden p-0.5">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${bench.percentage}%` }}
-                        viewport={{ once: true }}
-                        transition={{
-                          duration: 1.1,
-                          delay: 0.2 + idx * 0.15,
-                          ease: enterpriseEase,
-                        }}
-                        className="h-full rounded-full bg-gradient-to-r from-pingaksh-terracotta to-pingaksh-sand"
-                      />
-                    </div>
-
-                    <p className="text-xs text-sand-200/70 leading-relaxed">
-                      {bench.note}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* =====================================================================
           7. INTERACTIVE SITE MEDIA & VIDEO SLIDER
       ===================================================================== */}
       <section
@@ -1198,7 +1031,7 @@ export default function BusinessVerticalShowcase({
       {/* =====================================================================
           8. DIVISION MILESTONE TIMELINE SCRUBBER
       ===================================================================== */}
-      <section
+      {/* <section
         id="division-timeline"
         className="py-20 lg:py-32 bg-sand-100 border-b border-sand-300"
       >
@@ -1301,7 +1134,7 @@ export default function BusinessVerticalShowcase({
             </motion.div>
           </AnimatePresence>
         </div>
-      </section>
+      </section> */}
     </article>
   );
 }
