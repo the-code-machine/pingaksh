@@ -31,7 +31,7 @@ const HERO_SLIDES: HeroSlide[] = [
   {
     id: "hydro-power",
     badge: "Clean Hydroelectric Generation",
-    headline: "Harnessing Himalayan Runoff for Baselaod Green Power",
+    headline: "Harnessing Himalayan Streams for Baselaod Green Power",
     subheadline:
       "Operating utility-scale run-of-the-river hydro assets across the Sarju basin, feeding reliable, zero-emission electricity directly into the Northern Regional Grid.",
     imageUrl:
