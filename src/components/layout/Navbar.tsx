@@ -270,7 +270,7 @@ export default function Navbar() {
                 <div className="col-span-4 border-r border-sand-200 pr-8 flex flex-col justify-between">
                   <div>
                     <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-pingaksh-terracotta">
-                      Pingaksh Group
+                      Pingaksh Renewables
                     </span>
                     <h3 className="text-2xl font-bold text-pingaksh-navy mt-2">
                       {activeNavData.label}
@@ -281,15 +281,6 @@ export default function Navbar() {
                       transition.
                     </p>
                   </div>
-
-                  <Link
-                    href={activeNavData.href}
-                    onClick={() => setActiveTabId(null)}
-                    className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-pingaksh-terracotta hover:text-terracotta-600 mt-6 group"
-                  >
-                    <span>Overview: {activeNavData.label}</span>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </Link>
                 </div>
 
                 {/* Center Multi-Column Sub-Links (Cols 4-8) */}
@@ -496,17 +487,6 @@ export default function Navbar() {
                                   </ul>
                                 </div>
                               ))}
-
-                              <div className="pt-3 border-t border-sand-200">
-                                <Link
-                                  href={navItem.href}
-                                  onClick={() => setMobileDrawerOpen(false)}
-                                  className="inline-flex items-center gap-1.5 text-xs font-bold text-pingaksh-terracotta hover:underline"
-                                >
-                                  <span>Explore {navItem.label} Overview</span>
-                                  <ArrowRight className="w-3.5 h-3.5" />
-                                </Link>
-                              </div>
                             </div>
                           </motion.div>
                         )}

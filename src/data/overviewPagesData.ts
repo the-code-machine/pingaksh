@@ -302,8 +302,7 @@ export const OVERVIEW_PAGES_DATA: Record<string, OverviewPageData> = {
   },
   contact: {
     slug: "contact",
-    seoTitle:
-      "Contact & Partner Ecosystem | Pingaksh Renewables (Pingaksh Group)",
+    seoTitle: "Contact & Partner Ecosystem | Pingaksh Renewables",
     seoDescription:
       "Connect with Pingaksh Group’s Corporate & Registered Offices, access the password-protected Vendor Registration Portal, or explore engineering career opportunities.",
     breadcrumbs: [
