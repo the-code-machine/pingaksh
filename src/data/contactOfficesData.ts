@@ -152,7 +152,7 @@ export const CONTACT_OFFICES_DATA: ContactOfficesPageData = {
     //   id: "sarju-hydro-complex",
     //   category: "hydro",
     //   categoryLabel: "Hydroelectric Generation Complex",
-    //   entityName: "UBHP · Sarju I, II & III Cascade (30.60 MW)",
+    //   entityName: "UBHP · Sarju I, II & III Cascade (23.100 MW)",
     //   title: "Bageshwar Hydro Powerhouse & Site Office",
     //   badge: "24×7 Grid Plant",
     //   addressLines: [

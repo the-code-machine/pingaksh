@@ -249,7 +249,7 @@ export const CERTIFICATIONS_AWARDS_DATA: CertificationsAwardsPageData = {
       validThrough: "Long-Term 35-Year Concession / PPA",
       certificateNumber: "UERC-SHP-UBHP-SARJU-123",
       scopeDescription:
-        "Statutory grid synchronization, ABT metering, and renewable generation accreditation for the 30.60 MW Sarju cascade in District Bageshwar, Uttarakhand.",
+        "Statutory grid synchronization, ABT metering, and renewable generation accreditation for the 23.100 MW Sarju cascade in District Bageshwar, Uttarakhand.",
       verificationHighlights: [
         "Sarju III (10.50 MW) & Sarju II (12.60 MW) commercial operation",
         "Automated ABT tariff metering with State Load Despatch Centre",

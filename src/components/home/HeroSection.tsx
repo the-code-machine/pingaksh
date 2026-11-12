@@ -39,11 +39,11 @@ const HERO_SLIDES: HeroSlide[] = [
     imageAlt:
       "Pingaksh Renewables Sarju Run-of-the-River Hydroelectric Power Dam and Turbine Infrastructure",
     statLabel: "Operational Hydro",
-    statValue: "Sarju I, II & III",
+    statValue: "Sarju II & III",
     primaryCta: {
       label: "Explore Hydro Assets",
       href: "/our-businesses/hydro-power",
-      title: "View Sarju I, II, and III Hydroelectric Power Specifications",
+      title: "View Sarju II, and III Hydroelectric Power Specifications",
     },
     secondaryCta: {
       label: "Company Heritage",

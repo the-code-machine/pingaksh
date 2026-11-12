@@ -234,7 +234,7 @@ export const OVERVIEW_PAGES_DATA: Record<string, OverviewPageData> = {
       ],
       stats: [
         {
-          value: "30.60",
+          value: "23.100",
           unit: "MW",
           label: "Sarju I, II & III Hydro Cascade",
         },
@@ -277,7 +277,7 @@ export const OVERVIEW_PAGES_DATA: Record<string, OverviewPageData> = {
           badge: "01 · Clean Grid Power",
           title: "Hydro Power Generation (Sarju I, II, III)",
           description:
-            "30.60 MW cumulative run-of-the-river hydroelectric cascade in Bageshwar, Uttarakhand utilizing Horizontal Francis Turbines.",
+            "23.100 MW cumulative run-of-the-river hydroelectric cascade in Bageshwar, Uttarakhand utilizing Horizontal Francis Turbines.",
           href: "/our-businesses/hydro-power",
           imageUrl:
             "https://images.unsplash.com/photo-1574482620811-1aa16ffe3c82?auto=format&fit=crop&w=1200&q=80",
@@ -296,30 +296,6 @@ export const OVERVIEW_PAGES_DATA: Record<string, OverviewPageData> = {
             "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80",
           imageAlt: "Pingaksh Green Fuels Bio-Ethanol Distillery",
           ctaLabel: "View Process Workflow",
-        },
-        {
-          id: "circular-economy",
-          badge: "03 · Zero-Waste Recovery",
-          title: "By-Products & Circular Economy",
-          description:
-            "High-protein DDGS animal feed drying, fermentation CO₂ scrubbing, food-grade liquid CO₂ bottling, and dry ice manufacturing.",
-          href: "/our-businesses/circular-economy",
-          imageUrl:
-            "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1200&q=80",
-          imageAlt: "DDGS and CO2 Bottling Circular Economy",
-          ctaLabel: "Explore Co-Products",
-        },
-        {
-          id: "subsidiaries-spvs",
-          badge: "04 · Group Entities",
-          title: "Subsidiaries, SPVs & Pingaksh Farms",
-          description:
-            "Special Purpose Vehicles (UBHP, PBPL) and Napier grass bio-energy cultivation at Pingaksh Farms.",
-          href: "/our-businesses/subsidiaries-spvs",
-          imageUrl:
-            "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=1200&q=80",
-          imageAlt: "Pingaksh Group Subsidiaries and Pingaksh Farms",
-          ctaLabel: "View SPV Portfolio",
         },
       ],
     },

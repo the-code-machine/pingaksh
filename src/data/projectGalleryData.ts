@@ -87,7 +87,7 @@ export const PROJECT_GALLERY_DATA: ProjectGalleryPageData = {
     duration: "02:45 MIN",
     location: "Bageshwar (UK) & Northern Industrial Corridor",
     metrics: [
-      { label: "Hydro Cascade", value: "30.60 MW" },
+      { label: "Hydro Cascade", value: "23.100 MW" },
       { label: "Bio-Ethanol Plant", value: "250 KLPD" },
       { label: "Effluent Standard", value: "100% ZLD" },
     ],

@@ -243,7 +243,7 @@ export const VISION_MISSION_DATA: VisionMissionPageData = {
         id: "vis-1",
         code: "V.01",
         title: "Baseload Clean Grid Reliability",
-        metric: "30.6 MW+",
+        metric: "23.10 MW+",
         metricLabel: "Sarju Cascade Portfolio",
         description:
           "Deploying high-head, run-of-the-river hydroelectric cascades (Sarju I, II & III) that deliver synchronous grid stability while preserving natural Himalayan river flows.",

@@ -90,7 +90,7 @@ export const NAVIGATION_DATA: NavItem[] = [
             badge: "Sarju II, III",
           },
           {
-            label: "Green Fuels & Bio-Energy",
+            label: "Green Fuels",
             href: "/our-businesses/green-fuels-ethanol",
             description: "State-of-the-art grain-based ethanol distillation.",
             badge: "250 KLPD",

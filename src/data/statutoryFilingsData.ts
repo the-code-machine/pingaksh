@@ -99,7 +99,7 @@ export const STATUTORY_FILINGS_DATA: StatutoryFilingsPageData = {
     },
     {
       entityName: "Uttar Bharat Hydro Power . Ltd. (UBHP)",
-      role: "Hydroelectric Generation SPV (Sarju I, II & III — 30.60 MW)",
+      role: "Hydroelectric Generation SPV (Sarju I, II & III — 23.100 MW)",
       cinNumber: "U40101UR2008PTC032481",
       isinOrDematStatus: "Long-Term PPA with UPCL · UERC Regulated",
       registeredState: "Dehradun / Bageshwar, Uttarakhand",

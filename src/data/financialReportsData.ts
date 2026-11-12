@@ -103,7 +103,7 @@ export const FINANCIAL_REPORTS_DATA: FinancialReportsPageData = {
       fiscalYear: "FY 2026-27",
       themeTitle: "Scaling Clean Baseload & Bio-Refining",
       subtitle:
-        "Interim Half-Yearly Consolidated Review covering 30.60 MW Sarju Hydro Cascade & 250 KLPD Anhydrous Ethanol Operations.",
+        "Interim Half-Yearly Consolidated Review covering 23.100 MW Sarju Hydro Cascade & 250 KLPD Anhydrous Ethanol Operations.",
       releaseDate: "15 October 2026",
       isoDate: "2026-10-15",
       coverImage:
@@ -383,7 +383,7 @@ export const FINANCIAL_REPORTS_DATA: FinancialReportsPageData = {
   subsidiaryFinancials: [
     {
       entityName: "Uttar Bharat Hydro Power . Ltd. (UBHP)",
-      spvRole: "Hydroelectric Generation SPV (Sarju I, II & III — 30.60 MW)",
+      spvRole: "Hydroelectric Generation SPV (Sarju I, II & III — 23.100 MW)",
       latestAuditStatus: "FY 2025–26 Audited Balance Sheet & P&L",
       reportTitle:
         "UBHP Standalone Audited Financial Statements & Independent Auditor’s Report",

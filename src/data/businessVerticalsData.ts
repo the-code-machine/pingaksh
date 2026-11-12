@@ -544,7 +544,7 @@ export const BUSINESS_VERTICALS_DATA: BusinessVerticalData[] = [
         {
           year: "2025",
           title: "SCADA Digital Twin & Sarju-I Upstream Works",
-          metric: "30.60 MW Total",
+          metric: "23.100 MW Total",
           description:
             "Deployment of predictive vibration telemetry across operating units alongside civil execution for the 7.50 MW Sarju-I upstream stage.",
         },

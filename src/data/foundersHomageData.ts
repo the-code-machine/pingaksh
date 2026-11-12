@@ -121,7 +121,7 @@ export const FOUNDERS_HOMAGE_DATA: FoundersHomageData = {
     leadParagraph:
       "Mr. Naresh Goel is a visionary entrepreneur and dynamic leader steering the Pingaksh Group’s diversified growth across multiple sectors. With an exceptional ability to integrate innovation, sustainability, and strategic foresight, he has built a business ecosystem that balances industrial scale with ecological stewardship.",
     secondaryParagraph:
-      "Expanding the group’s footprint through forward-thinking initiatives that promote clean energy—spanning the 30.60 MW Sarju hydroelectric cascade in Uttarakhand, 250 KLPD Zero-Liquid Discharge grain bio-refining, and sustainable agricultural value chains—he continues to translate the founding family’s values into purpose-driven transformation.",
+      "Expanding the group’s footprint through forward-thinking initiatives that promote clean energy—spanning the 23.100 MW Sarju hydroelectric cascade in Uttarakhand, 250 KLPD Zero-Liquid Discharge grain bio-refining, and sustainable agricultural value chains—he continues to translate the founding family’s values into purpose-driven transformation.",
     visionQuote:
       "Our endeavours in clean baseload hydro power and circular bio-energy are a living tribute to the values of integrity, perseverance, and community service instilled by our parents.",
     ctaLabel: "Explore Board of Directors",

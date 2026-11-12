@@ -89,7 +89,7 @@ export const HERITAGE_TIMELINE_DATA: HeritageTimelinePageData = {
       ],
       location: "Kapkot, District Bageshwar · Uttarakhand",
       keyFigure: {
-        number: "30.60 MW",
+        number: "23.100 MW",
         label: "Sanctioned Cascade Capacity (Sarju I, II & III)",
       },
       primaryImage: {
