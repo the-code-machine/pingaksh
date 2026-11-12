@@ -114,13 +114,9 @@ export const OVERVIEW_PAGES_DATA: Record<string, OverviewPageData> = {
         {
           value: "2",
           unit: "Verticals",
-          label: "Hydro, Biofuels, DDGS & Agro",
+          label: "Hydro and Green fuels",
         },
-        {
-          value: "100%",
-          unit: "Compliance",
-          label: "ISO & Statutory Governance",
-        },
+      
       ],
     },
     philosophyBanner: {
@@ -182,18 +178,6 @@ export const OVERVIEW_PAGES_DATA: Record<string, OverviewPageData> = {
           imageAlt: "Pingaksh Group Leadership and 6 Parent Board of Directors",
           ctaLabel: "Meet the Board",
         },
-        {
-          id: "founders-homage",
-          badge: "01 · Guiding Legacy",
-          title: "About The Founders — Homage",
-          description:
-            "Honouring the enduring spirit and principles of Late Shri Hans Raj Goel and Smt. Santosh Devi that guide all our endeavours.",
-          href: "/who-we-are/founders-homage",
-          imageUrl: "/uploads/media/shri-hans-raj-goel.webp",
-          imageAlt: "Late Shri Hans Raj Goel and Smt. Santosh Devi",
-          ctaLabel: "Read Founders' Tribute",
-          featuredSpan: true,
-        },
       ],
     },
   },
@@ -215,7 +199,7 @@ export const OVERVIEW_PAGES_DATA: Record<string, OverviewPageData> = {
       images: [
         {
           url: "https://images.unsplash.com/photo-1574482620811-1aa16ffe3c82?auto=format&fit=crop&w=2000&q=85",
-          alt: "Sarju I, II, III Hydroelectric Power Stations",
+          alt: "Sarju II, III Hydroelectric Power Stations",
           caption: "Run-of-the-River Hydroelectric Generation (Sarju Cascade)",
         },
         {
@@ -236,7 +220,7 @@ export const OVERVIEW_PAGES_DATA: Record<string, OverviewPageData> = {
         {
           value: "23.100",
           unit: "MW",
-          label: "Sarju I, II & III Hydro Cascade",
+          label: "Sarju  II & III Hydro Cascade",
         },
         {
           value: "Francis",
@@ -248,7 +232,7 @@ export const OVERVIEW_PAGES_DATA: Record<string, OverviewPageData> = {
           unit: "+ CO₂",
           label: "Value-Added Circular Co-Products",
         },
-        { value: "4", unit: "Entities", label: "Dedicated Operating SPVs" },
+        { value: "2", unit: "Entities", label: "Dedicated Operating SPVs" },
       ],
     },
     philosophyBanner: {
@@ -275,13 +259,13 @@ export const OVERVIEW_PAGES_DATA: Record<string, OverviewPageData> = {
         {
           id: "hydro-power",
           badge: "01 · Clean Grid Power",
-          title: "Hydro Power Generation (Sarju I, II, III)",
+          title: "Hydro Power Generation (Sarju II, III)",
           description:
             "23.100 MW cumulative run-of-the-river hydroelectric cascade in Bageshwar, Uttarakhand utilizing Horizontal Francis Turbines.",
           href: "/our-businesses/hydro-power",
           imageUrl:
             "https://images.unsplash.com/photo-1574482620811-1aa16ffe3c82?auto=format&fit=crop&w=1200&q=80",
-          imageAlt: "Sarju I, II, III Hydro Power Generation Plant",
+          imageAlt: "Sarju  II, III Hydro Power Generation Plant",
           ctaLabel: "Inspect Hydro Specs",
           featuredSpan: true,
         },
@@ -605,42 +589,6 @@ export const OVERVIEW_PAGES_DATA: Record<string, OverviewPageData> = {
           imageAlt: "Live Carbon Offset Telemetry Dashboard",
           ctaLabel: "Launch Live Ticker",
           featuredSpan: true,
-        },
-        {
-          id: "hydro-vs-coal",
-          badge: "02 · Baseline Modeling",
-          title: "Hydro vs. Coal Emission Comparison",
-          description:
-            "Quantitative thermal grid displacement metrics: evaluating life-cycle gram CO₂ equivalent per kilowatt-hour generated.",
-          href: "/sustainability/hydro-vs-coal",
-          imageUrl:
-            "https://images.unsplash.com/photo-1574482620811-1aa16ffe3c82?auto=format&fit=crop&w=1200&q=80",
-          imageAlt: "Hydro vs Coal Emission Lifecycle Comparison",
-          ctaLabel: "Compare Footprint",
-        },
-        {
-          id: "e20-ethanol-impact",
-          badge: "03 · Green Mobility",
-          title: "E20 Ethanol vs. Pure Petrol Impact",
-          description:
-            "Comparative vehicular tailpipe analysis: analyzing carbon monoxide, hydrocarbon cuts, and fossil crude import substitution.",
-          href: "/sustainability/e20-ethanol-impact",
-          imageUrl:
-            "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80",
-          imageAlt: "E20 Ethanol vs Pure Petrol Carbon Comparison",
-          ctaLabel: "View Fuel Impact",
-        },
-        {
-          id: "zero-liquid-discharge",
-          badge: "04 · Water Conservation",
-          title: "Zero-Liquid Discharge & Ecological Balance",
-          description:
-            "Multi-Effect Evaporator (MEE) technology, CPU water recycling, and upstream Himalayan catchment afforestation around Sarju I–III.",
-          href: "/sustainability/zero-liquid-discharge",
-          imageUrl:
-            "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80",
-          imageAlt: "Zero-Liquid Discharge and Ecological Conservation",
-          ctaLabel: "Inspect ZLD System",
         },
       ],
     },
