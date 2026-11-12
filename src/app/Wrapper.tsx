@@ -1,6 +1,7 @@
 "use client";
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
+import { CarbonTelemetryProvider } from "@/context/CarbonTelemetryContext";
 import { usePathname } from "next/navigation";
 
 export default function Wrapper({ children }: { children: React.ReactNode }) {
@@ -9,7 +10,7 @@ export default function Wrapper({ children }: { children: React.ReactNode }) {
   return (
     <div>
       {router === "/festive/diwali" ? null : <Navbar />}
-      {children}
+      <CarbonTelemetryProvider>{children}</CarbonTelemetryProvider>
       {router === "/festive/diwali" ? null : <Footer />}
     </div>
   );

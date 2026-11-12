@@ -5,11 +5,13 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowRight, CheckCircle2, HeartHandshake, Leaf } from "lucide-react";
 import { HOME_SECTIONS_DATA } from "@/data/homeSectionsData";
-
+import { useCarbonTelemetry } from "@/context/CarbonTelemetryContext";
 // Premium Enterprise Easing Curve (Smooth deceleration)
 const transitionEase = [0.22, 1, 0.36, 1] as const;
 
 export default function HomeCoreSections() {
+  const { hydroMetric, ethanolMetric, totalCarbonOffset, formatMetric } =
+    useCarbonTelemetry();
   const { ethosSection, businessesSection, stewardshipSection } =
     HOME_SECTIONS_DATA;
 
@@ -122,7 +124,9 @@ export default function HomeCoreSections() {
                     </span>
                   </div>
                   <div className="font-logo text-4xl xl:text-5xl font-bold text-pingaksh-navy leading-none tracking-tight">
-                    {stat.value}
+                    {stat.unit === "Tonnes CO₂"
+                      ? formatMetric(totalCarbonOffset)
+                      : stat.value}
                   </div>
                 </div>
                 <div>

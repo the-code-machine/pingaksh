@@ -20,7 +20,7 @@ import {
   BUSINESS_VERTICALS_DATA,
   type BusinessVerticalData,
 } from "@/data/businessVerticalsData";
-
+import { useCarbonTelemetry } from "@/context/CarbonTelemetryContext";
 interface BusinessVerticalShowcaseProps {
   business: BusinessVerticalData;
 }
@@ -64,6 +64,8 @@ const staggerContainer = {
 export default function BusinessVerticalShowcase({
   business,
 }: BusinessVerticalShowcaseProps) {
+  const { hydroMetric, ethanolMetric, totalCarbonOffset, formatMetric } =
+    useCarbonTelemetry();
   const [activeSection, setActiveSection] = useState("overview");
   const [selectedUnitIndex, setSelectedUnitIndex] = useState(0);
   const [activeMediaIndex, setActiveMediaIndex] = useState(0);
@@ -276,7 +278,10 @@ export default function BusinessVerticalShowcase({
                   {m.label}
                 </span>
                 <span className="block font-logo text-3xl sm:text-4xl lg:text-5xl text-white mt-3 group-hover:text-pingaksh-sand transition-colors">
-                  {m.value}
+                  {m.label === "Cumulative CO₂ Offset" ||
+                  m.label === "Daily Carbon Displacement"
+                    ? formatMetric(totalCarbonOffset)
+                    : m.value}
                 </span>
                 <span className="inline-block font-body text-xs text-pingaksh-sand/90 mt-2 font-medium">
                   {m.unit}
