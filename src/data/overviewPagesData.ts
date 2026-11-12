@@ -112,7 +112,7 @@ export const OVERVIEW_PAGES_DATA: Record<string, OverviewPageData> = {
           label: "Parent & Subsidiary Boards",
         },
         {
-          value: "4+",
+          value: "2",
           unit: "Verticals",
           label: "Hydro, Biofuels, DDGS & Agro",
         },
@@ -342,7 +342,7 @@ export const OVERVIEW_PAGES_DATA: Record<string, OverviewPageData> = {
         "Our operations are anchored between our Corporate & Registered Offices in New Delhi and Dehradun, our Himalayan hydro cascades in District Bageshwar (Uttarakhand), and our automated grain distillery complex.",
       ],
       stats: [
-        { value: "4+", unit: "Locations", label: "Corporate & Plant Sites" },
+        { value: "2", unit: "Locations", label: "Corporate & Plant Sites" },
         {
           value: "24×7",
           unit: "SCADA Desk",
@@ -404,19 +404,6 @@ export const OVERVIEW_PAGES_DATA: Record<string, OverviewPageData> = {
             "Pingaksh Group Password-Protected Vendor Registration Portal",
           ctaLabel: "Unlock Vendor Portal",
         },
-        {
-          id: "career-inquiries",
-          badge: "03 · Human Capital",
-          title: "Career Inquiries & Engineering Roles",
-          description:
-            "Join our hydro-mechanical, chemical distillation, environmental safety, and corporate finance teams driving India’s clean energy transition.",
-          href: "/contact/careers",
-          imageUrl:
-            "https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=1200&q=80",
-          imageAlt:
-            "Careers and Engineering Opportunities at Pingaksh Renewables",
-          ctaLabel: "Explore Careers",
-        },
       ],
     },
   },
@@ -462,13 +449,8 @@ export const OVERVIEW_PAGES_DATA: Record<string, OverviewPageData> = {
         "From long-term Power Purchase Agreements (PPAs) and OMC ethanol supply allocations to high-resolution plant photography and ISO accreditations, every publication reflects our commitment to transparent corporate disclosure.",
       ],
       stats: [
-        { value: "25+", unit: "Dispatches", label: "Official Press Releases" },
-        { value: "4", unit: "Entities", label: "Covered Group SPVs" },
-        {
-          value: "ISO",
-          unit: "9001 & 14001",
-          label: "Quality & Eco Citations",
-        },
+        { value: "2", unit: "Entities", label: "Covered Group SPVs" },
+
         {
           value: "HD",
           unit: "Visual Archive",

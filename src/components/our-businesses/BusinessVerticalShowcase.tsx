@@ -379,7 +379,7 @@ export default function BusinessVerticalShowcase({
                     Compliance
                   </span>
                   <span className="font-body text-xs sm:text-sm font-bold text-pingaksh-navy mt-1 block">
-                    100% Statutory
+                    fully complied
                   </span>
                 </div>
                 <div className="p-4 rounded-lg bg-sand-50 border border-sand-200">
@@ -390,14 +390,8 @@ export default function BusinessVerticalShowcase({
                     24/7 SCADA Linked
                   </span>
                 </div>
-                <div className="p-4 rounded-lg bg-sand-50 border border-sand-200 col-span-2 sm:col-span-1">
-                  <span className="block font-tagline text-[10px] uppercase tracking-wider text-navy-500">
-                    Certification
-                  </span>
-                  <span className="font-body text-xs sm:text-sm font-bold text-pingaksh-navy mt-1 block">
-                    ISO 9001 & 14001
-                  </span>
-                </div>
+             
+             
               </div>
             </motion.div>
 
@@ -604,13 +598,6 @@ export default function BusinessVerticalShowcase({
                       </motion.div>
                     ))}
                   </dl>
-                </div>
-
-                <div className="mt-8 pt-5 border-t border-sand-200 flex flex-wrap items-center justify-between gap-4 text-xs text-navy-500">
-                  <span>Operating Entity: {business.legalEntity}</span>
-                  <span className="font-semibold text-pingaksh-terracotta">
-                    ISO 9001 • ISO 14001 Certified
-                  </span>
                 </div>
               </div>
             </motion.div>

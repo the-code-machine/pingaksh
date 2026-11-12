@@ -563,7 +563,7 @@ export const BUSINESS_VERTICALS_DATA: BusinessVerticalData[] = [
     seo: {
       title: "250 KLPD Grain-Based Ethanol Biorefinery | Pingaksh Renewables",
       description:
-        "Discover Pingaksh Beverages . Ltd. (PBPL)—operating a 250 KLPD  automated grain-based fuel ethanol biorefinery supporting India's E20 blending mandate.",
+        "Discover Pingaksh Beverages Pvt. Ltd. (PBPL)—operating a 250 KLPD automated grain-based fuel ethanol biorefinery supporting India's E20 blending mandate.",
       keywords: [
         "Pingaksh Beverages PBPL Ethanol",
         "250 KLPD Grain Distillery India",
@@ -624,7 +624,7 @@ export const BUSINESS_VERTICALS_DATA: BusinessVerticalData[] = [
             "High-pressure travelling-grate boiler and back-pressure steam turbine make the entire 250 KLPD complex 100% self-sufficient in thermal and electrical energy.",
         },
         {
-          title: "PESO Class-A Automated Tank Farm",
+          title: "PESO Class-A Automated Tank",
           detail:
             "Radar-gauged bulk ethanol storage receivers and mass-flow metered multi-bay tanker loading gantries certified by PESO.",
         },
@@ -704,19 +704,19 @@ export const BUSINESS_VERTICALS_DATA: BusinessVerticalData[] = [
       },
       {
         id: "cogen-peso-dispatch",
-        name: "Captive Co-Generation & PESO Tank Farm",
+        name: "Captive Co-Generation & PESO Tank",
         location: "PBPL Biorefinery Complex, Northern India",
-        status: "PESO & ISO 45001 Certified",
+        status: "PESO Certified",
         capacity: "6.5 MW Captive + Bulk Dispatch",
         summary:
           "Biomass-fired high-pressure boiler island with back-pressure turbine generator and automated PESO Class-A ethanol dispatch bays.",
         image:
           "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/0Y1A2077_f0f4e511.webp",
-        imageAlt: "Captive Co-Generation Power Island and PESO Tank Farm",
+        imageAlt: "Captive Co-Generation Power Island and PESO Tank",
         technicalSpecs: [
           {
             parameter: "Boiler Fuel",
-            specification: "Napier Biomass Briquettes & Rice Husk",
+            specification: "Napier Biomass & Rice Husk",
           },
           {
             parameter: "Turbine Configuration",
@@ -727,7 +727,7 @@ export const BUSINESS_VERTICALS_DATA: BusinessVerticalData[] = [
             specification: "Electrostatic Precipitator (ESP <30 mg/Nm³)",
           },
           {
-            parameter: "Tank Farm Metering",
+            parameter: "Tank Metering",
             specification: "Coriolis Mass Flow Meters & Radar Level Gauges",
           },
         ],
@@ -812,7 +812,7 @@ export const BUSINESS_VERTICALS_DATA: BusinessVerticalData[] = [
             stageTitle: "High-Pressure Travelling Grate Boiler",
             branchCategory: "primary-stream",
             technicalDescription:
-              "Fires captive Napier grass briquettes and agricultural husk to generate high-pressure superheated steam while capturing fly ash via 4-field ESP.",
+              "Fires captive Napier grass and agricultural husk to generate high-pressure superheated steam while capturing fly ash via 4-field ESP.",
             keyOutputMetric: "100% Renewable Steam",
             carbonImpactNote:
               "Carbon-neutral agro-residue fuel replaces fossil coal in distillery steam generation.",

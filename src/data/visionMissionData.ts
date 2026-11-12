@@ -180,7 +180,7 @@ export const VISION_MISSION_DATA: VisionMissionPageData = {
     title: "Engineered in Harmony with Nature.",
     highlightedTitle: "Built for Generational Scale.",
     subtitle:
-      "Originating from Sanskrit, Pingaksh means ‘pink-eyed’ and is deeply associated with Lord Shiva, symbolising divine presence, reverence and spiritual strength. Rooted in India's rich cultural heritage, the name represents a timeless connection between tradition and progress, reflecting our commitment to preserving heritage while embracing innovation and shaping a sustainable future.",
+      "From high-head Himalayan river valleys in Bageshwar to zero-liquid-discharge bio-refineries, our purpose is to secure India’s energy future without compromising ecological balance.",
     sanskritBadge: "पिंगाक्ष • TRADITION MEETS PROGRESS",
     backgroundImage:
       "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/_MG_3836_bfb9b053.webp",
@@ -308,7 +308,7 @@ export const VISION_MISSION_DATA: VisionMissionPageData = {
         metric: "99.4%",
         metricLabel: "Plant Availability Factor",
         description:
-          "Maintain world-class electro-mechanical reliability, automated SCADA telemetry, and stringent ISO-certified occupational safety across all operating sites.",
+          "Maintain world-class electro-mechanical reliability, automated SCADA telemetry, and stringent occupational safety across all operating sites.",
       },
     ],
   },
@@ -466,41 +466,50 @@ export const VISION_MISSION_DATA: VisionMissionPageData = {
     eyebrow: "GENERATIONAL STEWARDSHIP",
     headline: "Three Perspectives. One Unified Purpose.",
     description:
-      "Our Vision and Mission are actively steered by a multi-generational leadership team that combines decades of industrial execution with global business strategy and corporate law.",
+      "Our leadership combines entrepreneurial vision, global business strategy, financial discipline and corporate governance to advance Pingaksh Group's presence across renewable energy, biofuels, finance and agriculture.",
+
     leaders: [
       {
         name: "Mr. Naresh Goel",
-        role: "Founder & Promoter, Pingaksh Group",
-        credentials: "Industrial Visionary & Infrastructure Pioneer",
-        pillarFocus: "Operational Excellence & Inclusive Growth",
+        role: "Chairman & Managing Director, Pingaksh Renewables Limited",
+        credentials: "Founder & Driving Force Behind Pingaksh Group",
+        pillarFocus:
+          "Infrastructure Development, Corporate Finance & Long-Term Value Creation",
         ethosStatement:
-          "We built Pingaksh on the conviction that industrial progress must benefit both people and the planet—uniting renewable energy, sustainable agriculture, and enterprise empowerment under one roof.",
+          "I believe in building enterprises with a long-term vision, disciplined capital deployment and environmental responsibility. Our journey in renewable energy and biofuels reflects our conviction that sustainable infrastructure can create lasting value for both industry and society.",
         traits: [
-          "Visionary Thinker",
-          "Creative Problem-Solver",
-          "Passionate Mentor",
+          "Industrial Visionary",
+          "Strategic Thinker",
+          "Infrastructure Pioneer",
         ],
       },
       {
         name: "Mr. Amul Goel",
-        role: "Director, Pingaksh Group",
-        credentials: "MSc in International Business, University of Manchester",
-        pillarFocus: "Global Markets & Strategic Expansion",
+        role: "Director, Pingaksh Renewables Limited",
+        credentials:
+          "Master's Degree (MSc) in International Business, University of Manchester",
+        pillarFocus:
+          "Strategic Investments, Financial Modelling & Business Development",
         ethosStatement:
-          "By combining international business discipline with India's clean-energy momentum, we are scaling utility-grade assets that compete on global efficiency and sustainability benchmarks.",
-        traits: ["Empathetic Leader", "Global Strategist", "Passionate Mentor"],
+          "I believe every investment should be driven by rigorous research, financial discipline and a clear risk-mitigation framework. Our focus is to identify emerging opportunities and transform them into sustainable, bankable projects that support the Group's long-term growth.",
+        traits: [
+          "Global Business Strategist",
+          "Financial Strategist",
+          "Business Development Leader",
+        ],
       },
       {
         name: "Mr. Aadish Goel",
-        role: "Director, Pingaksh Group",
+        role: "Director, Pingaksh Beverages Private Limited",
         credentials: "LLM in Business Law, King's College London",
-        pillarFocus: "Corporate Governance & Ethical Integrity",
+        pillarFocus:
+          "Corporate Governance, Commercial Law & Operational Oversight",
         ethosStatement:
-          "True sustainability requires ironclad legal and ethical foundations. Our mission is safeguarded by transparent governance, regulatory rigor, and long-term stakeholder trust.",
+          "I believe sustainable business growth requires strong legal foundations, transparent commercial agreements and regulatory compliance. By combining legal oversight with operational responsibility, we work towards protecting stakeholder interests and building accountable businesses.",
         traits: [
-          "Governance Architect",
-          "Creative Problem-Solver",
-          "Ethical Steward",
+          "Governance Specialist",
+          "Commercial Law Strategist",
+          "Operational Leader",
         ],
       },
     ],

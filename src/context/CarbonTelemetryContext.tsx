@@ -91,18 +91,16 @@ export function CarbonTelemetryProvider({
       const res = await fetch(`${apiBase}/api/carbon.php`, {
         cache: "no-store",
       });
+
       const json = await res.json();
 
       if (json.success && Array.isArray(json.data)) {
         if (json.server_time) {
-          const srvTime = new Date(json.server_time).getTime();
-          if (!isNaN(srvTime)) {
-            setServerOffsetMs(srvTime - Date.now());
-          }
           setLastSyncedAt(json.server_time);
         }
 
         const mapped: Record<string, CarbonMetricItem> = {};
+
         json.data.forEach((item: Omit<CarbonMetricItem, "liveValue">) => {
           mapped[item.asset_tag] = {
             ...item,
@@ -116,57 +114,18 @@ export function CarbonTelemetryProvider({
         }));
       }
     } catch (err) {
-      console.error("Failed to fetch live carbon telemetry:", err);
+      console.error("Failed to fetch carbon telemetry:", err);
     } finally {
       setIsLoading(false);
     }
   }, []);
 
   // 1. Initial Fetch + Periodic Re-sync every 60s
+  // Fetch telemetry only once when the page loads
   useEffect(() => {
     refreshTelemetry();
-    const syncTimer = setInterval(refreshTelemetry, 60000);
-    return () => clearInterval(syncTimer);
   }, [refreshTelemetry]);
-
   // 2. Smooth 100ms Real-Time Mathematical Ticker
-  useEffect(() => {
-    const tickInterval = setInterval(() => {
-      const nowCorrectedMs = Date.now() + serverOffsetMs;
-
-      setMetrics((prev) => {
-        const next: Record<string, CarbonMetricItem> = {};
-        for (const [tag, m] of Object.entries(prev)) {
-          const baseMs = new Date(
-            m.animation_params.base_timestamp_utc,
-          ).getTime();
-
-          if (!isNaN(baseMs)) {
-            const elapsedSeconds = Math.max(
-              0,
-              (nowCorrectedMs - baseMs) / 1000,
-            );
-            const calculated =
-              m.animation_params.base_value +
-              elapsedSeconds * m.animation_params.rate_per_second;
-
-            next[tag] = {
-              ...m,
-              liveValue: calculated,
-            };
-          } else {
-            next[tag] = {
-              ...m,
-              liveValue: m.liveValue + m.animation_params.rate_per_second * 0.1,
-            };
-          }
-        }
-        return next;
-      });
-    }, 100);
-
-    return () => clearInterval(tickInterval);
-  }, [serverOffsetMs]);
 
   const hydroMetric = metrics["UBHP_HYDRO"] || DEFAULT_HYDRO;
   const ethanolMetric = metrics["PBPL_ETHANOL"] || DEFAULT_ETHANOL;

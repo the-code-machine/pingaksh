@@ -297,26 +297,6 @@ export default function Footer() {
                   </p>
                 </address>
               ))}
-
-            {/* ISO & Statutory Compliance Badges */}
-
-            <div className="flex flex-wrap items-center gap-2 pt-2">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-white/5 border border-white/10 text-[11px] text-sand-200">
-                <ShieldCheck
-                  className="w-3.5 h-3.5 text-emerald-400"
-                  aria-hidden="true"
-                />
-                ISO 9001 &amp; 14001 Certified
-              </span>
-
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-white/5 border border-white/10 text-[11px] text-sand-200">
-                <FileCheck2
-                  className="w-3.5 h-3.5 text-pingaksh-sand"
-                  aria-hidden="true"
-                />
-                100% ZLD Compliant
-              </span>
-            </div>
           </div>
 
           {/* =====================================================
