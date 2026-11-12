@@ -100,7 +100,7 @@ export default function PressReleasesView({ data }: PressReleasesViewProps) {
               url: `https://www.pingakshrenewables.com${rel.redirectHref}`,
               publisher: {
                 "@type": "Organization",
-                name: "Pingaksh Renewables Pvt. Ltd.",
+                name: "Pingaksh Renewables . Ltd.",
               },
             },
           })),

@@ -101,7 +101,7 @@ export const OVERVIEW_PAGES_DATA: Record<string, OverviewPageData> = {
       headline:
         "Pingaksh Renewables is an integrated clean-infrastructure enterprise engineering resilient energy and industrial assets for India.",
       paragraphs: [
-        "Rooted in the Sanskrit term ‘Pingaksh’—symbolizing a sacred, far-seeing force—our group began its journey as Uttar Bharat Hydro Power Pvt. Ltd. (UBHP), executing complex run-of-the-river hydroelectric projects in the Himalayan river valleys of Uttarakhand.",
+        "Rooted in the Sanskrit term ‘Pingaksh’—symbolizing a sacred, far-seeing force—our group began its journey as Uttar Bharat Hydro Power . Ltd. (UBHP), executing complex run-of-the-river hydroelectric projects in the Himalayan river valleys of Uttarakhand.",
         "Guided by visionary founder Mr. Naresh Goel alongside directors Mr. Amul Goel and Mr. Aadish Goel, we have expanded from pure-play hydro generation into green biofuels, circular agro-processing, and ring-fenced Special Purpose Vehicles (SPVs) backed by listed-grade corporate governance.",
       ],
       stats: [

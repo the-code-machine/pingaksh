@@ -84,7 +84,7 @@ export const HERITAGE_TIMELINE_DATA: HeritageTimelinePageData = {
       eraTitle: "Inception of Uttar Bharat Hydro Power",
       headline: "Laying the Cornerstone in Uttarakhand’s Sarju Basin",
       narrative: [
-        "Recognizing India’s critical need for non-fossil peaking power, our founders established Uttar Bharat Hydro Power Pvt. Ltd. (UBHP) to develop a cascade of run-of-the-river hydroelectric stations in District Bageshwar, Uttarakhand.",
+        "Recognizing India’s critical need for non-fossil peaking power, our founders established Uttar Bharat Hydro Power . Ltd. (UBHP) to develop a cascade of run-of-the-river hydroelectric stations in District Bageshwar, Uttarakhand.",
         "Detailed hydrological surveys, geological core drilling, and environmental impact assessments were completed across the Sarju River valley to design high-head diversion weirs with zero village displacement.",
       ],
       location: "Kapkot, District Bageshwar · Uttarakhand",

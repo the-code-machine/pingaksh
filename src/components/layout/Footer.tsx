@@ -460,7 +460,7 @@ export default function Footer() {
             <p>
               &copy; {year}{" "}
               <strong className="text-white font-medium">
-                Pingaksh Renewables Pvt. Ltd.
+                Pingaksh Renewables . Ltd.
               </strong>{" "}
               All Rights Reserved.
             </p>

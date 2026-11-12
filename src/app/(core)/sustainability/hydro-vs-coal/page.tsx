@@ -41,7 +41,7 @@ export default function HydroVsCoalPage() {
         url: HYDRO_VS_COAL_DATA.seo.canonicalUrl,
         creator: {
           "@type": "Corporation",
-          name: "Pingaksh Renewables (Uttar Bharat Hydro Power Pvt. Ltd.)",
+          name: "Pingaksh Renewables (Uttar Bharat Hydro Power . Ltd.)",
           url: "https://pingaksh.com",
         },
         variableMeasured: [

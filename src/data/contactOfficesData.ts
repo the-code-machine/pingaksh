@@ -75,9 +75,9 @@ export const CONTACT_OFFICES_DATA: ContactOfficesPageData = {
       "Pingaksh Renewables Corporate Headquarters and Operations Network",
   },
   statutoryIdentity: {
-    parentEntity: "Pingaksh Renewables Pvt. Ltd. (Pingaksh Group)",
-    hydroSpv: "Uttar Bharat Hydro Power Pvt. Ltd. (UBHP)",
-    biofuelSpv: "Pingaksh Beverages Pvt. Ltd. (PBPL)",
+    parentEntity: "Pingaksh Renewables . Ltd. (Pingaksh Group)",
+    hydroSpv: "Uttar Bharat Hydro Power . Ltd. (UBHP)",
+    biofuelSpv: "Pingaksh Beverages . Ltd. (PBPL)",
     complianceNote:
       "All official statutory notices, regulatory filings, and legal correspondence should be addressed to the Company Secretary at the Registered Office.",
   },
@@ -122,7 +122,7 @@ export const CONTACT_OFFICES_DATA: ContactOfficesPageData = {
     //   id: "registered-office-uk",
     //   category: "corporate",
     //   categoryLabel: "Registered & Regional Office",
-    //   entityName: "Uttar Bharat Hydro Power Pvt. Ltd. (UBHP)",
+    //   entityName: "Uttar Bharat Hydro Power . Ltd. (UBHP)",
     //   title: "Dehradun Registered & Liaison Office",
     //   badge: "Statutory Office",
     //   addressLines: [
@@ -182,7 +182,7 @@ export const CONTACT_OFFICES_DATA: ContactOfficesPageData = {
     //   id: "pbpl-ethanol-distillery",
     //   category: "bioenergy",
     //   categoryLabel: "Green Fuels & Circular Bio-Refinery",
-    //   entityName: "Pingaksh Beverages Pvt. Ltd. (PBPL)",
+    //   entityName: "Pingaksh Beverages . Ltd. (PBPL)",
     //   title: "250 KLPD Grain Bio-Ethanol & ZLD Complex",
     //   badge: "E20 Bio-Refinery",
     //   addressLines: [

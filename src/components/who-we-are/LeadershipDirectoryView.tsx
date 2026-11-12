@@ -59,19 +59,19 @@ export default function LeadershipDirectoryView({
     {
       name: "Naresh Goel",
       designation: "Chairman & Managing Director, PRL",
-      roleInSubsidiary: "Director, Pingaksh Beverages Pvt. Ltd.",
+      roleInSubsidiary: "Director, Pingaksh Beverages . Ltd.",
       href: "/who-we-are/board-of-directors/naresh-goel",
     },
     {
       name: "Amul Goel",
       designation: "Director, PRL",
-      roleInSubsidiary: "Director, Pingaksh Beverages Pvt. Ltd.",
+      roleInSubsidiary: "Director, Pingaksh Beverages . Ltd.",
       href: "/who-we-are/board-of-directors/amul-goel",
     },
     {
       name: "Suman Goel",
       designation: "Director, PRL",
-      roleInSubsidiary: "Director, Pingaksh Beverages Pvt. Ltd.",
+      roleInSubsidiary: "Director, Pingaksh Beverages . Ltd.",
       href: "/who-we-are/board-of-directors/suman-goel",
     },
   ];
@@ -397,7 +397,7 @@ export default function LeadershipDirectoryView({
 
                       <div className="mt-3 inline-flex items-center gap-2 text-[11px] font-mono uppercase tracking-widest text-navy-600 bg-sand-100 px-2.5 py-1 rounded">
                         <Building2 className="w-3.5 h-3.5 text-pingaksh-terracotta" />
-                        <span>Pingaksh Beverages Pvt. Ltd. (PBPL)</span>
+                        <span>Pingaksh Beverages . Ltd. (PBPL)</span>
                       </div>
 
                       <p className="text-xs sm:text-sm text-navy-600 mt-4 leading-relaxed">

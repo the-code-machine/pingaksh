@@ -145,9 +145,9 @@ export const HOME_SECTIONS_DATA = {
       {
         id: "ethanol-pbpl",
         shortTitle: "GREEN FUELS & BIO-ENERGY",
-        badge: "Pingaksh Beverages Pvt. Ltd.",
+        badge: "Pingaksh Beverages . Ltd.",
         title: "Green Fuels",
-        entityName: "Pingaksh Beverages Pvt. Ltd. (PBPL)",
+        entityName: "Pingaksh Beverages . Ltd. (PBPL)",
         description:
           "Supporting India’s national E20 petrol blending mandate, we operate a state-of-the-art 250 KLPD grain-based bio-ethanol refinery. We transform locally sourced, non-food surplus grains into high-purity anhydrous ethanol for major oil marketing companies.",
         secondaryDescription:

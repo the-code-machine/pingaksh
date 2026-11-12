@@ -117,7 +117,7 @@ export const HOME_SECONDARY_DATA = {
         eraTag: "Foundation Era · UBHP",
         title: "Engineering Resilience in Complex Terrains",
         caption:
-          "Starting with Uttar Bharat Hydro Power Pvt. Ltd., our civil and electro-mechanical teams established a proven track record of executing capital-intensive infrastructure in high-altitude geographies.",
+          "Starting with Uttar Bharat Hydro Power . Ltd., our civil and electro-mechanical teams established a proven track record of executing capital-intensive infrastructure in high-altitude geographies.",
         imageUrl:
           "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/P9090483_4dece626.jpg",
         imageAlt:
@@ -184,7 +184,7 @@ export const HOME_SECONDARY_DATA = {
         date: "28 SEP, 2026",
         isoDate: "2026-09-28",
         headline:
-          "Pingaksh Beverages Pvt. Ltd. (PBPL) secures multi-quarter supply allocation with Public Sector Oil Marketing Companies (OMCs) for ESY 2026–27",
+          "Pingaksh Beverages . Ltd. (PBPL) secures multi-quarter supply allocation with Public Sector Oil Marketing Companies (OMCs) for ESY 2026–27",
         summary:
           "Long-term off-take contract strengthens order-book visibility and institutional cashflows across regional blending depots.",
         href: "/media/press-releases/omc-supply-allocation-2026",

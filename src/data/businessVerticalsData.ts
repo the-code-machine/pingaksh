@@ -563,7 +563,7 @@ export const BUSINESS_VERTICALS_DATA: BusinessVerticalData[] = [
     seo: {
       title: "250 KLPD Grain-Based Ethanol Biorefinery | Pingaksh Renewables",
       description:
-        "Discover Pingaksh Beverages Pvt. Ltd. (PBPL)—operating a 250 KLPD  automated grain-based fuel ethanol biorefinery supporting India's E20 blending mandate.",
+        "Discover Pingaksh Beverages . Ltd. (PBPL)—operating a 250 KLPD  automated grain-based fuel ethanol biorefinery supporting India's E20 blending mandate.",
       keywords: [
         "Pingaksh Beverages PBPL Ethanol",
         "250 KLPD Grain Distillery India",

@@ -382,7 +382,7 @@ export const FINANCIAL_REPORTS_DATA: FinancialReportsPageData = {
   },
   subsidiaryFinancials: [
     {
-      entityName: "Uttar Bharat Hydro Power Pvt. Ltd. (UBHP)",
+      entityName: "Uttar Bharat Hydro Power . Ltd. (UBHP)",
       spvRole: "Hydroelectric Generation SPV (Sarju I, II & III — 30.60 MW)",
       latestAuditStatus: "FY 2025–26 Audited Balance Sheet & P&L",
       reportTitle:
@@ -391,7 +391,7 @@ export const FINANCIAL_REPORTS_DATA: FinancialReportsPageData = {
       href: "/uploads/investors/ubhp-audited-financials-fy26.pdf",
     },
     {
-      entityName: "Pingaksh Beverages Pvt. Ltd. (PBPL)",
+      entityName: "Pingaksh Beverages . Ltd. (PBPL)",
       spvRole: "Green Fuels & Bio-Refinery SPV (250 KLPD Ethanol, DDGS & CO₂)",
       latestAuditStatus: "FY 2025–26 Audited Balance Sheet & P&L",
       reportTitle:

@@ -90,7 +90,7 @@ export const STATUTORY_FILINGS_DATA: StatutoryFilingsPageData = {
   },
   entityRegistry: [
     {
-      entityName: "Pingaksh Renewables Pvt. Ltd.",
+      entityName: "Pingaksh Renewables . Ltd.",
       role: "Parent Holding & Clean Infrastructure Platform",
       cinNumber: "U40106DL2024PTC425610",
       isinOrDematStatus: "100% Dematerialized Equity Shares (NSDL / CDSL)",
@@ -98,7 +98,7 @@ export const STATUTORY_FILINGS_DATA: StatutoryFilingsPageData = {
       statutoryAuditor: "Chartered Accountants (Peer Reviewed by ICAI)",
     },
     {
-      entityName: "Uttar Bharat Hydro Power Pvt. Ltd. (UBHP)",
+      entityName: "Uttar Bharat Hydro Power . Ltd. (UBHP)",
       role: "Hydroelectric Generation SPV (Sarju I, II & III — 30.60 MW)",
       cinNumber: "U40101UR2008PTC032481",
       isinOrDematStatus: "Long-Term PPA with UPCL · UERC Regulated",
@@ -106,7 +106,7 @@ export const STATUTORY_FILINGS_DATA: StatutoryFilingsPageData = {
       statutoryAuditor: "Independent Statutory & Cost Auditors",
     },
     {
-      entityName: "Pingaksh Beverages Pvt. Ltd. (PBPL)",
+      entityName: "Pingaksh Beverages . Ltd. (PBPL)",
       role: "250 KLPD Grain Bio-Ethanol, DDGS & CO₂ SPV",
       cinNumber: "U15549DL2022PTC398104",
       isinOrDematStatus: "PESO, BIS IS 15464 & 100% CPCB ZLD Certified",
@@ -268,7 +268,7 @@ export const STATUTORY_FILINGS_DATA: StatutoryFilingsPageData = {
     {
       id: "no-offer-solicitation",
       heading: "02. No Offer or Solicitation of Securities",
-      body: "Nothing contained on this portal or within the downloadable statutory repository constitutes an offer, solicitation, or invitation to subscribe for or purchase any equity shares, debentures, or commercial papers of Pingaksh Renewables Pvt. Ltd., Uttar Bharat Hydro Power Pvt. Ltd. (UBHP), or Pingaksh Beverages Pvt. Ltd. (PBPL) in any jurisdiction.",
+      body: "Nothing contained on this portal or within the downloadable statutory repository constitutes an offer, solicitation, or invitation to subscribe for or purchase any equity shares, debentures, or commercial papers of Pingaksh Renewables . Ltd., Uttar Bharat Hydro Power . Ltd. (UBHP), or Pingaksh Beverages . Ltd. (PBPL) in any jurisdiction.",
     },
     {
       id: "hydrological-tariff-disclaimer",
@@ -280,7 +280,7 @@ export const STATUTORY_FILINGS_DATA: StatutoryFilingsPageData = {
     name: "Company Secretary & Compliance Officer",
     designation: "Secretarial & Legal Department — Pingaksh Group",
     officeAddress:
-      "Pingaksh Renewables Pvt. Ltd., Corporate Tower, New Delhi – 110001 & Dehradun, Uttarakhand – 248001",
+      "Pingaksh Renewables . Ltd., Corporate Tower, New Delhi – 110001 & Dehradun, Uttarakhand – 248001",
     email: "secretarial@pingakshrenewables.com",
     phone: "+91 (11) 2345-6711",
   },
