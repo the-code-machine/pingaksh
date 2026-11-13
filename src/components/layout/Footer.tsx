@@ -99,14 +99,14 @@ export default function Footer() {
     address: {
       "@type": "PostalAddress",
       streetAddress:
-        "Vatika Triangle, Sushant Lok Phase I, Block A, Mehrauli-Gurgaon Road",
+        "3rd floor, 37 saraswati kunj, next to vatika towers, golf course road, sector 53",
       addressLocality: "Gurugram",
       addressRegion: "Haryana",
       postalCode: "122002",
       addressCountry: "IN",
     },
 
-    telephone: "+91 9548481358",
+    telephone: "+91 9313783584",
     email: "info@pingakshrenewables.com",
 
     knowsAbout: [

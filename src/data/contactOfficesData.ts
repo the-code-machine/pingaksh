@@ -101,7 +101,7 @@ export const CONTACT_OFFICES_DATA: ContactOfficesPageData = {
         "Mehrauli-Gurgaon Road, Gurugram",
       ],
       cityStatePin: "Haryana – 122002, India",
-      phone: "+91 9548481358",
+      phone: "+91 9313783584",
       email: "info@pingakshrenewables.com",
       operatingHours: "Mon – Sat: 09:30 AM – 06:30 PM IST",
       coordinatesLabel: "28.4800° N, 77.0805° E",

@@ -374,7 +374,7 @@ const ALL_DIRECTORS: DirectorProfile[] = [
     qualifications: ["LLM in Business Law"],
     almaMater: "King's College London",
     portraitImage:
-      "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/directors/director_125b1532d144cb40_1792514621.png",
+      "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/directors/director_73ed40c93a91ff49_1794590817.webp",
     portraitAlt: "Aadish Goel - Director, Pingaksh Beverages Private Limited",
     // Waist-up framing hint for UI components rendering Aadish's portrait
     portraitObjectPosition: "object-top",
