@@ -83,7 +83,7 @@ const ALL_DIRECTORS: DirectorProfile[] = [
       "Founder & Promoter, Pingaksh Group",
       "Chairman of GEDA under Indian Federation of Green Energy (IFGE)",
     ],
-    almaMater: "University of Delhi",
+    almaMater: "",
     portraitImage:
       "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/directors/director_89bec1ff20800c2f_1792514583.png",
     portraitAlt:
@@ -133,7 +133,7 @@ const ALL_DIRECTORS: DirectorProfile[] = [
     qualifications: ["Master's degree (MSc) in International Business"],
     almaMater: "University of Manchester",
     portraitImage:
-      "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/directors/director_125b1532d144cb40_1792514621.png",
+      "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/directors/director_ab97bf037f6e7992_1794591539.jpg",
     portraitAlt: "Amul Goel - Director, Pingaksh Renewables Limited",
     shortSummary:
       "Amul Goel is a Director at the Pingaksh Group and a key architect of its growth across renewable energy, biofuels, finance and agriculture, combining a global business perspective with hands-on experience in project development, corporate finance and capital markets.",
