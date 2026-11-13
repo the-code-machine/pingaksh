@@ -183,7 +183,7 @@ export const BUSINESS_VERTICALS_DATA: BusinessVerticalData[] = [
       leadParagraph:
         "Operated under our flagship subsidiary Pingaksh Renewables Limited (PRL), the Sarju Cascade in Kapkot tehsil, Bageshwar district represents a benchmark in ecologically sensitive small-hydro development. Rather than constructing massive dams that displace communities or submerge forests, our cascade utilizes compact diversion trench weirs and underground headrace tunnels.",
       bodyParagraph:
-        "Water diverted from the Sarju River passes through underground desilting basins to remove abrasive quartz silt before entering high-pressure steel penstocks. After driving horizontal-shaft Francis turbines coupled to brushless synchronous generators, 100% of the water is returned cleanly to the natural river channel via tailrace conduits.",
+        "Water diverted from the Sarju River passes through underground desilting open basins to remove abrasive quartz silt before entering pressurised steel penstock. After driving horizontal-shaft Francis turbines coupled to brushless synchronous generators, 100% of the water is returned cleanly to the natural river channel via tailrace conduits.",
       highlights: [
         {
           title: "Grid Evacuation & PPA Security",
