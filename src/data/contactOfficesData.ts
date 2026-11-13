@@ -102,7 +102,7 @@ export const CONTACT_OFFICES_DATA: ContactOfficesPageData = {
       ],
       cityStatePin: "Haryana – 122002, India",
       phone: "+91 9313783584",
-      email: "info@pingakshrenewables.com",
+      email: "comms@pingaksh.com",
       operatingHours: "Mon – Sat: 09:30 AM – 06:30 PM IST",
       coordinatesLabel: "28.4800° N, 77.0805° E",
       mapEmbedUrl:

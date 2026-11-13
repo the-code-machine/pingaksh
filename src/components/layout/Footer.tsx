@@ -107,7 +107,7 @@ export default function Footer() {
     },
 
     telephone: "+91 9313783584",
-    email: "info@pingakshrenewables.com",
+    email: "comms@pingaksh.com",
 
     knowsAbout: [
       "Run-of-the-River Hydroelectric Power",
