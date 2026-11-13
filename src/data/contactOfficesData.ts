@@ -57,7 +57,7 @@ export const CONTACT_OFFICES_DATA: ContactOfficesPageData = {
   seo: {
     title: "Corporate, Registered & Plant Offices | Pingaksh Renewables",
     description:
-      "Official directory of Pingaksh Group’s Corporate & Registered Offices, UBHP Sarju I, II, III Hydro Powerhouses in Bageshwar, and PBPL 250 KLPD Ethanol Distillery.",
+      "Official directory of Pingaksh Group’s Corporate & Registered Offices, PRL Sarju I, II, III Hydro Powerhouses in Bageshwar, and PBPL 250 KLPD Ethanol Distillery.",
   },
   breadcrumbs: [
     { label: "Home", href: "/" },
@@ -76,7 +76,7 @@ export const CONTACT_OFFICES_DATA: ContactOfficesPageData = {
   },
   statutoryIdentity: {
     parentEntity: "Pingaksh Renewables . Ltd. (Pingaksh Group)",
-    hydroSpv: "Uttar Bharat Hydro Power . Ltd. (UBHP)",
+    hydroSpv: "Uttar Bharat Hydro Power . Ltd. (PRL)",
     biofuelSpv: "Pingaksh Beverages . Ltd. (PBPL)",
     complianceNote:
       "All official statutory notices, regulatory filings, and legal correspondence should be addressed to the Company Secretary at the Registered Office.",
@@ -84,7 +84,7 @@ export const CONTACT_OFFICES_DATA: ContactOfficesPageData = {
   categories: [
     { id: "all", label: "All Locations (1)" },
     { id: "corporate", label: "Corporate & Registered" },
-    // { id: "hydro", label: "Hydro Powerhouses (UBHP)" },
+    // { id: "hydro", label: "Hydro Powerhouses (PRL)" },
     // { id: "bioenergy", label: "Ethanol Distillery (PBPL)" },
     // { id: "agro", label: "Pingaksh Farms" },
   ],
@@ -122,11 +122,11 @@ export const CONTACT_OFFICES_DATA: ContactOfficesPageData = {
     //   id: "registered-office-uk",
     //   category: "corporate",
     //   categoryLabel: "Registered & Regional Office",
-    //   entityName: "Uttar Bharat Hydro Power . Ltd. (UBHP)",
+    //   entityName: "Uttar Bharat Hydro Power . Ltd. (PRL)",
     //   title: "Dehradun Registered & Liaison Office",
     //   badge: "Statutory Office",
     //   addressLines: [
-    //     "UBHP House, Rajpur Road Institutional Corridor",
+    //     "PRL House, Rajpur Road Institutional Corridor",
     //     "Near State Power Transmission Directorate",
     //   ],
     //   cityStatePin: "Dehradun, Uttarakhand – 248001, India",
@@ -141,7 +141,7 @@ export const CONTACT_OFFICES_DATA: ContactOfficesPageData = {
     //   imageUrl:
     //     "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80",
     //   imageAlt:
-    //     "UBHP Registered and State Liaison Office in Dehradun, Uttarakhand",
+    //     "PRL Registered and State Liaison Office in Dehradun, Uttarakhand",
     //   keyFunctions: [
     //     "Statutory ROC Filings & Company Secretary Desk",
     //     "UPCL / PTCUL State Grid Evacuation Coordination",
@@ -152,7 +152,7 @@ export const CONTACT_OFFICES_DATA: ContactOfficesPageData = {
     //   id: "sarju-hydro-complex",
     //   category: "hydro",
     //   categoryLabel: "Hydroelectric Generation Complex",
-    //   entityName: "UBHP · Sarju I, II & III Cascade (23.100 MW)",
+    //   entityName: "PRL · Sarju I, II & III Cascade (23.100 MW)",
     //   title: "Bageshwar Hydro Powerhouse & Site Office",
     //   badge: "24×7 Grid Plant",
     //   addressLines: [

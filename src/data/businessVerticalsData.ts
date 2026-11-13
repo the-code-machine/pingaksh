@@ -124,20 +124,20 @@ export interface BusinessVerticalData {
 
 export const BUSINESS_VERTICALS_DATA: BusinessVerticalData[] = [
   // =========================================================================
-  // 1. HYDRO POWER (UBHP - SARJU I, II, III CASCADE)
+  // 1. HYDRO POWER (PRL - SARJU I, II, III CASCADE)
   // =========================================================================
   {
     slug: "hydro-power",
     name: "Hydroelectric Power Generation",
-    shortName: "UBHP Hydro Power",
-    legalEntity: "Uttar Bharat Hydro Power Private Limited (UBHP)",
+    shortName: "PRL Hydro Power",
+    legalEntity: "Pingaksh Renewables Limited (PRL)",
     seo: {
       title:
         "Hydroelectric Power (Sarju II & III Cascade) | Pingaksh Renewables",
       description:
-        "Explore Uttar Bharat Hydro Power (UBHP)—operating the 23.60 MW  Sarju-II, and Sarju-III run-of-the-river hydroelectric cascade in Bageshwar, Uttarakhand.",
+        "Explore Uttar Bharat Hydro Power (PRL)—operating the 23.60 MW  Sarju-II, and Sarju-III run-of-the-river hydroelectric cascade in Bageshwar, Uttarakhand.",
       keywords: [
-        "Uttar Bharat Hydro Power UBHP",
+        "Uttar Bharat Hydro Power PRL",
         "Sarju I II III Hydro Project Bageshwar",
         "Run of the River Hydro Power Uttarakhand",
         "Pingaksh Renewables Hydro",
@@ -213,7 +213,7 @@ export const BUSINESS_VERTICALS_DATA: BusinessVerticalData[] = [
         status: "Operational (COD: 11.07.2014)",
         capacity: "10.50 MW (3 × 3.50 MW)",
         summary:
-          "The first project commissioned in the cascade, proving UBHP's geological tunneling capabilities and establishing synchronous evacuation to the UPCL state grid.",
+          "The first project commissioned in the cascade, proving PRL's geological tunneling capabilities and establishing synchronous evacuation to the UPCL state grid.",
         image:
           "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/_MG_3236_decb7578.webp",
         imageAlt: "Sarju-III Hydroelectric Turbine Hall and Generator Floor",
@@ -525,7 +525,7 @@ export const BUSINESS_VERTICALS_DATA: BusinessVerticalData[] = [
           title: "Incorporation & Allotment of Sarju Cascade",
           metric: "3 Concessions",
           description:
-            "Uttar Bharat Hydro Power (UBHP) signs implementation agreements with the Government of Uttarakhand for Sarju I, II, and III.",
+            "Uttar Bharat Hydro Power (PRL) signs implementation agreements with the Government of Uttarakhand for Sarju I, II, and III.",
         },
         {
           year: "2014",

@@ -285,8 +285,8 @@ export default function StatutoryFilingsView({
                   <option value="Pingaksh Group (Consolidated)">
                     Pingaksh Renewables (Parent)
                   </option>
-                  <option value="UBHP (Hydro SPV)">
-                    Uttar Bharat Hydro Power (UBHP)
+                  <option value="PRL (Hydro SPV)">
+                    Uttar Bharat Hydro Power (PRL)
                   </option>
                   <option value="PBPL (Bio-Energy SPV)">
                     Pingaksh Beverages (PBPL)

@@ -114,7 +114,7 @@ export const VENDOR_PORTAL_DATA: VendorPortalPageData = {
   seo: {
     title: "Vendor Registration & KYC Portal | Pingaksh Renewables",
     description:
-      "Official Vendor Registration Form for Pingaksh Group (UBHP & PBPL). Submit Principal Place of Supply, GST Contact, HSN/SAC codes, Bank Details, and MSMED disclosures.",
+      "Official Vendor Registration Form for Pingaksh Group (PRL & PBPL). Submit Principal Place of Supply, GST Contact, HSN/SAC codes, Bank Details, and MSMED disclosures.",
   },
   breadcrumbs: [
     { label: "Home", href: "/" },
@@ -125,7 +125,7 @@ export const VENDOR_PORTAL_DATA: VendorPortalPageData = {
     title: "Vendor Registration Form",
     subtitle: "Institutional Supply Chain & Partner Empanelment Gateway",
     leadText:
-      "Authorized EPC contractors, grain aggregators, electro-mechanical OEMs, and service providers can complete official vendor registration for Uttar Bharat Hydro Power (UBHP) and Pingaksh Beverages (PBPL).",
+      "Authorized EPC contractors, grain aggregators, electro-mechanical OEMs, and service providers can complete official vendor registration for Uttar Bharat Hydro Power (PRL) and Pingaksh Beverages (PBPL).",
     backgroundImage:
       "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=2000&q=85",
     backgroundAlt:
@@ -155,7 +155,7 @@ export const VENDOR_PORTAL_DATA: VendorPortalPageData = {
       {
         title: "Multi-Entity Empanelment",
         detail:
-          "Single window for UBHP Hydro, PBPL Bio-Energy & Pingaksh Farms.",
+          "Single window for PRL Hydro, PBPL Bio-Energy & Pingaksh Farms.",
       },
     ],
   },

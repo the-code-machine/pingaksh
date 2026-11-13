@@ -87,7 +87,7 @@ export const SUBSIDIARY_LEADERSHIP_DATA: SubsidiaryLeadershipPageData = {
   entities: [
     {
       id: "ubhp-hydro",
-      legalName: "Uttar Bharat Hydro Power Private Limited (UBHP)",
+      legalName: "Pingaksh Renewables Limited (UBHP)",
       shortName: "UBHP Hydro Power",
       headquarters: "Kapkot, Bageshwar District, Uttarakhand",
       coreMandate:
@@ -123,7 +123,7 @@ export const SUBSIDIARY_LEADERSHIP_DATA: SubsidiaryLeadershipPageData = {
       name: "Er. Vikramaditya Singh Negi",
       designation: "Chief Operating Officer — UBHP Hydro Cascade",
       subsidiaryId: "ubhp-hydro",
-      subsidiaryName: "Uttar Bharat Hydro Power Private Limited (UBHP)",
+      subsidiaryName: "Pingaksh Renewables Limited (UBHP)",
       operationalBase: "Bageshwar & Dehradun, Uttarakhand",
       experienceYears: "28+ Years in Himalayan Hydro O&M",
       appointedSince: "2015",
@@ -141,7 +141,7 @@ export const SUBSIDIARY_LEADERSHIP_DATA: SubsidiaryLeadershipPageData = {
       executiveQuote:
         "In high-head Himalayan hydro, plant availability is won during the monsoon—through real-time silt monitoring, tungsten-carbide runner upkeep, and disciplined switchyard telemetry.",
       biographyParagraphs: [
-        "Er. Vikramaditya Singh Negi serves as Chief Operating Officer of Uttar Bharat Hydro Power Private Limited (UBHP), overseeing all operational, electro-mechanical, and grid-evacuation functions across the Sarju River hydroelectric cascade in Bageshwar district.",
+        "Er. Vikramaditya Singh Negi serves as Chief Operating Officer of Pingaksh Renewables Limited (UBHP), overseeing all operational, electro-mechanical, and grid-evacuation functions across the Sarju River hydroelectric cascade in Bageshwar district.",
         "With over 28 years of field leadership in Uttarakhand's snow-fed river basins, he previously managed powerhouse commissioning and O&M for major state and private run-of-the-river stations in the Alaknanda and Bhagirathi valleys.",
         "At UBHP, he led the implementation of centralized PLC-SCADA telemetry linking all three Sarju powerhouses and introduced High-Velocity Oxygen-Fuel (HVOF) ceramic-metallic coatings on horizontal Francis turbine runners—pushing cascade availability to 99.4%.",
       ],
@@ -174,7 +174,7 @@ export const SUBSIDIARY_LEADERSHIP_DATA: SubsidiaryLeadershipPageData = {
       designation:
         "Vice President — Civil Tunnels, Dam Safety & Catchment Ecology",
       subsidiaryId: "ubhp-hydro",
-      subsidiaryName: "Uttar Bharat Hydro Power Private Limited (UBHP)",
+      subsidiaryName: "Pingaksh Renewables Limited (UBHP)",
       operationalBase: "Kapkot Valley, Bageshwar, Uttarakhand",
       experienceYears: "25+ Years in Himalayan Rock Tunneling & Geology",
       appointedSince: "2016",
@@ -192,7 +192,7 @@ export const SUBSIDIARY_LEADERSHIP_DATA: SubsidiaryLeadershipPageData = {
       executiveQuote:
         "Our civil structures are engineered to coexist with the Sarju gorge—routing water underground through solid rock so the surface forest and river ecology remain untouched.",
       biographyParagraphs: [
-        "Er. Kundan Lal Joshi heads Civil Infrastructure, Geotechnical Safety, and Catchment Stewardship at Uttar Bharat Hydro Power Private Limited. An engineering geologist and civil engineer by training, he specializes in Himalayan slope stabilization, surge shaft hydraulics, and boulder-resistant drop trench weirs.",
+        "Er. Kundan Lal Joshi heads Civil Infrastructure, Geotechnical Safety, and Catchment Stewardship at Pingaksh Renewables Limited. An engineering geologist and civil engineer by training, he specializes in Himalayan slope stabilization, surge shaft hydraulics, and boulder-resistant drop trench weirs.",
         "He manages structural health monitoring across UBHP's underground water conductor systems and oversees mandatory ecological river flow (e-Flow) compliance, catchment afforestation, and local village infrastructure initiatives in Kapkot tehsil.",
       ],
       operationalMandates: [

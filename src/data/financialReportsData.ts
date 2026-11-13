@@ -382,13 +382,13 @@ export const FINANCIAL_REPORTS_DATA: FinancialReportsPageData = {
   },
   subsidiaryFinancials: [
     {
-      entityName: "Uttar Bharat Hydro Power . Ltd. (UBHP)",
+      entityName: "Uttar Bharat Hydro Power . Ltd. (PRL)",
       spvRole: "Hydroelectric Generation SPV (Sarju I, II & III — 23.100 MW)",
       latestAuditStatus: "FY 2025–26 Audited Balance Sheet & P&L",
       reportTitle:
-        "UBHP Standalone Audited Financial Statements & Independent Auditor’s Report",
+        "PRL Standalone Audited Financial Statements & Independent Auditor’s Report",
       fileSize: "PDF · 3.2 MB",
-      href: "/uploads/investors/ubhp-audited-financials-fy26.pdf",
+      href: "/uploads/investors/PRL-audited-financials-fy26.pdf",
     },
     {
       entityName: "Pingaksh Beverages . Ltd. (PBPL)",

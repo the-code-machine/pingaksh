@@ -89,7 +89,7 @@ export default function Footer() {
     "@type": "Corporation",
 
     name: "Pingaksh Renewables",
-    alternateName: "Pingaksh Group (Formerly UBHP)",
+    alternateName: "Pingaksh Group (Formerly PRL)",
 
     url: "https://www.pingakshrenewables.com",
 

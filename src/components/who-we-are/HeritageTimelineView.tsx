@@ -92,7 +92,7 @@ export default function HeritageTimelineView({
       },
       {
         "@type": "ItemList",
-        name: "Pingaksh Group (UBHP) Corporate History & Commissioning Timeline",
+        name: "Pingaksh Group (PRL) Corporate History & Commissioning Timeline",
         itemListElement: milestones.map((m, idx) => ({
           "@type": "ListItem",
           position: idx + 1,

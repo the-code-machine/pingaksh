@@ -131,7 +131,7 @@ export const PRESS_RELEASES_DATA: PressReleasesPageData = {
       title:
         "UBHP files statutory petition with UERC for deemed generation claims on 12.6 MW Sarju II Hydro Project",
       excerpt:
-        "Uttar Bharat Hydro Power Private Limited has filed a petition under Section 86(1)(e) and 86(1)(f) claiming deemed generation in respect of the 12.6 MW Sarju II Small Hydro Power Project before the Uttarakhand Electricity Regulatory Commission.",
+        "Pingaksh Renewables Limited has filed a petition under Section 86(1)(e) and 86(1)(f) claiming deemed generation in respect of the 12.6 MW Sarju II Small Hydro Power Project before the Uttarakhand Electricity Regulatory Commission.",
       category: "Corporate & Governance",
       releaseCode: "PR/UBHP/2023/104",
       date: "16 October 2023",

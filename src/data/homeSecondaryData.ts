@@ -61,13 +61,13 @@ export interface MarketTrackerCard {
 export const HOME_SECONDARY_DATA = {
   // =================================================================
   // 1. CORPORATE FOUNDATION & "WHO WE ARE" GATEWAY SECTION
-  // Focuses purely on UBHP Heritage, Founders, & 6+2 Board Governance
+  // Focuses purely on PRL Heritage, Founders, & 6+2 Board Governance
   // =================================================================
   foundationWhoWeAre: {
     eyebrow: "Our Foundation & Corporate Identity",
     title: "Built on Generational Vision & Institutional Governance",
     description:
-      "Founded under the visionary leadership of Mr. Naresh Goel alongside second-generation directors Mr. Amul Goel and Mr. Aadish Goel, Pingaksh Group has evolved from Uttar Bharat Hydro Power (UBHP) into a multi-entity industrial conglomerate governed by an experienced board of directors.",
+      "Founded under the visionary leadership of Mr. Naresh Goel alongside second-generation directors Mr. Amul Goel and Mr. Aadish Goel, Pingaksh Group has evolved from Uttar Bharat Hydro Power (PRL) into a multi-entity industrial conglomerate governed by an experienced board of directors.",
     primaryCta: {
       label: "Explore Who We Are",
       href: "/who-we-are",
@@ -83,7 +83,7 @@ export const HOME_SECONDARY_DATA = {
       {
         id: "corporate-overview",
         title: "Corporate Overview",
-        subtitle: "Institutional transition from UBHP to Pingaksh Group",
+        subtitle: "Institutional transition from PRL to Pingaksh Group",
         href: "/who-we-are/corporate-overview",
         badge: "Identity",
       },
@@ -113,15 +113,15 @@ export const HOME_SECONDARY_DATA = {
     ] as WhoWeAreGatewayLink[],
     slides: [
       {
-        id: "slide-ubhp-origins",
-        eraTag: "Foundation Era · UBHP",
+        id: "slide-PRL-origins",
+        eraTag: "Foundation Era · PRL",
         title: "Engineering Resilience in Complex Terrains",
         caption:
           "Starting with Uttar Bharat Hydro Power . Ltd., our civil and electro-mechanical teams established a proven track record of executing capital-intensive infrastructure in high-altitude geographies.",
         imageUrl:
           "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/P9090483_4dece626.jpg",
         imageAlt:
-          "Pingaksh Group Civil Engineering and Infrastructure Heritage from UBHP Foundation Era",
+          "Pingaksh Group Civil Engineering and Infrastructure Heritage from PRL Foundation Era",
       },
       {
         id: "slide-leadership-governance",
@@ -166,7 +166,7 @@ export const HOME_SECONDARY_DATA = {
         headline:
           "Pingaksh Group and State Transmission Utility execute long-term Power Purchase & Grid Connectivity Agreement for upcoming hydro cascade expansion",
         summary:
-          "Strategic bilateral framework secures dedicated evacuation corridors and long-term tariff certainty for Uttar Bharat Hydro Power (UBHP) generation assets.",
+          "Strategic bilateral framework secures dedicated evacuation corridors and long-term tariff certainty for Uttar Bharat Hydro Power (PRL) generation assets.",
         href: "/media/press-releases/grid-connectivity-agreement-2026",
         partnerNames: {
           primary: "PINGAKSH GROUP",
@@ -300,7 +300,7 @@ export const HOME_SECONDARY_DATA = {
         id: "doc-4",
         fiscalYear: "FY 2025-26",
         title:
-          "Form MGT-7 Annual Return & Statutory Directors’ Report (UBHP & PBPL)",
+          "Form MGT-7 Annual Return & Statutory Directors’ Report (PRL & PBPL)",
         releaseDate: "30 April, 2026",
         fileSize: "PDF · 1.9 MB",
         href: "/investors/financial-reports#fy26-mgt7",

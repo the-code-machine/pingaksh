@@ -49,7 +49,7 @@ export const HERITAGE_TIMELINE_DATA: HeritageTimelinePageData = {
   seo: {
     title: "Our Heritage & Growth Timeline | Pingaksh Group",
     description:
-      "Trace the institutional history of Pingaksh Group from the founding of Uttar Bharat Hydro Power (UBHP) and the commissioning of Sarju cascade projects to our modern bio-energy expansion.",
+      "Trace the institutional history of Pingaksh Group from the founding of Uttar Bharat Hydro Power (PRL) and the commissioning of Sarju cascade projects to our modern bio-energy expansion.",
   },
   breadcrumbs: [
     { label: "Home", href: "/" },
@@ -84,7 +84,7 @@ export const HERITAGE_TIMELINE_DATA: HeritageTimelinePageData = {
       eraTitle: "Inception of Uttar Bharat Hydro Power",
       headline: "Laying the Cornerstone in Uttarakhand’s Sarju Basin",
       narrative: [
-        "Recognizing India’s critical need for non-fossil peaking power, our founders established Uttar Bharat Hydro Power . Ltd. (UBHP) to develop a cascade of run-of-the-river hydroelectric stations in District Bageshwar, Uttarakhand.",
+        "Recognizing India’s critical need for non-fossil peaking power, our founders established Uttar Bharat Hydro Power . Ltd. (PRL) to develop a cascade of run-of-the-river hydroelectric stations in District Bageshwar, Uttarakhand.",
         "Detailed hydrological surveys, geological core drilling, and environmental impact assessments were completed across the Sarju River valley to design high-head diversion weirs with zero village displacement.",
       ],
       location: "Kapkot, District Bageshwar · Uttarakhand",
@@ -100,7 +100,7 @@ export const HERITAGE_TIMELINE_DATA: HeritageTimelinePageData = {
       },
       secondaryImage: {
         url: "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/20150914_130417_b13c6c87.jpg",
-        alt: "Civil excavation and headrace tunnel engineering work for UBHP",
+        alt: "Civil excavation and headrace tunnel engineering work for PRL",
         caption:
           "Early civil excavation and slope stabilization in high-altitude terrain.",
       },
@@ -115,7 +115,7 @@ export const HERITAGE_TIMELINE_DATA: HeritageTimelinePageData = {
       eraTitle: "First Grid Synchronization",
       headline: "Commissioning of the 10.50 MW Sarju III Hydroelectric Plant",
       narrative: [
-        "On July 11, 2014, UBHP achieved its landmark Commercial Operation Date (COD) for the Sarju III Small Hydro Project—synchronizing three 3,600 kW Horizontal Axis Francis Turbine units with the state transmission grid.",
+        "On July 11, 2014, PRL achieved its landmark Commercial Operation Date (COD) for the Sarju III Small Hydro Project—synchronizing three 3,600 kW Horizontal Axis Francis Turbine units with the state transmission grid.",
         "Engineered for a rated net head of 51.85 meters and a rated discharge of 6.73 cumecs, Sarju III established the group’s reputation for reliable electro-mechanical execution and high seasonal plant load factors.",
       ],
       location: "Sarju III Powerhouse · Bageshwar, UK",
@@ -187,6 +187,29 @@ export const HERITAGE_TIMELINE_DATA: HeritageTimelinePageData = {
       },
     },
     {
+      id: "era-pbpl-construction",
+      year: "2023",
+      dateStamp: "Project Execution",
+      isoDate: "2023-08-15",
+      eraTitle: "Biorefinery Infrastructure Development",
+      headline: "250 KLPD Ethanol Plant Construction in Full Swing",
+      narrative: [
+        "Following successful financial closure and the commencement of turnkey EPC contracts, civil and structural execution of the grain-based ethanol biorefinery advanced in full swing.",
+        "Rapid development of the multi-pressure distillation towers, grain storage silos, and the captive co-generation power island laid the physical groundwork for our 100% Zero-Liquid Discharge (ZLD) facility.",
+      ],
+      location: "PBPL Biorefinery Complex, Northern India",
+      keyFigure: {
+        number: "250 KLPD",
+        label: "Design Capacity Under Construction",
+      },
+      primaryImage: {
+        url: "https://aliceblue-yak-580540.hostingersite.com//pingaksh-admin/uploads/media/dji_fly_20240307_160836_253_1709808632232_photo_a2574391.webp",
+        alt: "Structural steel and civil works for the PBPL ethanol distillation columns",
+        caption:
+          "Heavy structural execution and civil works advancing for the integrated distillation block.",
+      },
+    },
+    {
       id: "era-pingaksh-rebrand",
       year: "2024",
       dateStamp: "Corporate Transformation",
@@ -203,7 +226,7 @@ export const HERITAGE_TIMELINE_DATA: HeritageTimelinePageData = {
         label: "Operational Bio-Ethanol Distillation Capacity",
       },
       primaryImage: {
-        url: "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/dji_fly_20240307_160310_241_1709808715887_photo_87485549.webp",
+        url: "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/0Y1A2555_a9e0a0da.webp",
         alt: "Pingaksh green fuel plant and automated distillation columns in Rajasthan",
         caption:
           "Automated multi-pressure distillation and zero-liquid-discharge recovery units.",

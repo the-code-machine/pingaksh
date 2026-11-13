@@ -48,7 +48,7 @@ const HERO_SLIDES: HeroSlide[] = [
     secondaryCta: {
       label: "Company Heritage",
       href: "/who-we-are/heritage-timeline",
-      title: "Explore UBHP to Pingaksh Renewables Milestone Timeline",
+      title: "Explore PRL to Pingaksh Renewables Milestone Timeline",
     },
     icon: Droplets,
   },

@@ -551,7 +551,7 @@ export default function ZeroLiquidDischargeView() {
           <div className="border border-white/15 bg-navy-950 p-8 sm:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-5 border-b lg:border-b-0 lg:border-r border-white/15 pb-6 lg:pb-0 lg:pr-8">
               <span className="text-xs font-semibold text-pingaksh-sand uppercase tracking-wider">
-                Uttar Bharat Hydro Power (UBHP)
+                Uttar Bharat Hydro Power (PRL)
               </span>
               <h3 className="font-logo text-2xl sm:text-3xl text-white mt-2">
                 {data.waterQualityLedger.hydroStewardshipCard.title}

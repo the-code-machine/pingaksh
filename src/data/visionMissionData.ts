@@ -141,7 +141,7 @@ export const VISION_MISSION_DATA: VisionMissionPageData = {
     title:
       "Vision, Mission & Core Ethos | Pingaksh Renewables (Pingaksh Group)",
     description:
-      "Discover the guiding Vision, steadfast Mission, and operational ethos of Pingaksh Renewables—engineering run-of-the-river Himalayan hydro power (UBHP) and grain-based bio-ethanol for India's clean energy transition.",
+      "Discover the guiding Vision, steadfast Mission, and operational ethos of Pingaksh Renewables—engineering run-of-the-river Himalayan hydro power (PRL) and grain-based bio-ethanol for India's clean energy transition.",
     canonicalUrl: "https://pingaksh.com/who-we-are/vision-mission",
     keywords: [
       "Pingaksh Renewables Vision and Mission",
@@ -217,7 +217,7 @@ export const VISION_MISSION_DATA: VisionMissionPageData = {
     headline:
       "A name that symbolizes the fusion of timeless civilizational stewardship and modern industrial progress.",
     leadParagraph:
-      "Pingaksh transcended its historical roots to become an institutional benchmark where deep ecological respect converges with utility-scale engineering. Born in the steep gorges of the Sarju River as Uttar Bharat Hydro Power (UBHP), our foundation was never built on short-term extraction—it was built on enduring infrastructure.",
+      "Pingaksh transcended its historical roots to become an institutional benchmark where deep ecological respect converges with utility-scale engineering. Born in the steep gorges of the Sarju River as Uttar Bharat Hydro Power (PRL), our foundation was never built on short-term extraction—it was built on enduring infrastructure.",
     bodyParagraph:
       "Whether channeling Himalayan snowmelt through horizontal Francis turbines without displacing river ecosystems, or converting regional agricultural grain surpluses into high-purity fuel ethanol and protein-rich DDGS cattle feed, every Pingaksh enterprise operates as a self-reinforcing circular ecosystem.",
     keyQuote:

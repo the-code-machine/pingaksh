@@ -311,7 +311,7 @@ export default function CarbonDashboardView() {
 
               {/* Live Asset Attribution Breakdown (Cols 8-12) */}
               <div className="lg:col-span-5 divide-y divide-white/15 flex flex-col justify-between bg-white/[0.02]">
-                {/* 01. UBHP Hydro Contribution */}
+                {/* 01. PRL Hydro Contribution */}
                 <div className="p-7 sm:p-9 flex-1 flex flex-col justify-between group hover:bg-white/[0.04] transition-colors">
                   <div className="flex items-center justify-between text-xs gap-2">
                     <span className="inline-flex items-center gap-2 text-sand-200 font-semibold">

@@ -193,7 +193,7 @@ export const HYDRO_VS_COAL_DATA: HydroVsCoalPageData = {
   pollutantMatrix: {
     heading: "Multi-Pollutant & Resource Avoidance Ledger",
     subheading:
-      "Select a generation scale below to inspect the exact volume of greenhouse gases, acid-rain precursors, toxic particulates, and natural resources avoided by UBHP's run-of-the-river operations.",
+      "Select a generation scale below to inspect the exact volume of greenhouse gases, acid-rain precursors, toxic particulates, and natural resources avoided by PRL's run-of-the-river operations.",
     metrics: [
       {
         id: "co2-lca",
@@ -289,7 +289,7 @@ export const HYDRO_VS_COAL_DATA: HydroVsCoalPageData = {
   cascadeLedger: {
     heading: "Sarju Cascade Powerhouse-Wise Annual Avoidance Audit",
     subheading:
-      "Breakdown of annual clean energy exported by each operating UBHP powerhouse in Bageshwar district and the corresponding thermal coal and CO₂ displaced.",
+      "Breakdown of annual clean energy exported by each operating PRL powerhouse in Bageshwar district and the corresponding thermal coal and CO₂ displaced.",
     footnote:
       "*Note: Grid CO₂ Avoided is calculated at the audited 0.82 tCO₂/MWh baseline factor; Full Lifecycle CO₂e Avoided reflects the 1.016 tCO₂e/MWh cradle-to-grave differential between Run-of-the-River Hydro (4 kg/MWh) and Indian Thermal Coal (1,020 kg/MWh).",
     rows: [

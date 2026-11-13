@@ -114,7 +114,7 @@ const ALL_DIRECTORS: DirectorProfile[] = [
     directorshipsAndAffiliations: [
       "Pingaksh Renewables Limited (Chairman & Managing Director)",
       "Pingaksh Beverages Private Limited (Director)",
-      "Uttar Bharat Hydro Power Private Limited (UBHP)",
+      "Pingaksh Renewables Limited (PRL)",
       "Chairman of GEDA, Indian Federation of Green Energy (IFGE)",
     ],
   },
@@ -157,7 +157,7 @@ const ALL_DIRECTORS: DirectorProfile[] = [
     directorshipsAndAffiliations: [
       "Pingaksh Renewables Limited (Director)",
       "Pingaksh Beverages Private Limited (Director)",
-      "Uttar Bharat Hydro Power Private Limited",
+      "Pingaksh Renewables Limited",
     ],
   },
 

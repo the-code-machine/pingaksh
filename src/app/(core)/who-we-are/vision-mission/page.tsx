@@ -57,7 +57,7 @@ export default function VisionMissionPage() {
         mainEntity: {
           "@type": "Corporation",
           name: "Pingaksh Renewables (Pingaksh Group)",
-          alternateName: "Uttar Bharat Hydro Power (UBHP)",
+          alternateName: "Uttar Bharat Hydro Power (PRL)",
           url: "https://pingaksh.com",
           slogan: "Clean Energy | Sustainable Tomorrow",
           knowsAbout: [

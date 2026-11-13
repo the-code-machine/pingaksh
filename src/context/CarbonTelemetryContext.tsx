@@ -11,7 +11,7 @@ import React, {
 
 export interface CarbonMetricItem {
   id: number;
-  asset_tag: string; // e.g., 'UBHP_HYDRO' | 'PBPL_ETHANOL'
+  asset_tag: string; // e.g., 'PRL_HYDRO' | 'PBPL_ETHANOL'
   metric_name: string;
   unit: string;
   current_calculated_value: number;
@@ -38,7 +38,7 @@ interface CarbonTelemetryContextValue {
 // Instant initial fallback so UI never flashes 0 while fetching
 const DEFAULT_HYDRO: CarbonMetricItem = {
   id: 1,
-  asset_tag: "UBHP_HYDRO",
+  asset_tag: "PRL_HYDRO",
   metric_name: "Cumulative CO₂ Displaced (Sarju Hydro Cascade)",
   unit: "MT CO₂",
   current_calculated_value: 217800,
@@ -74,7 +74,7 @@ export function CarbonTelemetryProvider({
   children: React.ReactNode;
 }) {
   const [metrics, setMetrics] = useState<Record<string, CarbonMetricItem>>({
-    UBHP_HYDRO: DEFAULT_HYDRO,
+    PRL_HYDRO: DEFAULT_HYDRO,
     PBPL_ETHANOL: DEFAULT_ETHANOL,
   });
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -127,7 +127,7 @@ export function CarbonTelemetryProvider({
   }, [refreshTelemetry]);
   // 2. Smooth 100ms Real-Time Mathematical Ticker
 
-  const hydroMetric = metrics["UBHP_HYDRO"] || DEFAULT_HYDRO;
+  const hydroMetric = metrics["PRL_HYDRO"] || DEFAULT_HYDRO;
   const ethanolMetric = metrics["PBPL_ETHANOL"] || DEFAULT_ETHANOL;
 
   const { totalCarbonOffset, totalRatePerSecond } = useMemo(() => {

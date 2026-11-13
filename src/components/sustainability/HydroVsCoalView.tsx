@@ -259,12 +259,12 @@ export default function HydroVsCoalView() {
 
                   {/* Dual Visual Bars & Engineering Notes (Cols 5-12) */}
                   <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {/* UBHP Run-of-the-River Hydro Box */}
+                    {/* PRL Run-of-the-River Hydro Box */}
                     <div className="p-5 border border-sand-300 bg-sand-50/70 flex flex-col justify-between space-y-3">
                       <div>
                         <div className="flex items-baseline justify-between">
                           <span className="text-xs font-bold text-pingaksh-navy uppercase">
-                            UBHP Run-of-the-River Hydro
+                            PRL Run-of-the-River Hydro
                           </span>
                           <span className="font-logo text-2xl text-emerald-700">
                             {stage.hydroKgCo2PerMwh.toFixed(1)} kg CO₂e/MWh
@@ -439,7 +439,7 @@ export default function HydroVsCoalView() {
                       </span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-navy-600">UBHP Hydro:</span>
+                      <span className="text-navy-600">PRL Hydro:</span>
                       <span className="font-semibold text-emerald-700">
                         {metric.hydroPerMwh} {metric.unit}/MWh
                       </span>

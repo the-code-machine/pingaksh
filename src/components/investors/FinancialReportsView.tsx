@@ -522,7 +522,7 @@ export default function FinancialReportsView({
       </section>
 
       {/* =====================================================================
-          5. SUBSIDIARY & SPV AUDITED STANDALONE ACCOUNTS (UBHP & PBPL)
+          5. SUBSIDIARY & SPV AUDITED STANDALONE ACCOUNTS (PRL & PBPL)
       ===================================================================== */}
       <section
         aria-labelledby="spv-accounts-heading"

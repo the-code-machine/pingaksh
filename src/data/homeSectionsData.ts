@@ -99,7 +99,7 @@ export const HOME_SECTIONS_DATA = {
 
   // =================================================================
   // SECTION 2: OUR BUSINESSES & TECHNICAL SPEC MATRICES
-  // Extracted from pingaksh.com/UBHP & pingaksh.com/pingakshgreenfuels
+  // Extracted from pingaksh.com/PRL & pingaksh.com/pingakshgreenfuels
   // =================================================================
   businessesSection: {
     eyebrow: "OUR BUSINESSES",
@@ -108,11 +108,11 @@ export const HOME_SECTIONS_DATA = {
       "Powering India’s energy transition through utility-scale hydroelectric generation and bio-ethanol refining.",
     verticals: [
       {
-        id: "hydro-ubhp",
+        id: "hydro-PRL",
         shortTitle: "HYDRO POWER",
         badge: "Uttar Bharat Hydro Power",
         title: "Hydro Power",
-        entityName: "Uttar Bharat Hydro Power (UBHP)",
+        entityName: "Uttar Bharat Hydro Power (PRL)",
         description:
           "Our quest to deliver reliable, clean baseload electricity led us to develop the Sarju cascade hydroelectric stations in District Bageshwar, Uttarakhand. Operating across Sarju II and III with a combined capacity of 23.10 MW, our plants harness natural Himalayan elevation drops using high-efficiency Horizontal Francis Turbines.",
         secondaryDescription:
@@ -120,7 +120,7 @@ export const HOME_SECTIONS_DATA = {
         backgroundImage:
           "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/20150914_125919_a99d7065.jpg",
         imageAlt:
-          "UBHP Run-of-the-River Hydroelectric Power Plant in Bageshwar, Uttarakhand",
+          "PRL Run-of-the-River Hydroelectric Power Plant in Bageshwar, Uttarakhand",
         ctaText: "read more",
         ctaHref: "/our-businesses/hydro-power",
         keySpecs: [

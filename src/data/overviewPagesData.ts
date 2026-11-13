@@ -66,9 +66,9 @@ export interface OverviewPageData {
 export const OVERVIEW_PAGES_DATA: Record<string, OverviewPageData> = {
   "who-we-are": {
     slug: "who-we-are",
-    seoTitle: "Who We Are | Pingaksh Renewables (Formerly UBHP)",
+    seoTitle: "Who We Are | Pingaksh Renewables (Formerly PRL)",
     seoDescription:
-      "Explore Pingaksh Group’s evolution from Uttar Bharat Hydro Power (UBHP) to a diversified clean energy conglomerate led by visionary founders and a 6+2 Board.",
+      "Explore Pingaksh Group’s evolution from Uttar Bharat Hydro Power (PRL) to a diversified clean energy conglomerate led by visionary founders and a 6+2 Board.",
     breadcrumbs: [
       { label: "Home", href: "/" },
       { label: "Who We Are", href: "/who-we-are" },
@@ -77,7 +77,7 @@ export const OVERVIEW_PAGES_DATA: Record<string, OverviewPageData> = {
       eyebrow: "Pingaksh Group · Corporate Identity",
       title: "Who We Are",
       subtitle:
-        "From pioneering Himalayan hydroelectric cascades as UBHP to scaling next-generation industrial infrastructure across India.",
+        "From pioneering Himalayan hydroelectric cascades as PRL to scaling next-generation industrial infrastructure across India.",
       images: [
         {
           url: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=2000&q=85",
@@ -101,7 +101,7 @@ export const OVERVIEW_PAGES_DATA: Record<string, OverviewPageData> = {
       headline:
         "Pingaksh Renewables is an integrated clean-infrastructure enterprise engineering resilient energy and industrial assets for India.",
       paragraphs: [
-        "Rooted in the Sanskrit term ‘Pingaksh’—symbolizing a sacred, far-seeing force—our group began its journey as Uttar Bharat Hydro Power . Ltd. (UBHP), executing complex run-of-the-river hydroelectric projects in the Himalayan river valleys of Uttarakhand.",
+        "Rooted in the Sanskrit term ‘Pingaksh’—symbolizing a sacred, far-seeing force—our group began its journey as Uttar Bharat Hydro Power . Ltd. (PRL), executing complex run-of-the-river hydroelectric projects in the Himalayan river valleys of Uttarakhand.",
         "Guided by visionary founder Mr. Naresh Goel alongside directors Mr. Amul Goel and Mr. Aadish Goel, we have expanded from pure-play hydro generation into green biofuels, circular agro-processing, and ring-fenced Special Purpose Vehicles (SPVs) backed by listed-grade corporate governance.",
       ],
       stats: [
@@ -116,7 +116,6 @@ export const OVERVIEW_PAGES_DATA: Record<string, OverviewPageData> = {
           unit: "Verticals",
           label: "Hydro and Green fuels",
         },
-      
       ],
     },
     philosophyBanner: {
@@ -307,7 +306,7 @@ export const OVERVIEW_PAGES_DATA: Record<string, OverviewPageData> = {
         },
         {
           url: "https://images.unsplash.com/photo-1574482620811-1aa16ffe3c82?auto=format&fit=crop&w=2000&q=85",
-          alt: "UBHP Sarju Cascade Hydroelectric Project Site Offices in Bageshwar",
+          alt: "PRL Sarju Cascade Hydroelectric Project Site Offices in Bageshwar",
           caption: "Sarju I, II & III Hydro Operations Desk · Bageshwar, UK",
         },
         {
@@ -367,7 +366,7 @@ export const OVERVIEW_PAGES_DATA: Record<string, OverviewPageData> = {
           badge: "01 · Global & Site Directory",
           title: "Corporate & Registered Offices",
           description:
-            "Complete directory of Pingaksh Group’s Corporate Headquarters, Registered Office, UBHP Sarju I–III Hydro Site Offices, and PBPL Distillery Complex.",
+            "Complete directory of Pingaksh Group’s Corporate Headquarters, Registered Office, PRL Sarju I–III Hydro Site Offices, and PBPL Distillery Complex.",
           href: "/contact/offices",
           imageUrl:
             "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80",
@@ -396,7 +395,7 @@ export const OVERVIEW_PAGES_DATA: Record<string, OverviewPageData> = {
     seoTitle:
       "Media & Insights | Press Releases, Gallery & Awards | Pingaksh Group",
     seoDescription:
-      "Explore official corporate announcements, press releases, project operations gallery, and ISO/safety citations from Pingaksh Renewables (UBHP & PBPL).",
+      "Explore official corporate announcements, press releases, project operations gallery, and ISO/safety citations from Pingaksh Renewables (PRL & PBPL).",
     breadcrumbs: [
       { label: "Home", href: "/" },
       { label: "Media & Insights", href: "/media" },
@@ -419,7 +418,7 @@ export const OVERVIEW_PAGES_DATA: Record<string, OverviewPageData> = {
         },
         {
           url: "https://images.unsplash.com/photo-1574482620811-1aa16ffe3c82?auto=format&fit=crop&w=2000&q=85",
-          alt: "UBHP Sarju Hydroelectric Cascade Operations in Uttarakhand",
+          alt: "PRL Sarju Hydroelectric Cascade Operations in Uttarakhand",
           caption: "Himalayan Hydro Operations & Catchment Stewardship",
         },
       ],

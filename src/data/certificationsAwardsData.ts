@@ -91,7 +91,7 @@ export const CERTIFICATIONS_AWARDS_DATA: CertificationsAwardsPageData = {
       value: "ISO",
       unit: "9001 · 14001 · 45001",
       label: "Integrated Management Systems",
-      detail: "Audited across both Hydro (UBHP) & Bio-Energy (PBPL)",
+      detail: "Audited across both Hydro (PRL) & Bio-Energy (PBPL)",
     },
     {
       value: "100%",
@@ -125,7 +125,7 @@ export const CERTIFICATIONS_AWARDS_DATA: CertificationsAwardsPageData = {
       standardCode: "ISO 9001:2015",
       title: "Quality Management System (QMS) Accreditation",
       issuingAuthority: "TÜV SÜD / NABCB Accredited Registrar",
-      applicableEntity: "Pingaksh Renewables . Ltd. (UBHP & PBPL)",
+      applicableEntity: "Pingaksh Renewables . Ltd. (PRL & PBPL)",
       category: "Quality & ISO Systems",
       validThrough: "Valid through December 2028",
       certificateNumber: "QMS-IN-PRPL-2024-0891",
@@ -247,7 +247,7 @@ export const CERTIFICATIONS_AWARDS_DATA: CertificationsAwardsPageData = {
       applicableEntity: "Uttar Bharat Hydro Power . Ltd. (Sarju I, II, III)",
       category: "Bio-Fuel & Grid Standards",
       validThrough: "Long-Term 35-Year Concession / PPA",
-      certificateNumber: "UERC-SHP-UBHP-SARJU-123",
+      certificateNumber: "UERC-SHP-PRL-SARJU-123",
       scopeDescription:
         "Statutory grid synchronization, ABT metering, and renewable generation accreditation for the 23.100 MW Sarju cascade in District Bageshwar, Uttarakhand.",
       verificationHighlights: [
@@ -259,7 +259,7 @@ export const CERTIFICATIONS_AWARDS_DATA: CertificationsAwardsPageData = {
         "https://images.unsplash.com/photo-1574482620811-1aa16ffe3c82?auto=format&fit=crop&w=900&q=80",
       documentPreviewUrl:
         "https://images.unsplash.com/photo-1574482620811-1aa16ffe3c82?auto=format&fit=crop&w=1400&q=85",
-      imageAlt: "UERC and MNRE Renewable Hydro Grid Accreditation for UBHP",
+      imageAlt: "UERC and MNRE Renewable Hydro Grid Accreditation for PRL",
       pdfHref: "/investors/statutory-filings#uerc-hydro",
     },
   ],
