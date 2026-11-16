@@ -457,22 +457,6 @@ export default function Footer() {
             </Link>
 
             <Link
-              href="/privacy-policy"
-              title="Pingaksh Renewables Privacy Policy"
-              className="hover:text-pingaksh-sand transition-colors"
-            >
-              Privacy Policy
-            </Link>
-
-            <Link
-              href="/terms-of-use"
-              title="Website Terms of Use & Disclaimer"
-              className="hover:text-pingaksh-sand transition-colors"
-            >
-              Terms &amp; Disclaimers
-            </Link>
-
-            <Link
               href="/sitemap.xml"
               title="XML Sitemap for Search Engines"
               className="hover:text-pingaksh-sand transition-colors"

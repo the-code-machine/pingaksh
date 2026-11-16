@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
+import Image from "next/image"; // ✅ Imported Next.js Optimized Image
 import { motion, AnimatePresence } from "motion/react";
 import {
   Play,
@@ -22,7 +23,6 @@ interface ProjectGalleryViewProps {
   data: ProjectGalleryPageData;
 }
 
-// API Data Interface
 interface ApiMediaItem {
   id: number;
   type: "image" | "video";
@@ -36,9 +36,7 @@ interface ApiMediaItem {
 
 const enterpriseEase = [0.22, 1, 0.36, 1] as const;
 
-// Helper to mask raw filenames into professional tags
 const getDisplayName = (fileName: string) => {
-  // If the file starts with "0Y" or "Y" (case-insensitive), label as Ethanol
   if (/^0?y/i.test(fileName)) {
     return "Ethanol Biorefinery";
   }
@@ -48,9 +46,6 @@ const getDisplayName = (fileName: string) => {
 export default function ProjectGalleryView({ data }: ProjectGalleryViewProps) {
   const { breadcrumbs, hero, spotlightReel, mediaTypes } = data;
 
-  // =================================================================
-  // 1. API FETCHING, PAGINATION & FILTER STATE
-  // =================================================================
   const [mediaItems, setMediaItems] = useState<ApiMediaItem[]>([]);
   const [page, setPage] = useState<number>(1);
   const [hasMore, setHasMore] = useState<boolean>(false);
@@ -112,9 +107,6 @@ export default function ProjectGalleryView({ data }: ProjectGalleryViewProps) {
     fetchMedia(nextPage, selectedType, searchQuery, false);
   };
 
-  // =================================================================
-  // 2. LIGHTBOX MODAL STATE
-  // =================================================================
   const [activeLightboxIndex, setActiveLightboxIndex] = useState<number | null>(
     null,
   );
@@ -173,19 +165,23 @@ export default function ProjectGalleryView({ data }: ProjectGalleryViewProps) {
           1. ARCHITECTURAL HERO HEADER
       ===================================================================== */}
       <header className="relative w-full min-h-[54vh] bg-pingaksh-navy text-white flex flex-col justify-end overflow-hidden pt-36 pb-16 sm:pb-20">
-        <figure className="absolute inset-0 m-0">
-          <motion.img
+        <figure className="absolute inset-0 m-0 overflow-hidden">
+          {/* ✅ Fixed Hero Image using next/image with priority */}
+          <motion.div
             initial={{ scale: 1.08 }}
             animate={{ scale: 1 }}
             transition={{ duration: 8, ease: "easeOut" }}
-            src={hero.backgroundImage}
-            alt={hero.backgroundAlt}
-            width={2000}
-            height={1000}
-            loading="eager"
-            fetchPriority="high"
-            className="w-full h-full object-cover object-center opacity-35"
-          />
+            className="w-full h-full relative opacity-35"
+          >
+            <Image
+              src={hero.backgroundImage}
+              alt={hero.backgroundAlt}
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover object-center"
+            />
+          </motion.div>
           <div
             aria-hidden="true"
             className="absolute inset-0 bg-gradient-to-t from-navy-950 via-pingaksh-navy/80 to-navy-950/65"
@@ -349,17 +345,19 @@ export default function ProjectGalleryView({ data }: ProjectGalleryViewProps) {
                         className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-110 opacity-85"
                       />
                     ) : (
-                      <img
+                      /* ✅ Optimized Grid Images */
+                      <Image
                         src={item.url}
                         alt={getDisplayName(item.file_name)}
-                        loading="lazy"
-                        className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-110 opacity-90"
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-110 opacity-90"
                       />
                     )}
 
-                    <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/45 to-navy-950/15 group-hover:from-pingaksh-navy/95 transition-colors duration-300" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/45 to-navy-950/15 group-hover:from-pingaksh-navy/95 transition-colors duration-300 pointer-events-none" />
 
-                    <div className="relative z-10 p-5 flex items-center justify-between gap-2">
+                    <div className="relative z-10 p-5 flex items-center justify-between gap-2 pointer-events-none">
                       <span className="px-3 py-1 rounded-full bg-navy-950/80 backdrop-blur-md border border-white/15 text-pingaksh-sand text-[10.5px] font-bold uppercase tracking-wider">
                         {item.type}
                       </span>
@@ -380,7 +378,7 @@ export default function ProjectGalleryView({ data }: ProjectGalleryViewProps) {
                       </div>
                     )}
 
-                    <figcaption className="relative z-10 p-6 space-y-2">
+                    <figcaption className="relative z-10 p-6 space-y-2 pointer-events-none">
                       <div className="flex items-center gap-3 text-[11px] text-sand-200/85 font-medium">
                         <span className="inline-flex items-center gap-1 uppercase">
                           <Calendar className="w-3 h-3 text-pingaksh-sand" />
@@ -470,7 +468,7 @@ export default function ProjectGalleryView({ data }: ProjectGalleryViewProps) {
                 </button>
               )}
 
-              <div className="w-full rounded-2xl overflow-hidden bg-black border border-white/15 shadow-2xl">
+              <div className="w-full h-[68vh] relative rounded-2xl overflow-hidden bg-black border border-white/15 shadow-2xl flex items-center justify-center">
                 {spotlightModalOpen ? (
                   <video
                     src={spotlightReel.videoUrl}
@@ -478,7 +476,7 @@ export default function ProjectGalleryView({ data }: ProjectGalleryViewProps) {
                     controls
                     autoPlay
                     playsInline
-                    className="w-full max-h-[70vh] object-contain mx-auto"
+                    className="w-full h-full object-contain mx-auto"
                   />
                 ) : activeLightboxItem?.type === "video" ? (
                   <video
@@ -487,15 +485,18 @@ export default function ProjectGalleryView({ data }: ProjectGalleryViewProps) {
                     controls
                     autoPlay
                     playsInline
-                    className="w-full max-h-[68vh] object-contain mx-auto"
+                    className="w-full h-full object-contain mx-auto"
                   />
                 ) : (
                   activeLightboxItem && (
-                    <img
+                    /* ✅ Optimized Lightbox Image */
+                    <Image
                       key={activeLightboxItem.url}
                       src={activeLightboxItem.url}
                       alt={getDisplayName(activeLightboxItem.file_name)}
-                      className="w-full max-h-[68vh] object-contain mx-auto"
+                      fill
+                      sizes="100vw"
+                      className="object-contain"
                     />
                   )
                 )}
