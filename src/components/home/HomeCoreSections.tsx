@@ -10,8 +10,13 @@ import { useCarbonTelemetry } from "@/context/CarbonTelemetryContext";
 const transitionEase = [0.22, 1, 0.36, 1] as const;
 
 export default function HomeCoreSections() {
-  const { hydroMetric, ethanolMetric, totalCarbonOffset, formatMetric } =
-    useCarbonTelemetry();
+  const {
+    totalCarbonSavedTonnes,
+    hydroEnergyGeneratedGwh,
+    ethanolCarbonSavedTonnes,
+    totalHydroKwh,
+    formatIndianNumber,
+  } = useCarbonTelemetry();
   const { ethosSection, businessesSection, stewardshipSection } =
     HOME_SECTIONS_DATA;
 
@@ -125,7 +130,7 @@ export default function HomeCoreSections() {
                   </div>
                   <div className="font-logo text-4xl xl:text-5xl font-bold text-pingaksh-navy leading-none tracking-tight">
                     {stat.unit === "Tonnes CO₂"
-                      ? formatMetric(totalCarbonOffset)
+                      ? formatIndianNumber(totalCarbonSavedTonnes, 0)
                       : stat.value}
                   </div>
                 </div>

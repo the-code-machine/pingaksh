@@ -245,8 +245,8 @@ export const HERITAGE_TIMELINE_DATA: HeritageTimelinePageData = {
       ],
       location: "Pan-India Operations",
       keyFigure: {
-        number: "222,000+",
-        label: "Tonnes of Cumulative Carbon Offset Achieved",
+        number: "",
+        label: "",
       },
       primaryImage: {
         url: "https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/_MG_3751_a4bd973c.webp",

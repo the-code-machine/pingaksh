@@ -7,12 +7,10 @@ import {
   ChevronRight,
   ArrowLeft,
   ArrowRight,
-  ArrowUpRight,
   Play,
   Pause,
   CheckCircle2,
   ShieldCheck,
-  Activity,
   Layers,
   MapPin,
 } from "lucide-react";
@@ -21,6 +19,7 @@ import {
   type BusinessVerticalData,
 } from "@/data/businessVerticalsData";
 import { useCarbonTelemetry } from "@/context/CarbonTelemetryContext";
+
 interface BusinessVerticalShowcaseProps {
   business: BusinessVerticalData;
 }
@@ -29,12 +28,9 @@ const SECTION_LINKS = [
   { id: "overview", label: "Executive Overview" },
   { id: "operating-assets", label: "Assets & Specifications" },
   { id: "process-architecture", label: "Process & SCADA Flow" },
-  { id: "telemetry-graphs", label: "Performance & Telemetry" },
   { id: "media-gallery", label: "Site Media & Operations" },
-  { id: "division-timeline", label: "Commissioning Milestones" },
 ];
 
-// Enterprise Deceleration Curve
 const enterpriseEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 const fadeUp = {
@@ -64,24 +60,31 @@ const staggerContainer = {
 export default function BusinessVerticalShowcase({
   business,
 }: BusinessVerticalShowcaseProps) {
-  const { hydroMetric, ethanolMetric, totalCarbonOffset, formatMetric } =
-    useCarbonTelemetry();
+  // =========================================================================
+  // 1. LIVE ADMIN API TELEMETRY (Replaces static KPI numbers)
+  // =========================================================================
+  const {
+    hydroEnergyGeneratedGwh,
+    ethanolCarbonSavedTonnes,
+    totalCarbonSavedTonnes,
+    formatIndianNumber,
+  } = useCarbonTelemetry();
+
+  // Determine which specific metric belongs to this vertical page
+  const isHydroVertical = business.slug === "hydro-energy-cascade";
+
   const [activeSection, setActiveSection] = useState("overview");
   const [selectedUnitIndex, setSelectedUnitIndex] = useState(0);
   const [activeMediaIndex, setActiveMediaIndex] = useState(0);
   const [isMediaPaused, setIsMediaPaused] = useState(false);
-  const [activeTimelineIndex, setActiveTimelineIndex] = useState(
-    business.timeline.milestones.length - 1,
-  );
 
-  // Interactive SCADA Process Architecture States
+  // SCADA Process Flow
   const [activeProcessId, setActiveProcessId] = useState(
     business.processSystems[0]?.id || "",
   );
   const [selectedStepIndex, setSelectedStepIndex] = useState(0);
   const [autoCycleFlow, setAutoCycleFlow] = useState(true);
 
-  // Reset process states if the user navigates between different business verticals
   useEffect(() => {
     if (business.processSystems.length > 0) {
       setActiveProcessId(business.processSystems[0].id);
@@ -101,7 +104,6 @@ export default function BusinessVerticalShowcase({
     setSelectedStepIndex(0);
   };
 
-  // Auto-step timer for SCADA Flow
   useEffect(() => {
     if (!autoCycleFlow || !currentProcess) return;
     const timer = setInterval(() => {
@@ -114,11 +116,7 @@ export default function BusinessVerticalShowcase({
 
   const selectedUnit = business.plantUnits[selectedUnitIndex];
   const currentMedia = business.mediaGallery.slides[activeMediaIndex];
-  const otherBusinesses = BUSINESS_VERTICALS_DATA.filter(
-    (b) => b.slug !== business.slug,
-  );
 
-  // Auto-advance Media Gallery if current slide is an image
   const nextMediaSlide = useCallback(() => {
     setActiveMediaIndex((prev) =>
       prev === business.mediaGallery.slides.length - 1 ? 0 : prev + 1,
@@ -131,7 +129,6 @@ export default function BusinessVerticalShowcase({
     return () => clearInterval(timer);
   }, [isMediaPaused, currentMedia.type, nextMediaSlide]);
 
-  // Scroll spy for sticky sub-navigation
   useEffect(() => {
     const handleScroll = () => {
       const offset = window.scrollY + 240;
@@ -192,7 +189,7 @@ export default function BusinessVerticalShowcase({
               alt={business.hero.heroImageAlt}
               width={2000}
               height={1100}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover opacity-50"
             />
           )}
           <div className="absolute inset-0 bg-gradient-to-r from-navy-950/95 via-pingaksh-navy/80 to-navy-950/40" />
@@ -200,7 +197,6 @@ export default function BusinessVerticalShowcase({
         </div>
 
         <div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10">
-          {/* Breadcrumbs */}
           <motion.nav
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -227,7 +223,6 @@ export default function BusinessVerticalShowcase({
             </span>
           </motion.nav>
 
-          {/* Title & Subtitle Split */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-end pt-12 lg:pt-16">
             <motion.div
               initial="hidden"
@@ -241,7 +236,6 @@ export default function BusinessVerticalShowcase({
                   {business.legalEntity}
                 </span>
               </div>
-
               <h1 className="font-logo text-4xl sm:text-5xl lg:text-6xl xl:text-[64px] text-white leading-[1.08] tracking-wide">
                 {business.hero.title}
               </h1>
@@ -260,34 +254,80 @@ export default function BusinessVerticalShowcase({
             </motion.div>
           </div>
 
-          {/* 4-Column Operational KPI Strip */}
+          {/* 4-Column Operational KPI Strip (Connected to API) */}
           <motion.div
             variants={staggerContainer}
             initial="hidden"
             animate="visible"
             className="grid grid-cols-2 lg:grid-cols-4 rounded-xl overflow-hidden border border-white/15 bg-navy-950/75 backdrop-blur-md divide-y lg:divide-y-0 divide-x divide-white/15 mt-16 shadow-2xl"
           >
-            {business.hero.keyMetrics.map((m, idx) => (
-              <motion.div
-                key={idx}
-                variants={fadeUp}
-                className="p-6 sm:p-8 group hover:bg-white/5 transition-colors duration-300 relative overflow-hidden"
-              >
-                <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-pingaksh-terracotta to-pingaksh-sand opacity-0 group-hover:opacity-100 transition-opacity" />
-                <span className="block font-tagline text-[10px] uppercase tracking-[0.15em] text-sand-300/80 font-bold">
-                  {m.label}
-                </span>
-                <span className="block font-logo text-3xl sm:text-4xl lg:text-5xl text-white mt-3 group-hover:text-pingaksh-sand transition-colors">
-                  {m.label === "Cumulative CO₂ Offset" ||
-                  m.label === "Daily Carbon Displacement"
-                    ? formatMetric(totalCarbonOffset)
-                    : m.value}
-                </span>
-                <span className="inline-block font-body text-xs text-pingaksh-sand/90 mt-2 font-medium">
-                  {m.unit}
-                </span>
-              </motion.div>
-            ))}
+            {/* 1. Core Production Metric (Capacity) */}
+            <motion.div
+              variants={fadeUp}
+              className="p-6 sm:p-8 group hover:bg-white/5 transition-colors duration-300 relative overflow-hidden"
+            >
+              <span className="block font-tagline text-[10px] uppercase tracking-[0.15em] text-sand-300/80 font-bold">
+                {business.hero.keyMetrics[0].label}
+              </span>
+              <span className="block font-logo text-3xl sm:text-4xl lg:text-5xl text-white mt-3 group-hover:text-pingaksh-sand transition-colors">
+                {business.hero.keyMetrics[0].value}
+              </span>
+              <span className="inline-block font-body text-xs text-pingaksh-sand/90 mt-2 font-medium">
+                {business.hero.keyMetrics[0].unit}
+              </span>
+            </motion.div>
+
+            {/* 2. LIVE Metric: Generated GWh or Ethanol Offset */}
+            <motion.div
+              variants={fadeUp}
+              className="p-6 sm:p-8 group hover:bg-white/5 transition-colors duration-300 relative overflow-hidden"
+            >
+              <span className="block font-tagline text-[10px] uppercase tracking-[0.15em] text-sand-300/80 font-bold">
+                {isHydroVertical
+                  ? "Energy Generated (API)"
+                  : "Tailpipe CO₂ Offset (API)"}
+              </span>
+              <span className="block font-logo text-3xl sm:text-4xl lg:text-5xl text-white mt-3 group-hover:text-pingaksh-sand transition-colors">
+                {isHydroVertical
+                  ? formatIndianNumber(hydroEnergyGeneratedGwh, 2)
+                  : formatIndianNumber(ethanolCarbonSavedTonnes, 0)}
+              </span>
+              <span className="inline-block font-body text-xs text-pingaksh-sand/90 mt-2 font-medium">
+                {isHydroVertical ? "GWh" : "Tonnes CO₂"}
+              </span>
+            </motion.div>
+
+            {/* 3. ESG / Compliance Metric (ZLD) */}
+            <motion.div
+              variants={fadeUp}
+              className="p-6 sm:p-8 group hover:bg-white/5 transition-colors duration-300 relative overflow-hidden"
+            >
+              <span className="block font-tagline text-[10px] uppercase tracking-[0.15em] text-sand-300/80 font-bold">
+                {business.hero.keyMetrics[2].label}
+              </span>
+              <span className="block font-logo text-3xl sm:text-4xl lg:text-5xl text-white mt-3 group-hover:text-pingaksh-sand transition-colors">
+                {business.hero.keyMetrics[2].value}
+              </span>
+              <span className="inline-block font-body text-xs text-pingaksh-sand/90 mt-2 font-medium">
+                {business.hero.keyMetrics[2].unit}
+              </span>
+            </motion.div>
+
+            {/* 4. LIVE Global Metric: Total Group Carbon Offset */}
+            <motion.div
+              variants={fadeUp}
+              className="p-6 sm:p-8 group hover:bg-white/5 transition-colors duration-300 relative overflow-hidden"
+            >
+              <span className="block font-tagline text-[10px] uppercase tracking-[0.15em] text-sand-300/80 font-bold text-emerald-400">
+                Total Group CO₂ Displaced
+              </span>
+              <span className="block font-logo text-3xl sm:text-4xl lg:text-5xl text-emerald-400 mt-3 group-hover:text-pingaksh-sand transition-colors">
+                {formatIndianNumber(totalCarbonSavedTonnes, 0)}
+              </span>
+              <span className="inline-block font-body text-xs text-pingaksh-sand/90 mt-2 font-medium">
+                Total Tonnes Saved Globally
+              </span>
+            </motion.div>
           </motion.div>
         </div>
       </header>
@@ -390,8 +430,6 @@ export default function BusinessVerticalShowcase({
                     24/7 SCADA Linked
                   </span>
                 </div>
-             
-             
               </div>
             </motion.div>
 
@@ -458,7 +496,6 @@ export default function BusinessVerticalShowcase({
             </div>
           </motion.div>
 
-          {/* Unit Selector Tabs */}
           <div
             className={`grid grid-cols-1 md:grid-cols-${Math.min(
               business.plantUnits.length,
@@ -512,7 +549,6 @@ export default function BusinessVerticalShowcase({
             })}
           </div>
 
-          {/* Selected Unit Detail Panel */}
           <AnimatePresence mode="wait">
             <motion.div
               key={selectedUnit.id}
@@ -553,13 +589,6 @@ export default function BusinessVerticalShowcase({
                     <p className="font-body text-xs sm:text-sm text-navy-700 leading-relaxed">
                       {selectedUnit.summary}
                     </p>
-                  </div>
-
-                  <div className="pt-6 border-t border-sand-200 flex items-center justify-between text-xs text-navy-500">
-                    <span>Grid & Process Telemetry</span>
-                    <span className="font-semibold text-pingaksh-navy">
-                      Active & Monitored
-                    </span>
                   </div>
                 </div>
               </div>
@@ -606,7 +635,7 @@ export default function BusinessVerticalShowcase({
       </section>
 
       {/* =====================================================================
-          5. INTERACTIVE SCADA FLOW & PROCESS ARCHITECTURE (VERTICAL-SPECIFIC)
+          5. INTERACTIVE SCADA FLOW & PROCESS ARCHITECTURE
       ===================================================================== */}
       {currentProcess && activeStep && (
         <section
@@ -614,7 +643,6 @@ export default function BusinessVerticalShowcase({
           className="py-20 lg:py-28 border-b border-sand-300 bg-white"
         >
           <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10">
-            {/* Top Bar: Process System Switcher + Auto-Cycle Toggle */}
             <div className="flex flex-col lg:flex-row lg:items-end justify-between pb-10 border-b border-sand-300 gap-6">
               <div>
                 <span className="font-tagline text-xs uppercase tracking-[0.2em] text-pingaksh-terracotta font-bold">
@@ -626,7 +654,6 @@ export default function BusinessVerticalShowcase({
               </div>
 
               <div className="flex flex-wrap items-center gap-3">
-                {/* System Switcher with layoutId */}
                 {business.processSystems.length > 1 && (
                   <div className="flex rounded-lg p-1 border border-sand-300 bg-sand-100 shadow-xs">
                     {business.processSystems.map((sys) => {
@@ -660,7 +687,6 @@ export default function BusinessVerticalShowcase({
                   </div>
                 )}
 
-                {/* Auto-Play Flow Scrubber Button */}
                 <button
                   type="button"
                   onClick={() => setAutoCycleFlow((prev) => !prev)}
@@ -694,7 +720,6 @@ export default function BusinessVerticalShowcase({
                 transition={{ duration: 0.4, ease: enterpriseEase }}
                 className="pt-10 space-y-8"
               >
-                {/* Interactive Connected Pipeline Nodes */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                   {currentProcess.steps.map((step, idx) => {
                     const isSelected = selectedStepIndex === idx;
@@ -719,7 +744,6 @@ export default function BusinessVerticalShowcase({
                             : "bg-sand-50 text-pingaksh-navy border-sand-300 hover:border-pingaksh-navy"
                         }`}
                       >
-                        {/* Animated Top Progress Bar on Active Step */}
                         {isSelected && autoCycleFlow && (
                           <motion.div
                             key={`step-prog-${step.stepNumber}`}
@@ -760,27 +784,12 @@ export default function BusinessVerticalShowcase({
                             {step.stageTitle}
                           </h4>
                         </div>
-
-                        <div
-                          className={`mt-4 pt-3 border-t flex items-center justify-between text-[11px] font-semibold ${
-                            isSelected
-                              ? "border-white/15 text-emerald-300"
-                              : "border-sand-200 text-pingaksh-navy"
-                          }`}
-                        >
-                          <span className="truncate">
-                            {step.keyOutputMetric}
-                          </span>
-                          <ArrowRight className="w-3.5 h-3.5 shrink-0 ml-1 group-hover:translate-x-1 transition-transform" />
-                        </div>
                       </button>
                     );
                   })}
                 </div>
 
-                {/* Integrated Stage Inspector + Live Video Animation Stage */}
                 <div className="rounded-2xl border border-sand-300 bg-pingaksh-navy text-white overflow-hidden shadow-2xl grid grid-cols-1 lg:grid-cols-12">
-                  {/* Left 6 Cols: Active Stage Engineering Telemetry */}
                   <div className="lg:col-span-12 p-7 sm:p-10 lg:p-12 flex flex-col justify-between">
                     <AnimatePresence mode="wait">
                       <motion.div
@@ -796,20 +805,13 @@ export default function BusinessVerticalShowcase({
                             Stage {activeStep.stepNumber} ·{" "}
                             {activeStep.subLabel}
                           </span>
-                          <span className="text-xs font-mono text-sand-300">
-                            {selectedStepIndex + 1} /{" "}
-                            {currentProcess.steps.length}
-                          </span>
                         </div>
-
                         <h3 className="font-logo text-2xl sm:text-4xl text-white leading-snug">
                           {activeStep.stageTitle}
                         </h3>
-
                         <p className="font-body text-sm sm:text-base text-sand-100/90 leading-relaxed">
                           {activeStep.technicalDescription}
                         </p>
-
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
                           <div className="p-4 rounded-lg bg-white/5 border border-white/10">
                             <span className="block font-tagline text-[10px] uppercase tracking-wider text-sand-300">
@@ -830,12 +832,6 @@ export default function BusinessVerticalShowcase({
                         </div>
                       </motion.div>
                     </AnimatePresence>
-
-                    <div className="mt-8 pt-5 border-t border-white/15 flex items-center justify-between text-xs text-sand-300">
-                      <span className="font-mono">
-                        {currentProcess.baselineFormulaText}
-                      </span>
-                    </div>
                   </div>
                 </div>
               </motion.div>
@@ -872,7 +868,6 @@ export default function BusinessVerticalShowcase({
                 {business.mediaGallery.subheading}
               </p>
             </div>
-
             <div className="flex items-center gap-3">
               <span className="font-tagline text-xs font-bold text-navy-500 mr-2">
                 0{activeMediaIndex + 1} / 0{business.mediaGallery.slides.length}
@@ -887,7 +882,7 @@ export default function BusinessVerticalShowcase({
                       : prev - 1,
                   )
                 }
-                className="w-11 h-11 rounded-md border border-sand-300 hover:bg-pingaksh-navy hover:text-white hover:border-pingaksh-navy flex items-center justify-center transition-all cursor-pointer"
+                className="w-11 h-11 rounded-md border border-sand-300 hover:bg-pingaksh-navy hover:text-white flex items-center justify-center transition-all cursor-pointer"
               >
                 <ArrowLeft className="w-4 h-4" />
               </button>
@@ -895,7 +890,7 @@ export default function BusinessVerticalShowcase({
                 type="button"
                 aria-label="Next Media Slide"
                 onClick={nextMediaSlide}
-                className="w-11 h-11 rounded-md border border-sand-300 hover:bg-pingaksh-navy hover:text-white hover:border-pingaksh-navy flex items-center justify-center transition-all cursor-pointer"
+                className="w-11 h-11 rounded-md border border-sand-300 hover:bg-pingaksh-navy hover:text-white flex items-center justify-center transition-all cursor-pointer"
               >
                 <ArrowRight className="w-4 h-4" />
               </button>
@@ -936,7 +931,6 @@ export default function BusinessVerticalShowcase({
                     )}
                   </motion.div>
                 </AnimatePresence>
-
                 {currentMedia.type !== "video" && (
                   <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/20 z-20">
                     <motion.div
@@ -952,7 +946,6 @@ export default function BusinessVerticalShowcase({
                   </div>
                 )}
               </div>
-
               <div className="lg:col-span-4 p-7 sm:p-10 bg-pingaksh-navy text-white flex flex-col justify-between">
                 <AnimatePresence mode="wait">
                   <motion.div
@@ -975,7 +968,6 @@ export default function BusinessVerticalShowcase({
                     </p>
                   </motion.div>
                 </AnimatePresence>
-
                 <div className="pt-8 mt-8 border-t border-white/15">
                   <span className="block font-tagline text-[10px] uppercase tracking-widest text-sand-300/70 mb-3">
                     Select Media Feed
@@ -1014,114 +1006,6 @@ export default function BusinessVerticalShowcase({
           </div>
         </div>
       </section>
-
-      {/* =====================================================================
-          8. DIVISION MILESTONE TIMELINE SCRUBBER
-      ===================================================================== */}
-      {/* <section
-        id="division-timeline"
-        className="py-20 lg:py-32 bg-sand-100 border-b border-sand-300"
-      >
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeUp}
-            className="flex flex-col sm:flex-row sm:items-end justify-between pb-12 gap-4"
-          >
-            <div>
-              <span className="font-tagline text-xs uppercase tracking-[0.2em] text-pingaksh-terracotta font-bold">
-                Chronological Execution
-              </span>
-              <h2 className="font-logo text-3xl sm:text-5xl text-pingaksh-navy mt-2">
-                {business.timeline.heading}
-              </h2>
-            </div>
-            <Link
-              href="/who-we-are/heritage-timeline"
-              className="text-xs sm:text-sm font-bold text-pingaksh-terracotta hover:text-pingaksh-navy transition-colors inline-flex items-center gap-1.5 group"
-            >
-              <span>Explore Full Corporate Timeline</span>
-              <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-            </Link>
-          </motion.div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-4 rounded-t-xl overflow-hidden border border-sand-300 bg-white divide-y sm:divide-y-0 sm:divide-x divide-sand-300">
-            {business.timeline.milestones.map((m, idx) => {
-              const isCurrent = activeTimelineIndex === idx;
-              return (
-                <button
-                  key={m.year}
-                  type="button"
-                  onClick={() => setActiveTimelineIndex(idx)}
-                  className={`relative p-6 text-left transition-colors cursor-pointer ${
-                    isCurrent
-                      ? "bg-pingaksh-navy text-white"
-                      : "hover:bg-sand-50 text-pingaksh-navy"
-                  }`}
-                >
-                  {isCurrent && (
-                    <motion.div
-                      layoutId="timeline-active-pill"
-                      className="absolute top-0 left-0 right-0 h-1 bg-pingaksh-terracotta"
-                    />
-                  )}
-                  <span
-                    className={`font-logo text-3xl sm:text-4xl block ${
-                      isCurrent ? "text-pingaksh-sand" : "text-pingaksh-navy"
-                    }`}
-                  >
-                    {m.year}
-                  </span>
-                  <span
-                    className={`font-body text-xs font-semibold mt-1.5 block line-clamp-1 ${
-                      isCurrent ? "text-sand-100" : "text-navy-600"
-                    }`}
-                  >
-                    {m.title}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={business.timeline.milestones[activeTimelineIndex].year}
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -12 }}
-              transition={{ duration: 0.35, ease: enterpriseEase }}
-              className="rounded-b-xl border-x border-b border-sand-300 bg-white p-8 sm:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center shadow-lg"
-            >
-              <div className="lg:col-span-4 border-b lg:border-b-0 lg:border-r border-sand-200 pb-6 lg:pb-0 lg:pr-8">
-                <span className="font-tagline text-[10px] uppercase tracking-widest text-navy-400 font-bold block mb-1">
-                  Milestone Year
-                </span>
-                <span className="font-logo text-6xl sm:text-7xl text-pingaksh-terracotta leading-none">
-                  {business.timeline.milestones[activeTimelineIndex].year}
-                </span>
-                <div className="mt-4 inline-block px-3 py-1 rounded bg-sand-100 border border-sand-300 text-xs font-bold text-pingaksh-navy">
-                  {business.timeline.milestones[activeTimelineIndex].metric}
-                </div>
-              </div>
-
-              <div className="lg:col-span-8 space-y-3">
-                <h3 className="font-logo text-2xl sm:text-3xl text-pingaksh-navy">
-                  {business.timeline.milestones[activeTimelineIndex].title}
-                </h3>
-                <p className="font-body text-sm sm:text-base text-navy-700 leading-relaxed">
-                  {
-                    business.timeline.milestones[activeTimelineIndex]
-                      .description
-                  }
-                </p>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-        </div>
-      </section> */}
     </article>
   );
 }

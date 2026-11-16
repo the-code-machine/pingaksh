@@ -13,7 +13,7 @@ import {
   RefreshCw,
 } from "lucide-react";
 import { CARBON_DASHBOARD_DATA } from "@/data/carbonDashboardData";
-import { useCarbonTelemetry } from "@/context/CarbonTelemetryContext"; // Adjust import path if stored elsewhere
+import { useCarbonTelemetry } from "@/context/CarbonTelemetryContext";
 
 const enterpriseEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -34,68 +34,24 @@ export default function CarbonDashboardView() {
   const data = CARBON_DASHBOARD_DATA;
 
   // =========================================================================
-  // 1. LIVE ADMIN API TELEMETRY FROM CONTEXT
+  // 1. ADMIN API TELEMETRY FROM CONTEXT (Exact static numbers from Workbook)
   // =========================================================================
   const {
-    hydroMetric,
-    ethanolMetric,
-    totalCarbonOffset,
-    totalRatePerSecond,
+    hydroEnergyGeneratedGwh,
+    totalCarbonSavedTonnes,
+    ethanolSalesLitres,
+    ethanolCarbonSavedTonnes,
+    totalHydroKwh,
+    hydroCarbonSavedTonnes,
     isLoading,
-    lastSyncedAt,
-    refreshTelemetry,
-    formatMetric,
+    formatIndianNumber,
   } = useCarbonTelemetry();
 
-  // Derive daily MT/day directly from the Admin API's rate_per_second
-  const dailyHydroTonnes = hydroMetric.animation_params.rate_per_second * 86400;
-  const dailyEthanolTonnes =
-    ethanolMetric.animation_params.rate_per_second * 86400;
-  const totalDailyTonnes = totalRatePerSecond * 86400;
-
-  // Derive implied daily physical generation from the API's carbon rate
-  const liveDailyHydroMwh =
-    data.hero.coalGridEmissionFactorTonnesPerMwh > 0
-      ? dailyHydroTonnes / data.hero.coalGridEmissionFactorTonnesPerMwh
-      : data.hero.dailyHydroMwhGenerated;
-
-  const liveDailyEthanolKl =
-    data.hero.ethanolNetSavingKgPerLiter > 0
-      ? dailyEthanolTonnes / data.hero.ethanolNetSavingKgPerLiter
-      : data.hero.dailyEthanolLitersProduced / 1000;
-
-  // Calculate today's accumulated tonnes since 00:00 local time using live API rate
-  const [todayTonnesAccumulated, setTodayTonnesAccumulated] =
-    useState<number>(0);
-
-  useEffect(() => {
-    const updateTodayCounter = () => {
-      const now = new Date();
-      const startOfToday = new Date(
-        now.getFullYear(),
-        now.getMonth(),
-        now.getDate(),
-        0,
-        0,
-        0,
-        0,
-      );
-      const secondsToday = Math.max(
-        0,
-        (now.getTime() - startOfToday.getTime()) / 1000,
-      );
-      setTodayTonnesAccumulated(secondsToday * totalRatePerSecond);
-    };
-
-    updateTodayCounter();
-    const timer = setInterval(updateTodayCounter, 100);
-    return () => clearInterval(timer);
-  }, [totalRatePerSecond]);
-
-  // Calculate live percentage share between Hydro and Ethanol
-  const totalCumulativeSafe = totalCarbonOffset > 0 ? totalCarbonOffset : 1;
+  // Calculate percentage share between Hydro and Ethanol
+  const totalCumulativeSafe =
+    totalCarbonSavedTonnes > 0 ? totalCarbonSavedTonnes : 1;
   const hydroSharePct = Math.round(
-    (hydroMetric.liveValue / totalCumulativeSafe) * 100,
+    (hydroCarbonSavedTonnes / totalCumulativeSafe) * 100,
   );
   const ethanolSharePct = Math.max(0, 100 - hydroSharePct);
 
@@ -103,23 +59,11 @@ export default function CarbonDashboardView() {
   // 2. INTERACTIVE OUTPUT-TO-CARBON SIMULATOR STATE
   // =========================================================================
   const [simHydroMwh, setSimHydroMwh] = useState<number>(
-    Math.round(liveDailyHydroMwh),
+    data.hero.dailyHydroMwhGenerated,
   );
   const [simEthanolKl, setSimEthanolKl] = useState<number>(
-    Math.round(liveDailyEthanolKl),
+    data.hero.dailyEthanolLitersProduced / 1000,
   );
-
-  // Sync simulator initial defaults when Admin API data finishes loading
-  useEffect(() => {
-    if (!isLoading) {
-      setSimHydroMwh(
-        Math.min(800, Math.max(100, Math.round(liveDailyHydroMwh))),
-      );
-      setSimEthanolKl(
-        Math.min(500, Math.max(100, Math.round(liveDailyEthanolKl))),
-      );
-    }
-  }, [isLoading, liveDailyHydroMwh, liveDailyEthanolKl]);
 
   const simHydroSavedTonnes =
     simHydroMwh * data.hero.coalGridEmissionFactorTonnesPerMwh;
@@ -135,7 +79,6 @@ export default function CarbonDashboardView() {
           1. CINEMATIC VIDEO HERO & LIVE CARBON TELEMETRY COMMAND BOARD
       ===================================================================== */}
       <header className="bg-pingaksh-navy text-white pt-32 pb-16 lg:pt-44 lg:pb-24 border-b border-white/10 relative overflow-hidden">
-        {/* Ambient Background Video Animation + Engineering Grid */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <video
             autoPlay
@@ -152,7 +95,6 @@ export default function CarbonDashboardView() {
         </div>
 
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
-          {/* Breadcrumbs */}
           <nav
             aria-label="Breadcrumb"
             className="flex items-center flex-wrap gap-2 text-xs text-sand-200/75 pb-8 border-b border-white/15"
@@ -184,7 +126,6 @@ export default function CarbonDashboardView() {
             })}
           </nav>
 
-          {/* Header Title & Subtitle */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end pt-12">
             <motion.div
               initial="hidden"
@@ -210,7 +151,7 @@ export default function CarbonDashboardView() {
             </motion.div>
           </div>
 
-          {/* LIVE CUMULATIVE CO2 REDUCED COMMAND CONSOLE (BOUND TO ADMIN API CONTEXT) */}
+          {/* TOTAL CO2 REDUCED COMMAND CONSOLE (BOUND TO ADMIN API CONTEXT) */}
           <motion.div
             initial="hidden"
             animate="visible"
@@ -219,44 +160,34 @@ export default function CarbonDashboardView() {
             className="mt-14 rounded-xl overflow-hidden border border-white/20 bg-navy-950/85 backdrop-blur-xl shadow-2xl"
           >
             <div className="grid grid-cols-1 lg:grid-cols-12 divide-y lg:divide-y-0 lg:divide-x divide-white/15">
-              {/* Primary Live Counter (Cols 1-7) */}
               <div className="lg:col-span-7 p-7 sm:p-10 flex flex-col justify-between relative overflow-hidden">
                 <div className="flex flex-wrap items-center justify-between gap-4">
                   <span className="font-tagline text-[11px] uppercase tracking-[0.18em] text-pingaksh-sand font-bold">
                     Verified Cumulative CO₂ Displaced
                   </span>
 
-                  <button
-                    type="button"
-                    onClick={() => refreshTelemetry()}
-                    title="Sync with Admin Telemetry Server"
-                    className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-400/30 text-xs text-emerald-300 font-medium hover:bg-emerald-500/25 transition-colors cursor-pointer"
-                  >
-                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-400/30 text-xs text-emerald-300 font-medium">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400" />
                     <span>
                       {isLoading
-                        ? "Syncing Telemetry..."
-                        : "Live Telemetry Active"}
+                        ? "Syncing Workbook..."
+                        : "API Workbook Synced"}
                     </span>
                     <RefreshCw
                       className={`w-3 h-3 ml-1 opacity-75 ${
                         isLoading ? "animate-spin" : ""
                       }`}
                     />
-                  </button>
+                  </div>
                 </div>
 
                 <div className="my-8">
                   <div className="font-logo text-4xl sm:text-6xl lg:text-[72px] text-white tracking-tight tabular-nums leading-none">
-                    {formatMetric(totalCarbonOffset, 3)}
+                    {formatIndianNumber(totalCarbonSavedTonnes, 2)}
                   </div>
                   <div className="flex flex-wrap items-center justify-between gap-2 mt-4">
                     <span className="font-body text-xs sm:text-sm text-pingaksh-sand font-medium">
-                      Metric Tonnes of CO₂ Equivalent ({hydroMetric.unit})
-                      Avoided
-                    </span>
-                    <span className="font-mono text-xs text-emerald-400">
-                      +{(totalRatePerSecond * 1000).toFixed(2)} grams / sec
+                      Total Metric Tonnes of CO₂ Avoided
                     </span>
                   </div>
 
@@ -279,84 +210,54 @@ export default function CarbonDashboardView() {
                     <div className="flex justify-between text-[11px] text-sand-300/80">
                       <span className="inline-flex items-center gap-1.5">
                         <span className="w-2 h-2 rounded-full bg-emerald-400" />
-                        {hydroMetric.asset_tag} ({hydroSharePct}% •{" "}
-                        {formatMetric(hydroMetric.liveValue, 1)}{" "}
-                        {hydroMetric.unit})
+                        Hydro Cascade ({hydroSharePct}% •{" "}
+                        {formatIndianNumber(hydroCarbonSavedTonnes, 0)} MT)
                       </span>
                       <span className="inline-flex items-center gap-1.5">
                         <span className="w-2 h-2 rounded-full bg-pingaksh-terracotta" />
-                        {ethanolMetric.asset_tag} ({ethanolSharePct}% •{" "}
-                        {formatMetric(ethanolMetric.liveValue, 1)}{" "}
-                        {ethanolMetric.unit})
+                        Ethanol Biorefinery ({ethanolSharePct}% •{" "}
+                        {formatIndianNumber(ethanolCarbonSavedTonnes, 0)} MT)
                       </span>
                     </div>
                   </div>
                 </div>
-
-                <div className="pt-5 border-t border-white/10 flex flex-wrap items-center justify-between gap-4 text-xs text-sand-200/80">
-                  <span>
-                    Displaced Today (Since 00:00 IST):{" "}
-                    <strong className="text-emerald-400 tabular-nums font-mono">
-                      +{formatMetric(todayTonnesAccumulated, 3)} MT
-                    </strong>
-                  </span>
-                  <span>
-                    Combined Daily Offset Velocity:{" "}
-                    <strong className="text-white font-mono">
-                      +{formatMetric(totalDailyTonnes, 2)} MT / Day
-                    </strong>
-                  </span>
-                </div>
               </div>
 
-              {/* Live Asset Attribution Breakdown (Cols 8-12) */}
+              {/* Asset Attribution Breakdown (Cols 8-12) */}
               <div className="lg:col-span-5 divide-y divide-white/15 flex flex-col justify-between bg-white/[0.02]">
                 {/* 01. PRL Hydro Contribution */}
                 <div className="p-7 sm:p-9 flex-1 flex flex-col justify-between group hover:bg-white/[0.04] transition-colors">
                   <div className="flex items-center justify-between text-xs gap-2">
                     <span className="inline-flex items-center gap-2 text-sand-200 font-semibold">
                       <Droplets className="w-4 h-4 text-emerald-400 shrink-0" />
-                      <span>01. {hydroMetric.metric_name}</span>
+                      <span>01. Cumulative CO₂ Displaced (Hydro)</span>
                     </span>
                     <span className="px-2.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 font-mono text-[11px] shrink-0">
-                      0.82 kg CO₂ / kWh
+                      0.969 kg CO₂ / kWh
                     </span>
                   </div>
 
                   <div className="my-3 flex items-baseline justify-between gap-4">
                     <div>
                       <span className="block text-[10px] uppercase tracking-wider text-sand-300/70">
-                        Live Asset Cumulative
+                        Asset Cumulative
                       </span>
                       <span className="font-logo text-3xl sm:text-4xl text-white tabular-nums">
-                        {formatMetric(hydroMetric.liveValue, 2)}{" "}
+                        {formatIndianNumber(hydroCarbonSavedTonnes, 2)}{" "}
                         <span className="text-sm text-pingaksh-sand">
-                          {hydroMetric.unit}
+                          MT CO₂
                         </span>
                       </span>
                     </div>
 
                     <div className="text-right">
                       <span className="block text-xs font-mono text-emerald-400 font-semibold">
-                        +{formatMetric(dailyHydroTonnes, 2)} MT/d
+                        {formatIndianNumber(hydroEnergyGeneratedGwh, 2)} GWh
                       </span>
                       <span className="text-[11px] text-sand-300">
-                        ~{liveDailyHydroMwh.toFixed(1)} MWh / day
+                        Energy Generated
                       </span>
                     </div>
-                  </div>
-
-                  <div className="w-full bg-white/10 h-1 rounded-full overflow-hidden">
-                    <motion.div
-                      initial={{ width: "-100%" }}
-                      animate={{ width: "100%" }}
-                      transition={{
-                        duration: 2.5,
-                        repeat: Infinity,
-                        ease: "linear",
-                      }}
-                      className="h-full bg-emerald-400/70"
-                    />
                   </div>
                 </div>
 
@@ -365,64 +266,38 @@ export default function CarbonDashboardView() {
                   <div className="flex items-center justify-between text-xs gap-2">
                     <span className="inline-flex items-center gap-2 text-sand-200 font-semibold">
                       <Zap className="w-4 h-4 text-pingaksh-terracotta shrink-0" />
-                      <span>02. {ethanolMetric.metric_name}</span>
+                      <span>02. Cumulative CO₂ Displaced (Ethanol)</span>
                     </span>
                     <span className="px-2.5 py-0.5 rounded bg-pingaksh-terracotta/25 text-pingaksh-sand font-mono text-[11px] shrink-0">
-                      1.65 kg CO₂ / Liter
+                      0.83 kg CO₂ / Liter
                     </span>
                   </div>
 
                   <div className="my-3 flex items-baseline justify-between gap-4">
                     <div>
                       <span className="block text-[10px] uppercase tracking-wider text-sand-300/70">
-                        Live Asset Cumulative
+                        Asset Cumulative
                       </span>
                       <span className="font-logo text-3xl sm:text-4xl text-white tabular-nums">
-                        {formatMetric(ethanolMetric.liveValue, 2)}{" "}
+                        {formatIndianNumber(ethanolCarbonSavedTonnes, 2)}{" "}
                         <span className="text-sm text-pingaksh-sand">
-                          {ethanolMetric.unit}
+                          MT CO₂
                         </span>
                       </span>
                     </div>
 
                     <div className="text-right">
                       <span className="block text-xs font-mono text-pingaksh-sand font-semibold">
-                        +{formatMetric(dailyEthanolTonnes, 2)} MT/d
+                        {formatIndianNumber(ethanolSalesLitres, 0)} Litres
                       </span>
                       <span className="text-[11px] text-sand-300">
-                        ~{liveDailyEthanolKl.toFixed(0)} KLPD Output
+                        Sales to Date
                       </span>
                     </div>
-                  </div>
-
-                  <div className="w-full bg-white/10 h-1 rounded-full overflow-hidden">
-                    <motion.div
-                      initial={{ width: "-100%" }}
-                      animate={{ width: "100%" }}
-                      transition={{
-                        duration: 2.2,
-                        repeat: Infinity,
-                        ease: "linear",
-                      }}
-                      className="h-full bg-pingaksh-terracotta"
-                    />
                   </div>
                 </div>
               </div>
             </div>
-
-            {/* Server Timestamp Sync Footer */}
-            {lastSyncedAt && (
-              <div className="px-7 py-2.5 bg-navy-950 border-t border-white/10 flex items-center justify-between text-[11px] text-sand-300/70">
-                <span>
-                  Telemetry Stream: {hydroMetric.asset_tag} +{" "}
-                  {ethanolMetric.asset_tag}
-                </span>
-                <span className="font-mono">
-                  Last Server Sync (UTC): {lastSyncedAt}
-                </span>
-              </div>
-            )}
           </motion.div>
         </div>
       </header>
@@ -451,10 +326,6 @@ export default function CarbonDashboardView() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {data.methodologyCards.map((card, idx) => {
               const isHydro = idx === 0;
-              // Use live daily offset from Admin Context if available
-              const liveDailyCardTonnes = isHydro
-                ? `${formatMetric(dailyHydroTonnes, 2)} Tonnes CO₂ / Day`
-                : `${formatMetric(dailyEthanolTonnes, 2)} Tonnes CO₂ / Day`;
 
               return (
                 <motion.div
@@ -469,12 +340,7 @@ export default function CarbonDashboardView() {
                   <div>
                     <div className="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-sand-300 text-xs">
                       <span className="font-tagline font-bold text-pingaksh-terracotta uppercase tracking-wider">
-                        0{idx + 1} • {card.unitBasis}
-                      </span>
-                      <span className="px-3 py-1 rounded bg-white border border-sand-300 font-semibold text-pingaksh-navy">
-                        {isHydro
-                          ? `${liveDailyHydroMwh.toFixed(1)} MWh Avg. Daily Generation`
-                          : `${liveDailyEthanolKl.toFixed(0)} KLPD Active Capacity`}
+                        0{idx + 1} {card.unitBasis}
                       </span>
                     </div>
 
@@ -482,7 +348,7 @@ export default function CarbonDashboardView() {
                       {card.vertical}
                     </h3>
 
-                    {/* Animated Visual Footprint Comparison Bars */}
+                    {/* Visual Footprint Comparison Bars */}
                     <div className="mt-7 space-y-5 bg-white p-6 rounded-lg border border-sand-200">
                       {/* Fossil Bar */}
                       <div className="space-y-2">
@@ -544,15 +410,6 @@ export default function CarbonDashboardView() {
                     <p className="font-body text-xs sm:text-sm text-navy-700 mt-5 leading-relaxed">
                       {card.explanation}
                     </p>
-                  </div>
-
-                  <div className="mt-6 pt-5 border-t border-sand-300 flex items-center justify-between">
-                    <span className="text-xs text-navy-600 font-semibold uppercase tracking-wider">
-                      Live Daily Displacement
-                    </span>
-                    <span className="font-logo text-2xl text-pingaksh-navy">
-                      {liveDailyCardTonnes}
-                    </span>
                   </div>
                 </motion.div>
               );
@@ -659,7 +516,7 @@ export default function CarbonDashboardView() {
                       Simulated Annual Carbon Offset
                     </span>
                     <span className="font-logo text-4xl sm:text-5xl text-white tabular-nums mt-1 block">
-                      {formatMetric(simAnnualTonnes, 0)}{" "}
+                      {formatIndianNumber(simAnnualTonnes, 0)}{" "}
                       <span className="text-xl">MT / Yr</span>
                     </span>
                   </div>

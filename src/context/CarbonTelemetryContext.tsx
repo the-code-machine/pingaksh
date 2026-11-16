@@ -6,83 +6,51 @@ import React, {
   useState,
   useEffect,
   useCallback,
-  useMemo,
 } from "react";
 
-export interface CarbonMetricItem {
-  id: number;
-  asset_tag: string; // e.g., 'PRL_HYDRO' | 'PBPL_ETHANOL'
-  metric_name: string;
-  unit: string;
-  current_calculated_value: number;
-  liveValue: number;
-  animation_params: {
-    rate_per_second: number;
-    base_timestamp_utc: string;
-    base_value: number;
-  };
-}
-
-interface CarbonTelemetryContextValue {
-  metrics: Record<string, CarbonMetricItem>;
-  hydroMetric: CarbonMetricItem;
-  ethanolMetric: CarbonMetricItem;
-  totalCarbonOffset: number;
-  totalRatePerSecond: number;
+interface CarbonWorkbookData {
+  // Yellow Showcase Field 1 (For Hydro Page)
+  hydroEnergyGeneratedGwh: number;
+  // Yellow Showcase Field 2 (Total Group Carbon Saved)
+  totalCarbonSavedTonnes: number;
+  // Detailed Breakdown
+  ethanolSalesLitres: number;
+  ethanolCarbonSavedTonnes: number;
+  sarju3Kwh: number;
+  sarju2Kwh: number;
+  totalHydroKwh: number;
+  hydroCarbonSavedTonnes: number;
   isLoading: boolean;
-  lastSyncedAt: string | null;
-  refreshTelemetry: () => Promise<void>;
-  formatMetric: (val: number, decimals?: number) => string;
+  formatIndianNumber: (val: number, decimals?: number) => string;
 }
 
-// Instant initial fallback so UI never flashes 0 while fetching
-const DEFAULT_HYDRO: CarbonMetricItem = {
-  id: 1,
-  asset_tag: "PRL_HYDRO",
-  metric_name: "Cumulative CO₂ Displaced (Sarju Hydro Cascade)",
-  unit: "MT CO₂",
-  current_calculated_value: 217800,
-  liveValue: 217800,
-  animation_params: {
-    rate_per_second: 0.00231481,
-    base_timestamp_utc: "2026-11-01T00:00:00Z",
-    base_value: 217800,
-  },
+const DEFAULT_DATA: Omit<
+  CarbonWorkbookData,
+  "isLoading" | "formatIndianNumber"
+> = {
+  hydroEnergyGeneratedGwh: 598.76,
+  totalCarbonSavedTonnes: 677802.01,
+  ethanolSalesLitres: 117595000,
+  ethanolCarbonSavedTonnes: 97603.85,
+  sarju3Kwh: 280687531.95,
+  sarju2Kwh: 318072180,
+  totalHydroKwh: 598759711.95,
+  hydroCarbonSavedTonnes: 580198.16,
 };
 
-const DEFAULT_ETHANOL: CarbonMetricItem = {
-  id: 2,
-  asset_tag: "PBPL_ETHANOL",
-  metric_name: "Cumulative Carbon Displacement (250 KLPD Bio-Refinery)",
-  unit: "MT CO₂",
-  current_calculated_value: 42500,
-  liveValue: 42500,
-  animation_params: {
-    rate_per_second: 0.00694444,
-    base_timestamp_utc: "2026-11-01T00:00:00Z",
-    base_value: 42500,
-  },
-};
-
-const CarbonTelemetryContext = createContext<
-  CarbonTelemetryContextValue | undefined
->(undefined);
+const CarbonTelemetryContext = createContext<CarbonWorkbookData | undefined>(
+  undefined,
+);
 
 export function CarbonTelemetryProvider({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const [metrics, setMetrics] = useState<Record<string, CarbonMetricItem>>({
-    PRL_HYDRO: DEFAULT_HYDRO,
-    PBPL_ETHANOL: DEFAULT_ETHANOL,
-  });
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [lastSyncedAt, setLastSyncedAt] = useState<string | null>(null);
-  // Track clock offset between user's browser and Hostinger server
-  const [serverOffsetMs, setServerOffsetMs] = useState<number>(0);
+  const [data, setData] = useState(DEFAULT_DATA);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const refreshTelemetry = useCallback(async () => {
+  const fetchWorkbook = useCallback(async () => {
     try {
       const apiBase =
         process.env.NEXT_PUBLIC_ADMIN_API_URL ||
@@ -91,57 +59,36 @@ export function CarbonTelemetryProvider({
       const res = await fetch(`${apiBase}/api/carbon.php`, {
         cache: "no-store",
       });
-
       const json = await res.json();
 
-      if (json.success && Array.isArray(json.data)) {
-        if (json.server_time) {
-          setLastSyncedAt(json.server_time);
-        }
-
-        const mapped: Record<string, CarbonMetricItem> = {};
-
-        json.data.forEach((item: Omit<CarbonMetricItem, "liveValue">) => {
-          mapped[item.asset_tag] = {
-            ...item,
-            liveValue: Number(item.current_calculated_value),
-          };
+      if (json.success && json.breakdown) {
+        setData({
+          hydroEnergyGeneratedGwh:
+            json.showcase_yellow_fields.hydro_energy_generated_gwh_exact,
+          totalCarbonSavedTonnes:
+            json.showcase_yellow_fields.total_carbon_saved_tonnes_exact,
+          ethanolSalesLitres: json.breakdown.ethanol.sales_to_date_litres,
+          ethanolCarbonSavedTonnes:
+            json.breakdown.ethanol.tailpipe_carbon_saved_tonnes,
+          sarju3Kwh: json.breakdown.hydro.sarju_3_kwh,
+          sarju2Kwh: json.breakdown.hydro.sarju_2_kwh,
+          totalHydroKwh: json.breakdown.hydro.total_units_kwh,
+          hydroCarbonSavedTonnes:
+            json.breakdown.hydro.hydro_carbon_saved_tonnes,
         });
-
-        setMetrics((prev) => ({
-          ...prev,
-          ...mapped,
-        }));
       }
     } catch (err) {
-      console.error("Failed to fetch carbon telemetry:", err);
+      console.error("Failed to fetch carbon workbook API:", err);
     } finally {
       setIsLoading(false);
     }
   }, []);
 
-  // 1. Initial Fetch + Periodic Re-sync every 60s
-  // Fetch telemetry only once when the page loads
   useEffect(() => {
-    refreshTelemetry();
-  }, [refreshTelemetry]);
-  // 2. Smooth 100ms Real-Time Mathematical Ticker
+    fetchWorkbook();
+  }, [fetchWorkbook]);
 
-  const hydroMetric = metrics["PRL_HYDRO"] || DEFAULT_HYDRO;
-  const ethanolMetric = metrics["PBPL_ETHANOL"] || DEFAULT_ETHANOL;
-
-  const { totalCarbonOffset, totalRatePerSecond } = useMemo(() => {
-    const all = Object.values(metrics);
-    return {
-      totalCarbonOffset: all.reduce((sum, item) => sum + item.liveValue, 0),
-      totalRatePerSecond: all.reduce(
-        (sum, item) => sum + item.animation_params.rate_per_second,
-        0,
-      ),
-    };
-  }, [metrics]);
-
-  const formatMetric = useCallback((val: number, decimals = 2) => {
+  const formatIndianNumber = useCallback((val: number, decimals = 2) => {
     return val.toLocaleString("en-IN", {
       minimumFractionDigits: decimals,
       maximumFractionDigits: decimals,
@@ -151,15 +98,9 @@ export function CarbonTelemetryProvider({
   return (
     <CarbonTelemetryContext.Provider
       value={{
-        metrics,
-        hydroMetric,
-        ethanolMetric,
-        totalCarbonOffset,
-        totalRatePerSecond,
+        ...data,
         isLoading,
-        lastSyncedAt,
-        refreshTelemetry,
-        formatMetric,
+        formatIndianNumber,
       }}
     >
       {children}
@@ -168,11 +109,11 @@ export function CarbonTelemetryProvider({
 }
 
 export function useCarbonTelemetry() {
-  const context = useContext(CarbonTelemetryContext);
-  if (!context) {
+  const ctx = useContext(CarbonTelemetryContext);
+  if (!ctx) {
     throw new Error(
-      "useCarbonTelemetry must be used within a CarbonTelemetryProvider",
+      "useCarbonTelemetry must be used within CarbonTelemetryProvider",
     );
   }
-  return context;
+  return ctx;
 }
