@@ -48,11 +48,10 @@ export default function Footer() {
       badge: "Primary Executive Hub",
 
       addressLines: [
-        "Vatika Triangle, Sushant Lok Phase I, Block A",
-        "Mehrauli-Gurgaon Road, Gurugram",
+        "3rd floor, 37 saraswati kunj, next to vatika towers, golf course road, sector 53, gurgaon 122002",
       ],
 
-      cityStatePin: "Haryana – 122002, India",
+      cityStatePin: "",
 
       phone: "+91 9313783584",
       email: "comms@pingaksh.com",
