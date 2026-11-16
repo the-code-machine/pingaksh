@@ -243,7 +243,7 @@ export const CONTACT_OFFICES_DATA: ContactOfficesPageData = {
       id: "desk-investors",
       department: "Investor Relations & Secretarial",
       contactRole: "Company Secretary & Compliance Officer",
-      email: "info@pingakshrenewables.com",
+      email: "comms@pingaksh.com",
       phone: "+91 9548481358",
       scope:
         "Annual returns, statutory filings, debenture/lender disclosures & governance.",
@@ -252,7 +252,7 @@ export const CONTACT_OFFICES_DATA: ContactOfficesPageData = {
       id: "desk-procurement",
       department: "EPC, Grain & Vendor Procurement",
       contactRole: "Head — Supply Chain & Contracts",
-      email: "info@pingakshrenewables.com",
+      email: "comms@pingaksh.com",
       phone: "+91 9548481358",
       scope:
         "Vendor portal access codes, grain tenders, hydro spares & logistics.",
@@ -261,7 +261,7 @@ export const CONTACT_OFFICES_DATA: ContactOfficesPageData = {
       id: "desk-commercial",
       department: "OMC Ethanol, DDGS & CO₂ Sales",
       contactRole: "VP — Commercial & Off-Take",
-      email: "info@pingakshrenewables.com",
+      email: "comms@pingaksh.com",
       phone: "+91 9548481358",
       scope:
         "E20 ethanol depot allocations, bulk DDGS nutrition & liquid CO₂ off-take.",
@@ -270,7 +270,7 @@ export const CONTACT_OFFICES_DATA: ContactOfficesPageData = {
       id: "desk-media",
       department: "Corporate Communications & ESG",
       contactRole: "Public Relations & Sustainability Desk",
-      email: "info@pingakshrenewables.com",
+      email: "comms@pingaksh.com",
       phone: "+91 9548481358",
       scope:
         "Press releases, carbon offset verification & CSR community inquiries.",
