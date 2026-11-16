@@ -244,7 +244,7 @@ export const CONTACT_OFFICES_DATA: ContactOfficesPageData = {
       department: "Investor Relations & Secretarial",
       contactRole: "Company Secretary & Compliance Officer",
       email: "comms@pingaksh.com",
-      phone: "+91 9548481358",
+      phone: "+91 9313783584",
       scope:
         "Annual returns, statutory filings, debenture/lender disclosures & governance.",
     },
@@ -253,7 +253,7 @@ export const CONTACT_OFFICES_DATA: ContactOfficesPageData = {
       department: "EPC, Grain & Vendor Procurement",
       contactRole: "Head — Supply Chain & Contracts",
       email: "comms@pingaksh.com",
-      phone: "+91 9548481358",
+      phone: "+91 9313783584",
       scope:
         "Vendor portal access codes, grain tenders, hydro spares & logistics.",
     },
@@ -262,7 +262,7 @@ export const CONTACT_OFFICES_DATA: ContactOfficesPageData = {
       department: "OMC Ethanol, DDGS & CO₂ Sales",
       contactRole: "VP — Commercial & Off-Take",
       email: "comms@pingaksh.com",
-      phone: "+91 9548481358",
+      phone: "+91 9313783584",
       scope:
         "E20 ethanol depot allocations, bulk DDGS nutrition & liquid CO₂ off-take.",
     },
@@ -271,7 +271,7 @@ export const CONTACT_OFFICES_DATA: ContactOfficesPageData = {
       department: "Corporate Communications & ESG",
       contactRole: "Public Relations & Sustainability Desk",
       email: "comms@pingaksh.com",
-      phone: "+91 9548481358",
+      phone: "+91 9313783584",
       scope:
         "Press releases, carbon offset verification & CSR community inquiries.",
     },

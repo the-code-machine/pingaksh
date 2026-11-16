@@ -54,7 +54,7 @@ export default function Footer() {
 
       cityStatePin: "Haryana – 122002, India",
 
-      phone: "+91 9548481358",
+      phone: "+91 9313783584",
       email: "comms@pingaksh.com",
 
       operatingHours: "Mon – Sat: 09:30 AM – 06:30 PM IST",
