@@ -19,7 +19,7 @@ import {
 import type { ProjectGalleryPageData } from "@/data/projectGalleryData";
 
 interface ProjectGalleryViewProps {
-  data: ProjectGalleryPageData; // Hero and Spotlight reel stay static
+  data: ProjectGalleryPageData;
 }
 
 // API Data Interface
@@ -35,6 +35,15 @@ interface ApiMediaItem {
 }
 
 const enterpriseEase = [0.22, 1, 0.36, 1] as const;
+
+// Helper to mask raw filenames into professional tags
+const getDisplayName = (fileName: string) => {
+  // If the file starts with "0Y" or "Y" (case-insensitive), label as Ethanol
+  if (/^0?y/i.test(fileName)) {
+    return "Ethanol Biorefinery";
+  }
+  return "Hydro Cascade";
+};
 
 export default function ProjectGalleryView({ data }: ProjectGalleryViewProps) {
   const { breadcrumbs, hero, spotlightReel, mediaTypes } = data;
@@ -66,7 +75,7 @@ export default function ProjectGalleryView({ data }: ProjectGalleryViewProps) {
 
       const url = new URL(`${apiBase}/api/media.php`);
       url.searchParams.append("page", pageNum.toString());
-      url.searchParams.append("limit", "12"); // Fetch 12 items per batch
+      url.searchParams.append("limit", "12");
 
       if (type !== "all") url.searchParams.append("type", type);
       if (search.trim()) url.searchParams.append("search", search.trim());
@@ -87,12 +96,11 @@ export default function ProjectGalleryView({ data }: ProjectGalleryViewProps) {
     }
   };
 
-  // Debounce effect for search and filter changes
   useEffect(() => {
-    setPage(1); // Reset to first page when filters change
+    setPage(1);
     const timer = setTimeout(() => {
       fetchMedia(1, selectedType, searchQuery, true);
-    }, 500); // 500ms debounce
+    }, 500);
 
     return () => clearTimeout(timer);
   }, [searchQuery, selectedType]);
@@ -151,7 +159,6 @@ export default function ProjectGalleryView({ data }: ProjectGalleryViewProps) {
   const activeLightboxItem: ApiMediaItem | null =
     activeLightboxIndex !== null ? mediaItems[activeLightboxIndex] : null;
 
-  // Formatting Helper
   const formatBytes = (bytes: number) => {
     if (bytes === 0) return "0 Bytes";
     const k = 1024;
@@ -186,7 +193,6 @@ export default function ProjectGalleryView({ data }: ProjectGalleryViewProps) {
         </figure>
 
         <div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 w-full">
-          {/* Breadcrumbs */}
           <nav aria-label="Breadcrumb" className="mb-8">
             <ol className="flex items-center flex-wrap gap-2 text-xs text-sand-200/80">
               {breadcrumbs.map((crumb, idx) => {
@@ -233,15 +239,10 @@ export default function ProjectGalleryView({ data }: ProjectGalleryViewProps) {
       </header>
 
       {/* =====================================================================
-          2. FEATURED OPERATIONS FILM SHOWCASE
-      ===================================================================== */}
-
-      {/* =====================================================================
           3. STICKY SEARCH & MEDIA FILTER BAR
       ===================================================================== */}
       <section className="sticky top-0 z-20 bg-sand-50/95 backdrop-blur-md border-b border-sand-300 mt-14 sm:mt-20 py-4">
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          {/* Media Type Segmented Control */}
           <div className="inline-flex rounded-xl bg-sand-200/80 p-1 border border-sand-300 overflow-x-auto no-scrollbar">
             {mediaTypes.map((t) => {
               const active = selectedType === t.id;
@@ -267,7 +268,6 @@ export default function ProjectGalleryView({ data }: ProjectGalleryViewProps) {
             })}
           </div>
 
-          {/* Keyword Search Box */}
           <div className="relative w-full sm:max-w-md">
             <Search className="w-3.5 h-3.5 text-navy-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
             <input
@@ -277,7 +277,7 @@ export default function ProjectGalleryView({ data }: ProjectGalleryViewProps) {
                 setSearchQuery(e.target.value);
                 setActiveLightboxIndex(null);
               }}
-              placeholder="Search filename or extension (e.g. mp4, jpg)..."
+              placeholder="Search gallery media..."
               className="w-full pl-9 pr-8 py-2 rounded-xl bg-white border border-sand-300 text-xs text-pingaksh-navy focus:outline-none focus:border-pingaksh-terracotta"
             />
             {searchQuery && (
@@ -321,7 +321,6 @@ export default function ProjectGalleryView({ data }: ProjectGalleryViewProps) {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 auto-rows-[360px]">
             <AnimatePresence mode="popLayout">
               {mediaItems.map((item, idx) => {
-                // Alternating masonry spans (8 col wide, 4 col standard)
                 const spanClass =
                   idx % 5 === 0 ? "lg:col-span-8" : "lg:col-span-4";
 
@@ -352,7 +351,7 @@ export default function ProjectGalleryView({ data }: ProjectGalleryViewProps) {
                     ) : (
                       <img
                         src={item.url}
-                        alt={item.file_name}
+                        alt={getDisplayName(item.file_name)}
                         loading="lazy"
                         className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-110 opacity-90"
                       />
@@ -393,11 +392,8 @@ export default function ProjectGalleryView({ data }: ProjectGalleryViewProps) {
                         </span>
                       </div>
                       <h3 className="font-logo text-xl sm:text-2xl text-white group-hover:text-pingaksh-sand transition-colors leading-snug truncate">
-                        {item.file_name}
+                        {getDisplayName(item.file_name)}
                       </h3>
-                      <p className="text-[11px] font-mono text-sand-300/80 truncate">
-                        {item.db_path}
-                      </p>
                     </figcaption>
                   </motion.figure>
                 );
@@ -406,7 +402,6 @@ export default function ProjectGalleryView({ data }: ProjectGalleryViewProps) {
           </div>
         )}
 
-        {/* Load More & Loading States */}
         <div className="mt-14 flex justify-center">
           {isLoading && (
             <div className="flex items-center gap-3 text-pingaksh-terracotta font-semibold text-sm">
@@ -499,7 +494,7 @@ export default function ProjectGalleryView({ data }: ProjectGalleryViewProps) {
                     <img
                       key={activeLightboxItem.url}
                       src={activeLightboxItem.url}
-                      alt={activeLightboxItem.file_name}
+                      alt={getDisplayName(activeLightboxItem.file_name)}
                       className="w-full max-h-[68vh] object-contain mx-auto"
                     />
                   )
@@ -525,13 +520,15 @@ export default function ProjectGalleryView({ data }: ProjectGalleryViewProps) {
                 <h3 className="font-logo text-xl sm:text-2xl text-pingaksh-sand truncate">
                   {spotlightModalOpen
                     ? spotlightReel.title
-                    : activeLightboxItem?.file_name}
+                    : activeLightboxItem
+                      ? getDisplayName(activeLightboxItem.file_name)
+                      : ""}
                 </h3>
-                <p className="text-xs sm:text-sm text-sand-100/85 font-mono">
-                  {spotlightModalOpen
-                    ? spotlightReel.description
-                    : activeLightboxItem?.db_path}
-                </p>
+                {spotlightModalOpen && (
+                  <p className="text-xs sm:text-sm text-sand-100/85 font-mono">
+                    {spotlightReel.description}
+                  </p>
+                )}
               </div>
 
               {!spotlightModalOpen && activeLightboxItem && (
