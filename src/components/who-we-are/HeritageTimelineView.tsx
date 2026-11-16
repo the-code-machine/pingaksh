@@ -11,7 +11,7 @@ import {
   ArrowUpRight,
 } from "lucide-react";
 import type { HeritageTimelinePageData } from "@/data/heritageTimelineData";
-
+import Image from "next/image";
 interface HeritageTimelineViewProps {
   data: HeritageTimelinePageData;
 }
@@ -426,7 +426,7 @@ export default function HeritageTimelineView({
                       {/* Primary Historical Photograph */}
                       <figure className="group relative overflow-hidden bg-pingaksh-navy shadow-2xl border border-sand-300">
                         <div className="aspect-[16/10] overflow-hidden">
-                          <img
+                          <Image
                             src={milestone.primaryImage.url}
                             alt={milestone.primaryImage.alt}
                             width={1200}

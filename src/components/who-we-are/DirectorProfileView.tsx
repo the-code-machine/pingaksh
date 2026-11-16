@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion } from "motion/react";
 import { ArrowLeft, ArrowRight, ChevronRight } from "lucide-react";
 import { LEADERSHIP_DATA, type DirectorProfile } from "@/data/leadershipData";
-
+import Image from "next/image";
 interface DirectorProfileViewProps {
   director: DirectorProfile;
 }
@@ -109,7 +109,7 @@ export default function DirectorProfileView({
             >
               <div className="bg-white border border-sand-300 overflow-hidden shadow-sm">
                 <div className="aspect-[4/4.8] bg-navy-950 overflow-hidden">
-                  <img
+                  <Image
                     src={director.portraitImage}
                     alt={director.portraitAlt}
                     width={700}

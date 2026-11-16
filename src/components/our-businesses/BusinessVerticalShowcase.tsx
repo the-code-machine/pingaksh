@@ -19,7 +19,7 @@ import {
   type BusinessVerticalData,
 } from "@/data/businessVerticalsData";
 import { useCarbonTelemetry } from "@/context/CarbonTelemetryContext";
-
+import Image from "next/image";
 interface BusinessVerticalShowcaseProps {
   business: BusinessVerticalData;
 }
@@ -986,7 +986,8 @@ export default function BusinessVerticalShowcase({
                               : "border-transparent opacity-50 hover:opacity-85"
                           }`}
                         >
-                          <img
+                          <Image
+                            fill
                             src={slide.posterUrl || slide.src}
                             alt={slide.title}
                             className="w-full h-full object-cover"

@@ -8,7 +8,7 @@ import {
   type DirectorProfile,
   type LeadershipPageData,
 } from "@/data/leadershipData";
-
+import Image from "next/image";
 type FilterType =
   | "All"
   | "Promoter & Executive"
@@ -173,7 +173,7 @@ export default function LeadershipDirectoryView({
             >
               {/* Left Portrait */}
               <div className="lg:col-span-5 relative aspect-[4/5] lg:aspect-auto overflow-hidden bg-navy-950">
-                <img
+                <Image
                   src={founder.portraitImage}
                   alt={founder.portraitAlt}
                   width={900}
@@ -284,7 +284,7 @@ export default function LeadershipDirectoryView({
                   <div>
                     {/* Portrait Container */}
                     <div className="relative aspect-[4/4.6] overflow-hidden bg-navy-950">
-                      <img
+                      <Image
                         src={director.portraitImage}
                         alt={director.portraitAlt}
                         width={600}
@@ -369,7 +369,7 @@ export default function LeadershipDirectoryView({
                   <div>
                     {/* Waist-Level Crop Container for Aadish Goel */}
                     <div className="relative aspect-[4/4.3] overflow-hidden bg-navy-950">
-                      <img
+                      <Image
                         src={aadishDirector.portraitImage}
                         alt={aadishDirector.portraitAlt}
                         width={600}

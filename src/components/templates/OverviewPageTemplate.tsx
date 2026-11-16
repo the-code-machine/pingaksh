@@ -14,7 +14,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import type { OverviewPageData } from "@/data/overviewPagesData";
-
+import Image from "next/image";
 interface OverviewPageTemplateProps {
   data: OverviewPageData;
 }
@@ -89,7 +89,7 @@ export default function OverviewPageTemplate({
               }}
               className="w-full h-full"
             >
-              <img
+              <Image
                 src={activeHeroImage.url}
                 alt={activeHeroImage.alt}
                 width={2000}
@@ -318,7 +318,7 @@ export default function OverviewPageTemplate({
       >
         {/* Background Visual */}
         <figure className="absolute inset-0 m-0">
-          <img
+          <Image
             src={philosophyBanner.backgroundImage}
             alt={philosophyBanner.backgroundAlt}
             width={1920}
@@ -423,7 +423,7 @@ export default function OverviewPageTemplate({
                 >
                   {/* Background Image with Smooth Hover Zoom Effect */}
                   <figure className="absolute inset-0 w-full h-full m-0 overflow-hidden">
-                    <img
+                    <Image
                       src={card.imageUrl}
                       alt={card.imageAlt}
                       width={1200}

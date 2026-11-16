@@ -38,7 +38,7 @@ const enterpriseEase = [0.22, 1, 0.36, 1] as const;
 
 const getDisplayName = (fileName: string) => {
   if (/^0?y/i.test(fileName)) {
-    return "Ethanol Biorefinery";
+    return fileName;
   }
   return "Hydro Cascade";
 };
@@ -174,9 +174,9 @@ export default function ProjectGalleryView({ data }: ProjectGalleryViewProps) {
             className="w-full h-full relative opacity-35"
           >
             <Image
+              fill
               src={hero.backgroundImage}
               alt={hero.backgroundAlt}
-              fill
               priority
               sizes="100vw"
               className="object-cover object-center"
@@ -347,9 +347,9 @@ export default function ProjectGalleryView({ data }: ProjectGalleryViewProps) {
                     ) : (
                       /* ✅ Optimized Grid Images */
                       <Image
+                        fill
                         src={item.url}
                         alt={getDisplayName(item.file_name)}
-                        fill
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-110 opacity-90"
                       />
@@ -390,7 +390,7 @@ export default function ProjectGalleryView({ data }: ProjectGalleryViewProps) {
                         </span>
                       </div>
                       <h3 className="font-logo text-xl sm:text-2xl text-white group-hover:text-pingaksh-sand transition-colors leading-snug truncate">
-                        {getDisplayName(item.file_name)}
+                        {item.file_name || getDisplayName(item.file_name)}
                       </h3>
                     </figcaption>
                   </motion.figure>
@@ -491,10 +491,10 @@ export default function ProjectGalleryView({ data }: ProjectGalleryViewProps) {
                   activeLightboxItem && (
                     /* ✅ Optimized Lightbox Image */
                     <Image
+                      fill
                       key={activeLightboxItem.url}
                       src={activeLightboxItem.url}
                       alt={getDisplayName(activeLightboxItem.file_name)}
-                      fill
                       sizes="100vw"
                       className="object-contain"
                     />

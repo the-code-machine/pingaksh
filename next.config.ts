@@ -7,11 +7,12 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "aliceblue-yak-580540.hostingersite.com",
-        pathname: "/pingaksh-admin/uploads/**",
+        pathname: "/**", // <--- Changed from "*" to "/**" to allow deep nested folders
       },
       {
         protocol: "https",
-        hostname: "images.unsplash.com", // Added for your video posters
+        hostname: "images.unsplash.com",
+        pathname: "/**", // Added /** here as well for safety
       },
     ],
   },
@@ -25,7 +26,6 @@ const nextConfig: NextConfig = {
       },
     },
   },
-
   typescript: {
     ignoreBuildErrors: true,
   },

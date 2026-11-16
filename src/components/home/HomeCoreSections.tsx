@@ -8,7 +8,7 @@ import { HOME_SECTIONS_DATA } from "@/data/homeSectionsData";
 import { useCarbonTelemetry } from "@/context/CarbonTelemetryContext";
 // Premium Enterprise Easing Curve (Smooth deceleration)
 const transitionEase = [0.22, 1, 0.36, 1] as const;
-
+import Image from "next/image";
 export default function HomeCoreSections() {
   const {
     totalCarbonSavedTonnes,
@@ -165,7 +165,8 @@ export default function HomeCoreSections() {
             transition={{ duration: 1.1, ease: transitionEase }}
             className="absolute inset-0 m-0"
           >
-            <img
+            <Image
+              fill
               src={activeBusiness.backgroundImage}
               alt={activeBusiness.imageAlt}
               className="w-full h-full object-cover object-center"

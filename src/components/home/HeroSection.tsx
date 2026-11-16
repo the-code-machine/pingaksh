@@ -12,7 +12,7 @@ import {
   Droplets,
   Recycle,
 } from "lucide-react";
-
+import Image from "next/image";
 interface HeroSlide {
   id: string;
   badge: string;
@@ -170,7 +170,7 @@ export default function HeroSection() {
             }}
             className="w-full h-full"
           >
-            <img
+            <Image
               src={activeSlide.imageUrl}
               alt={activeSlide.imageAlt}
               width={2000}

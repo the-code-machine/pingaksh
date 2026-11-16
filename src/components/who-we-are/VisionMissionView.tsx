@@ -24,7 +24,7 @@ import {
   VISION_MISSION_DATA,
   type CoreValueItem,
 } from "@/data/visionMissionData";
-
+import Image from "next/image";
 // Reusable scroll-reveal variants matching Pingaksh motion architecture
 const fadeUpVariant = {
   hidden: { opacity: 0, y: 32 },
@@ -413,7 +413,7 @@ export default function VisionMissionView() {
 
               {/* Right Image Column with Hover Zoom */}
               <div className="lg:col-span-5 relative min-h-[320px] max-h-[500px] lg:min-h-full overflow-hidden group">
-                <img
+                <Image
                   src={data.visionSection.image}
                   alt={data.visionSection.imageAlt}
                   width={900}
@@ -486,7 +486,7 @@ export default function VisionMissionView() {
             <div className="grid grid-cols-1 lg:grid-cols-12">
               {/* Left Image Column (Reversed from Vision for visual rhythm) */}
               <div className="lg:col-span-5 relative min-h-[320px] max-h-[500px] lg:min-h-full overflow-hidden group order-2 lg:order-1">
-                <img
+                <Image
                   src={data.missionSection.image}
                   alt={data.missionSection.imageAlt}
                   width={900}
@@ -670,7 +670,7 @@ export default function VisionMissionView() {
                 >
                   {/* Top Image Banner */}
                   <div className="relative h-64 sm:h-72 overflow-hidden">
-                    <img
+                    <Image
                       src={selectedValue.image}
                       alt={selectedValue.imageAlt}
                       width={1000}

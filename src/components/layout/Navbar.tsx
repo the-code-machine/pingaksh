@@ -17,7 +17,7 @@ import {
 } from "lucide-react";
 import { NAVIGATION_DATA, type NavItem } from "@/data/navigationData";
 import MarketTicker from "./MarketTicker";
-
+import Image from "next/image";
 export default function Navbar() {
   const [activeTabId, setActiveTabId] = useState<string | null>(null);
   const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
@@ -338,7 +338,7 @@ export default function Navbar() {
                     className="block group"
                   >
                     <div className="w-full h-44 rounded-xl overflow-hidden mb-4 relative bg-sand-100">
-                      <img
+                      <Image fill
                         src={activeNavData.featuredInsight.imageUrl}
                         alt={activeNavData.featuredInsight.title}
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
@@ -403,7 +403,8 @@ export default function Navbar() {
                   className="flex items-center gap-3"
                 >
                   <div className="w-32 h-10 flex items-center justify-start">
-                    <img
+                    <Image
+                      fill
                       src="/logo/logo-icon.svg"
                       alt="Pingaksh Renewables Limited"
                       className="w-full h-full object-contain object-left"

@@ -8,7 +8,7 @@ import {
   SUBSIDIARY_LEADERSHIP_DATA,
   type SubsidiaryEntityId,
 } from "@/data/subsidiaryLeadershipData";
-
+import Image from "next/image";
 type FilterEntity = "all" | SubsidiaryEntityId;
 
 const revealVariants = {
@@ -274,7 +274,8 @@ export default function SubsidiaryLeadershipView() {
                   <div>
                     {/* Portrait Image */}
                     <div className="relative aspect-[4/4.6] overflow-hidden bg-navy-950">
-                      <img
+                      <Image
+                        fill
                         src={leader.portraitImage}
                         alt={leader.portraitAlt}
                         width={600}

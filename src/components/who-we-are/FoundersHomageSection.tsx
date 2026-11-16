@@ -8,7 +8,7 @@ import {
   FOUNDERS_HOMAGE_DATA,
   type FoundersHomageData,
 } from "@/data/foundersHomageData";
-
+import Image from "next/image";
 const transitionEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 interface FoundersHomageSectionProps {
@@ -60,8 +60,9 @@ export default function FoundersHomageSection({
             className="rounded-3xl bg-white border-2 border-sand-300 shadow-2xl overflow-hidden p-6 sm:p-10 lg:p-12"
           >
             <div className="max-w-3xl mx-auto rounded-2xl overflow-hidden border border-sand-300 shadow-lg bg-navy-950">
-              <img
-                src="https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/media/ChatGPT_Image_Nov_7__2026__05_18_31_PM_26996a58.png"
+              <Image
+              
+                src="https://aliceblue-yak-580540.hostingersite.com/pingaksh-admin/uploads/directors/ChatGPT_Image_Nov_7__2026__05_18_31_PM_26996a58.png"
                 alt="Late Shri Hans Raj Goel and Smt. Santosh Devi"
                 width={1200}
                 height={900}
@@ -136,7 +137,8 @@ export default function FoundersHomageSection({
         >
           {/* Left Portrait Column */}
           <figure className="lg:col-span-5 relative aspect-[4/4.8] lg:aspect-auto m-0 bg-navy-950 overflow-hidden">
-            <img
+            <Image
+           
               src={torchbearerSpotlight.portraitUrl}
               alt={torchbearerSpotlight.portraitAlt}
               width={800}

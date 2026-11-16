@@ -26,7 +26,7 @@ import type {
 interface ContactOfficesViewProps {
   data: ContactOfficesPageData;
 }
-
+import Image from "next/image";
 export default function ContactOfficesView({ data }: ContactOfficesViewProps) {
   const {
     breadcrumbs,
@@ -375,7 +375,7 @@ export default function ContactOfficesView({ data }: ContactOfficesViewProps) {
               >
                 {/* Top Site Photograph + Coordinates Overlay */}
                 <div className="relative h-60 sm:h-72 bg-pingaksh-navy overflow-hidden group">
-                  <img
+                  <Image
                     src={selectedOffice.imageUrl}
                     alt={selectedOffice.imageAlt}
                     width={1200}

@@ -12,7 +12,7 @@ import {
 interface SubsidiaryLeaderProfileViewProps {
   leader: SubsidiaryLeaderProfile;
 }
-
+import Image from "next/image";
 export default function SubsidiaryLeaderProfileView({
   leader,
 }: SubsidiaryLeaderProfileViewProps) {
@@ -112,7 +112,8 @@ export default function SubsidiaryLeaderProfileView({
             >
               <div className="bg-white border border-sand-300 overflow-hidden shadow-sm">
                 <div className="aspect-[4/4.8] bg-navy-950 overflow-hidden">
-                  <img
+                  <Image
+                    fill
                     src={leader.portraitImage}
                     alt={leader.portraitAlt}
                     width={700}
