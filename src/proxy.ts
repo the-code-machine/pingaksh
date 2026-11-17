@@ -47,6 +47,5 @@ export const config = {
     "/media",
     "/media/press-releases/:path*",
     "/media/certifications-awards/:path*",
-    "/investors/:path*",
   ],
 };
